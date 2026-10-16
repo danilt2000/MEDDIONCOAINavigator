@@ -76,7 +76,7 @@ def test_patient_views(client):
 def test_checkin_task_lifecycle(client):
     output = client.post("/api/checkins", json=FEVER_CHECKIN).json()
     assert set(output) == TRIAGE_KEYS
-    assert output["checkin_id"].startswith("ONC-001-L") and output["uroven"] >= 2
+    assert output["checkin_id"].startswith("ONC-001-P") and output["uroven"] >= 2
     assert client.get(f"/api/checkins/{output['checkin_id']}/triage").json()["uroven"] == output["uroven"]
     assert client.post("/api/checkins", json={**FEVER_CHECKIN, "checkin_id": output["checkin_id"]}).json() == output
     queue = client.get("/api/queue").json()
