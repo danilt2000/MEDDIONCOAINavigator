@@ -5,6 +5,7 @@
   --chart-4: light-dark(#b42318, #ff8a80);
   --report-bar: light-dark(#cfe5de, #2f5a4f);
   --alert-bar: light-dark(#f4c7c2, #6b2a25);
+  --link-blue: light-dark(#1a5fb4, #8ab4f8);
   --grade-0: var(--md-sys-color-surface-container-high);
   --grade-1: light-dark(#cfe5de, #2f5a4f);
   --grade-2: light-dark(#e8b44d, #c99a2e);
@@ -49,6 +50,11 @@ a {
   font-size: 1.15rem;
   font-weight: 700;
   --md-icon-size: 26px;
+}
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
 }
 
 .range-select {
@@ -170,10 +176,6 @@ a {
   font-size: 0.85rem;
 }
 
-.center {
-  text-align: center;
-}
-
 .nowrap {
   white-space: nowrap;
 }
@@ -255,10 +257,6 @@ a {
 
 .section-title.small {
   font-size: 0.9rem;
-}
-
-.section-title.padded {
-  padding: 16px 20px 0;
 }
 
 .title {
@@ -626,7 +624,6 @@ tr.selected {
   display: block;
   height: 10px;
   min-width: 3px;
-  border-radius: 0 4px 4px 0;
 }
 
 .bar-cell .bar {
@@ -664,6 +661,76 @@ tr.selected {
 
 .regimen-row {
   display: contents;
+}
+
+.regimen-table {
+  table-layout: fixed;
+}
+
+.regimen-table .col-patients {
+  width: 72px;
+}
+
+.regimen-table .col-bar {
+  width: 96px;
+}
+
+.regimen-table .col-count {
+  width: 36px;
+}
+
+.regimen-table .regimen-bar {
+  padding-right: 4px;
+}
+
+.count-cell {
+  text-align: right;
+  font-weight: 600;
+}
+
+.count-cell a {
+  color: var(--link-blue);
+  text-decoration: none;
+}
+
+.count-cell a:hover {
+  text-decoration: underline;
+}
+
+.total-row th,
+.total-row td {
+  font-weight: 700;
+  background: var(--md-sys-color-surface-container);
+}
+
+.total-row th {
+  box-shadow: inset 4px 0 var(--chart-4);
+}
+
+.alert-title-icon {
+  color: var(--chart-4);
+  --md-icon-size: 20px;
+}
+
+.metric-select {
+  min-width: 240px;
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 0 37px;
+  font-weight: 600;
+  color: var(--md-sys-color-primary);
+}
+
+.chart-tip {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--md-sys-color-inverse-surface);
+  color: var(--md-sys-color-inverse-on-surface);
+  font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .trend-card {
@@ -877,163 +944,6 @@ details > summary {
 
 .timeline-detail {
   font-size: 0.9rem;
-}
-
-.controls {
-  gap: 12px;
-}
-
-.patient-select {
-  min-width: 300px;
-}
-
-.replay-top {
-  display: grid;
-  grid-template-columns: 300px minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: 16px;
-  align-items: start;
-}
-
-.clock-time {
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-
-.hours-track {
-  position: relative;
-  height: 24px;
-  margin-top: 8px;
-  border-radius: 4px;
-  background: var(--md-sys-color-surface-container-high);
-}
-
-.hours-band {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  background: var(--md-sys-color-primary-container);
-  border: 1px solid var(--md-sys-color-primary);
-  border-radius: 4px;
-}
-
-.hours-marker {
-  position: absolute;
-  top: -4px;
-  bottom: -4px;
-  width: 3px;
-  margin-left: -1px;
-  background: var(--md-sys-color-on-surface);
-}
-
-.hours-ticks {
-  display: flex;
-  justify-content: space-between;
-}
-
-.hours-state {
-  align-self: flex-start;
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.hours-state.in {
-  background: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-on-primary-container);
-}
-
-.hours-state.out {
-  background: var(--md-sys-color-tertiary-container);
-  color: var(--md-sys-color-on-tertiary-container);
-}
-
-.confusion {
-  border-collapse: separate;
-  border-spacing: 4px;
-  font-variant-numeric: tabular-nums;
-}
-
-.confusion th {
-  font-weight: 500;
-  text-align: center;
-}
-
-.confusion .corner {
-  font-size: 0.75rem;
-  color: var(--md-sys-color-on-surface-variant);
-}
-
-.confusion td {
-  width: 64px;
-  height: 40px;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 1.05rem;
-  font-weight: 700;
-  background: var(--md-sys-color-surface-container);
-}
-
-.confusion td.cell-ok {
-  background: color-mix(in srgb, var(--chart-1) calc(var(--strength) * 100%), var(--md-sys-color-surface-container));
-}
-
-.confusion td.cell-under {
-  background: color-mix(in srgb, var(--chart-4) calc(var(--strength) * 100%), var(--md-sys-color-surface-container));
-}
-
-.confusion td.cell-over {
-  background: color-mix(in srgb, var(--chart-2) calc(var(--strength) * 100%), var(--md-sys-color-surface-container));
-}
-
-.metrics .num {
-  font-weight: 700;
-  text-align: right;
-  white-space: nowrap;
-}
-
-.outcome {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-weight: 600;
-  white-space: nowrap;
-  --md-icon-size: 18px;
-}
-
-.outcome.ok {
-  color: var(--triage-1-on-container);
-}
-
-.outcome.under {
-  color: var(--md-sys-color-error);
-}
-
-.outcome.over {
-  color: var(--triage-2-on-container);
-}
-
-.inline-icon {
-  margin-left: 4px;
-  vertical-align: middle;
-  color: var(--md-sys-color-tertiary);
-  --md-icon-size: 16px;
-}
-
-.rules-cell .rule-chip {
-  display: inline-block;
-  margin: 2px 4px 2px 0;
-}
-
-.expected {
-  padding-top: 10px;
-  border-top: 1px solid var(--md-sys-color-outline-variant);
-}
-
-.expected p {
-  margin: 6px 0 0;
 }
 
 .two-col {

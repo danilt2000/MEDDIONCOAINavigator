@@ -1,11 +1,11 @@
 import type { DailyStat, Kpi as KpiData, QueueItem, SymptomStat } from '@navigator/api';
-import { FilledTonalButton, OutlinedCard, OutlinedTextField, SvgIcon, TriageChip } from '@navigator/ui';
-import { useState, type CSSProperties } from 'react';
-import { useNavigate } from 'react-router';
-import { Area, AreaChart, Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { FilledTonalButton, OutlinedCard, OutlinedSelect, OutlinedTextField, SelectOption, SvgIcon, TriageChip } from '@navigator/ui';
+import { useMemo, useState, type CSSProperties } from 'react';
+import { Link, useNavigate } from 'react-router';
+import { Area, AreaChart, Brush, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useShell } from '../App';
 import { Kpi, Load } from '../components';
-import { trendingUpIcon } from '../icons';
+import { trendingUpIcon, warningIcon } from '../icons';
 import { addDays, fmtDay, shortRegimen, useApi, type Loadable } from '../lib';
 
 export const LEVEL_SERIES = [
@@ -17,6 +17,7 @@ export const LEVEL_SERIES = [
 
 const dayHref = (date: string) => `/monitoring/den/${date}`;
 const symptomHref = (symptom: string) => `/monitoring/priznak/${encodeURIComponent(symptom)}`;
+const regimenHref = (regimen: string) => `/monitoring/lecba/${encodeURIComponent(regimen)}`;
 
 export function MonitoringPage() {
   const { range } = useShell();
@@ -36,7 +37,7 @@ export function MonitoringPage() {
         <div>
           <h1>Monitoring</h1>
           <p className="muted">
-            {fmtDay(range.from)} – {fmtDay(range.to)} · kliknutím na den nebo příznak zobrazíte pacienty
+            {fmtDay(range.from)} – {fmtDay(range.to)} · kliknutím na den, léčbu nebo příznak zobrazíte pacienty
           </p>
         </div>
       </div>
@@ -68,50 +69,9 @@ export function MonitoringPage() {
 
       <div className="board">
         <div className="board-main">
-          <OutlinedCard className="card">
-            <h2 className="section-title">Check-iny podle stupně po dnech</h2>
-            <Load source={daily} isEmpty={(rows) => rows.length === 0} emptyText="V období nejsou žádné check-iny.">
-              {(rows) => (
-                <ResponsiveContainer width="100%" height={240}>
-                  <BarChart data={rows.map(flattenDay)} onClick={openDay} style={{ cursor: 'pointer' }}>
-                    <CartesianGrid vertical={false} stroke="var(--md-sys-color-outline-variant)" />
-                    <XAxis dataKey="date" tickFormatter={fmtDay} tick={{ fontSize: 12 }} />
-                    <YAxis allowDecimals={false} width={32} tick={{ fontSize: 12 }} />
-                    <Tooltip labelFormatter={(label) => fmtDay(String(label))} />
-                    <Legend itemSorter="dataKey" />
-                    {LEVEL_SERIES.map((level) => (
-                      <Bar isAnimationActive={false} key={level.key} dataKey={`l${level.key}`} name={level.name} stackId="levels" fill={level.color} />
-                    ))}
-                  </BarChart>
-                </ResponsiveContainer>
-              )}
-            </Load>
-          </OutlinedCard>
-
-          <OutlinedCard className="card">
-            <div className="row space">
-              <h2 className="section-title">Upozornění (stupeň 2–4) po dnech</h2>
-              {daily.data && (
-                <span className="muted">
-                  celkem <strong>{daily.data.reduce((sum, row) => sum + alertsOf(row), 0)}</strong>
-                </span>
-              )}
-            </div>
-            <Load source={daily} isEmpty={(rows) => rows.length === 0} emptyText="V období nejsou žádná upozornění.">
-              {(rows) => (
-                <ResponsiveContainer width="100%" height={160}>
-                  <AreaChart data={rows.map((row) => ({ date: row.date, alerts: alertsOf(row) }))} onClick={openDay} style={{ cursor: 'pointer' }}>
-                    <CartesianGrid vertical={false} stroke="var(--md-sys-color-outline-variant)" />
-                    <XAxis dataKey="date" tickFormatter={fmtDay} tick={{ fontSize: 12 }} />
-                    <YAxis allowDecimals={false} width={32} tick={{ fontSize: 12 }} />
-                    <Tooltip labelFormatter={(label) => fmtDay(String(label))} />
-                    <Area isAnimationActive={false} type="linear" dataKey="alerts" name="Upozornění" stroke="var(--chart-4)" fill="var(--chart-4)" fillOpacity={0.16} />
-                  </AreaChart>
-                </ResponsiveContainer>
-              )}
-            </Load>
-            <p className="muted small">Klikněte do grafu a uvidíte pacienty se stupněm 2 a výš v daný den.</p>
-          </OutlinedCard>
+          <Load source={daily} isEmpty={(rows) => rows.length === 0} emptyText="V období nejsou žádné check-iny.">
+            {(rows) => <ActivityCard key={range.from} rows={rows} onOpenDay={openDay} />}
+          </Load>
 
           <OutlinedCard className="card">
             <SymptomTable source={symptoms} onOpen={(symptom) => navigate(symptomHref(symptom))} />
@@ -121,8 +81,9 @@ export function MonitoringPage() {
         <aside className="board-side">
           <OutlinedCard className="card">
             <h2 className="section-title">Upozornění podle léčby</h2>
+            <p className="muted small">Klikněte na léčbu a uvidíte, proč pacienti upozornění dostali.</p>
             <Load source={tasks} isEmpty={(items) => items.length === 0} emptyText="Žádné úkoly v období.">
-              {(items) => <RegimenBars items={items.filter((item) => item.created.slice(0, 10) >= range.from)} />}
+              {(items) => <RegimenTable items={items.filter((item) => item.created.slice(0, 10) >= range.from)} />}
             </Load>
           </OutlinedCard>
           <TrendCard to={range.to} />
@@ -134,14 +95,103 @@ export function MonitoringPage() {
 
 const alertsOf = (row: DailyStat) => (row.by_level['2'] ?? 0) + (row.by_level['3'] ?? 0) + (row.by_level['4'] ?? 0);
 
-function flattenDay(row: DailyStat) {
-  return {
-    date: row.date,
-    l1: row.by_level['1'] ?? 0,
-    l2: row.by_level['2'] ?? 0,
-    l3: row.by_level['3'] ?? 0,
-    l4: row.by_level['4'] ?? 0,
-  };
+const ACTIVITY = [
+  { key: 'checkins', label: 'Vyplněné dotazníky', unit: 'dotazníků' },
+  { key: 'missed', label: 'Vynechané check-iny', unit: 'vynechaných' },
+] as const;
+
+const dayTip =
+  (unit: string) =>
+  ({ active, payload, label }: { active?: boolean; payload?: readonly { value?: unknown }[]; label?: string | number }) =>
+    active && payload?.length ? (
+      <div className="chart-tip">
+        {fmtDay(String(label))} · <strong>{String(payload[0].value)}</strong> {unit}
+      </div>
+    ) : null;
+
+function ActivityCard({ rows, onOpenDay }: { rows: DailyStat[]; onOpenDay: (state: { activeLabel?: string | number }) => void }) {
+  const [metric, setMetric] = useState<(typeof ACTIVITY)[number]>(ACTIVITY[0]);
+  const [span, setSpan] = useState({ startIndex: 0, endIndex: rows.length - 1 });
+  const data = useMemo(() => rows.map((row) => ({ date: row.date, alerts: alertsOf(row), checkins: row.checkins, missed: row.missed })), [rows]);
+  const visible = data.slice(span.startIndex, span.endIndex + 1);
+  const total = (key: 'alerts' | 'checkins' | 'missed') => visible.reduce((sum, row) => sum + row[key], 0);
+  const grid = <CartesianGrid vertical={false} stroke="var(--md-sys-color-outline-variant)" />;
+  const yAxis = <YAxis allowDecimals={false} width={32} tick={{ fontSize: 12 }} />;
+
+  return (
+    <OutlinedCard className="card">
+      <div className="row space">
+        <h2 className="section-title row gap-4">
+          <SvgIcon svg={warningIcon} className="alert-title-icon" />
+          Upozornění (stupeň 2–4)
+        </h2>
+        <span className="muted">
+          celkem <strong>{total('alerts')}</strong>
+        </span>
+      </div>
+      <ResponsiveContainer width="100%" height={150}>
+        <AreaChart data={visible} onClick={onOpenDay} style={{ cursor: 'pointer' }}>
+          {grid}
+          <XAxis dataKey="date" hide />
+          {yAxis}
+          <Tooltip content={dayTip('upozornění')} />
+          <Area isAnimationActive={false} type="linear" dataKey="alerts" stroke="var(--chart-4)" fill="var(--chart-4)" fillOpacity={0.16} />
+        </AreaChart>
+      </ResponsiveContainer>
+      <div className="row space">
+        <OutlinedSelect
+          className="metric-select"
+          aria-label="Metrika"
+          value={metric.key}
+          onChange={(event) => setMetric(ACTIVITY.find((item) => item.key === (event.target as HTMLSelectElement).value) ?? ACTIVITY[0])}
+        >
+          {ACTIVITY.map((item) => (
+            <SelectOption key={item.key} value={item.key} selected={item.key === metric.key}>
+              <div slot="headline">{item.label}</div>
+            </SelectOption>
+          ))}
+        </OutlinedSelect>
+        <span className="muted">
+          celkem <strong>{total(metric.key)}</strong>
+        </span>
+      </div>
+      <ResponsiveContainer width="100%" height={170}>
+        <AreaChart data={visible} onClick={onOpenDay} style={{ cursor: 'pointer' }}>
+          {grid}
+          <XAxis dataKey="date" tickFormatter={fmtDay} tick={{ fontSize: 12 }} />
+          {yAxis}
+          <Tooltip content={dayTip(metric.unit)} />
+          <Area
+            isAnimationActive={false}
+            type="linear"
+            dataKey={metric.key}
+            stroke="var(--md-sys-color-primary)"
+            fill="var(--md-sys-color-primary)"
+            fillOpacity={0.14}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+      <ResponsiveContainer width="100%" height={36}>
+        <AreaChart data={data} margin={{ top: 4, right: 5, bottom: 4, left: 37 }}>
+          <XAxis dataKey="date" hide />
+          <Brush
+            dataKey="date"
+            height={28}
+            travellerWidth={10}
+            tickFormatter={fmtDay}
+            stroke="var(--md-sys-color-primary)"
+            fill="var(--md-sys-color-surface-container-lowest)"
+            onChange={(next) => setSpan({ startIndex: next.startIndex ?? 0, endIndex: next.endIndex ?? rows.length - 1 })}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+      <p className="muted small range-labels">
+        <span>{fmtDay(visible[0].date)}</span>
+        <span>{fmtDay(visible[visible.length - 1].date)}</span>
+      </p>
+      <p className="muted small">Kliknutím do grafu uvidíte pacienty se stupněm 2 a výš v daný den. Posuvníkem dole zúžíte období.</p>
+    </OutlinedCard>
+  );
 }
 
 function SymptomTable({ source, onOpen }: { source: Loadable<SymptomStat[]>; onOpen: (symptom: string) => void }) {
@@ -203,24 +253,63 @@ function SymptomTable({ source, onOpen }: { source: Loadable<SymptomStat[]>; onO
   );
 }
 
-function RegimenBars({ items }: { items: QueueItem[] }) {
-  const counts = new Map<string, number>();
-  items.forEach((item) => counts.set(shortRegimen(item.regimen), (counts.get(shortRegimen(item.regimen)) ?? 0) + 1));
-  const rows = [...counts].sort((left, right) => right[1] - left[1]).slice(0, 8);
-  const max = Math.max(1, ...rows.map(([, count]) => count));
+function RegimenTable({ items }: { items: QueueItem[] }) {
+  const navigate = useNavigate();
+  const byRegimen = new Map<string, { alerts: number; patients: Set<string> }>();
+  items.forEach((item) => {
+    const regimen = shortRegimen(item.regimen);
+    const row = byRegimen.get(regimen) ?? { alerts: 0, patients: new Set<string>() };
+    row.alerts += 1;
+    row.patients.add(item.patient_id);
+    byRegimen.set(regimen, row);
+  });
+  const rows = [...byRegimen].sort((left, right) => right[1].alerts - left[1].alerts).slice(0, 10);
   if (!rows.length) return <p className="muted">Žádná upozornění v období.</p>;
+  const max = rows[0][1].alerts;
   return (
-    <div className="regimen-bars">
-      {rows.map(([regimen, count]) => (
-        <div key={regimen} className="regimen-row">
-          <span className="ellipsis" title={regimen}>
-            {regimen}
-          </span>
-          <span className="bar bar-alert-strong" style={{ width: `${(count / max) * 100}%` }} />
-          <strong>{count}</strong>
-        </div>
-      ))}
-    </div>
+    <table className="table compact regimen-table">
+      <colgroup>
+        <col />
+        <col className="col-patients" />
+        <col className="col-bar" />
+        <col className="col-count" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Léčba</th>
+          <th>Pacienti</th>
+          <th colSpan={2} aria-sort="descending">
+            Upozornění ↓
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className="total-row">
+          <th scope="row">Celkem</th>
+          <td>{new Set(items.map((item) => item.patient_id)).size}</td>
+          <td />
+          <td className="count-cell">{items.length}</td>
+        </tr>
+        {rows.map(([regimen, row]) => (
+          <tr key={regimen} className="clickable" onClick={() => navigate(regimenHref(regimen))}>
+            <th scope="row" className="ellipsis-cell" title={regimen}>
+              <Link to={regimenHref(regimen)} onClick={(event) => event.stopPropagation()}>
+                {regimen}
+              </Link>
+            </th>
+            <td>{row.patients.size}</td>
+            <td className="regimen-bar">
+              <span className="bar bar-alert-strong" style={{ width: `${(row.alerts / max) * 100}%` }} />
+            </td>
+            <td className="count-cell">
+              <Link to={regimenHref(regimen)} onClick={(event) => event.stopPropagation()}>
+                {row.alerts}
+              </Link>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 

@@ -1,9 +1,9 @@
 import callIcon from '@material-symbols/svg-400/outlined/call.svg?raw';
 import checkCircleIcon from '@material-symbols/svg-400/outlined/check_circle.svg?raw';
-import emergencyIcon from '@material-symbols/svg-400/outlined/emergency.svg?raw';
+import warningIcon from '@material-symbols/svg-400/outlined/warning.svg?raw';
 import wifiOffIcon from '@material-symbols/svg-400/outlined/wifi_off.svg?raw';
 import type { CheckinInput, TriageOutput } from '@navigator/api';
-import { FilledTonalButton, OutlinedButton, SvgIcon, TextButton, TRIAGE_LEVELS, TriageChip } from '@navigator/ui';
+import { FilledTonalButton, OutlinedButton, SvgIcon, TextButton, TRIAGE_LEVELS } from '@navigator/ui';
 import { Navigate, useLocation, useNavigate } from 'react-router';
 import { callTargets, capitalize, formatDayTime, phoneDigits, shortRegimen, store, useApp } from '../app-state';
 import { VITALS, type VitalKey } from '../flow';
@@ -49,7 +49,7 @@ function DoneButton() {
 }
 
 function GreenResult({ output }: { output: TriageOutput }) {
-  const { t, lang } = useApp();
+  const { t } = useApp();
   const navigate = useNavigate();
   return (
     <main className="content result">
@@ -58,7 +58,6 @@ function GreenResult({ output }: { output: TriageOutput }) {
       </span>
       <h1 className="headline">{t.thanks}</h1>
       <p className="muted">{t.greenText}</p>
-      <TriageChip level={1} lang={lang} withStep />
       <section className="card">
         <h2 className="card-title">{t.advice}</h2>
         <p>{output.doporuceni_pro_pacienta}</p>
@@ -126,18 +125,14 @@ function usePhoneScript(output: TriageOutput, checkin: CheckinInput | undefined)
 }
 
 function RedResult({ output, checkin }: { output: TriageOutput; checkin?: CheckinInput }) {
-  const { t, lang, now, contacts } = useApp();
+  const { t, now, contacts } = useApp();
   const navigate = useNavigate();
   const script = usePhoneScript(output, checkin);
   const [primary, ...others] = callTargets(4, now, contacts, t);
-  const meta = TRIAGE_LEVELS[4];
   return (
     <main className="red-screen">
       <header className="red-header">
-        <span className="red-label">
-          <SvgIcon svg={emergencyIcon} />
-          {lang === 'sk' ? `${meta.sk} · ${meta.stepSk}` : `${meta.cs} · ${meta.stepCs}`}
-        </span>
+        <SvgIcon svg={warningIcon} className="red-icon" />
         <h1 className="headline">{t.redTitle}</h1>
         <p>{output.doporuceni_pro_pacienta}</p>
       </header>

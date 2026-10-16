@@ -63,6 +63,7 @@ export const hasValue = (value: Value | undefined) =>
   value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0);
 
 const esasColor = (score: number) => (score <= 3 ? 'zelena' : score <= 5 ? 'zluta' : 'cervena');
+export const scaleColor = (questionnaireId: string, score: number) => (questionnaireId === 'esas' ? esasColor(score) : null);
 const COLOR_RANK: Record<string, number> = { zelena: 1, zluta: 2, cervena: 3 };
 
 function toAnswer(questionnaireId: string, item: Item, value: Value): Answer {
@@ -83,7 +84,7 @@ function toAnswer(questionnaireId: string, item: Item, value: Value): Answer {
     return { ...base, odpoved: indices.map((index) => options[index].text), odpoved_index: indices };
   }
   if (item.typ === 'skala_1_10') {
-    return { ...base, odpoved: value as number, odpoved_index: null, barva: questionnaireId === 'esas' ? esasColor(value as number) : null };
+    return { ...base, odpoved: value as number, odpoved_index: null, barva: scaleColor(questionnaireId, value as number) };
   }
   return { ...base, odpoved: typeof value === 'string' ? value.trim() : (value as number), odpoved_index: null };
 }

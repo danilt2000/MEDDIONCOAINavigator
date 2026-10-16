@@ -18,7 +18,6 @@ export { default as radiologyIcon } from '@material-symbols/svg-400/outlined/rad
 export { default as refreshIcon } from '@material-symbols/svg-400/outlined/refresh.svg?raw';
 export { default as restartIcon } from '@material-symbols/svg-400/outlined/restart_alt.svg?raw';
 export { default as scienceIcon } from '@material-symbols/svg-400/outlined/science.svg?raw';
-export { default as shieldIcon } from '@material-symbols/svg-400/outlined/verified_user.svg?raw';
 export { default as skipNextIcon } from '@material-symbols/svg-400/outlined/skip_next.svg?raw';
 export { default as taskAltIcon } from '@material-symbols/svg-400/outlined/task_alt.svg?raw';
 export { default as timerIcon } from '@material-symbols/svg-400/outlined/timer.svg?raw';

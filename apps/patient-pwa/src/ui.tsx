@@ -1,8 +1,25 @@
 import arrowBackIcon from '@material-symbols/svg-400/outlined/arrow_back.svg?raw';
 import callIcon from '@material-symbols/svg-400/outlined/call.svg?raw';
+import chatBubbleIcon from '@material-symbols/svg-400/outlined/chat_bubble.svg?raw';
 import refreshIcon from '@material-symbols/svg-400/outlined/refresh.svg?raw';
-import { FilledButton, IconButton, OutlinedButton, SvgIcon, TextButton } from '@navigator/ui';
+import { Fab, FilledButton, IconButton, OutlinedButton, SvgIcon, TextButton } from '@navigator/ui';
+import { useNavigate } from 'react-router';
 import { ambulancePhone, phoneDigits, useApp, type CallTarget } from './app-state';
+
+export function AiFab({ size = 'medium' }: { size?: 'small' | 'medium' }) {
+  const { t } = useApp();
+  const navigate = useNavigate();
+  return (
+    <span className="ai-fab" data-size={size}>
+      <Fab variant="primary" size={size} aria-label={t.writeNavigator} title={t.writeNavigator} onClick={() => navigate('/navigator')}>
+        <SvgIcon slot="icon" svg={chatBubbleIcon} />
+      </Fab>
+      <span className="ai-badge" aria-hidden="true">
+        AI
+      </span>
+    </span>
+  );
+}
 
 export function CallButton({ target }: { target: CallTarget }) {
   const ems = phoneDigits(target.tel).length <= 3;

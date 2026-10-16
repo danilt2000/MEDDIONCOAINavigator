@@ -41,7 +41,7 @@ Community; React 19, Vite 8, TypeScript 7, pnpm workspaces, `vite-plugin-pwa`, M
 ```text
  Patient PWA :5173                  Clinician web :5174
  check-in, result card,             queue + SLA timers, monitoring, patient detail,
- navigator chat (SSE), history      replay console + metrics, rules
+ navigator chat (SSE), history      drill-downs by day, treatment, symptom; rules
         │  /api (Vite proxy)                 │
         ▼                                    ▼
  ┌──────────────────────────── FastAPI :8100 (backend/app) ───────────────────────────────┐
@@ -128,9 +128,8 @@ Before: `bash scripts/seed.sh --datasets dev,rozsirena --reset`, start API, MCP 
    card: *Zavolejte prosím hned*, call 155 and the on-duty doctor, „Paralen neužívejte…“, a phone script. Clinician web
    *Fronta*: pulsing red banner, task for the on-duty doctor with a 15-minute countdown and the escalation summary in
    the sample format; the alert also went through the IRIS production to `/mock/meddi/requests`.
-3. **Replay console.** *Replay a evaluace* → patient ONC-004 → *Spustit*: green → yellow (C04, Y-IO-DIARRHEA) →
-   orange (C05, O-DIARRHEA-RISK, O-IO-DIARRHEA-PAIN) → red (C06, R-BLEED, R-DIARRHEA) with quotes and sources; click C06
-   for the escalation summary and the ground truth next to it.
+3. **Monitoring.** Red alert chart and green questionnaire chart share one range strip; *Upozornění podle léčby* →
+   *sunitinib 50 mg* → all five alerts of Zdeněk P. with the reason and what the team did.
 4. **Slovak contradiction.** PWA `?patient=ONC-018` → check-in, symptoms only *Únava*, message
    „od vcera mam hnacku asi 6 krat, slaby som“ → orange (C-CONTRADICTION: the form says no diarrhoea, the text says 6×)
    with the follow-up „Píšete, že máte hnačku asi 6× za deň – je to tak?“ → *Odpovedať* → „Uz je to lepsie, dnes len
@@ -140,8 +139,7 @@ Before: `bash scripts/seed.sh --datasets dev,rozsirena --reset`, start API, MCP 
    Oramorph?“ → no permission, the prescription quoted verbatim („Morfin roztok (Oramorph) 10 mg, max 6× denně“),
    the 24h palliative team or hospice line, then 155, and the question how many doses were given; answer „Dostala už
    dvě dávky a bolest je pořád 8“ → orange (O-PAIN), on-duty doctor.
-6. **Metrics.** *Replay a evaluace* → *Hodnocení dev* / *Hodnocení rozšířená*: confusion matrix and §13 metrics (table
-   below).
+6. **Metrics.** `bash scripts/eval.sh` replays both sets and writes `backend/reports/eval_*.json` (table below).
 7. **InterSystems in 60 s** (`docs/intersystems.md`): FHIR resources of ONC-001 in the portal or
    `GET /fhir/r4/Observation?patient=ONC-001`; the SQL weight trend of ONC-007 over the FHIR view; a Vector Search hit
    (`python -m app.agent.vectors --search "mam hnacku" --lang sk`); the MCP tool-call log `backend/logs/mcp.log`; the

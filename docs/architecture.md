@@ -26,7 +26,7 @@ iris/                  Dockerfile (IRIS for Health 2026.2 + FHIR server /fhir/r4
 packages/api/          TypeScript types + fetch/SSE client mirroring this contract          [foundation]
 packages/ui/           Material 3 components, tokens, triage colours                        [foundation]
 apps/patient-pwa/      patient + caregiver PWA (P1–P6)                                       [patient-ui]
-apps/doctor-web/       clinician web (C1–C6) incl. the replay console                        [doctor-ui]
+apps/doctor-web/       clinician web (C1–C6)                                                 [doctor-ui]
 ```
 
 Rules for parallel work: write only inside the area you own; do not commit; do not edit `models.py`, `config.py`,

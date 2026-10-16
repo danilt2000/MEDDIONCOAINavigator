@@ -2,7 +2,7 @@ import type { DemoState, QueueItem } from '@navigator/api';
 import { FilledButton, OutlinedSelect, SelectOption, SvgIcon } from '@navigator/ui';
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, Outlet, useNavigate, useOutletContext } from 'react-router';
-import { emergencyIcon, shieldIcon } from './icons';
+import { emergencyIcon } from './icons';
 import { addDays, beep, fmtDayTime, fmtDuration, inWorkingHours, isoDay, useApi, useNow, type Loadable } from './lib';
 
 export interface Shell {
@@ -40,7 +40,7 @@ export function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <SvgIcon svg={shieldIcon} />
+          <img className="brand-logo" src="/favicon.svg" alt="MEDDI" />
           <span>MEDDI navigátor · Monitorovací centrum MOÚ</span>
         </div>
         <OutlinedSelect
@@ -63,7 +63,6 @@ export function App() {
         </NavLink>
         <NavLink to="/monitoring">Monitoring</NavLink>
         <NavLink to="/pacienti">Pacienti</NavLink>
-        <NavLink to="/replay">Replay a evaluace</NavLink>
         <NavLink to="/pravidla">Pravidla</NavLink>
       </nav>
       <RedBanner items={queue.data} offsetMs={offsetMs} />

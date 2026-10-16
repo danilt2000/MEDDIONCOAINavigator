@@ -1,8 +1,6 @@
-import editIcon from '@material-symbols/svg-400/outlined/edit.svg?raw';
-import healthIcon from '@material-symbols/svg-400/outlined/health_and_safety.svg?raw';
 import textIcon from '@material-symbols/svg-400/outlined/text_increase.svg?raw';
 import type { TimelineItem, TriageOutput } from '@navigator/api';
-import { Fab, FilledButton, IconButton, OutlinedButton, SvgIcon, TriageChip } from '@navigator/ui';
+import { FilledButton, IconButton, OutlinedButton, SvgIcon, TriageChip } from '@navigator/ui';
 import { useNavigate } from 'react-router';
 import {
   formatDay,
@@ -17,7 +15,7 @@ import {
   useApp,
 } from '../app-state';
 import { format } from '../i18n';
-import { AmbulanceAnd155, ErrorBanner } from '../ui';
+import { AiFab, AmbulanceAnd155, ErrorBanner } from '../ui';
 
 function useLastResult() {
   const { patientId } = useApp();
@@ -46,7 +44,7 @@ export function Home() {
     <main className="content home">
       <div className="brand-row">
         <span className="brand">
-          <SvgIcon svg={healthIcon} />
+          <img className="brand-logo" src="/favicon.svg" alt="MEDDI" />
           {t.appName}
         </span>
         <IconButton
@@ -88,16 +86,6 @@ export function Home() {
         </section>
       )}
 
-      {last && (
-        <button type="button" className="card card-button" onClick={() => openResult(last)}>
-          <h2 className="card-title muted">{t.lastResult}</h2>
-          <span className="row-between">
-            <TriageChip level={last.uroven} lang={lang} withStep />
-            <span className="muted">{formatDay(new Date(last.as_of), locale)}</span>
-          </span>
-        </button>
-      )}
-
       {past.length > 0 && (
         <section className="card">
           <h2 className="card-title muted">{t.pastTitle}</h2>
@@ -105,7 +93,15 @@ export function Home() {
             const output = triageFor(item.ref);
             const level = item.level ?? output?.uroven;
             const status =
-              item.kind === 'missed' ? <span className="muted">{t.missed}</span> : level ? <TriageChip level={level} lang={lang} /> : <span className="muted">{t.noLevel}</span>;
+              item.kind === 'missed' ? (
+                <span className="muted">{t.missed}</span>
+              ) : level === 1 ? (
+                <span className="ok-text">{t.noWarning}</span>
+              ) : level ? (
+                <TriageChip level={level} lang={lang} />
+              ) : (
+                <span className="muted">{t.noLevel}</span>
+              );
             return output ? (
               <button key={item.ref + item.at} type="button" className="list-row list-button" onClick={() => openResult(output)}>
                 <span>{formatDay(new Date(item.at), locale)}</span>
@@ -150,9 +146,9 @@ export function Home() {
       </section>
 
       <div className="acute-bar">
-        <Fab className="fab" variant="primary" label={t.writeNavigator} onClick={() => navigate('/navigator')}>
-          <SvgIcon slot="icon" svg={editIcon} />
-        </Fab>
+        <div className="fab">
+          <AiFab />
+        </div>
         <p className="strong">{t.acuteTitle}</p>
         <AmbulanceAnd155 />
       </div>

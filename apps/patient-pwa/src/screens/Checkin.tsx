@@ -1,6 +1,6 @@
 import type { CheckinInput, QuestionnaireDefinition } from '@navigator/api';
 import { FilledButton, LinearProgress, OutlinedTextField, Switch, TextButton } from '@navigator/ui';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { submitCheckin, useApi, useApp } from '../app-state';
 import {
@@ -9,6 +9,7 @@ import {
   buildVitals,
   hasValue,
   parseVital,
+  scaleColor,
   toggleOption,
   treatmentReason,
   visibleSteps,
@@ -20,9 +21,14 @@ import {
   type VitalKey,
 } from '../flow';
 import { format } from '../i18n';
-import { AmbulanceAnd155, BackButton, ErrorBanner } from '../ui';
+import { AiFab, AmbulanceAnd155, BackButton, ErrorBanner } from '../ui';
 
 const fieldValue = (event: Event) => (event.target as HTMLInputElement).value;
+
+type Vitals = Partial<Record<VitalKey, string>>;
+
+// Survives a detour to the AI chat; cleared after a successful submit.
+let draft: { patientId: string; answers: Answers; stepIndex: number; vitals: Vitals; message: string; photo: string } | null = null;
 
 function pickQuestionnaires(all: Questionnaire[], badges: string[]) {
   const wanted = ['nezadouci_ucinky'];
@@ -31,14 +37,15 @@ function pickQuestionnaires(all: Questionnaire[], badges: string[]) {
   return wanted.map((id) => all.find((questionnaire) => questionnaire.id === id)).filter((found) => !!found);
 }
 
-function QuestionInput({ item, value, onChange }: { item: Item; value: Value | undefined; onChange: (value: Value | undefined) => void }) {
+function QuestionInput(props: { questionnaireId: string; item: Item; value: Value | undefined; onChange: (value: Value | undefined) => void }) {
+  const { questionnaireId, item, value, onChange } = props;
   const { t } = useApp();
   const options = item.moznosti ?? [];
   if (item.typ === 'jedna') {
     return (
       <div className="options" role="radiogroup" aria-labelledby="question">
         {options.map((option, index) => (
-          <label key={option.text} className="option">
+          <label key={option.text} className="option" data-barva={option.barva ?? undefined}>
             <input type="radio" name={item.id} checked={value === index} onChange={() => onChange(index)} />
             <span>{option.text}</span>
           </label>
@@ -68,7 +75,7 @@ function QuestionInput({ item, value, onChange }: { item: Item; value: Value | u
       <>
         <div className="scale" role="radiogroup" aria-labelledby="question">
           {Array.from({ length: 10 }, (_, index) => index + 1).map((score) => (
-            <label key={score} className="option scale-option">
+            <label key={score} className="option scale-option" data-barva={scaleColor(questionnaireId, score) ?? undefined}>
               <input type="radio" name={item.id} checked={value === score} onChange={() => onChange(score)} />
               <span>{score}</span>
             </label>
@@ -108,13 +115,18 @@ export function Checkin() {
   const { t, now, patient, patientId, caregiver, setCaregiver, relation, refreshQueue } = useApp();
   const navigate = useNavigate();
   const definitions = useApi<QuestionnaireDefinition[]>('/api/questionnaires');
-  const [answers, setAnswers] = useState<Answers>({});
-  const [stepIndex, setStepIndex] = useState(0);
-  const [vitals, setVitals] = useState<Partial<Record<VitalKey, string>>>({});
-  const [message, setMessage] = useState('');
-  const [photo, setPhoto] = useState('');
+  const saved = draft?.patientId === patientId ? draft : null;
+  const [answers, setAnswers] = useState<Answers>(saved?.answers ?? {});
+  const [stepIndex, setStepIndex] = useState(saved?.stepIndex ?? 0);
+  const [vitals, setVitals] = useState<Vitals>(saved?.vitals ?? {});
+  const [message, setMessage] = useState(saved?.message ?? '');
+  const [photo, setPhoto] = useState(saved?.photo ?? '');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    draft = { patientId, answers, stepIndex, vitals, message, photo };
+  });
 
   const selected = pickQuestionnaires((definitions.data ?? []) as unknown as Questionnaire[], patient?.risk_badges ?? []);
   const steps = visibleSteps(selected, answers);
@@ -162,6 +174,7 @@ export function Checkin() {
     };
     try {
       const result = await submitCheckin(checkin, now);
+      draft = null;
       if (result === 'queued') refreshQueue();
       navigate('/vysledek', { replace: true, state: result === 'queued' ? { queued: true } : { output: result, checkin } });
     } catch (submitError) {
@@ -182,7 +195,6 @@ export function Checkin() {
         return copy;
       });
     const reason = treatmentReason(step.item.id, treatmentText);
-    const warning = step.item.typ === 'jedna' && typeof value === 'number' ? step.item.moznosti?.[value]?.upozorneni : null;
     const skip = () => {
       setValue(undefined);
       go(stepIndex + 1);
@@ -195,8 +207,7 @@ export function Checkin() {
           {step.item.text}
         </h1>
         {step.item.navod && <p className="muted">{step.item.navod}</p>}
-        <QuestionInput item={step.item} value={value} onChange={setValue} />
-        {warning && <p className="note">{warning}</p>}
+        <QuestionInput questionnaireId={step.questionnaire.id} item={step.item} value={value} onChange={setValue} />
         <Footer next={t.next} onNext={() => go(stepIndex + 1)} canContinue={hasValue(value)} skip={t.skip} onSkip={skip} />
       </>
     );
@@ -272,6 +283,9 @@ export function Checkin() {
       <div className="toolbar">
         <BackButton onClick={back} />
         <span className="muted strong-ish">{format(t.questionOf, Math.min(stepIndex + 1, total), total)}</span>
+        <span className="toolbar-end">
+          <AiFab size="small" />
+        </span>
       </div>
       <LinearProgress value={Math.min(stepIndex + 1, total) / total} aria-label={format(t.questionOf, stepIndex + 1, total)} />
       {body}

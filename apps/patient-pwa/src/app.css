@@ -137,20 +137,16 @@ md-filled-tonal-button {
   border: 1.5px solid color-mix(in srgb, var(--triage-4-strong) 45%, transparent);
 }
 .card-danger .card-title { color: var(--triage-4-on-container); font-size: 1.1875rem; }
-button.card-button,
 button.list-button {
   font: inherit;
   color: inherit;
   text-align: left;
   cursor: pointer;
 }
-button.card-button { width: 100%; }
 button.list-button { width: 100%; background: none; border: 0; padding: 0; }
-button.card-button:focus-visible,
 button.list-button:focus-visible,
 a:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset: 2px; }
-.list-row,
-.row-between {
+.list-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -201,6 +197,7 @@ a:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset
 /* home */
 .brand-row { display: flex; align-items: center; justify-content: space-between; }
 .brand { display: flex; align-items: center; gap: 10px; font-size: 1.125rem; font-weight: 700; color: var(--md-sys-color-primary); --md-icon-size: 26px; }
+.brand-logo { width: 36px; height: 36px; }
 .toggle-on { background: var(--md-sys-color-secondary-container); border-radius: 999px; }
 .home { padding-bottom: 0; }
 .acute-bar {
@@ -216,9 +213,37 @@ a:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset
   border-top: 1px solid var(--md-sys-color-outline-variant);
 }
 .fab { position: absolute; right: 16px; bottom: calc(100% + 16px); }
+.ai-fab {
+  position: relative;
+  display: inline-flex;
+  --md-fab-container-shape: 999px;
+  --md-fab-small-container-shape: 999px;
+  --md-fab-primary-container-color: var(--md-sys-color-primary);
+  --md-fab-primary-icon-color: var(--md-sys-color-on-primary);
+  --md-fab-primary-hover-icon-color: var(--md-sys-color-on-primary);
+  --md-fab-primary-focus-icon-color: var(--md-sys-color-on-primary);
+  --md-fab-primary-pressed-icon-color: var(--md-sys-color-on-primary);
+  --md-fab-primary-hover-state-layer-color: var(--md-sys-color-on-primary);
+  --md-fab-primary-pressed-state-layer-color: var(--md-sys-color-on-primary);
+}
+.ai-badge {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  padding: 1px 8px;
+  border: 2px solid var(--md-sys-color-surface);
+  border-radius: 999px;
+  background: var(--md-sys-color-on-primary-container);
+  color: var(--md-sys-color-primary-container);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  pointer-events: none;
+}
+.ai-fab[data-size='small'] .ai-badge { top: -6px; right: -10px; padding: 0 6px; font-size: 0.6875rem; }
 
 /* check-in */
 .toolbar { display: flex; align-items: center; gap: 8px; margin-left: -8px; }
+.toolbar-end { margin-left: auto; margin-right: 10px; }
 md-linear-progress { width: 100%; }
 .context-chip {
   align-self: flex-start;
@@ -258,7 +283,22 @@ md-linear-progress { width: 100%; }
 .scale-option { justify-content: center; padding: 0; font-weight: 700; }
 .scale-option:has(input:checked) { padding: 0; }
 .scale-option input { position: absolute; opacity: 0; }
-.note { padding: 12px 14px; border-radius: 12px; background: var(--triage-2-container); color: var(--triage-2-on-container); }
+/* answer colour from dotazniky_definice.json (MEDDI signal for the nurse, not the triage level) */
+.option[data-barva='zelena'] { --barva: #3f9a6b; --barva-container: var(--triage-1-container); --barva-on: var(--triage-1-on-container); }
+.option[data-barva='zluta'] { --barva: #e0a800; --barva-container: var(--triage-2-container); --barva-on: var(--triage-2-on-container); }
+.option[data-barva='cervena'] { --barva: var(--triage-4-strong); --barva-container: var(--triage-4-container); --barva-on: var(--triage-4-on-container); }
+.option[data-barva] { border-left: 6px solid var(--barva); padding-left: 11px; }
+.option[data-barva] input { accent-color: var(--barva); }
+.option[data-barva]:has(input:checked) {
+  padding-left: 11px;
+  border-color: var(--barva);
+  border-left-width: 6px;
+  background: var(--barva-container);
+  color: var(--barva-on);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--barva) 25%, transparent);
+}
+.scale-option[data-barva] { border-left-width: 1px; border-bottom: 5px solid var(--barva); padding: 0; }
+.scale-option[data-barva]:has(input:checked) { border-left-width: 2px; border-bottom-width: 5px; padding: 0; }
 .vitals { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .switch-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; cursor: pointer; }
 .footer {
@@ -288,6 +328,7 @@ md-linear-progress { width: 100%; }
 .next-step[data-level='4'] { background: var(--triage-4-container); color: var(--triage-4-on-container); }
 .level-title { display: flex; align-items: center; gap: 10px; font-size: 1.25rem; font-weight: 700; --md-icon-size: 28px; }
 .level-text { font-size: 1.125rem; line-height: 1.45; }
+.ok-text { font-weight: 600; color: var(--triage-1-on-container); }
 .ok-line { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--triage-1-on-container); --md-icon-size: 24px; }
 .red-screen { flex: 1; display: flex; flex-direction: column; }
 .red-header {
@@ -299,7 +340,7 @@ md-linear-progress { width: 100%; }
   color: var(--triage-4-on-strong);
   font-size: 1.125rem;
 }
-.red-label { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; --md-icon-size: 32px; }
+.red-icon { --md-icon-size: 40px; }
 .call-big {
   min-height: 72px;
   box-sizing: border-box;
