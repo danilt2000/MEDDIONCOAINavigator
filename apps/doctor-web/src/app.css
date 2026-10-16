@@ -712,8 +712,18 @@ tr.selected {
   --md-icon-size: 20px;
 }
 
-.metric-select {
-  min-width: 240px;
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+}
+
+.swatch-filled {
+  background: var(--md-sys-color-primary);
+}
+
+.swatch-missed {
+  background: var(--md-sys-color-outline);
 }
 
 .range-labels {

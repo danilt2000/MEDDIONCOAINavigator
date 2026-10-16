@@ -1,5 +1,5 @@
 import type { DailyStat, Kpi as KpiData, QueueItem, SymptomStat } from '@navigator/api';
-import { FilledTonalButton, OutlinedCard, OutlinedSelect, OutlinedTextField, SelectOption, SvgIcon, TriageChip } from '@navigator/ui';
+import { FilledTonalButton, OutlinedCard, OutlinedTextField, SvgIcon, TriageChip } from '@navigator/ui';
 import { useMemo, useState, type CSSProperties } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { Area, AreaChart, Brush, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
@@ -95,22 +95,26 @@ export function MonitoringPage() {
 
 const alertsOf = (row: DailyStat) => (row.by_level['2'] ?? 0) + (row.by_level['3'] ?? 0) + (row.by_level['4'] ?? 0);
 
-const ACTIVITY = [
-  { key: 'checkins', label: 'Vyplněné dotazníky', unit: 'dotazníků' },
-  { key: 'missed', label: 'Vynechané check-iny', unit: 'vynechaných' },
-] as const;
+type TipProps = { active?: boolean; payload?: readonly { value?: unknown; dataKey?: unknown }[]; label?: string | number };
 
-const dayTip =
-  (unit: string) =>
-  ({ active, payload, label }: { active?: boolean; payload?: readonly { value?: unknown }[]; label?: string | number }) =>
-    active && payload?.length ? (
-      <div className="chart-tip">
-        {fmtDay(String(label))} · <strong>{String(payload[0].value)}</strong> {unit}
-      </div>
-    ) : null;
+const alertTip = ({ active, payload, label }: TipProps) =>
+  active && payload?.length ? (
+    <div className="chart-tip">
+      {fmtDay(String(label))} · <strong>{String(payload[0].value)}</strong> upozornění
+    </div>
+  ) : null;
+
+const questionnaireTip = ({ active, payload, label }: TipProps) => {
+  if (!active || !payload?.length) return null;
+  const value = (key: string) => String(payload.find((entry) => entry.dataKey === key)?.value ?? 0);
+  return (
+    <div className="chart-tip">
+      {fmtDay(String(label))} · <strong>{value('checkins')}</strong> vyplněno · <strong>{value('missed')}</strong> vynecháno
+    </div>
+  );
+};
 
 function ActivityCard({ rows, onOpenDay }: { rows: DailyStat[]; onOpenDay: (state: { activeLabel?: string | number }) => void }) {
-  const [metric, setMetric] = useState<(typeof ACTIVITY)[number]>(ACTIVITY[0]);
   const [span, setSpan] = useState({ startIndex: 0, endIndex: rows.length - 1 });
   const data = useMemo(() => rows.map((row) => ({ date: row.date, alerts: alertsOf(row), checkins: row.checkins, missed: row.missed })), [rows]);
   const visible = data.slice(span.startIndex, span.endIndex + 1);
@@ -134,25 +138,21 @@ function ActivityCard({ rows, onOpenDay }: { rows: DailyStat[]; onOpenDay: (stat
           {grid}
           <XAxis dataKey="date" hide />
           {yAxis}
-          <Tooltip content={dayTip('upozornění')} />
+          <Tooltip content={alertTip} />
           <Area isAnimationActive={false} type="linear" dataKey="alerts" stroke="var(--chart-4)" fill="var(--chart-4)" fillOpacity={0.16} />
         </AreaChart>
       </ResponsiveContainer>
       <div className="row space">
-        <OutlinedSelect
-          className="metric-select"
-          aria-label="Metrika"
-          value={metric.key}
-          onChange={(event) => setMetric(ACTIVITY.find((item) => item.key === (event.target as HTMLSelectElement).value) ?? ACTIVITY[0])}
-        >
-          {ACTIVITY.map((item) => (
-            <SelectOption key={item.key} value={item.key} selected={item.key === metric.key}>
-              <div slot="headline">{item.label}</div>
-            </SelectOption>
-          ))}
-        </OutlinedSelect>
-        <span className="muted">
-          celkem <strong>{total(metric.key)}</strong>
+        <h2 className="section-title">Dotazníky</h2>
+        <span className="muted row">
+          <span className="row gap-4">
+            <span className="swatch swatch-filled" />
+            vyplněno <strong>{total('checkins')}</strong>
+          </span>
+          <span className="row gap-4">
+            <span className="swatch swatch-missed" />
+            vynecháno <strong>{total('missed')}</strong>
+          </span>
         </span>
       </div>
       <ResponsiveContainer width="100%" height={170}>
@@ -160,14 +160,23 @@ function ActivityCard({ rows, onOpenDay }: { rows: DailyStat[]; onOpenDay: (stat
           {grid}
           <XAxis dataKey="date" tickFormatter={fmtDay} tick={{ fontSize: 12 }} />
           {yAxis}
-          <Tooltip content={dayTip(metric.unit)} />
+          <Tooltip content={questionnaireTip} />
           <Area
             isAnimationActive={false}
             type="linear"
-            dataKey={metric.key}
+            dataKey="checkins"
             stroke="var(--md-sys-color-primary)"
             fill="var(--md-sys-color-primary)"
             fillOpacity={0.14}
+          />
+          <Area
+            isAnimationActive={false}
+            type="linear"
+            dataKey="missed"
+            stroke="var(--md-sys-color-outline)"
+            strokeDasharray="4 3"
+            fill="var(--md-sys-color-outline)"
+            fillOpacity={0.08}
           />
         </AreaChart>
       </ResponsiveContainer>
