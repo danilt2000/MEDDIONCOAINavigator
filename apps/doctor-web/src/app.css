@@ -1,0 +1,46 @@
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  padding: 12px;
+  background: var(--md-sys-color-surface-container-low);
+}
+
+.sidebar md-list {
+  --md-list-container-color: transparent;
+}
+
+.sidebar .active {
+  border-radius: 28px;
+  background: var(--md-sys-color-secondary-container);
+}
+
+.brand {
+  margin: 0;
+  padding: 16px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 32px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toolbar h2 {
+  margin: 0;
+}
+
+.panel {
+  display: block;
+  padding: 24px;
+}

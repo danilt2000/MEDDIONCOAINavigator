@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Onco Navigator · Doctor</title>
+    <style>
+      .desktop-only { display: none; place-items: center; min-height: 100vh; padding: 24px; text-align: center; }
+      @media (max-width: 1023px) {
+        #root { display: none; }
+        .desktop-only { display: grid; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="desktop-only md-typescale-title-large">Open this app on a desktop screen (at least 1024 px wide).</div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

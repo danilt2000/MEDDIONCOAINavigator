@@ -1,0 +1,16 @@
+{
+  "name": "meddionco-ai-navigator",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "dev:patient": "pnpm --filter @navigator/patient-pwa dev",
+    "dev:doctor": "pnpm --filter @navigator/doctor-web dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

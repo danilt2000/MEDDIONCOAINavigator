@@ -1,0 +1,27 @@
+{
+  "name": "@navigator/ui",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css"
+  },
+  "scripts": {
+    "tokens": "node scripts/tokens.mjs",
+    "test": "node --test scripts/*.test.mjs",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@fontsource-variable/roboto-flex": "^5.3.0",
+    "@lit/react": "^1.0.8",
+    "@material/web": "^2.5.0"
+  },
+  "devDependencies": {
+    "@material/material-color-utilities": "^0.3.0",
+    "@types/react": "^19.3.0",
+    "react": "^19.3.1"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}
