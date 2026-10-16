@@ -214,7 +214,6 @@ The level is the maximum over all fired rules; the LLM facts are unioned with th
   `import icon from '@material-symbols/svg-400/outlined/<name>.svg?raw'` and render `<SvgIcon svg={icon} />`.
   Only imported icons are bundled.
 - Brand color: change `SEED` in `packages/ui/scripts/tokens.mjs` and run `pnpm --filter @navigator/ui tokens`.
-  Light and dark schemes are generated with `light-dark()`; the theme follows the OS, force one with
-  `document.documentElement.style.colorScheme = 'dark'`.
+  The apps always use the light scheme (`color-scheme: light` in the generated tokens), whatever the OS setting is.
 - Material Web is in maintenance mode and has no top app bar, data table or date picker. Build those from the tokens
   (see `apps/*/src/app.css`); use `<input type="date">` for dates.

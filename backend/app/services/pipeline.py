@@ -51,9 +51,9 @@ def _fill_questionnaire(fill: dict, checkin_id: str, definitions: dict[str, dict
 def _new_checkin_id(patient: Patient) -> str:
     taken = {checkin.checkin_id for checkin in patient.checkiny} | {checkin.checkin_id for checkin in store.all_checkins()}
     number = len(store.live_checkins(patient.patient_id)) + 1
-    while f"{patient.patient_id}-L{number:02d}" in taken:
+    while f"{patient.patient_id}-P{number:02d}" in taken:
         number += 1
-    return f"{patient.patient_id}-L{number:02d}"
+    return f"{patient.patient_id}-P{number:02d}"
 
 
 def normalize_checkin(body: dict, patient: Patient) -> Checkin:
