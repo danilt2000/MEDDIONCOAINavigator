@@ -1,6 +1,6 @@
 import type { CheckinInput, QuestionnaireDefinition } from '@navigator/api';
 import { FilledButton, LinearProgress, OutlinedTextField, Switch, TextButton } from '@navigator/ui';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { useNavigate } from 'react-router';
 import { submitCheckin, useApi, useApp } from '../app-state';
 import {
@@ -8,6 +8,7 @@ import {
   buildFills,
   buildVitals,
   hasValue,
+  optionColor,
   parseVital,
   scaleColor,
   toggleOption,
@@ -18,6 +19,7 @@ import {
   type Item,
   type Questionnaire,
   type Value,
+  UNKNOWN,
   type VitalKey,
 } from '../flow';
 import { format } from '../i18n';
@@ -44,8 +46,18 @@ function QuestionInput(props: { questionnaireId: string; item: Item; value: Valu
   if (item.typ === 'jedna') {
     return (
       <div className="options" role="radiogroup" aria-labelledby="question">
+        <label className="option" data-barva="nevim">
+          <input
+            type="radio"
+            name={item.id}
+            checked={value === undefined || value === UNKNOWN}
+            onChange={() => onChange(UNKNOWN)}
+            onClick={() => onChange(UNKNOWN)}
+          />
+          <span>{t.dontKnowAnswer}</span>
+        </label>
         {options.map((option, index) => (
-          <label key={option.text} className="option" data-barva={option.barva ?? undefined}>
+          <label key={option.text} className="option" data-barva={optionColor(item, index) ?? undefined}>
             <input type="radio" name={item.id} checked={value === index} onChange={() => onChange(index)} />
             <span>{option.text}</span>
           </label>
@@ -58,7 +70,7 @@ function QuestionInput(props: { questionnaireId: string; item: Item; value: Valu
     return (
       <div className="options" role="group" aria-labelledby="question">
         {options.map((option, index) => (
-          <label key={option.text} className="option">
+          <label key={option.text} className="option" data-barva={optionColor(item, index) ?? undefined}>
             <input
               type="checkbox"
               checked={selected.includes(index)}
@@ -75,7 +87,7 @@ function QuestionInput(props: { questionnaireId: string; item: Item; value: Valu
       <>
         <div className="scale" role="radiogroup" aria-labelledby="question">
           {Array.from({ length: 10 }, (_, index) => index + 1).map((score) => (
-            <label key={score} className="option scale-option" data-barva={scaleColor(questionnaireId, score) ?? undefined}>
+            <label key={score} className="option scale-option" data-barva={scaleColor(questionnaireId, item.id, score) ?? undefined}>
               <input type="radio" name={item.id} checked={value === score} onChange={() => onChange(score)} />
               <span>{score}</span>
             </label>
@@ -183,6 +195,9 @@ export function Checkin() {
     }
   };
 
+  const unsure = step?.item.typ === 'jedna' && answers[answerKey(step.questionnaire.id, step.item.id)] === UNKNOWN;
+  const aiIntro = step && unsure ? format(t.aiIntro, step.item.text) : undefined;
+
   let body;
   if (step) {
     const key = answerKey(step.questionnaire.id, step.item.id);
@@ -208,7 +223,21 @@ export function Checkin() {
         </h1>
         {step.item.navod && <p className="muted">{step.item.navod}</p>}
         <QuestionInput questionnaireId={step.questionnaire.id} item={step.item} value={value} onChange={setValue} />
-        <Footer next={t.next} onNext={() => go(stepIndex + 1)} canContinue={hasValue(value)} skip={t.skip} onSkip={skip} />
+        <Footer
+          hint={
+            aiIntro && (
+              <div className="ai-hint" role="status">
+                <span>{t.aiHint}</span>
+                <TextButton onClick={() => navigate('/navigator', { state: { intro: aiIntro, patientId } })}>{t.aiHintButton}</TextButton>
+              </div>
+            )
+          }
+          next={t.next}
+          onNext={() => go(stepIndex + 1)}
+          canContinue={step.item.typ === 'jedna' || hasValue(value)}
+          skip={step.item.typ === 'jedna' ? undefined : t.skip}
+          onSkip={skip}
+        />
       </>
     );
   } else if (stepIndex === steps.length) {
@@ -284,7 +313,7 @@ export function Checkin() {
         <BackButton onClick={back} />
         <span className="muted strong-ish">{format(t.questionOf, Math.min(stepIndex + 1, total), total)}</span>
         <span className="toolbar-end">
-          <AiFab size="small" />
+          <AiFab size="small" intro={aiIntro} />
         </span>
       </div>
       <LinearProgress value={Math.min(stepIndex + 1, total) / total} aria-label={format(t.questionOf, stepIndex + 1, total)} />
@@ -293,13 +322,14 @@ export function Checkin() {
   );
 }
 
-function Footer(props: { next: string; onNext: () => void; canContinue: boolean; skip: string; onSkip: () => void }) {
+function Footer(props: { hint?: ReactNode; next: string; onNext: () => void; canContinue: boolean; skip?: string; onSkip: () => void }) {
   return (
     <div className="footer">
+      {props.hint}
       <FilledButton disabled={!props.canContinue} onClick={props.onNext}>
         {props.next}
       </FilledButton>
-      <TextButton onClick={props.onSkip}>{props.skip}</TextButton>
+      {props.skip && <TextButton onClick={props.onSkip}>{props.skip}</TextButton>}
     </div>
   );
 }

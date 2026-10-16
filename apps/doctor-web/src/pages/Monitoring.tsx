@@ -1,19 +1,12 @@
-import type { DailyStat, Kpi as KpiData, QueueItem, SymptomStat } from '@navigator/api';
-import { FilledTonalButton, OutlinedCard, OutlinedTextField, SvgIcon, TriageChip } from '@navigator/ui';
+import type { DailyStat, QueueItem, SymptomStat } from '@navigator/api';
+import { FilledTonalButton, OutlinedCard, OutlinedTextField, SvgIcon } from '@navigator/ui';
 import { useMemo, useState, type CSSProperties } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { Area, AreaChart, Brush, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useShell } from '../App';
-import { Kpi, Load } from '../components';
+import { Load } from '../components';
 import { trendingUpIcon, warningIcon } from '../icons';
 import { addDays, fmtDay, shortRegimen, useApi, type Loadable } from '../lib';
-
-export const LEVEL_SERIES = [
-  { key: '1', name: 'Zelená', color: 'var(--chart-1)' },
-  { key: '2', name: 'Žlutá', color: 'var(--chart-2)' },
-  { key: '3', name: 'Oranžová', color: 'var(--chart-3)' },
-  { key: '4', name: 'Červená', color: 'var(--chart-4)' },
-];
 
 const dayHref = (date: string) => `/monitoring/den/${date}`;
 const symptomHref = (symptom: string) => `/monitoring/priznak/${encodeURIComponent(symptom)}`;
@@ -22,7 +15,6 @@ const regimenHref = (regimen: string) => `/monitoring/lecba/${encodeURIComponent
 export function MonitoringPage() {
   const { range } = useShell();
   const navigate = useNavigate();
-  const kpi = useApi<KpiData>('/api/stats/kpi', 10000);
   const daily = useApi<DailyStat[]>(`/api/stats/daily?from=${range.from}&to=${range.to}`, 30000);
   const symptoms = useApi<SymptomStat[]>(`/api/stats/symptoms?from=${range.from}&to=${range.to}`, 30000);
   const tasks = useApi<QueueItem[]>('/api/queue?status=all', 30000);
@@ -41,31 +33,6 @@ export function MonitoringPage() {
           </p>
         </div>
       </div>
-
-      <Load source={kpi}>
-        {(data) => (
-          <div className="kpi-row">
-            <div className="kpi">
-              <span className="kpi-label">Dnes podle stupně</span>
-              <span className="row wrap">
-                {LEVEL_SERIES.map((level) => (
-                  <span key={level.key} className="row gap-4">
-                    <TriageChip level={Number(level.key) as 1 | 2 | 3 | 4} />
-                    <strong className="kpi-small">{data.today_by_level[level.key] ?? 0}</strong>
-                  </span>
-                ))}
-              </span>
-            </div>
-            <Kpi label="Otevřené úkoly" value={data.open_tasks} />
-            <Kpi label="SLA překročeno" value={data.sla_breached} tone={data.sla_breached > 0 ? 'alert' : 'ok'} />
-            <Kpi label="Vynechané check-iny" value={data.missed_checkins} />
-            <Kpi
-              label="Čas do převzetí, medián"
-              value={data.median_minutes_to_accept == null ? '—' : `${Math.round(data.median_minutes_to_accept)} min`}
-            />
-          </div>
-        )}
-      </Load>
 
       <div className="board">
         <div className="board-main">
@@ -118,7 +85,6 @@ function ActivityCard({ rows, onOpenDay }: { rows: DailyStat[]; onOpenDay: (stat
   const [span, setSpan] = useState({ startIndex: 0, endIndex: rows.length - 1 });
   const data = useMemo(() => rows.map((row) => ({ date: row.date, alerts: alertsOf(row), checkins: row.checkins, missed: row.missed })), [rows]);
   const visible = data.slice(span.startIndex, span.endIndex + 1);
-  const total = (key: 'alerts' | 'checkins' | 'missed') => visible.reduce((sum, row) => sum + row[key], 0);
   const grid = <CartesianGrid vertical={false} stroke="var(--md-sys-color-outline-variant)" />;
   const yAxis = <YAxis allowDecimals={false} width={32} tick={{ fontSize: 12 }} />;
 
@@ -130,7 +96,7 @@ function ActivityCard({ rows, onOpenDay }: { rows: DailyStat[]; onOpenDay: (stat
           Upozornění (stupeň 2–4)
         </h2>
         <span className="muted">
-          celkem <strong>{total('alerts')}</strong>
+          celkem <strong>{visible.reduce((sum, row) => sum + row.alerts, 0)}</strong>
         </span>
       </div>
       <ResponsiveContainer width="100%" height={150}>
@@ -142,19 +108,7 @@ function ActivityCard({ rows, onOpenDay }: { rows: DailyStat[]; onOpenDay: (stat
           <Area isAnimationActive={false} type="linear" dataKey="alerts" stroke="var(--chart-4)" fill="var(--chart-4)" fillOpacity={0.16} />
         </AreaChart>
       </ResponsiveContainer>
-      <div className="row space">
-        <h2 className="section-title">Dotazníky</h2>
-        <span className="muted row">
-          <span className="row gap-4">
-            <span className="swatch swatch-filled" />
-            vyplněno <strong>{total('checkins')}</strong>
-          </span>
-          <span className="row gap-4">
-            <span className="swatch swatch-missed" />
-            vynecháno <strong>{total('missed')}</strong>
-          </span>
-        </span>
-      </div>
+      <h2 className="section-title">Dotazníky</h2>
       <ResponsiveContainer width="100%" height={170}>
         <AreaChart data={visible} onClick={onOpenDay} style={{ cursor: 'pointer' }}>
           {grid}

@@ -1,6 +1,5 @@
-import textIcon from '@material-symbols/svg-400/outlined/text_increase.svg?raw';
 import type { TimelineItem, TriageOutput } from '@navigator/api';
-import { FilledButton, IconButton, OutlinedButton, SvgIcon, TriageChip } from '@navigator/ui';
+import { FilledButton, OutlinedButton, TriageChip } from '@navigator/ui';
 import { useNavigate } from 'react-router';
 import {
   formatDay,
@@ -27,7 +26,7 @@ function useLastResult() {
 }
 
 export function Home() {
-  const { t, lang, locale, now, patient, patientId, patientError, caregiver, forWhom, contacts, largeText, setLargeText } = useApp();
+  const { t, lang, locale, now, patient, patientId, patientError, caregiver, forWhom, contacts } = useApp();
   const navigate = useNavigate();
   const { last, triage } = useLastResult();
   const timeline = useApi<TimelineItem[]>(`/api/patients/${patientId}/timeline`);
@@ -47,14 +46,6 @@ export function Home() {
           <img className="brand-logo" src="/favicon.svg" alt="MEDDI" />
           {t.appName}
         </span>
-        <IconButton
-          aria-label={t.largeText}
-          aria-pressed={largeText}
-          className={largeText ? 'toggle-on' : undefined}
-          onClick={() => setLargeText(!largeText)}
-        >
-          <SvgIcon svg={textIcon} />
-        </IconButton>
       </div>
 
       <div>

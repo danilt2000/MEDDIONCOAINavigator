@@ -82,9 +82,9 @@ export function QueuePage() {
                           <TriageChip level={item.uroven} />
                         </td>
                         <td className="nowrap">
-                          <button type="button" className="link-button" onClick={() => setParams({ task: item.id })}>
+                          <Link to={`/pacienti/${encodeURIComponent(item.patient_id)}`} onClick={(event) => event.stopPropagation()}>
                             {item.patient_name}, {item.age}
-                          </button>
+                          </Link>
                           <div className="muted small">{item.patient_id}</div>
                         </td>
                         <td className="regimen-cell">

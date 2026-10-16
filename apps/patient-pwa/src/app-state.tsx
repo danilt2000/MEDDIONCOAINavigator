@@ -202,8 +202,6 @@ interface AppValue {
   setCaregiver: (on: boolean) => void;
   relation: string;
   forWhom: string;
-  largeText: boolean;
-  setLargeText: (on: boolean) => void;
   online: boolean;
   queued: number;
   refreshQueue: () => void;
@@ -224,7 +222,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [poll, setPoll] = useState(0);
   const [online, setOnline] = useState(navigator.onLine);
   const [queued, setQueued] = useState(() => store.get<CheckinInput[]>(QUEUE_KEY, []).length);
-  const [largeText, setLargeTextState] = useState(() => store.get('largeText', false));
   const [caregiverOverride, setCaregiverOverride] = useState<boolean | null>(() => store.get(`caregiver:${patientId}`, null));
 
   const patients = useApi<PatientListItem[]>('/api/patients');
@@ -269,10 +266,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };
   }, [refreshQueue]);
 
-  useEffect(() => {
-    document.documentElement.style.fontSize = largeText ? '125%' : '';
-  }, [largeText]);
-
   const value = useMemo<AppValue>(() => {
     const patient = detail.data ?? patients.data?.find((item) => item.patient_id === patientId) ?? null;
     const lang = patient?.lang === 'sk' ? 'sk' : 'cs';
@@ -306,16 +299,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
       },
       relation,
       forWhom: forWhomLabel(relation, patient?.sex ?? '', patient?.name ?? '', t),
-      largeText,
-      setLargeText: (on: boolean) => {
-        store.set('largeText', on);
-        setLargeTextState(on);
-      },
       online,
       queued,
       refreshQueue,
     };
-  }, [patientId, patients.data, detail.data, detail.error, demo.data, contacts.data, caregiverOverride, largeText, online, queued, refreshQueue]);
+  }, [patientId, patients.data, detail.data, detail.error, demo.data, contacts.data, caregiverOverride, online, queued, refreshQueue]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

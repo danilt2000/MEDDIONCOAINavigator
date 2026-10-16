@@ -67,11 +67,16 @@ const fieldValue = (event: Event) => (event.target as HTMLInputElement).value;
 
 export function Navigator() {
   const { t, lang, patientId, caregiver, setCaregiver, forWhom } = useApp();
-  const routeState = useLocation().state as { followup?: string; patientId?: string } | null;
+  const routeState = useLocation().state as { followup?: string; intro?: string; patientId?: string } | null;
   const followup = routeState?.patientId === patientId ? routeState.followup : undefined;
+  const intro = routeState?.patientId === patientId ? routeState.intro : undefined;
   const history = useApi<ChatMessage[]>(`/api/chat/${patientId}/messages`);
   const [local, setLocal] = useState<UiMessage[]>(() =>
-    followup ? [{ id: 'followup', role: 'navigator', text: followup, followup_question: followup }] : [],
+    followup
+      ? [{ id: 'followup', role: 'navigator', text: followup, followup_question: followup }]
+      : intro
+        ? [{ id: 'intro', role: 'navigator', text: intro }]
+        : [],
   );
   const [text, setText] = useState('');
   const [busy, setBusy] = useState(false);
@@ -218,6 +223,7 @@ export function Navigator() {
         ) : (
           !hasUserMessages &&
           !openQuestion &&
+          !intro &&
           !busy && (
             <ChipSet className="quick-replies">
               {[t.suggest1, t.suggest2, t.suggest3, t.suggest4].map((question) => (

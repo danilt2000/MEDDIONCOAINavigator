@@ -1,5 +1,5 @@
 import type { DemoState, QueueItem } from '@navigator/api';
-import { FilledButton, OutlinedSelect, SelectOption, SvgIcon } from '@navigator/ui';
+import { FilledButton, SvgIcon } from '@navigator/ui';
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, Outlet, useNavigate, useOutletContext } from 'react-router';
 import { emergencyIcon } from './icons';
@@ -14,13 +14,10 @@ export interface Shell {
 
 export const useShell = () => useOutletContext<Shell>();
 
-const RANGES = [7, 14, 30, 60];
-
 export function App() {
   const demo = useApi<DemoState>('/api/demo/state', 15000);
   const queue = useApi<QueueItem[]>('/api/queue?status=open', 4000);
   const [offsetMs, setOffsetMs] = useState(0);
-  const [days, setDays] = useState(30);
 
   const serverNow = demo.data?.now;
   useEffect(() => {
@@ -30,7 +27,7 @@ export function App() {
   const to = isoDay(Date.now() + offsetMs);
   const shell: Shell = {
     offsetMs,
-    range: { from: addDays(to, 1 - days), to, days },
+    range: { from: addDays(to, -29), to, days: 30 },
     queue,
     dataset: demo.data?.dataset ?? 'dev',
   };
@@ -43,18 +40,6 @@ export function App() {
           <img className="brand-logo" src="/favicon.svg" alt="MEDDI" />
           <span>MEDDI navigátor · Monitorovací centrum MOÚ</span>
         </div>
-        <OutlinedSelect
-          className="range-select"
-          aria-label="Období"
-          value={String(days)}
-          onChange={(event) => setDays(Number((event.target as HTMLSelectElement).value))}
-        >
-          {RANGES.map((range) => (
-            <SelectOption key={range} value={String(range)} selected={range === days}>
-              <div slot="headline">Posledních {range} dní</div>
-            </SelectOption>
-          ))}
-        </OutlinedSelect>
         <Duty offsetMs={offsetMs} />
       </header>
       <nav className="tabs" aria-label="Sekce">

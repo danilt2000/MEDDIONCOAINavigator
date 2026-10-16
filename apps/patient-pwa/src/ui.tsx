@@ -1,23 +1,29 @@
 import arrowBackIcon from '@material-symbols/svg-400/outlined/arrow_back.svg?raw';
 import callIcon from '@material-symbols/svg-400/outlined/call.svg?raw';
-import chatBubbleIcon from '@material-symbols/svg-400/outlined/chat_bubble.svg?raw';
+import chatIcon from '@material-symbols/svg-400/rounded/chat-fill.svg?raw';
 import refreshIcon from '@material-symbols/svg-400/outlined/refresh.svg?raw';
-import { Fab, FilledButton, IconButton, OutlinedButton, SvgIcon, TextButton } from '@navigator/ui';
+import { FilledButton, IconButton, OutlinedButton, SvgIcon, TextButton } from '@navigator/ui';
 import { useNavigate } from 'react-router';
 import { ambulancePhone, phoneDigits, useApp, type CallTarget } from './app-state';
 
-export function AiFab({ size = 'medium' }: { size?: 'small' | 'medium' }) {
-  const { t } = useApp();
+export function AiFab({ size = 'medium', intro }: { size?: 'small' | 'medium'; intro?: string }) {
+  const { t, patientId } = useApp();
   const navigate = useNavigate();
   return (
-    <span className="ai-fab" data-size={size}>
-      <Fab variant="primary" size={size} aria-label={t.writeNavigator} title={t.writeNavigator} onClick={() => navigate('/navigator')}>
-        <SvgIcon slot="icon" svg={chatBubbleIcon} />
-      </Fab>
+    <button
+      type="button"
+      className="ai-fab"
+      data-size={size}
+      data-glow={intro ? '' : undefined}
+      aria-label={t.writeNavigator}
+      title={t.writeNavigator}
+      onClick={() => navigate('/navigator', intro ? { state: { intro, patientId } } : undefined)}
+    >
+      <SvgIcon svg={chatIcon} />
       <span className="ai-badge" aria-hidden="true">
         AI
       </span>
-    </span>
+    </button>
   );
 }
 

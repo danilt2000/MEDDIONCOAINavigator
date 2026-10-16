@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { buildFills, buildVitals, toggleOption, treatmentReason, visibleSteps, type Questionnaire } from '../src/flow.ts';
+import { buildFills, buildVitals, optionColor, toggleOption, treatmentReason, UNKNOWN, visibleSteps, type Questionnaire } from '../src/flow.ts';
 
 const definitions: Questionnaire[] = JSON.parse(
   readFileSync(new URL('../../../data/rakathon_meddi_onco_data/docs/dotazniky_definice.json', import.meta.url), 'utf8'),
@@ -40,6 +40,16 @@ test('fills use the MEDDI check-in shape and drop hidden answers', () => {
   assert.deepEqual(fill.odpovedi[1].odpoved, ['Zvýšená teplota a horečky']);
   assert.equal(fill.nejvyssi_barva, 'zluta');
   assert.equal(fill.zobrazena_upozorneni.length, 1);
+});
+
+test('"Nevím" is dropped like a skip; uncoloured options get a display colour', () => {
+  const [fill] = buildFills(nu, { 'nezadouci_ucinky.pocit': UNKNOWN, 'nezadouci_ucinky.sobestacnost': 0 }, 'X');
+  assert.deepEqual(fill.odpovedi.map((answer) => answer.otazka_id), ['sobestacnost']);
+  const item = (id: string) => nu[0].otazky.find((question) => question.id === id)!;
+  assert.deepEqual([0, 1, 2].map((index) => optionColor(item('kuze'), index)), ['zelena', 'zluta', 'cervena']);
+  assert.equal(optionColor(item('pocit'), 4), 'cervena');
+  assert.equal(optionColor(ucinky, 12), 'zelena');
+  assert.equal(optionColor(ucinky, 3), 'zluta');
 });
 
 test('ESAS scales get the simplified colours', () => {

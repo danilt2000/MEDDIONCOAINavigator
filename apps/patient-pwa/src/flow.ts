@@ -59,11 +59,31 @@ export function toggleOption(item: Item, current: number[], index: number): numb
   return [...current.filter((selected) => !isExclusive(options[selected])), index].sort((a, b) => a - b);
 }
 
+// "Nevím, jak odpovědět": the default of every single-choice question, stored like a skipped answer.
+export const UNKNOWN = -1;
+
 export const hasValue = (value: Value | undefined) =>
-  value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0);
+  value !== undefined && value !== UNKNOWN && value !== '' && !(Array.isArray(value) && value.length === 0);
 
 const esasColor = (score: number) => (score <= 3 ? 'zelena' : score <= 5 ? 'zluta' : 'cervena');
-export const scaleColor = (questionnaireId: string, score: number) => (questionnaireId === 'esas' ? esasColor(score) : null);
+// Display only: MEDDI leaves these options uncoloured, so they follow its own similar questions
+// (bol_klouby = bol_bricho, kuze = afty). The barva sent to the backend stays MEDDI's.
+const DERIVED_COLORS: Record<string, string[]> = {
+  bol_klouby: ['zelena', 'zelena', 'zluta'],
+  kuze: ['zelena', 'zluta', 'cervena'],
+  spokojenost: ['zelena', 'zluta'],
+};
+
+export function optionColor(item: Item, index: number): string | null {
+  const option = item.moznosti?.[index];
+  if (!option) return null;
+  if (option.barva) return option.barva;
+  if (item.typ === 'vice') return isExclusive(option) ? 'zelena' : 'zluta';
+  return DERIVED_COLORS[item.id]?.[index] ?? null;
+}
+
+export const scaleColor = (questionnaireId: string, itemId: string, score: number) =>
+  questionnaireId === 'esas' || itemId === 'nrs' ? esasColor(score) : null;
 const COLOR_RANK: Record<string, number> = { zelena: 1, zluta: 2, cervena: 3 };
 
 function toAnswer(questionnaireId: string, item: Item, value: Value): Answer {
@@ -84,7 +104,7 @@ function toAnswer(questionnaireId: string, item: Item, value: Value): Answer {
     return { ...base, odpoved: indices.map((index) => options[index].text), odpoved_index: indices };
   }
   if (item.typ === 'skala_1_10') {
-    return { ...base, odpoved: value as number, odpoved_index: null, barva: scaleColor(questionnaireId, value as number) };
+    return { ...base, odpoved: value as number, odpoved_index: null, barva: questionnaireId === 'esas' ? esasColor(value as number) : null };
   }
   return { ...base, odpoved: typeof value === 'string' ? value.trim() : (value as number), odpoved_index: null };
 }
