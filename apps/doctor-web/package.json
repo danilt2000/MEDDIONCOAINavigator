@@ -10,11 +10,15 @@
   },
   "dependencies": {
     "@material-symbols/svg-400": "^0.48.0",
+    "@navigator/api": "workspace:*",
     "@navigator/ui": "workspace:*",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "react-router": "^8.4.0",
+    "recharts": "^3.10.1"
   },
   "devDependencies": {
+    "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",

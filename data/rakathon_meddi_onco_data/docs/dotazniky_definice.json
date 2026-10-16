@@ -1,0 +1,910 @@
+[
+  {
+    "id": "nezadouci_ucinky",
+    "nazev": "Nežádoucí účinky onkologické léčby",
+    "poznamka": null,
+    "otazky": [
+      {
+        "id": "pocit",
+        "text": "Jak se celkově cítíte?",
+        "navod": "Vyberte prosím na stupnici číslo od 1 do 5 (1 = nejlépe, 5 = velmi špatně)",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "1 = nejlépe",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "2",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "3",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "4",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "5 = velmi špatně",
+            "barva": "cervena",
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "sobestacnost",
+        "text": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Jsem plně soběstačný a zvládám všechny běžné fyzické aktivity bez větších omezení.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Ano jsem soběstačný/á a mimo lůžko trávím více než 50% denní doby.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Jsem částečně soběstačný/á a na lůžku trávím více než 50% denní doby.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Jsem zcela nesoběsnačný/á a jsem zcela upoután/a na lůžko.",
+            "barva": "zelena",
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "ucinky",
+        "text": "Máte některé z těchto nežádoucích účinků?",
+        "typ": "vice",
+        "moznosti": [
+          {
+            "text": "Nechutenství, nevolnosti, zvracení",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Potíže se stolicí",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Afty a bolesti při polykání",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Bolesti",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Brnění a necitlivost na rukou a nohou",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Zvýšená teplota a horečky",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Kožní potíže (vyrážka, svědění, puchýře, začervenání, akné, apod.)",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Únava a slabost",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Krvácení (z dásní, ve stolici, tvorba modřin, apod.)",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Potíže při močení",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Zadýchávání",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Jiné nežádoucí účinky",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Nemám žádné nežádoucí účinky",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "nnz_typ",
+        "podminka": "ucinky:0",
+        "text": "Jaké přesně máte potíže?",
+        "typ": "vice",
+        "moznosti": [
+          {
+            "text": "Nechutenství",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Nevolnosti",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Zvracení",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "nechutenstvi",
+        "podminka": "nnz_typ:0",
+        "text": "Jak vás nechutenství omezuje v denním příjmu stravy?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Snížená chuť k jídlu mě neomezuje v běžném příjmu stravy, na kterou jsem zvyklá/ý.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Snížená chuť k jídlu vede k tomu, že sním méně stravy než jsem byl zvyklý. Ale nesleduji žádný váhový úbytek.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Chuť k jídlu mě neumožňuje dostatečný příjem živin, hubnu.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Nechutenství je výrazné a zásadně omezuje můj denní příjem jídla a tekutin na minimum. Situace pro mě není v domácím prostředí zvladatelná.",
+            "barva": "zluta",
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "nevolnost",
+        "podminka": "nnz_typ:1",
+        "text": "Jak nevolnosti a zvracení omezuje Váš příjem stravy a tekutin?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ztráta chuti k jídlu neomezuje můj denní příjem stravy. Jím stále stejné množství jídla.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Ztráta chuti k jídlu mírně omezuje můj denní příjem stravy, k hubnutí však nedochází.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Nevolnosti jsou výrazné a zásadně omezují můj denní příjem jídla a tekutin na minimum. Situace pro mě přestává být v domácím prostředí zvladatelná.",
+            "barva": "zluta",
+            "upozorneni": "Silné nevolnosti mohou vést k vážné dehydrataci a podvýživě, může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "Nevolnosti jsou výrazné a zásadně omezují můj denní příjem jídla a tekutin na minimum. Situace pro mě není v domácím prostředí zvladatelná.",
+            "barva": "cervena",
+            "upozorneni": "Silné nevolnosti mohou vést k vážné dehydrataci a podvýživě, může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          }
+        ]
+      },
+      {
+        "id": "zvraceni",
+        "podminka": "nnz_typ:2",
+        "text": "Kolikrát za 24 hodin došlo ke zvracení?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "1-2 epizody zvracení.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "3-5 epizod zvracení.",
+            "barva": "zluta",
+            "upozorneni": "Opakované zvracení může vést k vážné dehydrataci a může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "Více než 5 epizod zvracení.",
+            "barva": "cervena",
+            "upozorneni": "Opakované zvracení může vést k vážné dehydrataci a může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "Zvracení je velmi výrazné. Obávám se, že tento nežádoucí účinek není zvladatelný v domácím prostředí a že bude vyžadovat hospitalizaci.",
+            "barva": "cervena",
+            "upozorneni": "Opakované zvracení může vést k vážné dehydrataci a může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          }
+        ]
+      },
+      {
+        "id": "stolice_typ",
+        "podminka": "ucinky:1",
+        "text": "Jaké přesně máte potíže se stolicí?",
+        "typ": "vice",
+        "moznosti": [
+          {
+            "text": "Průjmy",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Zácpa",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "prujem",
+        "podminka": "stolice_typ:0",
+        "text": "Kolik průjmovitých stolic jste měl/a během posledních 24hodin?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ano. Průjem spočívá ve zvýšení počtu stolic za den o 3 více oproti normálu. Pokud máte stomii: došlo pouze k mírnému zvýšení odpadu.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Sleduji zvýšení počtu stolic za den o 4-6 oproti normálu. Pokud máte stomii: Do stomie odchází výraznější množství odpadu.",
+            "barva": "zluta",
+            "upozorneni": "Průjmy mohou vést k vážné dehydrataci a dalším komplikacím. Může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "Sleduji zvýšení počtu stolic za den o více než 7 oproti normálu, dochází k samovolnému odchodu stolice. Průjmy mě výrazně omezují.",
+            "barva": "cervena",
+            "upozorneni": "Průjmy mohou vést k vážné dehydrataci a dalším komplikacím. Může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "Průjmy jsou velmi výrazné. Obávám se, že tento nežádoucí účinek není zvladatelný v domácím prostředí a že bude vyžadovat hospitalizaci.",
+            "barva": "cervena",
+            "upozorneni": "Průjmy mohou vést k vážné dehydrataci a dalším komplikacím. Může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          }
+        ]
+      },
+      {
+        "id": "zacpa",
+        "podminka": "stolice_typ:1",
+        "text": "Jak vás potíže se zácpou omezují?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Občasná a přechodná zácpa. Někdy musím užít projímadlo nebo změkčovač stolice či klystýr. K úpravě dojde také po změně stravování.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Zácpa stále trvá, léky proti zácpě užívám pravidelně. Zácpa mě mírně omezuje.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Zácpa mě velmi omezuje v každodenním životě a činí mi závažné potíže. Nebo: Zácpa mě přinutila navštívit lékaře, který stolici manuálně vybavil.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Zácpa je již mými vlastními silami nezvladatelná, již dlouho jsem řadu dní nebyl/a na stolici a mám obavu, že mě může ohrozit na životě.",
+            "barva": "cervena",
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "afty",
+        "podminka": "ucinky:2",
+        "text": "Jak afty a bolesti hrdla ovlivňují váš příjem potravy a tekutin?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Nijak mě neomezuje v příjmu stravy, a aftů jsem si pouze všiml/a při hygieně.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Bolesti při polykání jsou silné a mění můj denní příjem stravy či tekutin.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Bolesti mě významně omezují v příjmu stravy. Zvládám pouze tekutou stravu.",
+            "barva": "zluta",
+            "upozorneni": "Nedostatečný příjem stravy může v kombinaci s ostatními potížemi vést k vážné dehydrataci a může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "Afty jsou velmi bolestivé a omezující. Obávám se, že tento nežádoucí účinek není zvladatelný v domácím prostředí a že bude vyžadovat hospitalizaci.",
+            "barva": "cervena",
+            "upozorneni": "Nedostatečný příjem stravy může v kombinaci s ostatními potížemi vést k vážné dehydrataci a může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          }
+        ]
+      },
+      {
+        "id": "bolesti_typ",
+        "podminka": "ucinky:3",
+        "text": "Jaké máte bolesti?",
+        "typ": "vice",
+        "moznosti": [
+          {
+            "text": "Bolesti hlavy",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Bolesti na hrudi",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Bolesti břicha",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Bolesti svalů a kloubů",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "bol_hlava",
+        "podminka": "bolesti_typ:0",
+        "text": "Jak vás bolesti hlavy omezují?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Bolest byla mírná, ale nepotřeboval/a jsem léky od bolesti.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Bolesti hlavy byly výrazné a potřeboval/a jsem léky od bolesti.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Bolesti jsou silné a omezují mne v běžných denních činnostech.",
+            "barva": "zluta",
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "bol_hrud",
+        "podminka": "bolesti_typ:1",
+        "text": "Měl/a jste nebo máte bolesti na hrudi?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Bolesti na hrudi mám dlouhodobě a jsem pro ně léčen/léčena.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Bolesti na hrudi se u mě objevily nově.",
+            "barva": "cervena",
+            "upozorneni": "Bolesti na hrudi nemusí, ale mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          }
+        ]
+      },
+      {
+        "id": "bol_bricho",
+        "podminka": "bolesti_typ:2",
+        "text": "Jak Vás bolesti břicha omezují?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Střední bolest, která mě limituje v denních činnostech.",
+            "barva": "zelena",
+            "upozorneni": "Nově vzniklé bolesti břicha mohou být závažným příznakem. Zvažte konzultaci potíží s lékařem k vyloučení vážnější příčiny potíží. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "Bolesti jsou silné a omezují mne v běžných denních činnostech.",
+            "barva": "zluta",
+            "upozorneni": "Nově vzniklé bolesti břicha mohou být závažným příznakem. Zvažte konzultaci potíží s lékařem k vyloučení vážnější příčiny potíží. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          }
+        ]
+      },
+      {
+        "id": "bol_klouby",
+        "podminka": "bolesti_typ:3",
+        "text": "Jak silné jsou bolesti svalů a kloubů?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Střední bolest, která mě limituje v denních činnostech.",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Bolesti jsou silné a omezují mne v běžných denních činnostech.",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "brneni",
+        "podminka": "ucinky:4",
+        "text": "Jak silné potíže s brněním, mravenčením, tuhnutím, trnutím, pocitem horka či chladu bez jasného podnětu jsou?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Mírné potíže, nijak mě nelimitují.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Střední potíže, které mě omezují v běžných denních činnostech.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Velké potíže, které omezují mojí soběstačnost.",
+            "barva": "zelena",
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "teplota",
+        "podminka": "ucinky:5",
+        "text": "Měl/a jste zvýšenou tělesnou teplotu nebo horečky?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "37,0 - 37,9°C",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "38,0 - 39,0°C méně než 24 hodin",
+            "barva": "zluta",
+            "upozorneni": "Po aplikaci chemoterapie může dojít k poklesům bílých krvinek, ve spojení s horečkou se může jednat za určitých okolností o velmi závažný stav. Zvažte telefonickou konzultaci s lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "39,0 - 40,0°C",
+            "barva": "cervena",
+            "upozorneni": "Po aplikaci chemoterapie může dojít k poklesům bílých krvinek, ve spojení s horečkou se může jednat za určitých okolností o velmi závažný stav. Zvažte telefonickou konzultaci s lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "Více než 40°C, ale trvaly méně než 24 hodin",
+            "barva": "cervena",
+            "upozorneni": "Po aplikaci chemoterapie může dojít k poklesům bílých krvinek, ve spojení s horečkou se může jednat za určitých okolností o velmi závažný stav. Zvažte telefonickou konzultaci s lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "Více než 40°C a trvají déle než 24 hodin",
+            "barva": "cervena",
+            "upozorneni": "Po aplikaci chemoterapie může dojít k poklesům bílých krvinek, ve spojení s horečkou se může jednat za určitých okolností o velmi závažný stav. Zvažte telefonickou konzultaci s lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          }
+        ]
+      },
+      {
+        "id": "kuze",
+        "podminka": "ucinky:6",
+        "text": "Jak výrazné jsou přítomné kožní potíže?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Minimální změny na kůži, které nejsou bolestivé.",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Kožní změny jsou bolestivé a omezují mě v drobných manuálních činnostech.",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Kožní změny jsou bolestivé a omezují mě v běžných činnostech a soběstačnosti.",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "unava",
+        "podminka": "ucinky:7",
+        "text": "Pomůže Vám odpočinek ke zmírnění únavy?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ano.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Ne, únava mě však omezuje pouze v náročnějších aktivitách.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Ne, únava mě omezuje výrazně i v běžných denních činnostech.",
+            "barva": "zelena",
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "krvaceni",
+        "podminka": "ucinky:8",
+        "text": "Sledujete krvácení z dásní, nebo zvýšenou tvorbu modřin, nebo krev ve stolici? Případně prosím popište do textového pole, odkud se krvácení objevilo a jak rychle ustalo.",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ne.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Ano.",
+            "barva": "zluta",
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "krvaceni_popis",
+        "podminka": "krvaceni:1",
+        "text": "Odkud se krvácení objevilo a jak rychle ustalo? Prosím doplňte do textového pole.",
+        "typ": "text"
+      },
+      {
+        "id": "moceni",
+        "podminka": "ucinky:9",
+        "text": "Pociťujete pálení nebo řezání při močení? Sledujete zkalení moče? Přítomnost krve v moči?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ne.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Ano.",
+            "barva": "zluta",
+            "upozorneni": "Bolesti, pálení nebo řezání při močení, případně zkalená moč mohou být příznakem močové infekce, obzvláště ve spojení se zvýšenou tělesnou teplotou - pokud potíže neustoupí do druhého dne, je nutné zvážit telefonickou konzultaci s lékařem."
+          }
+        ]
+      },
+      {
+        "id": "dusnost",
+        "podminka": "ucinky:10",
+        "text": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Zvládám běžnou tělesnou aktivitu včetně rychlé chůze či pomalejšího běhu bez zadýchání.",
+            "barva": "zelena",
+            "upozorneni": null
+          },
+          {
+            "text": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+            "barva": "zluta",
+            "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "V klidu bez obtíží. Ale již běžné aktivity (oblékání, mytí, apod.) způsobují dušnost.",
+            "barva": "zluta",
+            "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          },
+          {
+            "text": "Dušnost mám i v klidu.",
+            "barva": "cervena",
+            "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          }
+        ]
+      },
+      {
+        "id": "jine",
+        "podminka": "ucinky:11",
+        "text": "Jaké jiné nežádoucí účinky máte?",
+        "typ": "text"
+      }
+    ]
+  },
+  {
+    "id": "psychoonkologicky_screening",
+    "nazev": "Psychoonkologický screening MOÚ",
+    "poznamka": "Škály: nízké číslo = nejméně (u zvládání situace tedy 10 = zvládám nejlépe). Ve formuláři jsou tlačítka 1–10. Vyhodnocovací klíč odpovědí ano/ne (které kombinace znamenají riziko) zatím není k dispozici – odpovědi nemají barvy.",
+    "otazky": [
+      {
+        "id": "uzkost",
+        "text": "Strach, tíseň, úzkost",
+        "navod": "Klikněte na číslo, které nejlépe odpovídá Vašemu prožívání za posledních 14 dní, včetně dneška",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "depresivita",
+        "text": "Depresivita",
+        "navod": "Klikněte na číslo, které nejlépe odpovídá Vašemu prožívání za posledních 14 dní, včetně dneška",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "zvladani",
+        "text": "Zvládání situace",
+        "navod": "Klikněte na číslo, které nejlépe odpovídá Vašemu prožívání za posledních 14 dní, včetně dneška",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "deti",
+        "text": "Mám v péči dítě/děti ve věku do 15 let",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ano",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Ne",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "trapeni",
+        "text": "Kromě svého současného onemocnění prožívám další životní trápení",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ano",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Ne",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "sam",
+        "text": "Mám pocit, že jsem na vše sám/a",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ano",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Ne",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "psychiatr",
+        "text": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ano",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Ne",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "sebevrazda",
+        "text": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ano",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Ne",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "psycholog",
+        "text": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ano",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Ne",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bolest_analgeticka_terapie",
+    "nazev": "Bolest po nastavení analgetické terapie",
+    "poznamka": null,
+    "otazky": [
+      {
+        "id": "nrs",
+        "text": "Označte na stupni od 0 do 10 stupeň Vaší bolesti",
+        "typ": "skala_1_10",
+        "poznamka": "Formulář nabízí pouze 1–10."
+      },
+      {
+        "id": "spokojenost",
+        "text": "Jste spokojen/a s nastavenou léčbou bolesti?",
+        "typ": "jedna",
+        "moznosti": [
+          {
+            "text": "Ano",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Ne",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "sos",
+        "text": "Kolikrát denně využijete záchrannou medikaci (někdy také nazýváno: léky dle potřeby, SOS medikace)",
+        "typ": "cislo"
+      },
+      {
+        "id": "nu",
+        "text": "Je pro Vás užívání léků proti bolesti spojeno s nežádoucími účinky, které Vás zatěžují? Pokud ano, zvolte jaké.",
+        "typ": "vice",
+        "moznosti": [
+          {
+            "text": "Zácpa",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Ospalost/únava/útlum",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Nevolnosti/zvracení",
+            "barva": null,
+            "upozorneni": null
+          },
+          {
+            "text": "Jiné",
+            "barva": null,
+            "upozorneni": null
+          }
+        ]
+      },
+      {
+        "id": "nu_jine",
+        "podminka": "nu:3",
+        "text": "Popište jiné nežádoucí účinky.",
+        "typ": "text"
+      }
+    ]
+  },
+  {
+    "id": "esas",
+    "nazev": "ESAS",
+    "poznamka": "Všechny položky na škále 1–10 (1 = nejlépe / žádné potíže, 10 = nejhůře). Tlačítka mají barevný gradient zelená → červená; v datech zjednodušeno na 1–3 zelená, 4–5 žlutá, 6–10 červená.",
+    "otazky": [
+      {
+        "id": "pohoda",
+        "text": "Celková pohoda",
+        "navod": "Klikněte na číslo, které nejlépe vyjadřuje, jak se cítíte.",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "bolest",
+        "text": "Bolest",
+        "navod": "Klikněte na číslo, které nejlépe vyjadřuje, jak se cítíte.",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "unava",
+        "text": "Únava",
+        "navod": "Klikněte na číslo, které nejlépe vyjadřuje, jak se cítíte.",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "ospalost",
+        "text": "Ospalost",
+        "navod": "Klikněte na číslo, které nejlépe vyjadřuje, jak se cítíte.",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "nevolnost",
+        "text": "Nevolnost",
+        "navod": "Klikněte na číslo, které nejlépe vyjadřuje, jak se cítíte.",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "nechutenstvi",
+        "text": "Nechutenství",
+        "navod": "Klikněte na číslo, které nejlépe vyjadřuje, jak se cítíte.",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "dusnost",
+        "text": "Dušnost",
+        "navod": "Klikněte na číslo, které nejlépe vyjadřuje, jak se cítíte.",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "deprese",
+        "text": "Deprese",
+        "navod": "Klikněte na číslo, které nejlépe vyjadřuje, jak se cítíte.",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "uzkost",
+        "text": "Úzkost",
+        "navod": "Klikněte na číslo, které nejlépe vyjadřuje, jak se cítíte.",
+        "typ": "skala_1_10"
+      },
+      {
+        "id": "jiny",
+        "text": "Jiný problém",
+        "navod": "Klikněte na číslo, které nejlépe vyjadřuje, jak se cítíte.",
+        "typ": "skala_1_10"
+      }
+    ]
+  }
+]

@@ -1,0 +1,28 @@
+:root {
+  --md-sys-color-error: light-dark(#b42318, #ffb4ab);
+  --triage-1-container: light-dark(#d8f2e0, #0b5132);
+  --triage-1-on-container: light-dark(#0b5132, #d8f2e0);
+  --triage-2-container: light-dark(#fff0c2, #5a4300);
+  --triage-2-on-container: light-dark(#5a4300, #fff0c2);
+  --triage-3-container: light-dark(#ffdcc5, #6b2e00);
+  --triage-3-on-container: light-dark(#6b2e00, #ffdcc5);
+  --triage-4-container: light-dark(#ffdad6, #8c1d18);
+  --triage-4-on-container: light-dark(#8c1d18, #ffdad6);
+  --triage-4-strong: light-dark(#b42318, #ffb4ab);
+  --triage-4-on-strong: light-dark(#ffffff, #690005);
+}
+
+.triage-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px 4px 8px;
+  border-radius: 8px;
+  font: 500 0.875rem/1.25rem var(--md-ref-typeface-plain);
+  --md-icon-size: 18px;
+}
+
+.triage-chip[data-level='1'] { background: var(--triage-1-container); color: var(--triage-1-on-container); }
+.triage-chip[data-level='2'] { background: var(--triage-2-container); color: var(--triage-2-on-container); }
+.triage-chip[data-level='3'] { background: var(--triage-3-container); color: var(--triage-3-on-container); }
+.triage-chip[data-level='4'] { background: var(--triage-4-container); color: var(--triage-4-on-container); }

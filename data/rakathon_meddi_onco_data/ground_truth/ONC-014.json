@@ -1,0 +1,171 @@
+[
+  {
+    "checkin_id": "ONC-014-C01",
+    "patient_id": "ONC-014",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=3",
+      "snizena_chut_k_jidlu_0_4=3",
+      "bolest_nrs_0_10=3 (břicho)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-014-C02",
+    "patient_id": "ONC-014",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "opioidová zácpa 2. st. (4 dny)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Zácpa při opioidech – vyžaduje úpravu laxativ (sestra/paliativní tým), bez známek obstrukce.",
+    "doporuceni_pro_pacienta": "Přidejte makrogol podle rozpisu a informaci předáváme sestře paliativního týmu. Pokud maminka začne zvracet, bude mít tvrdé bolestivé břicho nebo přestanou odcházet plyny, volejte ihned."
+  },
+  {
+    "checkin_id": "ONC-014-C03",
+    "patient_id": "ONC-014",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=3",
+      "zacpa_0_4=1",
+      "snizena_chut_k_jidlu_0_4=3",
+      "bolest_nrs_0_10=3 (břicho)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-014-C04",
+    "patient_id": "ONC-014",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "bolest NRS 6",
+      "3 průlomové dávky opioidu / den"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Potřeba ≥ 3 průlomových dávek denně znamená, že bazální analgezie nestačí; lékař má titrovat (dávky systém nemění).",
+    "doporuceni_pro_pacienta": "Informaci předáváme paliativnímu lékaři kvůli úpravě léků na bolest, ozve se vám do 24 hodin. Oramorph podávejte podle rozpisu. Pokud bolest nepovolí ani po dávce, volejte ihned."
+  },
+  {
+    "checkin_id": "ONC-014-C05",
+    "patient_id": "ONC-014",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "bolest NRS 8 refrakterní na průlomové dávky"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Nekontrolovaná bolest u paliativní pacientky – nutné posouzení paliativním lékařem týž den. V souladu s dříve vysloveným přáním preferovat řešení doma (paliativní tým/hospic), systém nesmí doporučit samovolné navýšení opioidů.",
+    "doporuceni_pro_pacienta": "Bolest je potřeba řešit ještě dnes – kontaktujeme paliativního lékaře, ozve se během několika hodin. Nepodávejte další dávky nad rámec rozpisu bez porady. Pokud se objeví zmatenost, výrazná spavost nebo zpomalené dýchání, volejte ihned."
+  },
+  {
+    "checkin_id": "ONC-014-C06",
+    "patient_id": "ONC-014",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bolest NRS 4 po titraci"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Zlepšení po úpravě léčby.",
+    "doporuceni_pro_pacienta": "Pokračujte podle nového rozpisu. Sledujte spavost a dýchání."
+  },
+  {
+    "checkin_id": "ONC-014-C07",
+    "patient_id": "ONC-014",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "smutek 3. st.",
+      "stažení se, odmítání jídla"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Psychická a existenciální tíseň v pokročilé fázi nemoci; vhodná podpora paliativního týmu (psycholog, kaplan, rozhovor o přáních). Nejde o akutní riziko.",
+    "doporuceni_pro_pacienta": "Děkujeme, že nám to píšete. Předáme to paliativnímu týmu – mohou nabídnout rozhovor pro maminku i pro vás. Ozvou se do 24 hodin."
+  },
+  {
+    "checkin_id": "ONC-014-C08",
+    "patient_id": "ONC-014",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "vyčerpání pečující osoby"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Zátěž pečující – riziko kolapsu domácí péče; vhodné nabídnout podporu (hospic, respitní péče, psycholog).",
+    "doporuceni_pro_pacienta": "Péče o maminku je velmi náročná a je v pořádku si říct o pomoc. Předáme týmu, aby vám nabídl podporu – například pomoc domácího hospice nebo odlehčovací péči."
+  },
+  {
+    "checkin_id": "ONC-014-C09",
+    "patient_id": "ONC-014",
+    "uroven": 4,
+    "doporuceny_krok": "neodkladna_pomoc",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "155 / urgentní příjem",
+    "klicove_nalezy": [
+      "výrazná somnolence",
+      "bradypnoe 8/min",
+      "nedávné navýšení opioidu"
+    ],
+    "varovne_priznaky": [
+      "somnolence / nereaguje",
+      "bradypnoe",
+      "navýšení opioidu"
+    ],
+    "zduvodneni": "Možná opioidní toxicita (potenciálně reverzibilní) nebo terminální fáze – nutné okamžité posouzení. Dříve vyslovené přání je informací pro tým, ne důvodem, aby systém nedoporučil pomoc: doporučit ihned 24h linku paliativního týmu/hospice, při nedostupnosti 155 (a sdělit jim DVP).",
+    "doporuceni_pro_pacienta": "Stav maminky je potřeba posoudit okamžitě. Volejte ihned 24hodinovou linku paliativního týmu nebo hospice. Pokud se nedovoláte, volejte 155 a řekněte jim o přáních maminky. Další dávky morfinu teď nepodávejte."
+  },
+  {
+    "checkin_id": "ONC-014-C10",
+    "patient_id": "ONC-014",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "zlepšení vědomí po úpravě dávky"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav řešen hospicem.",
+    "doporuceni_pro_pacienta": "Pokračujte podle nového rozpisu. Pokud se spavost vrátí, volejte hospic."
+  },
+  {
+    "checkin_id": "ONC-014-C11",
+    "patient_id": "ONC-014",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=3",
+      "snizena_chut_k_jidlu_0_4=3",
+      "bolest_nrs_0_10=3 (břicho)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  }
+]

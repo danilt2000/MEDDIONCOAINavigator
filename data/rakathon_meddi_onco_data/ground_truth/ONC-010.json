@@ -1,0 +1,159 @@
+[
+  {
+    "checkin_id": "ONC-010-C01",
+    "patient_id": "ONC-010",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "nevolnost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-010-C02",
+    "patient_id": "ONC-010",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "nevolnost 2. st.",
+      "zvracení 2× za 24 h",
+      "snížený příjem"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Nevolnost a zvracení navzdory profylaxi; tým má zvážit úpravu antiemetik. Riziko rychlé dehydratace a poruchy natrémie u pacientky se SIADH.",
+    "doporuceni_pro_pacienta": "Informaci předáváme týmu. Můžete užít metoklopramid podle rozpisu. Pijte po malých doušcích. Pokud budete zvracet 3× a vícekrát nebo neudržíte tekutiny, ozvěte se ihned."
+  },
+  {
+    "checkin_id": "ONC-010-C03",
+    "patient_id": "ONC-010",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "zvracení 5× za 24 h",
+      "neudrží tekutiny",
+      "nevolnost 3. st.",
+      "SIADH, CHOPN"
+    ],
+    "varovne_priznaky": [
+      "neudrží tekutiny"
+    ],
+    "zduvodneni": "Nekontrolované zvracení (2. st.) s neschopností přijímat tekutiny – riziko dehydratace, akutního poškození ledvin a rozvratu iontů. Nutné posouzení týž den.",
+    "doporuceni_pro_pacienta": "Vaše obtíže je potřeba dnes probrat s lékařem, domlouváme telekonzultaci během několika hodin. Zkoušejte pít po lžičkách. Pokud přestanete močit, budete zmatená, slabá nebo vám bude na omdlení, volejte ihned 155."
+  },
+  {
+    "checkin_id": "ONC-010-C04",
+    "patient_id": "ONC-010",
+    "uroven": 4,
+    "doporuceny_krok": "neodkladna_pomoc",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "155 / urgentní příjem",
+    "klicove_nalezy": [
+      "zvracení 7× za 24 h",
+      "anurie > 10 h",
+      "závrať",
+      "tachykardie, hypotenze"
+    ],
+    "varovne_priznaky": [
+      "≥ 6 epizod zvracení / 24 h",
+      "anurie",
+      "hypotenze, tachykardie"
+    ],
+    "zduvodneni": "Těžká dehydratace se známkami hypoperfuze (oligoanurie, hypotenze, tachykardie) – riziko akutního selhání ledvin a těžké hyponatrémie. Nutné okamžité vyšetření a i.v. hydratace.",
+    "doporuceni_pro_pacienta": "Stav vaší maminky vyžaduje okamžité vyšetření. Volejte 155 nebo ji odvezte na urgentní příjem. Vezměte s sebou seznam léků."
+  },
+  {
+    "checkin_id": "ONC-010-C05",
+    "patient_id": "ONC-010",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "po hospitalizaci pro dehydrataci",
+      "nevolnost 1. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav známý týmu, zlepšení.",
+    "doporuceni_pro_pacienta": "Pijte podle doporučení z nemocnice. Pokud se zvracení vrátí, ozvěte se hned."
+  },
+  {
+    "checkin_id": "ONC-010-C06",
+    "patient_id": "ONC-010",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=2"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-010-C07",
+    "patient_id": "ONC-010",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=2",
+      "kasel_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-010-C08",
+    "patient_id": "ONC-010",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-010-C09",
+    "patient_id": "ONC-010",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-010-C10",
+    "patient_id": "ONC-010",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "obava z CINV před C3",
+      "anamnéza těžkého zvracení v C2"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Tým má před C3 znát průběh C2 a obavy pacientky – relevantní pro antiemetickou profylaxi (rozhoduje lékař).",
+    "doporuceni_pro_pacienta": "Vaše obavy předáváme lékaři, aby mohl upravit léky proti nevolnosti na zítřejší cyklus."
+  }
+]

@@ -1,0 +1,210 @@
+[
+  {
+    "checkin_id": "ONC-011-C01",
+    "patient_id": "ONC-011",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "mukozitida 2. st.",
+      "bolest při polykání NRS 4",
+      "váha -1,8 % od začátku RT"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Očekávaná mukozitida ve 3. týdnu RT; pacient je denně na ozařovně, analgezie zavedena.",
+    "doporuceni_pro_pacienta": "Bolest při polykání je při ozařování očekávaná. Užívejte léky na bolest před jídlem a vyplachujte ústa. Při dnešním ozařování to řekněte lékaři nebo sestře. Pokud nebudete zvládat pít, ozvěte se hned."
+  },
+  {
+    "checkin_id": "ONC-011-C02",
+    "patient_id": "ONC-011",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "nový tinnitus",
+      "cisplatina týdně"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Tinnitus může být projevem ototoxicity cisplatiny – lékař by o něm měl vědět před další dávkou (rozhodnutí o léčbě je na něm).",
+    "doporuceni_pro_pacienta": "Informaci předáme lékaři před další dávkou chemoterapie. Pokud se vám zhorší sluch, dejte vědět."
+  },
+  {
+    "checkin_id": "ONC-011-C03",
+    "patient_id": "ONC-011",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "bolest_v_ustech_0_4=2",
+      "kozni_zmeny_0_4=1",
+      "bolest_nrs_0_10=4 (krk)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Středně závažný příznak (2. stupeň) bez varovných příznaků; vhodné, aby jej tým vyhodnotil do 24 h.",
+    "doporuceni_pro_pacienta": "Děkujeme. Vaše obtíže předáme zdravotnickému týmu, ozve se vám nejpozději následující pracovní den. Pokud se stav zhorší, vyplňte prosím nový záznam nebo volejte."
+  },
+  {
+    "checkin_id": "ONC-011-C04",
+    "patient_id": "ONC-011",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "bolest NRS 5 při polykání",
+      "váha -3,2 % od začátku RT"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Narůstající bolest a úbytek hmotnosti – nutné posílit analgezii a nutriční podporu.",
+    "doporuceni_pro_pacienta": "Předáme týmu na ozařovně, aby probrali léky na bolest a výživu. Pijte nutriční doplňky po malých doušcích."
+  },
+  {
+    "checkin_id": "ONC-011-C05",
+    "patient_id": "ONC-011",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "mukozitida 3. st. (jen tekutá strava)",
+      "nedostatečná analgezie",
+      "váha -4,1 %"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Těžká mukozitida s omezením příjmu a nedostatečně kontrolovanou bolestí – nutné posouzení týž den (analgezie, výživa, případně sonda). Pacient je dnes na ozařovně.",
+    "doporuceni_pro_pacienta": "Vaše obtíže je potřeba dnes řešit s lékařem. Při dnešním ozařování požádejte o vyšetření lékařem – informaci jim předáváme. Pokud nebudete zvládat pít ani tekutiny, ozvěte se ihned."
+  },
+  {
+    "checkin_id": "ONC-011-C06",
+    "patient_id": "ONC-011",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "mukozitida 3. st.",
+      "bolest lépe kontrolovaná"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav známý týmu, sledovat příjem a hmotnost.",
+    "doporuceni_pro_pacienta": "Pokračujte v lécích a nutričních doplňcích."
+  },
+  {
+    "checkin_id": "ONC-011-C07",
+    "patient_id": "ONC-011",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "radiodermatitida 2. st.",
+      "mukozitida 3. st.",
+      "váha -5,5 %"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Pokračující úbytek hmotnosti; tým zvažuje sondu.",
+    "doporuceni_pro_pacienta": "Pokračujte v péči o kůži a výživě, informaci předáváme týmu."
+  },
+  {
+    "checkin_id": "ONC-011-C08",
+    "patient_id": "ONC-011",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "téměř nemožné polykání tekutin",
+      "bolest NRS 7",
+      "váha -6,3 %"
+    ],
+    "varovne_priznaky": [
+      "neschopnost přijímat tekutiny"
+    ],
+    "zduvodneni": "Neschopnost přijímat dostatek tekutin – vysoké riziko dehydratace a renálního poškození (cisplatina). Nutné posouzení dnes, pravděpodobně zajištění výživy/hydratace.",
+    "doporuceni_pro_pacienta": "Vaše obtíže je potřeba vyřešit dnes – informujeme lékaře na ozařovně. Pokud budete méně močit, točit se vám hlava nebo budete zmatený, volejte ihned 155."
+  },
+  {
+    "checkin_id": "ONC-011-C09",
+    "patient_id": "ONC-011",
+    "uroven": 4,
+    "doporuceny_krok": "neodkladna_pomoc",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848)",
+    "klicove_nalezy": [
+      "příjem tekutin < 0,5 l/den",
+      "oligurie",
+      "závrať, tachykardie 112/min"
+    ],
+    "varovne_priznaky": [
+      "oligurie",
+      "závrať",
+      "tachykardie",
+      "nefrotoxická léčba"
+    ],
+    "zduvodneni": "Klinické známky dehydratace s oligurií u pacienta po cisplatině – riziko akutního selhání ledvin. Nutná okamžitá i.v. hydratace.",
+    "doporuceni_pro_pacienta": "Váš stav vyžaduje okamžité vyšetření. Volejte 155 nebo se nechte odvézt na urgentní příjem – sám neřiďte."
+  },
+  {
+    "checkin_id": "ONC-011-C10",
+    "patient_id": "ONC-011",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "po hospitalizaci",
+      "enterální výživa NGS"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav známý týmu, zajištěná výživa.",
+    "doporuceni_pro_pacienta": "Pokračujte ve výživě sondou podle plánu. Při zvracení, horečce nebo posunu sondy se ozvěte."
+  },
+  {
+    "checkin_id": "ONC-011-C11",
+    "patient_id": "ONC-011",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "mukozitida 3. st.",
+      "radiodermatitida 2. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Očekávané v posledním týdnu RT, stav známý týmu.",
+    "doporuceni_pro_pacienta": "Pokračujte v péči o kůži a výživě."
+  },
+  {
+    "checkin_id": "ONC-011-C12",
+    "patient_id": "ONC-011",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "mukozitida 3. st.",
+      "radiodermatitida 2. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Očekávané v posledním týdnu RT.",
+    "doporuceni_pro_pacienta": "Pokračujte podle plánu."
+  },
+  {
+    "checkin_id": "ONC-011-C13",
+    "patient_id": "ONC-011",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "konec RT",
+      "mukozitida ustupuje"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Očekávaný průběh.",
+    "doporuceni_pro_pacienta": "Gratulujeme k dokončení ozařování. Obtíže budou ještě několik týdnů odeznívat, pokračujte v péči podle plánu."
+  }
+]

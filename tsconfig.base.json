@@ -12,6 +12,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "verbatimModuleSyntax": true,
-    "types": ["vite/client"]
+    "types": ["vite/client", "node"]
   }
 }

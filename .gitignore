@@ -11,3 +11,6 @@ dev-dist/
 .vs/
 *.log
 .claude/
+__pycache__/
+.venv/
+.pytest_cache/

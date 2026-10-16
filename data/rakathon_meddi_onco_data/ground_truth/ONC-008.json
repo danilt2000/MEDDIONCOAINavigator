@@ -1,0 +1,200 @@
+[
+  {
+    "checkin_id": "ONC-008-C01",
+    "patient_id": "ONC-008",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "glykémie 11,2 mmol/l po prednisonu",
+      "nevolnost 1. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Očekávaný vzestup glykémie při vysokodávkovaném prednisonu, bez příznaků.",
+    "doporuceni_pro_pacienta": "Vzestup cukru při prednisonu je očekávaný. Měřte si glykémii ráno a večer. Pokud bude opakovaně nad 15 mmol/l nebo budete mít velkou žízeň a časté močení, napište nám."
+  },
+  {
+    "checkin_id": "ONC-008-C02",
+    "patient_id": "ONC-008",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "glykémie 14,1 mmol/l"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Vzestup glykémie na prednisonu, bez příznaků.",
+    "doporuceni_pro_pacienta": "Pokračujte v měření dvakrát denně, pijte vodu."
+  },
+  {
+    "checkin_id": "ONC-008-C03",
+    "patient_id": "ONC-008",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "glykémie 17,8 mmol/l",
+      "polydipsie a polyurie",
+      "prednison D3"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Symptomatická steroidní hyperglykémie u diabetika – tým (případně diabetolog) má upravit antidiabetickou léčbu ještě během dne. Bez známek ketoacidózy (zvracení, bolest břicha, zrychlené dýchání, zmatenost).",
+    "doporuceni_pro_pacienta": "Cukr je vysoký. Informaci předáváme týmu, ozve se vám ještě dnes. Pijte vodu. Pokud se objeví zvracení, bolest břicha, zrychlené dýchání nebo zmatenost, volejte 155."
+  },
+  {
+    "checkin_id": "ONC-008-C04",
+    "patient_id": "ONC-008",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-008-C05",
+    "patient_id": "ONC-008",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1",
+      "zacpa_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-008-C06",
+    "patient_id": "ONC-008",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "zácpa 2. st. (3 dny)",
+      "brnění prstů 1. st.",
+      "vinkristin"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Zácpa po vinkristinu (autonomní neuropatie) – nutná aktivní léčba, riziko paralytického ileu. Zatím bez varovných příznaků.",
+    "doporuceni_pro_pacienta": "Pokračujte v laktulóze, pijte a choďte. Informaci předáváme sestře, ozve se vám. Pokud přestanou odcházet plyny, začnete zvracet nebo bude břicho bolet a tvrdnout, volejte ihned."
+  },
+  {
+    "checkin_id": "ONC-008-C07",
+    "patient_id": "ONC-008",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "zácpa 2. st. 4. den",
+      "nadmutí",
+      "plyny odcházejí, bez zvracení"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Přetrvávající zácpa po vinkristinu, zatím bez známek ileu; sestra má upravit laxativa.",
+    "doporuceni_pro_pacienta": "Informaci předáváme sestře k úpravě léků na stolici. Hlídejte odchod plynů a zvracení – při jejich zástavě volejte ihned."
+  },
+  {
+    "checkin_id": "ONC-008-C08",
+    "patient_id": "ONC-008",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "zacpa_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-008-C09",
+    "patient_id": "ONC-008",
+    "uroven": 4,
+    "doporuceny_krok": "neodkladna_pomoc",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848)",
+    "klicove_nalezy": [
+      "teplota 38,6 °C",
+      "zimnice",
+      "zarudnutí a bolest v okolí portu",
+      "tachykardie 110/min"
+    ],
+    "varovne_priznaky": [
+      "teplota ≥ 38 °C během chemoterapie",
+      "známky infekce centrálního katétru",
+      "tachykardie"
+    ],
+    "zduvodneni": "Horečka během chemoterapie (i přes pegfilgrastim) a lokální známky infekce portu = riziko katetrové sepse. Nutné okamžité vyšetření, hemokultury a ATB.",
+    "doporuceni_pro_pacienta": "Vaše obtíže vyžadují okamžité vyšetření. Volejte ihned 155 nebo sloužícího lékaře MOÚ na čísle 724 590 848, případně jeďte na urgentní příjem. Paralen neberte, dokud vás nevyšetří lékař. Na port nesahejte."
+  },
+  {
+    "checkin_id": "ONC-008-C10",
+    "patient_id": "ONC-008",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "po hospitalizaci pro infekci portu",
+      "afebrilní"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav známý týmu, zlepšení.",
+    "doporuceni_pro_pacienta": "Dobírejte antibiotika a měřte teplotu dvakrát denně. Při teplotě 38 °C a více nebo zarudnutí portu volejte ihned."
+  },
+  {
+    "checkin_id": "ONC-008-C11",
+    "patient_id": "ONC-008",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-008-C12",
+    "patient_id": "ONC-008",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "nevolnost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-008-C13",
+    "patient_id": "ONC-008",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "glykémie 13,2 na inzulinovém schématu"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Glykémie v očekávaném rozmezí při schématu.",
+    "doporuceni_pro_pacienta": "Pokračujte podle schématu inzulinu."
+  }
+]

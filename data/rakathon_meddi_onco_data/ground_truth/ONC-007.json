@@ -1,0 +1,196 @@
+[
+  {
+    "checkin_id": "ONC-007-C01",
+    "patient_id": "ONC-007",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-007-C02",
+    "patient_id": "ONC-007",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-007-C03",
+    "patient_id": "ONC-007",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-007-C04",
+    "patient_id": "ONC-007",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "otoky kotníků 1. st.",
+      "námahová dušnost 1. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Mírné příznaky, u pacientky po antracyklinech na trastuzumabu ale nutné sledovat trend (kardiotoxicita).",
+    "doporuceni_pro_pacienta": "Važte se prosím každé ráno a zapisujte hmotnost. Nohy dávejte nahoru. Pokud přiberete víc než 2 kg za 3 dny, otoky se zhorší nebo se vám bude hůř dýchat, napište nám hned."
+  },
+  {
+    "checkin_id": "ONC-007-C05",
+    "patient_id": "ONC-007",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "otoky 1. st.",
+      "váha +0,7 kg za 2 dny"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Trend zatím mírný, pokračovat v denním sledování.",
+    "doporuceni_pro_pacienta": "Pokračujte v denním vážení."
+  },
+  {
+    "checkin_id": "ONC-007-C06",
+    "patient_id": "ONC-007",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "otoky 2. st.",
+      "váha +1,6 kg za 4 dny",
+      "léčba trastuzumabem po antracyklinech"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Kombinace narůstajících otoků a hmotnostního přírůstku u pacientky s rizikem kardiotoxicity. Tým má rozhodnout o vyšetření (NT-proBNP, ECHO).",
+    "doporuceni_pro_pacienta": "Informaci předáváme týmu, ozve se vám do 24 hodin. Važte se dál každé ráno. Pokud se vám bude dýchat hůř v klidu nebo vleže, volejte ihned."
+  },
+  {
+    "checkin_id": "ONC-007-C07",
+    "patient_id": "ONC-007",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "otoky 2. st.",
+      "dušnost při chůzi do schodů 2. st.",
+      "váha +2,4 kg za 6 dní"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Trend pokračuje; tým o stavu ví a vyšetření je naplánováno.",
+    "doporuceni_pro_pacienta": "Pokračujte ve vážení, vyšetření je domluvené."
+  },
+  {
+    "checkin_id": "ONC-007-C08",
+    "patient_id": "ONC-007",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "ortopnoe (nová)",
+      "váha +3 kg za 7 dní",
+      "dušnost 2. st.",
+      "tachykardie 94/min"
+    ],
+    "varovne_priznaky": [
+      "ortopnoe",
+      "rychlý přírůstek hmotnosti"
+    ],
+    "zduvodneni": "Ortopnoe a rychlý přírůstek hmotnosti jsou známky srdečního selhání; nečekat na plánované vyšetření, nutné posouzení týž den. Při klidové dušnosti či bolesti na hrudi jde o červenou úroveň.",
+    "doporuceni_pro_pacienta": "Vaše příznaky je potřeba probrat s lékařem ještě dnes, domlouváme telekonzultaci. Pokud budete dušná v klidu, objeví se bolest na hrudi, chrčivý dech nebo budete mít pocit na omdlení, volejte ihned 155."
+  },
+  {
+    "checkin_id": "ONC-007-C09",
+    "patient_id": "ONC-007",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "zlepšení po diuretiku"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav řešen kardioonkologem, zlepšuje se.",
+    "doporuceni_pro_pacienta": "Pokračujte v denním vážení a lécích podle rozpisu."
+  },
+  {
+    "checkin_id": "ONC-007-C10",
+    "patient_id": "ONC-007",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "otoky 1. st., hmotnost klesá"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Zlepšování.",
+    "doporuceni_pro_pacienta": "Pokračujte ve vážení."
+  },
+  {
+    "checkin_id": "ONC-007-C11",
+    "patient_id": "ONC-007",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-007-C12",
+    "patient_id": "ONC-007",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "uzkost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-007-C13",
+    "patient_id": "ONC-007",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  }
+]

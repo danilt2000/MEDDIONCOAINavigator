@@ -1,0 +1,219 @@
+[
+  {
+    "checkin_id": "ONC-001-C01",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1",
+      "nevolnost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-001-C02",
+    "patient_id": "ONC-001",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "nevolnost 2. st. navzdory antiemetikům",
+      "1 epizoda zvracení",
+      "příjem tekutin zachován"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Opožděná nevolnost 2. stupně po AC. Pacientka pije, bez známek dehydratace. Tým by měl zhodnotit antiemetickou profylaxi pro další cyklus – o úpravě rozhoduje lékař.",
+    "doporuceni_pro_pacienta": "Pokračujte v lécích proti nevolnosti podle rozpisu a pijte po malých doušcích. Informaci předáváme týmu, který se vám ozve. Pokud budete zvracet 3× a vícekrát za 24 hodin nebo neudržíte tekutiny, ozvěte se ihned."
+  },
+  {
+    "checkin_id": "ONC-001-C03",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=2",
+      "nevolnost_0_4=1",
+      "snizena_chut_k_jidlu_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-001-C04",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=2"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-001-C05",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1",
+      "bolest_v_ustech_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-001-C06",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "únava 2. st.",
+      "škrábání v krku",
+      "9. den po AC – období nadiru"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Bez horečky a varovných příznaků. Pacientka je ale v období očekávaného nadiru (D7–D14), proto je klíčová poučená kontrola teploty.",
+    "doporuceni_pro_pacienta": "Měřte si prosím teplotu dvakrát denně a vždy, když se necítíte dobře. Při teplotě 38 °C a více nebo při zimnici volejte ihned onkologickou urgentní linku – nečekejte do rána."
+  },
+  {
+    "checkin_id": "ONC-001-C07",
+    "patient_id": "ONC-001",
+    "uroven": 4,
+    "doporuceny_krok": "neodkladna_pomoc",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848)",
+    "klicove_nalezy": [
+      "teplota 38,4 °C",
+      "třesavka",
+      "D10 po AC – očekávaný nadir",
+      "tachykardie 108/min"
+    ],
+    "varovne_priznaky": [
+      "teplota ≥ 38 °C během chemoterapie",
+      "třesavka",
+      "období nadiru (D7–D14)",
+      "tachykardie"
+    ],
+    "zduvodneni": "Horečka ≥ 38 °C během chemoterapie v období nadiru = podezření na febrilní neutropenii, potenciálně život ohrožující stav vyžadující vyšetření a ATB do 1 hodiny. Nečekat do rána, nemaskovat horečku antipyretiky.",
+    "doporuceni_pro_pacienta": "Vaše obtíže vyžadují okamžité vyšetření. Ihned volejte sloužícího lékaře MOÚ na čísle 724 590 848, a pokud se nedovoláte, volejte 155 nebo jeďte na urgentní příjem. Nečekejte do rána a Paralen si neberte, dokud vás nezkontroluje lékař. Vezměte si s sebou seznam léků."
+  },
+  {
+    "checkin_id": "ONC-001-C08",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "stav po hospitalizaci pro FN",
+      "afebrilní",
+      "dobírá ATB p.o."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Tým o hospitalizaci ví (záznam z nemocnice). Pacientka je stabilní, pokračuje sledování.",
+    "doporuceni_pro_pacienta": "Jsme rádi, že jste doma. Dobírejte antibiotika podle rozpisu a měřte teplotu dvakrát denně. Při teplotě 38 °C a více volejte ihned."
+  },
+  {
+    "checkin_id": "ONC-001-C09",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-001-C10",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-001-C11",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1",
+      "nevolnost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-001-C12",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bolest kostí NRS 3 po pegfilgrastimu",
+      "nevolnost 1. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Bolest kostí je častý a očekávaný nežádoucí účinek pegfilgrastimu, bez varovných příznaků.",
+    "doporuceni_pro_pacienta": "Bolest kostí po injekci na bílé krvinky je častá a obvykle odezní za 2–3 dny. Můžete užít Paracetamol podle rozpisu od lékaře. Pokud bolest přesáhne 6 z 10 nebo se objeví teplota, ozvěte se."
+  },
+  {
+    "checkin_id": "ONC-001-C13",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1",
+      "nevolnost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-001-C14",
+    "patient_id": "ONC-001",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  }
+]

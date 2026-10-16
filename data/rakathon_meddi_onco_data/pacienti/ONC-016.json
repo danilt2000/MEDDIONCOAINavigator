@@ -1,0 +1,1179 @@
+{
+  "patient_id": "ONC-016",
+  "synteticka_data": true,
+  "sada": "dev",
+  "nazev_scenare": "Karcinom prsu na letrozolu – artralgie, neadherence a postupně se zhoršující deprese s pasivními myšlenkami na smrt",
+  "obdobi_sledovani": {
+    "od": "2026-08-26",
+    "do": "2026-09-29"
+  },
+  "demografie": {
+    "jmeno_fiktivni": "Simona J.",
+    "vek": 50,
+    "pohlavi": "F",
+    "jazyk": "cs",
+    "kraj": "Liberecký",
+    "domacnost": "sama, dcera studuje v Praze",
+    "digitalni_gramotnost": "vysoka",
+    "vyplnuje": "pacient"
+  },
+  "diagnoza": {
+    "diagnoza": "Invazivní karcinom levého prsu, st. p. parciální mastektomii a RT",
+    "mkn10": "C50.4",
+    "stadium": "pT1c N0 M0 (IA)",
+    "biomarkery": "ER 95 %, PR 80 %, HER2 negativní",
+    "datum_diagnozy": "2025-09-01"
+  },
+  "ecog_vychozi": 0,
+  "komorbidity": [],
+  "alergie": [],
+  "predem_vyslovena_prani": null,
+  "antropometrie": {
+    "vyska_cm": 166,
+    "vaha_kg_vychozi": 68.0,
+    "bmi": 24.7
+  },
+  "lecba": {
+    "zamer": "adjuvantní",
+    "rezim": "letrozol 2,5 mg denně (1. rok z plánovaných 5–10 let)",
+    "leky": [
+      "letrozol 2,5 mg p.o. denně"
+    ],
+    "delka_cyklu": null,
+    "cykly": [],
+    "poznamka": ""
+  },
+  "leky": [
+    {
+      "lek": "Letrozol",
+      "davka": "2,5 mg",
+      "frekvence": "1× denně",
+      "indikace": "karcinom prsu",
+      "typ": "onkologicky",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": false,
+      "od_data": null,
+      "do_data": null
+    },
+    {
+      "lek": "Kalcium + vitamin D",
+      "davka": "500 mg/1000 IU",
+      "frekvence": "1× denně",
+      "indikace": "prevence osteoporózy",
+      "typ": "podpurny",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": false,
+      "od_data": null,
+      "do_data": null
+    },
+    {
+      "lek": "Ibuprofen",
+      "davka": "400 mg",
+      "frekvence": "max 3× denně",
+      "indikace": "bolest kloubů",
+      "typ": "podpurny",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": true,
+      "od_data": null,
+      "do_data": null
+    }
+  ],
+  "laboratore": [],
+  "vysetreni": [],
+  "udalosti_tymu": [
+    {
+      "patient_id": "ONC-016",
+      "datum": "2026-09-07",
+      "cas": "14:00",
+      "den_sledovani": 13,
+      "typ": "kontakt_sestra",
+      "autor": "onkologická sestra",
+      "text": "Sestra: rozhovor o artralgii, doporučen pohyb, ibuprofen; probrána důležitost pravidelného užívání."
+    },
+    {
+      "patient_id": "ONC-016",
+      "datum": "2026-09-11",
+      "cas": "15:00",
+      "den_sledovani": 17,
+      "typ": "kontakt_sestra",
+      "autor": "onkologická sestra",
+      "text": "Sestra: telefonát, domluvena psychoonkologie za 3 dny; pacientka popřela myšlenky na sebepoškození."
+    },
+    {
+      "patient_id": "ONC-016",
+      "datum": "2026-09-15",
+      "cas": "14:00",
+      "den_sledovani": 21,
+      "typ": "kontakt_psycholog",
+      "autor": "psychoonkolog",
+      "text": "Psychoonkolog: krizová konzultace týž den, bezpečnostní plán, objednána k psychiatrovi; zahájena psychoterapie."
+    }
+  ],
+  "checkiny": [
+    {
+      "checkin_id": "ONC-016-C01",
+      "patient_id": "ONC-016",
+      "datum": "2026-08-26",
+      "cas": "12:20",
+      "den_sledovani": 1,
+      "cyklus": null,
+      "den_cyklu": null,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-016-C01-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný a zvládám všechny běžné fyzické aktivity bez větších omezení.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti svalů a kloubů"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_klouby",
+              "otazka": "Jak silné jsou bolesti svalů a kloubů?",
+              "odpoved": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        },
+        {
+          "vyplneni_id": "ONC-016-C01-PSY",
+          "dotaznik_id": "psychoonkologicky_screening",
+          "dotaznik_nazev": "Psychoonkologický screening MOÚ",
+          "odpovedi": [
+            {
+              "otazka_id": "uzkost",
+              "otazka": "Strach, tíseň, úzkost",
+              "odpoved": 3,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "depresivita",
+              "otazka": "Depresivita",
+              "odpoved": 4,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvladani",
+              "otazka": "Zvládání situace",
+              "odpoved": 6,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "deti",
+              "otazka": "Mám v péči dítě/děti ve věku do 15 let",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "trapeni",
+              "otazka": "Kromě svého současného onemocnění prožívám další životní trápení",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sam",
+              "otazka": "Mám pocit, že jsem na vše sám/a",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psychiatr",
+              "otazka": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sebevrazda",
+              "otazka": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psycholog",
+              "otazka": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": null,
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {},
+      "zprava_pacienta": "Ráno ztuhlé klouby.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-016-C02",
+      "patient_id": "ONC-016",
+      "datum": "2026-08-30",
+      "cas": "17:25",
+      "den_sledovani": 5,
+      "cyklus": null,
+      "den_cyklu": null,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-016-C02-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný a zvládám všechny běžné fyzické aktivity bez větších omezení.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti svalů a kloubů"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_klouby",
+              "otazka": "Jak silné jsou bolesti svalů a kloubů?",
+              "odpoved": "Střední bolest, která mě limituje v denních činnostech.",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {},
+      "zprava_pacienta": "Klouby bolí víc, špatně spím.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-016-C03",
+      "patient_id": "ONC-016",
+      "datum": "2026-09-03",
+      "cas": "16:50",
+      "den_sledovani": 9,
+      "cyklus": null,
+      "den_cyklu": null,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-016-C03-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný a zvládám všechny běžné fyzické aktivity bez větších omezení.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti svalů a kloubů"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_klouby",
+              "otazka": "Jak silné jsou bolesti svalů a kloubů?",
+              "odpoved": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        },
+        {
+          "vyplneni_id": "ONC-016-C03-PSY",
+          "dotaznik_id": "psychoonkologicky_screening",
+          "dotaznik_nazev": "Psychoonkologický screening MOÚ",
+          "odpovedi": [
+            {
+              "otazka_id": "uzkost",
+              "otazka": "Strach, tíseň, úzkost",
+              "odpoved": 6,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "depresivita",
+              "otazka": "Depresivita",
+              "odpoved": 6,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvladani",
+              "otazka": "Zvládání situace",
+              "odpoved": 5,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "deti",
+              "otazka": "Mám v péči dítě/děti ve věku do 15 let",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "trapeni",
+              "otazka": "Kromě svého současného onemocnění prožívám další životní trápení",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sam",
+              "otazka": "Mám pocit, že jsem na vše sám/a",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psychiatr",
+              "otazka": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sebevrazda",
+              "otazka": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psycholog",
+              "otazka": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": null,
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {},
+      "zprava_pacienta": "Nemám na nic náladu, pořád myslím na nemoc.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-016-C04",
+      "patient_id": "ONC-016",
+      "datum": "2026-09-07",
+      "cas": "09:20",
+      "den_sledovani": 13,
+      "cyklus": null,
+      "den_cyklu": null,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-016-C04-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný a zvládám všechny běžné fyzické aktivity bez větších omezení.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti svalů a kloubů"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_klouby",
+              "otazka": "Jak silné jsou bolesti svalů a kloubů?",
+              "odpoved": "Střední bolest, která mě limituje v denních činnostech.",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {},
+      "zprava_pacienta": "Tablety jsem pár dní vynechala, kvůli kloubům.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-016-C05",
+      "patient_id": "ONC-016",
+      "datum": "2026-09-11",
+      "cas": "13:10",
+      "den_sledovani": 17,
+      "cyklus": null,
+      "den_cyklu": null,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-016-C05-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "4",
+              "odpoved_index": 3,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný a zvládám všechny běžné fyzické aktivity bez větších omezení.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti svalů a kloubů"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_klouby",
+              "otazka": "Jak silné jsou bolesti svalů a kloubů?",
+              "odpoved": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        },
+        {
+          "vyplneni_id": "ONC-016-C05-PSY",
+          "dotaznik_id": "psychoonkologicky_screening",
+          "dotaznik_nazev": "Psychoonkologický screening MOÚ",
+          "odpovedi": [
+            {
+              "otazka_id": "uzkost",
+              "otazka": "Strach, tíseň, úzkost",
+              "odpoved": 6,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "depresivita",
+              "otazka": "Depresivita",
+              "odpoved": 8,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvladani",
+              "otazka": "Zvládání situace",
+              "odpoved": 3,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "deti",
+              "otazka": "Mám v péči dítě/děti ve věku do 15 let",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "trapeni",
+              "otazka": "Kromě svého současného onemocnění prožívám další životní trápení",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sam",
+              "otazka": "Mám pocit, že jsem na vše sám/a",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psychiatr",
+              "otazka": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sebevrazda",
+              "otazka": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psycholog",
+              "otazka": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": null,
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {},
+      "zprava_pacienta": "Připadám si k ničemu, nemá cenu se snažit.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-016-C06",
+      "patient_id": "ONC-016",
+      "datum": "2026-09-15",
+      "cas": "08:40",
+      "den_sledovani": 21,
+      "cyklus": null,
+      "den_cyklu": null,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-016-C06-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný a zvládám všechny běžné fyzické aktivity bez větších omezení.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti svalů a kloubů"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_klouby",
+              "otazka": "Jak silné jsou bolesti svalů a kloubů?",
+              "odpoved": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        },
+        {
+          "vyplneni_id": "ONC-016-C06-PSY",
+          "dotaznik_id": "psychoonkologicky_screening",
+          "dotaznik_nazev": "Psychoonkologický screening MOÚ",
+          "odpovedi": [
+            {
+              "otazka_id": "uzkost",
+              "otazka": "Strach, tíseň, úzkost",
+              "odpoved": 8,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "depresivita",
+              "otazka": "Depresivita",
+              "odpoved": 7,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvladani",
+              "otazka": "Zvládání situace",
+              "odpoved": 2,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "deti",
+              "otazka": "Mám v péči dítě/děti ve věku do 15 let",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "trapeni",
+              "otazka": "Kromě svého současného onemocnění prožívám další životní trápení",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sam",
+              "otazka": "Mám pocit, že jsem na vše sám/a",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psychiatr",
+              "otazka": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sebevrazda",
+              "otazka": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psycholog",
+              "otazka": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": null,
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {},
+      "zprava_pacienta": "Občas si říkám, že by bylo lepší se ráno neprobudit. Ale nic bych si neudělala.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-016-C07",
+      "patient_id": "ONC-016",
+      "datum": "2026-09-19",
+      "cas": "18:55",
+      "den_sledovani": 25,
+      "cyklus": null,
+      "den_cyklu": null,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-016-C07-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný a zvládám všechny běžné fyzické aktivity bez větších omezení.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti svalů a kloubů"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_klouby",
+              "otazka": "Jak silné jsou bolesti svalů a kloubů?",
+              "odpoved": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {},
+      "zprava_pacienta": null,
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-016-C08",
+      "patient_id": "ONC-016",
+      "datum": "2026-09-24",
+      "cas": "07:25",
+      "den_sledovani": 30,
+      "cyklus": null,
+      "den_cyklu": null,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-016-C08-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný a zvládám všechny běžné fyzické aktivity bez větších omezení.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti svalů a kloubů"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_klouby",
+              "otazka": "Jak silné jsou bolesti svalů a kloubů?",
+              "odpoved": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        },
+        {
+          "vyplneni_id": "ONC-016-C08-PSY",
+          "dotaznik_id": "psychoonkologicky_screening",
+          "dotaznik_nazev": "Psychoonkologický screening MOÚ",
+          "odpovedi": [
+            {
+              "otazka_id": "uzkost",
+              "otazka": "Strach, tíseň, úzkost",
+              "odpoved": 2,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "depresivita",
+              "otazka": "Depresivita",
+              "odpoved": 3,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvladani",
+              "otazka": "Zvládání situace",
+              "odpoved": 6,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "deti",
+              "otazka": "Mám v péči dítě/děti ve věku do 15 let",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "trapeni",
+              "otazka": "Kromě svého současného onemocnění prožívám další životní trápení",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sam",
+              "otazka": "Mám pocit, že jsem na vše sám/a",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psychiatr",
+              "otazka": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sebevrazda",
+              "otazka": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psycholog",
+              "otazka": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+              "odpoved": "Ano",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": null,
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {},
+      "zprava_pacienta": "Psychoterapie pomáhá, začala jsem chodit plavat.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-016-C09",
+      "patient_id": "ONC-016",
+      "datum": "2026-09-29",
+      "cas": "12:00",
+      "den_sledovani": 35,
+      "cyklus": null,
+      "den_cyklu": null,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-016-C09-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný a zvládám všechny běžné fyzické aktivity bez větších omezení.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti svalů a kloubů"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_klouby",
+              "otazka": "Jak silné jsou bolesti svalů a kloubů?",
+              "odpoved": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {},
+      "zprava_pacienta": "Tablety beru pravidelně.",
+      "prilohy": []
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+[
+  {
+    "checkin_id": "ONC-017-C01",
+    "patient_id": "ONC-017",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "akné-like exantém 1. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Očekávaná kožní toxicita EGFR inhibitoru.",
+    "doporuceni_pro_pacienta": "Používejte jemnou kosmetiku bez alkoholu, promazávejte a chraňte se před sluncem. Pokud se vyrážka rozšíří nebo začne bolet, napište nám."
+  },
+  {
+    "checkin_id": "ONC-017-C02",
+    "patient_id": "ONC-017",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "kozni_zmeny_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-017-C03",
+    "patient_id": "ONC-017",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "paronychie 2. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Paronychie omezující nošení obuvi; tým/dermatolog má doporučit léčbu.",
+    "doporuceni_pro_pacienta": "Informaci předáme týmu, ozve se do 24 hodin. Noste volnou obuv a palec udržujte v suchu. Při šíření zarudnutí, hnisu nebo horečce se ozvěte hned."
+  },
+  {
+    "checkin_id": "ONC-017-C04",
+    "patient_id": "ONC-017",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "paronychie 2. st. přetrvává"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav známý týmu.",
+    "doporuceni_pro_pacienta": "Pokračujte v doporučené péči."
+  },
+  {
+    "checkin_id": "ONC-017-C05",
+    "patient_id": "ONC-017",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "kozni_zmeny_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-017-C06",
+    "patient_id": "ONC-017",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "check-in nevyplněn"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Jednorázový výpadek – odeslat připomenutí.",
+    "doporuceni_pro_pacienta": "(Automatické připomenutí pacientovi.)"
+  },
+  {
+    "checkin_id": "ONC-017-C07",
+    "patient_id": "ONC-017",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "2. nevyplněný check-in v řadě"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Opakovaný výpadek – druhé připomenutí, zatím bez eskalace (stabilní pacient s nízkým rizikem).",
+    "doporuceni_pro_pacienta": "(Druhé připomenutí pacientovi.)"
+  },
+  {
+    "checkin_id": "ONC-017-C08",
+    "patient_id": "ONC-017",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "3 nevyplněné check-iny / 6 dní bez dat"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Dlouhodobý výpadek dat znamená, že systém nemůže vyloučit zhoršení. Upozornit tým, aby pacienta kontaktoval (u vysoce rizikových pacientů dříve).",
+    "doporuceni_pro_pacienta": "(Upozornění týmu: kontaktovat pacienta.)"
+  },
+  {
+    "checkin_id": "ONC-017-C09",
+    "patient_id": "ONC-017",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "obnovený kontakt",
+      "bez obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Výpadek vysvětlen, stav stabilní.",
+    "doporuceni_pro_pacienta": "Díky, že jste se ozval. Pokud budete zase mimo signál, můžete nám to předem napsat."
+  },
+  {
+    "checkin_id": "ONC-017-C10",
+    "patient_id": "ONC-017",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "kozni_zmeny_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-017-C11",
+    "patient_id": "ONC-017",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-017-C12",
+    "patient_id": "ONC-017",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "kozni_zmeny_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  }
+]

@@ -1,6 +1,7 @@
 @import '@fontsource-variable/roboto-flex/index.css';
 @import '@material/web/typography/md-typescale-styles.css';
 @import './tokens.css';
+@import './triage.css';
 
 :root {
   --md-ref-typeface-brand: 'Roboto Flex Variable', Roboto, system-ui, sans-serif;

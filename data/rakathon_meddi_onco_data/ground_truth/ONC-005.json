@@ -1,0 +1,174 @@
+[
+  {
+    "checkin_id": "ONC-005-C01",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-005-C02",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-005-C03",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-005-C04",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bolest kolene NRS 4 po fyzické zátěži",
+      "bez otoku, bez teploty"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Bolest s jasnou mechanickou příčinou, bez kostních metastáz v anamnéze a bez varovných příznaků. Nevyžaduje kontakt týmu, jen sledování.",
+    "doporuceni_pro_pacienta": "Dopřejte koleni klid, můžete chladit a užít Paracetamol podle rozpisu. Pokud bolest nepoleví do týdne, koleno oteče, zčervená nebo se objeví bolest v kostech bez námahy, napište nám."
+  },
+  {
+    "checkin_id": "ONC-005-C05",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bolest_nrs_0_10=2 (pravé koleno)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-005-C06",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-005-C07",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-005-C08",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "jednorázově TK 158/94",
+      "bez bolesti hlavy či jiných příznaků"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Ojedinělá zvýšená hodnota bez příznaků. Enzalutamid může tlak zvyšovat, rozhodující je trend opakovaných měření.",
+    "doporuceni_pro_pacienta": "Změřte si prosím tlak znovu po 5 minutách v klidu vsedě a pak ráno a večer další 3 dny. Pokud bude opakovaně nad 140/90, předáme to lékaři. Při tlaku nad 180/110, bolesti na hrudi, silné bolesti hlavy nebo poruše řeči či hybnosti volejte 155."
+  },
+  {
+    "checkin_id": "ONC-005-C09",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "TK 154/92 – 2. zvýšené měření"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Trend zatím krátký, bez příznaků; pokračovat v měření.",
+    "doporuceni_pro_pacienta": "Děkujeme, měřte prosím dál ráno a večer."
+  },
+  {
+    "checkin_id": "ONC-005-C10",
+    "patient_id": "ONC-005",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "opakovaně TK > 150/90, dnes 162/96",
+      "asymptomatický",
+      "léčba enzalutamidem"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Opakovaně zvýšený tlak (hypertenze 2.–3. st.) bez známek orgánového poškození. Tým/praktický lékař má upravit antihypertenzní léčbu – o úpravě rozhoduje lékař.",
+    "doporuceni_pro_pacienta": "Tlak máte opakovaně vyšší, proto informaci předáváme lékaři, který se vám ozve do 24 hodin. Léky neměňte sám. Při tlaku nad 180/110, bolesti na hrudi, silné bolesti hlavy, poruše řeči, zraku nebo hybnosti volejte ihned 155."
+  },
+  {
+    "checkin_id": "ONC-005-C11",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-005-C12",
+    "patient_id": "ONC-005",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  }
+]

@@ -1,0 +1,211 @@
+[
+  {
+    "checkin_id": "ONC-009-C01",
+    "patient_id": "ONC-009",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-009-C02",
+    "patient_id": "ONC-009",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-009-C03",
+    "patient_id": "ONC-009",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "TK 142/88",
+      "průjem 1. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Mírný vzestup TK na sunitinibu, bez příznaků; sledovat trend.",
+    "doporuceni_pro_pacienta": "Měřte tlak ráno a večer. Při opakovaných hodnotách nad 150/95 se ozvěte."
+  },
+  {
+    "checkin_id": "ONC-009-C04",
+    "patient_id": "ONC-009",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "TK 152/95",
+      "mírná bolest hlavy"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hypertenze 2. st. vyvolaná TKI; tým má zahájit/upravit antihypertenzní léčbu (rozhoduje lékař).",
+    "doporuceni_pro_pacienta": "Informaci předáváme lékaři, ozve se vám do 24 hodin. Při tlaku nad 180/110, silné bolesti hlavy, poruše zraku, řeči nebo bolesti na hrudi volejte ihned 155."
+  },
+  {
+    "checkin_id": "ONC-009-C05",
+    "patient_id": "ONC-009",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "syndrom ruka-noha 2. st. (bolest, puchýře, omezení chůze)",
+      "TK 146/92 na amlodipinu"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Kožní toxicita TKI 2. stupně omezující běžné činnosti; tým má rozhodnout o dalším postupu (případně úpravě dávky – výhradně lékař).",
+    "doporuceni_pro_pacienta": "Promazávejte chodidla krémem s ureou, noste měkkou obuv a odlehčujte. Informaci předáváme týmu, ozve se do 24 hodin."
+  },
+  {
+    "checkin_id": "ONC-009-C06",
+    "patient_id": "ONC-009",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "TK 168/102 navzdory amlodipinu",
+      "mírná bolest hlavy",
+      "bez neurologických příznaků"
+    ],
+    "varovne_priznaky": [
+      "TK ≥ 160/100 na antiangiogenní léčbě"
+    ],
+    "zduvodneni": "Hypertenze 3. stupně na TKI bez známek hypertenzní emergence; nutné posouzení lékařem týž den.",
+    "doporuceni_pro_pacienta": "Tlak je výrazně zvýšený, domlouváme telekonzultaci s lékařem ještě dnes. Za hodinu si tlak změřte znovu v klidu. Pokud bude nad 180/110 nebo se objeví silná bolest hlavy, poruchy vidění, řeči, slabost končetin či bolest na hrudi, volejte ihned 155."
+  },
+  {
+    "checkin_id": "ONC-009-C07",
+    "patient_id": "ONC-009",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "TK 148/90 po navýšení amlodipinu",
+      "syndrom ruka-noha 2. st. přetrvává"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav známý týmu; přetrvávající kožní toxicita 2. st.",
+    "doporuceni_pro_pacienta": "Pokračujte v péči o chodidla a měření tlaku."
+  },
+  {
+    "checkin_id": "ONC-009-C08",
+    "patient_id": "ONC-009",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "syndrom ruka-noha 2. st.",
+      "průjem 1. st.",
+      "mukozitida 1. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Kumulace mírných toxicit; tým o kožní toxicitě ví.",
+    "doporuceni_pro_pacienta": "Pokračujte v péči o kůži, pijte. Při zhoršení se ozvěte."
+  },
+  {
+    "checkin_id": "ONC-009-C09",
+    "patient_id": "ONC-009",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1",
+      "kozni_zmeny_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-009-C10",
+    "patient_id": "ONC-009",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=2"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-009-C11",
+    "patient_id": "ONC-009",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1",
+      "kozni_zmeny_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-009-C12",
+    "patient_id": "ONC-009",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "TK 106/66 v pauze sunitinibu na plné dávce amlodipinu",
+      "ortostatické závratě"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "V pauze TKI tlak klesá, antihypertenziva nastavená na období léčby mohou způsobit hypotenzi a pády. Tým má upravit dávku (rozhoduje lékař).",
+    "doporuceni_pro_pacienta": "Vstávejte pomalu a dostatečně pijte. Informaci předáváme lékaři kvůli úpravě léku na tlak, ozve se do 24 hodin. Pokud omdlíte nebo upadnete, volejte 155."
+  },
+  {
+    "checkin_id": "ONC-009-C13",
+    "patient_id": "ONC-009",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-009-C14",
+    "patient_id": "ONC-009",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  }
+]

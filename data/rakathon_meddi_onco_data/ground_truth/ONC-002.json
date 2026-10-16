@@ -1,0 +1,236 @@
+[
+  {
+    "checkin_id": "ONC-002-C01",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "chladem vyvolaná dysestezie (prsty, hrdlo)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Akutní, chladem vyvolaná neurotoxicita oxaliplatiny je očekávaná a přechodná (hodiny až dny).",
+    "doporuceni_pro_pacienta": "Brnění a pálení po studeném je po oxaliplatině běžné a za pár dní odezní. Pijte vlažné nápoje, nesahejte holýma rukama do lednice a nosit rukavice venku. Pokud brnění přetrvává i mezi cykly, napište nám."
+  },
+  {
+    "checkin_id": "ONC-002-C02",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "nevolnost_0_4=1",
+      "brneni_necitlivost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-002-C03",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-002-C04",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-002-C05",
+    "patient_id": "ONC-002",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "přetrvávající brnění prstů mezi cykly (neuropatie 1. st.)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Přetrvávající periferní neuropatie mezi cykly je kumulativní toxicita oxaliplatiny. Není urgentní, ale lékař by ji měl znát před C6 (rozhodnutí o dávce je výhradně na lékaři).",
+    "doporuceni_pro_pacienta": "Děkujeme. Informaci předáme lékaři před dalším cyklem. Sledujte prosím, zda vám brnění nezačne vadit při zapínání knoflíků, psaní nebo chůzi."
+  },
+  {
+    "checkin_id": "ONC-002-C06",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "brneni_necitlivost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-002-C07",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "průjem 1. st. (3 stolice nad normál)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Průjem 1. stupně po 5-FU, bez varovných příznaků. Vyžaduje poučení a další sledování.",
+    "doporuceni_pro_pacienta": "Užijte loperamid podle rozpisu (4 mg po první řídké stolici, pak 2 mg po každé další) a hodně pijte. Pokud budete mít 4 a více stolic navíc, horečku, křeče nebo nezvládnete pít, ozvěte se ihned."
+  },
+  {
+    "checkin_id": "ONC-002-C08",
+    "patient_id": "ONC-002",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "průjem 2. st. (5 stolic nad normál) navzdory loperamidu",
+      "křeče",
+      "snížený příjem",
+      "diabetik na metforminu"
+    ],
+    "varovne_priznaky": [
+      "průjem refrakterní na loperamid",
+      "riziko dehydratace u diabetika na metforminu"
+    ],
+    "zduvodneni": "Průjem 2. stupně po fluoropyrimidinu, který nereaguje na loperamid, nese riziko dehydratace a akutního poškození ledvin. U pacienta na metforminu je navíc riziko laktátové acidózy. Nutné posouzení lékařem týž den (úprava léčby je rozhodnutím lékaře).",
+    "doporuceni_pro_pacienta": "Vaše obtíže je potřeba dnes probrat s lékařem – domlouváme telekonzultaci během několika hodin. Do té doby pijte po malých doušcích (iontové nápoje, vývar). Pokud se objeví horečka, krev ve stolici, závratě, zmatenost nebo nebudete močit, volejte ihned 155."
+  },
+  {
+    "checkin_id": "ONC-002-C09",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=2",
+      "prujem_stolice_nad_normal_24h=3"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-002-C10",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1",
+      "prujem_stolice_nad_normal_24h=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-002-C11",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "brneni_necitlivost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-002-C12",
+    "patient_id": "ONC-002",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "neuropatie 2. st. s omezením jemné motoriky",
+      "check-in v den aplikace C7"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Neuropatie s funkčním omezením (instrumentální ADL) je důležitá pro dnešní rozhodnutí o oxaliplatině. Informace má být lékaři předána před aplikací; o léčbě rozhoduje výhradně lékař.",
+    "doporuceni_pro_pacienta": "Děkujeme, je to důležitá informace. Předáváme ji lékaři ještě před dnešní aplikací. Řekněte to prosím i sestře na ambulanci."
+  },
+  {
+    "checkin_id": "ONC-002-C13",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "neuropatie 2. st. – již řešena lékařem (oxaliplatina vynechána)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav je týmu známý a řešený, bez nových varovných příznaků.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte podle plánu. Pokud by se objevily potíže s chůzí nebo rovnováhou, ozvěte se."
+  },
+  {
+    "checkin_id": "ONC-002-C14",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "neuropatie 2. st. stacionární"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav je týmu známý a řešený.",
+    "doporuceni_pro_pacienta": "Děkujeme, pokračujte podle plánu."
+  },
+  {
+    "checkin_id": "ONC-002-C15",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "neuropatie 2. st. stacionární"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav je týmu známý a řešený.",
+    "doporuceni_pro_pacienta": "Děkujeme, pokračujte podle plánu."
+  },
+  {
+    "checkin_id": "ONC-002-C16",
+    "patient_id": "ONC-002",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "neuropatie 2. st. stacionární"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav je týmu známý a řešený.",
+    "doporuceni_pro_pacienta": "Děkujeme, pokračujte podle plánu."
+  }
+]

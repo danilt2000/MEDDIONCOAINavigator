@@ -1,0 +1,170 @@
+[
+  {
+    "checkin_id": "ONC-004-C01",
+    "patient_id": "ONC-004",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "pruritus 1. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Svědění 1. stupně je častý imunitně podmíněný nežádoucí účinek, bez varovných příznaků.",
+    "doporuceni_pro_pacienta": "Promazávejte kůži krémem dvakrát denně, můžete užít cetirizin podle rozpisu. Pokud se objeví vyrážka na velké ploše, puchýře nebo postižení sliznic, ozvěte se ihned."
+  },
+  {
+    "checkin_id": "ONC-004-C02",
+    "patient_id": "ONC-004",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "kozni_zmeny_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-004-C03",
+    "patient_id": "ONC-004",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-004-C04",
+    "patient_id": "ONC-004",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "průjem 1. st. (3 stolice nad normál) během ipilimumab/nivolumab"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "U kombinované imunoterapie je každý nově vzniklý průjem potenciálním začátkem imunitní kolitidy a musí o něm vědět tým. Riziko rychlé progrese je vyšší než u chemoterapie.",
+    "doporuceni_pro_pacienta": "U vaší léčby je důležité, aby o každém průjmu věděl lékař – informaci mu předáváme. Pijte dostatek tekutin. Léky na průjem užívejte jen po domluvě s týmem. Při 4 a více stolicích navíc, krvi ve stolici, bolesti břicha nebo horečce se ozvěte ihned."
+  },
+  {
+    "checkin_id": "ONC-004-C05",
+    "patient_id": "ONC-004",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "průjem 2. st. na imunoterapii",
+      "bolest břicha"
+    ],
+    "varovne_priznaky": [
+      "průjem s bolestí břicha na CTLA-4 + PD-1"
+    ],
+    "zduvodneni": "Průjem 2. stupně s bolestí břicha na ipilimumabu + nivolumabu = podezření na imunitní kolitidu; vyžaduje posouzení lékařem týž den (kortikoidy indikuje lékař).",
+    "doporuceni_pro_pacienta": "Vaše obtíže je potřeba dnes probrat s lékařem, domlouváme telekonzultaci během několika hodin. Pijte po malých doušcích. Pokud se objeví krev ve stolici, silná bolest břicha, horečka nebo závratě, volejte ihned 155."
+  },
+  {
+    "checkin_id": "ONC-004-C06",
+    "patient_id": "ONC-004",
+    "uroven": 4,
+    "doporuceny_krok": "neodkladna_pomoc",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848)",
+    "klicove_nalezy": [
+      "průjem 3. st. (8 stolic nad normál)",
+      "krev ve stolici",
+      "bolest břicha NRS 7",
+      "tachykardie, subfebrilie, závrať"
+    ],
+    "varovne_priznaky": [
+      "krev ve stolici",
+      "≥ 7 stolic/24 h",
+      "silná bolest břicha",
+      "tachykardie",
+      "závrať"
+    ],
+    "zduvodneni": "Těžká imunitní kolitida s krvácením a známkami hypovolémie – riziko perforace a sepse. Nutné okamžité vyšetření, nečekat na plánovanou návštěvu.",
+    "doporuceni_pro_pacienta": "Vaše obtíže vyžadují okamžité vyšetření. Volejte ihned 155 nebo sloužícího lékaře MOÚ na čísle 724 590 848, případně jeďte na urgentní příjem – sama neřiďte. Nejezte, malými doušky pijte."
+  },
+  {
+    "checkin_id": "ONC-004-C07",
+    "patient_id": "ONC-004",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "po hospitalizaci pro kolitidu",
+      "na prednisonu 60 mg",
+      "průjem ustupuje"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav po léčbě kolitidy, zlepšování. Tým o stavu ví. Důležité je dodržet postupné snižování kortikoidů a sledovat návrat průjmu.",
+    "doporuceni_pro_pacienta": "Kortikoidy užívejte přesně podle rozpisu a nevysazujte je sama. Pokud se průjem vrátí (víc než 3 stolice navíc) nebo se objeví krev, ozvěte se ihned."
+  },
+  {
+    "checkin_id": "ONC-004-C08",
+    "patient_id": "ONC-004",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "úzkost 2. st. v souvislosti s přerušením léčby"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Psychická zátěž; vhodné nabídnout rozhovor s lékařem o plánu léčby a psychoonkologickou podporu. Není urgentní.",
+    "doporuceni_pro_pacienta": "Vaše obavy jsou pochopitelné. Předáme lékaři, že byste ráda probrala další plán léčby, a nabídneme vám i rozhovor s psychologem. Ozveme se nejpozději následující pracovní den."
+  },
+  {
+    "checkin_id": "ONC-004-C09",
+    "patient_id": "ONC-004",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-004-C10",
+    "patient_id": "ONC-004",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-004-C11",
+    "patient_id": "ONC-004",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  }
+]

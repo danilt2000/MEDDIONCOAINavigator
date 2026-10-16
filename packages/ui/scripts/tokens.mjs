@@ -8,7 +8,7 @@ import {
   hexFromArgb,
 } from '@material/material-color-utilities';
 
-export const SEED = '#2E6B8F';
+export const SEED = '#0E6B5C';
 
 export function tokensCss(seed) {
   const source = Hct.fromInt(argbFromHex(seed));

@@ -1,0 +1,150 @@
+[
+  {
+    "checkin_id": "ONC-013-C01",
+    "patient_id": "ONC-013",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-013-C02",
+    "patient_id": "ONC-013",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-013-C03",
+    "patient_id": "ONC-013",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "nevolnost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-013-C04",
+    "patient_id": "ONC-013",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "syndrom ruka-noha 1. st.",
+      "průjem 1. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Mírná toxicita kapecitabinu, bez varovných příznaků.",
+    "doporuceni_pro_pacienta": "Promazávejte dlaně a chodidla krémem, vyhýbejte se horké vodě a tlaku. Pokud budete mít 4 a více stolic navíc, bolest dlaní omezující činnosti nebo bolest v ústech bránící jídlu, ozvěte se hned."
+  },
+  {
+    "checkin_id": "ONC-013-C05",
+    "patient_id": "ONC-013",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "průjem 2. st. na kapecitabinu",
+      "syndrom ruka-noha 1. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "U kapecitabinu vyžaduje průjem 2. stupně rozhodnutí lékaře o přerušení léčby ještě týž den (rozhoduje lékař, ne systém). Pacient na warfarinu a s CKD – riziko dehydratace a interakcí.",
+    "doporuceni_pro_pacienta": "Vaše obtíže je potřeba dnes probrat s lékařem, domlouváme telekonzultaci během několika hodin. Do té doby pijte. Tablety kapecitabinu užívejte nebo vynechte podle toho, co vám řekne lékař. Při horečce, krvi ve stolici nebo závratích volejte 155."
+  },
+  {
+    "checkin_id": "ONC-013-C06",
+    "patient_id": "ONC-013",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "krvácení z dásní",
+      "spontánní hematomy",
+      "warfarin + kapecitabin (známá interakce zvyšující INR)"
+    ],
+    "varovne_priznaky": [
+      "krvácení na antikoagulaci",
+      "interakce kapecitabin–warfarin"
+    ],
+    "zduvodneni": "Klinické známky předávkování antikoagulací při lékové interakci. Nutné stanovit INR a rozhodnutí lékaře týž den. Velké krvácení (meléna, hematurie, krvácení z nosu > 20 min, úraz hlavy) = červená úroveň.",
+    "doporuceni_pro_pacienta": "Je potřeba dnes zkontrolovat srážlivost krve – informujeme lékaře a domluvíme odběr. Warfarin neměňte sám, počkejte na pokyn lékaře. Pokud se objeví černá stolice, krev v moči, krvácení z nosu déle než 20 minut nebo se uhodíte do hlavy, volejte ihned 155."
+  },
+  {
+    "checkin_id": "ONC-013-C07",
+    "patient_id": "ONC-013",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "průjem ustupuje",
+      "bez krvácení"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav řešen lékařem, zlepšení.",
+    "doporuceni_pro_pacienta": "Pokračujte podle pokynů lékaře. Při krvácení se ozvěte ihned."
+  },
+  {
+    "checkin_id": "ONC-013-C08",
+    "patient_id": "ONC-013",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "kozni_zmeny_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-013-C09",
+    "patient_id": "ONC-013",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "kozni_zmeny_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-013-C10",
+    "patient_id": "ONC-013",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bez hlášených obtíží"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  }
+]

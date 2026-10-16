@@ -1,0 +1,7 @@
+do ##class(Security.Users).UnExpireUserPasswords("*")
+zn "HSLIB"
+do ##class(HS.Util.Installer.Foundation).Install("FHIRSERVER")
+zn "FHIRSERVER"
+do ##class(HS.FHIRServer.Installer).InstallNamespace()
+do ##class(HS.FHIRServer.Installer).InstallInstance("/fhir/r4","HS.FHIRServer.Storage.JsonAdvSQL.InteractionsStrategy","hl7.fhir.r4.core@4.0.1")
+halt

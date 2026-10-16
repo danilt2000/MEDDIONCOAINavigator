@@ -1,0 +1,195 @@
+[
+  {
+    "checkin_id": "ONC-018-C01",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "akútny cholinergný syndróm počas infúzie – riešený na ambulancii",
+      "TK 148/90"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Akútny cholinergný syndróm po irinotekane bol liečený počas aplikácie; doma bez ťažkostí. Informácia je dôležitá pre ďalší cyklus (premedikácia).",
+    "doporuceni_pro_pacienta": "Ďakujeme. Ak by sa doma objavila hnačka, užite loperamid podľa schémy a ozvite sa. Tlak si merajte ráno a večer."
+  },
+  {
+    "checkin_id": "ONC-018-C02",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "nevolnost_0_4=1"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-018-C03",
+    "patient_id": "ONC-018",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "rozpor: formulár hnačka 0, voľný text ~6 stolíc/24 h",
+      "oneskorená hnačka po irinotekane",
+      "slabosť, 69 rokov"
+    ],
+    "varovne_priznaky": [
+      "oneskorená hnačka po irinotekane",
+      "rozpor medzi formulárom a textom"
+    ],
+    "zduvodneni": "Volný text má přednost před formulářem – systém musí rozpor rozpoznat a doplnit otázkou. Oneskorená hnačka po irinotekane môže rýchlo viesť k dehydratácii a neutropenickej sepse; nutné posouzení týž den.",
+    "doporuceni_pro_pacienta": "Píšete, že máte hnačku asi 6× za deň – je to tak? Užite hneď loperamid podľa schémy (4 mg, potom 2 mg každé 2 hodiny) a pite. Dohodneme vám ešte dnes telekonzultáciu s lekárom. Ak budete mať horúčku, krv v stolici, závrate alebo prestanete močiť, volajte ihneď 155 alebo 112."
+  },
+  {
+    "checkin_id": "ONC-018-C04",
+    "patient_id": "ONC-018",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "hnačka 1. st. ustupuje"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Zlepšenie, tím o stave vie; sledovať.",
+    "doporuceni_pro_pacienta": "Pokračujte v loperamide podľa schémy, kým nebudete 12 hodín bez hnačky, a pite."
+  },
+  {
+    "checkin_id": "ONC-018-C05",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "TK 156/94 na bevacizumabe"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Mierne zvýšený tlak bez príznakov; sledovať trend.",
+    "doporuceni_pro_pacienta": "Merajte si tlak ráno a večer. Pri hodnotách nad 160/100 opakovane alebo pri bolesti hlavy sa ozvite."
+  },
+  {
+    "checkin_id": "ONC-018-C06",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "TK 150/92"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Bez zmeny, sledovať.",
+    "doporuceni_pro_pacienta": "Pokračujte v meraní tlaku."
+  },
+  {
+    "checkin_id": "ONC-018-C07",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "nízka digitálna gramotnosť",
+      "dotazník nevyplnený správne"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Zdravotně bez nového nálezu, ale data nejsou spolehlivá – vhodné nabídnout telefonickou asistenci / zapojení blízké osoby.",
+    "doporuceni_pro_pacienta": "Ďakujeme, že ste sa ozvali. Sestra vám zavolá a ukáže, ako dotazník vyplniť, prípadne môže pomôcť manželka."
+  },
+  {
+    "checkin_id": "ONC-018-C08",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "C2 D1",
+      "TK 146/90"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Bez nového rizika.",
+    "doporuceni_pro_pacienta": "Ďakujeme."
+  },
+  {
+    "checkin_id": "ONC-018-C09",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "nevolnost_0_4=1",
+      "prujem_stolice_nad_normal_24h=2"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-018-C10",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "unava_0_4=1",
+      "prujem_stolice_nad_normal_24h=2"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  },
+  {
+    "checkin_id": "ONC-018-C11",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "epistaxa 1. st. (5 min, spontánne zastavená)",
+      "bevacizumab"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Drobné krvácanie z nosa je častý nežiaduci účinok bevacizumabu, bez varovných príznakov.",
+    "doporuceni_pro_pacienta": "Drobné krvácanie z nosa je pri tejto liečbe časté. Ak bude krvácanie trvať viac ako 20 minút, opakovať sa, alebo sa objaví krv v stolici, moči či vo zvratkoch, volajte ihneď 155 alebo 112."
+  },
+  {
+    "checkin_id": "ONC-018-C12",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "TK 148/90"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stabilné.",
+    "doporuceni_pro_pacienta": "Pokračujte v meraní tlaku."
+  },
+  {
+    "checkin_id": "ONC-018-C13",
+    "patient_id": "ONC-018",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "TK 144/88"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stabilné.",
+    "doporuceni_pro_pacienta": "Ďakujeme."
+  }
+]

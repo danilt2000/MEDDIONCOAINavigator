@@ -1,0 +1,138 @@
+[
+  {
+    "checkin_id": "ONC-016-C01",
+    "patient_id": "ONC-016",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "artralgie NRS 3"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Artralgie je častý nežádoucí účinek inhibitorů aromatázy, bez varovných příznaků.",
+    "doporuceni_pro_pacienta": "Bolesti kloubů jsou při letrozolu časté. Pomáhá pravidelný pohyb (chůze, plavání, jóga). Pokud vám bolest bude bránit v běžných činnostech, napište nám – řešení existuje."
+  },
+  {
+    "checkin_id": "ONC-016-C02",
+    "patient_id": "ONC-016",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "artralgie NRS 4",
+      "porucha spánku"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Narůstající artralgie ohrožuje adherenci k dlouhodobé hormonální léčbě; tým by měl nabídnout řešení.",
+    "doporuceni_pro_pacienta": "Informaci předáme týmu, ozve se vám do 24 hodin. Mezitím pomáhá pravidelný pohyb a ibuprofen podle rozpisu."
+  },
+  {
+    "checkin_id": "ONC-016-C03",
+    "patient_id": "ONC-016",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "smutek 2. st.",
+      "úzkost 2. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Emoční distres; vhodné nabídnout psychoonkologickou podporu (screening distresu).",
+    "doporuceni_pro_pacienta": "Děkujeme, že to sdílíte. Takové pocity jsou po léčbě časté a dá se s nimi pracovat. Nabídneme vám rozhovor s psychologem – tým se ozve do 24 hodin."
+  },
+  {
+    "checkin_id": "ONC-016-C04",
+    "patient_id": "ONC-016",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+    "klicove_nalezy": [
+      "neadherence k letrozolu",
+      "artralgie NRS 4",
+      "smutek 2. st."
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Vynechávání adjuvantní hormonální léčby zhoršuje prognózu; tým má s pacientkou probrat příčiny a řešení (bez moralizování, změna léčby je na lékaři).",
+    "doporuceni_pro_pacienta": "Děkujeme za upřímnost, je to důležitá informace. Bolest kloubů se dá řešit. Předáme lékaři, aby s vámi probral možnosti, ozve se do 24 hodin."
+  },
+  {
+    "checkin_id": "ONC-016-C05",
+    "patient_id": "ONC-016",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "smutek 3. st.",
+      "výroky beznaděje"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Beznaděj je rizikový faktor suicidality. Systém má položit bezpečnostní doplňující otázky (validovaný screening myšlenek na smrt/sebepoškození) a zajistit kontakt týmu nebo psychologa týž den.",
+    "doporuceni_pro_pacienta": "Je nám líto, že se takhle cítíte. Zajímá nás, jak vám je – položíme vám ještě několik otázek a ještě dnes se vám ozve někdo z týmu. Pokud byste měla myšlenky ublížit si, volejte Linka první psychické pomoci 116 123 (nonstop) nebo 155."
+  },
+  {
+    "checkin_id": "ONC-016-C06",
+    "patient_id": "ONC-016",
+    "uroven": 3,
+    "doporuceny_krok": "telekonzultace",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
+    "klicove_nalezy": [
+      "pasivní myšlenky na smrt",
+      "bez plánu a úmyslu (dle výpovědi)",
+      "smutek 3. st."
+    ],
+    "varovne_priznaky": [
+      "myšlenky na smrt"
+    ],
+    "zduvodneni": "Pasivní suicidální myšlenky bez plánu – nutné posouzení odborníkem týž den a zobrazení krizových kontaktů. Pokud by se objevil plán, úmysl nebo prostředky, jde o červenou úroveň (155).",
+    "doporuceni_pro_pacienta": "Děkujeme, že jste nám to napsala. Je důležité o tom mluvit s odborníkem ještě dnes – předáváme to týmu a psycholog se vám ozve během několika hodin. Pokud by myšlenky zesílily nebo byste měla chuť si ublížit, volejte ihned 155 nebo Linka první psychické pomoci 116 123 (nonstop). Nemusíte na to být sama – pokud můžete, řekněte to i někomu blízkému."
+  },
+  {
+    "checkin_id": "ONC-016-C07",
+    "patient_id": "ONC-016",
+    "uroven": 2,
+    "doporuceny_krok": "kontaktovat_tym",
+    "upozornit_tym": true,
+    "doporuceny_kontakt": "monitorovací centrum – následující pracovní den",
+    "klicove_nalezy": [
+      "smutek 2. st.",
+      "probíhá psychoterapie"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Stav známý týmu a psychologovi, pokračovat ve sledování nálady.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokud se nálada zhorší nebo se vrátí myšlenky na smrt, volejte Linka první psychické pomoci 116 123 (nonstop) nebo 155."
+  },
+  {
+    "checkin_id": "ONC-016-C08",
+    "patient_id": "ONC-016",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "zlepšení nálady"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Zlepšování, péče psychologa probíhá.",
+    "doporuceni_pro_pacienta": "To je skvělé. Pokračujte, a pokud by se nálada zhoršila, napište nám."
+  },
+  {
+    "checkin_id": "ONC-016-C09",
+    "patient_id": "ONC-016",
+    "uroven": 1,
+    "doporuceny_krok": "dalsi_sledovani",
+    "upozornit_tym": false,
+    "doporuceny_kontakt": null,
+    "klicove_nalezy": [
+      "bolest_nrs_0_10=2 (klouby)"
+    ],
+    "varovne_priznaky": [],
+    "zduvodneni": "Hlášené obtíže jsou mírné (nejvýše 1. stupeň), odpovídají očekávanému průběhu léčby a nejsou přítomny varovné příznaky.",
+    "doporuceni_pro_pacienta": "Děkujeme. Pokračujte v léčbě a režimových opatřeních podle plánu. Při zhoršení nebo nových obtížích vyplňte záznam dříve."
+  }
+]
