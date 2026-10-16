@@ -30,6 +30,8 @@ export function SlaCountdown({ slaDo, level, now }: { slaDo: string | null; leve
   );
 }
 
+const queueTrail = (taskId: string) => ({ trail: [{ label: 'Fronta', to: `/fronta?task=${encodeURIComponent(taskId)}` }] });
+
 export function QueuePage() {
   const { queue, offsetMs } = useShell();
   const now = useNow(offsetMs);
@@ -82,7 +84,11 @@ export function QueuePage() {
                           <TriageChip level={item.uroven} />
                         </td>
                         <td className="nowrap">
-                          <Link to={`/pacienti/${encodeURIComponent(item.patient_id)}`} onClick={(event) => event.stopPropagation()}>
+                          <Link
+                            to={`/pacienti/${encodeURIComponent(item.patient_id)}`}
+                            state={queueTrail(item.id)}
+                            onClick={(event) => event.stopPropagation()}
+                          >
                             {item.patient_name}, {item.age}
                           </Link>
                           <div className="muted small">{item.patient_id}</div>
@@ -132,7 +138,9 @@ function TaskPanel({ task, now, onChanged }: { task: QueueItem; now: number; onC
           <h2 className="title">
             {task.patient_name}, {task.age} let
           </h2>
-          <Link to={`/pacienti/${encodeURIComponent(task.patient_id)}`}>Detail pacienta</Link>
+          <Link to={`/pacienti/${encodeURIComponent(task.patient_id)}`} state={queueTrail(task.id)}>
+            Detail pacienta
+          </Link>
         </div>
         <p className="muted">
           {shortRegimen(task.regimen)}

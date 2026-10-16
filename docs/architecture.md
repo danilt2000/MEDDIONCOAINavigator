@@ -136,6 +136,7 @@ Until a module lands, callers import it lazily and fall back (e.g. `try: from ap
 | GET | `/api/stats/symptoms?from=&to=` | `[{symptom, patients, alerts, reports}]` |
 | GET | `/api/stats/day/{date}` | `QueueItem[]`-like rows for patients with level ≥ 2 that day |
 | GET | `/api/stats/symptom/{symptom}` | `[{patient_id, name, regimen, risk_badges, max_grade, series: [{date, grade}]}]` |
+| GET | `/api/stats/patient/{patient_id}/symptoms` | `[{symptom, max_grade, reports}]` |
 | POST | `/api/replay` | `{dataset, patients?, speed, until?}` → `{run_id}` |
 | GET | `/api/replay/{run_id}/events` | SSE: `{checkin_id, patient_id, at, output: TriageOutput, expected?: GroundTruth}` then `end` |
 | GET | `/api/eval/{run_id}` | `EvalReport` `{metrics, confusion: number[4][4], errors[]}`; `run_id = latest-dev`/`latest-rozsirena` serve the last CLI report |

@@ -1,12 +1,13 @@
-import type { DoctorSummary, PatientDetail, TimelineItem, Trend, TriageOutput } from '@navigator/api';
+import type { DoctorSummary, PatientDetail, PatientSymptom, TimelineItem, Trend, TriageOutput } from '@navigator/api';
 import { FilledTonalButton, OutlinedCard, SvgIcon, TriageChip } from '@navigator/ui';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { CartesianGrid, Legend, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useShell } from '../App';
-import { Load, RiskBadges, SummaryView, TaskActions, TriageExplanation } from '../components';
+import { Breadcrumbs, Load, RiskBadges, SummaryView, TaskActions, TriageExplanation, useTrailState } from '../components';
 import { assignmentIcon, chatIcon, descriptionIcon, eventBusyIcon, groupsIcon, radiologyIcon, scienceIcon } from '../icons';
-import { fmtDay, fmtDayTime, TASK_STATUS, useApi } from '../lib';
+import { fmtDay, fmtDayTime, shortRegimen, TASK_STATUS, useApi } from '../lib';
+import { GradeBadge } from './Symptom';
 
 const KIND: Record<TimelineItem['kind'], { label: string; icon: string }> = {
   checkin: { label: 'Check-in', icon: assignmentIcon },
@@ -17,6 +18,8 @@ const KIND: Record<TimelineItem['kind'], { label: string; icon: string }> = {
   missed: { label: 'Nevyplněno', icon: eventBusyIcon },
 };
 
+const PATIENTS = [{ label: 'Pacienti', to: '/pacienti' }];
+
 export function PatientDetailPage() {
   const { id = '' } = useParams();
   const { queue } = useShell();
@@ -26,12 +29,14 @@ export function PatientDetailPage() {
   const triage = useApi<TriageOutput[]>(`${base}/triage`, 30000);
   const [summaryAt, setSummaryAt] = useState<number | null>(null);
   const summary = useApi<DoctorSummary>(summaryAt ? `${base}/summary?reason=na_vyzadani&t=${summaryAt}` : null);
+  const symptoms = useApi<PatientSymptom[]>(`/api/stats/patient/${encodeURIComponent(id)}/symptoms`, 30000);
+  const name = detail.data?.name ?? id;
+  const linkState = useTrailState(PATIENTS, name);
+  const mark = `?pacient=${encodeURIComponent(id)}`;
 
   return (
     <div className="page">
-      <nav className="breadcrumb" aria-label="Drobečková navigace">
-        <Link to="/pacienti">Pacienti</Link> › <span aria-current="page">{detail.data?.name ?? id}</span>
-      </nav>
+      <Breadcrumbs fallback={PATIENTS} current={name} />
       <Load source={detail}>
         {(patient) => (
           <OutlinedCard className="card patient-head">
@@ -75,6 +80,24 @@ export function PatientDetailPage() {
                 }}
               />
             )}
+            <div className="context-links">
+              <span className="overline">Souvislosti</span>
+              <Link className="context-link" to={`/monitoring/lecba/${encodeURIComponent(shortRegimen(patient.regimen))}${mark}`} state={linkState}>
+                Léčba · {shortRegimen(patient.regimen)}
+              </Link>
+              {(symptoms.data ?? []).map((row) => (
+                <Link
+                  key={row.symptom}
+                  className="context-link"
+                  to={`/monitoring/priznak/${encodeURIComponent(row.symptom)}${mark}`}
+                  state={linkState}
+                  title={`${row.reports}× nahlášeno, nejvýše stupeň ${row.max_grade}`}
+                >
+                  <GradeBadge grade={row.max_grade} />
+                  {row.symptom}
+                </Link>
+              ))}
+            </div>
             <dl className="facts">
               <dt>ECOG</dt>
               <dd>{patient.ecog}</dd>
@@ -176,6 +199,11 @@ export function PatientDetailPage() {
                             {fmtDayTime(item.at)} · {KIND[item.kind]?.label ?? item.kind}
                           </span>
                           {item.detail && <span className="timeline-detail">{item.detail}</span>}
+                          {item.kind === 'checkin' && (item.level ?? 0) >= 2 && (
+                            <Link className="small" to={`/monitoring/den/${item.at.slice(0, 10)}${mark}`} state={linkState}>
+                              Všechna upozornění {fmtDay(item.at.slice(0, 10))} →
+                            </Link>
+                          )}
                         </div>
                       </li>
                     ))}

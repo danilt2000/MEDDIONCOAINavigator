@@ -1,9 +1,8 @@
 import type { SymptomPatient } from '@navigator/api';
 import { ChipSet, FilterChip, OutlinedCard } from '@navigator/ui';
-import { useState } from 'react';
-import { Link, useParams } from 'react-router';
+import { Link, useParams, useSearchParams } from 'react-router';
 import { useShell } from '../App';
-import { Kpi, Load, RiskBadges } from '../components';
+import { Breadcrumbs, Kpi, Load, RiskBadges, useTrailState } from '../components';
 import { addDays, daysBetween, fmtDay, fmtMinutesAgo, shortRegimen, useApi, useNow } from '../lib';
 
 const RISK_FILTERS = ['IO', 'FP', 'irinotekan', 'antikoagulace'];
@@ -32,17 +31,28 @@ export function SymptomPage() {
   const { range, queue, offsetMs } = useShell();
   const now = useNow(offsetMs, 30000);
   const rows = useApi<SymptomPatient[]>(`/api/stats/symptom/${encodeURIComponent(symptom)}`);
-  const [minGrade, setMinGrade] = useState(0);
-  const [risks, setRisks] = useState<string[]>([]);
-  const [waitingOnly, setWaitingOnly] = useState(false);
+  const [params, setParams] = useSearchParams();
+  const minGrade = Number(params.get('stupen') ?? 0);
+  const risks = params.get('riziko')?.split(',').filter(Boolean) ?? [];
+  const waitingOnly = params.get('cekajici') === '1';
+  const highlight = params.get('pacient');
+  const setFilter = (key: string, value: string | null) =>
+    setParams(
+      (current) => {
+        const next = new URLSearchParams(current);
+        if (value) next.set(key, value);
+        else next.delete(key);
+        return next;
+      },
+      { replace: true },
+    );
+  const linkState = useTrailState([{ label: 'Monitoring', to: '/monitoring' }], symptom);
 
   const openTask = (patientId: string) => queue.data?.find((item) => item.patient_id === patientId && item.status !== 'completed');
 
   return (
     <div className="page">
-      <nav className="breadcrumb" aria-label="Drobečková navigace">
-        <Link to="/monitoring">Monitoring</Link> › <span aria-current="page">{symptom}</span>
-      </nav>
+      <Breadcrumbs fallback={[{ label: 'Monitoring', to: '/monitoring' }]} current={symptom} />
       <div className="page-head">
         <div>
           <h1>{symptom}</h1>
@@ -51,7 +61,7 @@ export function SymptomPage() {
       </div>
       <ChipSet className="filters">
         {GRADE_FILTERS.map((filter) => (
-          <FilterChip key={filter.min} label={filter.label} selected={minGrade === filter.min} onClick={controlled(() => setMinGrade(filter.min))} />
+          <FilterChip key={filter.min} label={filter.label} selected={minGrade === filter.min} onClick={controlled(() => setFilter('stupen', filter.min ? String(filter.min) : null))} />
         ))}
         {RISK_FILTERS.map((risk) => (
           <FilterChip
@@ -59,11 +69,11 @@ export function SymptomPage() {
             label={risk}
             selected={risks.includes(risk)}
             onClick={controlled(() =>
-              setRisks((current) => (current.includes(risk) ? current.filter((item) => item !== risk) : [...current, risk])),
+              setFilter('riziko', (risks.includes(risk) ? risks.filter((item) => item !== risk) : [...risks, risk]).join(',') || null),
             )}
           />
         ))}
-        <FilterChip label="Jen čekající na reakci" selected={waitingOnly} onClick={controlled(() => setWaitingOnly((value) => !value))} />
+        <FilterChip label="Jen čekající na reakci" selected={waitingOnly} onClick={controlled(() => setFilter('cekajici', waitingOnly ? null : '1'))} />
       </ChipSet>
       <Load source={rows} isEmpty={(items) => items.length === 0} emptyText="Tento příznak v období nikdo nehlásil.">
         {(items) => {
@@ -141,9 +151,14 @@ export function SymptomPage() {
                       const grades = new Map(item.series.map((point) => [point.date.slice(0, 10), point.grade]));
                       const last = lastReport(item);
                       return (
-                        <tr key={item.patient_id} className={task ? 'row-waiting' : undefined}>
+                        <tr
+                          key={item.patient_id}
+                          className={[task && 'row-waiting', item.patient_id === highlight && 'selected'].filter(Boolean).join(' ') || undefined}
+                        >
                           <th scope="row">
-                            <Link to={`/pacienti/${encodeURIComponent(item.patient_id)}`}>{item.name}</Link>
+                            <Link to={`/pacienti/${encodeURIComponent(item.patient_id)}`} state={linkState}>
+                              {item.name}
+                            </Link>
                             <div className="muted small">{item.patient_id}</div>
                           </th>
                           <td>

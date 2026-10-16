@@ -9,9 +9,35 @@ import {
   TextButton,
   TriageChip,
 } from '@navigator/ui';
-import { useState, type ReactNode } from 'react';
+import { Fragment, useState, type ReactNode } from 'react';
+import { Link, useLocation } from 'react-router';
 import { callIcon, howToRegIcon, refreshIcon, taskAltIcon, videoCallIcon, warningIcon } from './icons';
 import { errorText, fmtDayTime, type Loadable } from './lib';
+
+export type Crumb = { label: string; to: string };
+
+const useTrail = (fallback: Crumb[]) => (useLocation().state as { trail?: Crumb[] } | null)?.trail ?? fallback;
+
+export function Breadcrumbs({ fallback, current }: { fallback: Crumb[]; current: string }) {
+  const trail = useTrail(fallback);
+  return (
+    <nav className="breadcrumb" aria-label="Drobečková navigace">
+      {trail.map((crumb) => (
+        <Fragment key={crumb.to}>
+          <Link to={crumb.to}>{crumb.label}</Link> ›{' '}
+        </Fragment>
+      ))}
+      <span aria-current="page">{current}</span>
+    </nav>
+  );
+}
+
+/** Router state for links leaving this page, so the next page's breadcrumb leads back here (filters included). */
+export function useTrailState(fallback: Crumb[], current: string) {
+  const location = useLocation();
+  const trail = useTrail(fallback);
+  return { trail: [...trail, { label: current, to: location.pathname + location.search }].slice(-3) };
+}
 
 export function Load<T>({
   source,

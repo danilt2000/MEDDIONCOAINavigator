@@ -87,6 +87,19 @@ def symptoms(date_from: date | None = Query(None, alias="from"), date_to: date |
     return sorted((row for row in rows if row["reports"]), key=lambda row: (-row["alerts"], -row["reports"]))
 
 
+@router.get("/stats/patient/{patient_id}/symptoms")
+def patient_symptoms(patient_id: str) -> list[dict]:
+    totals: dict[str, dict] = {}
+    for checkin, _ in _seen():
+        if checkin.patient_id != patient_id or checkin.stav == "nevyplneno":
+            continue
+        for symptom, grade in symptom_grades(checkin).items():
+            row = totals.setdefault(symptom, {"symptom": symptom, "max_grade": 0, "reports": 0})
+            row["max_grade"] = max(row["max_grade"], grade)
+            row["reports"] += 1
+    return sorted(totals.values(), key=lambda row: (-row["max_grade"], -row["reports"]))
+
+
 @router.get("/stats/day/{day}")
 def day_drilldown(day: date) -> list[dict]:
     worst: dict[str, tuple[Checkin, TriageOutput]] = {}

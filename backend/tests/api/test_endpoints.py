@@ -123,6 +123,9 @@ def test_stats(client):
     rows = client.get(f"/api/stats/symptom/{symptoms[0]['symptom']}").json()
     assert rows and set(rows[0]) == {"patient_id", "name", "regimen", "risk_badges", "max_grade", "series"}
     assert client.get("/api/stats/symptom/Nic").status_code == 404
+    mine = client.get(f"/api/stats/patient/{rows[0]['patient_id']}/symptoms").json()
+    assert symptoms[0]["symptom"] in {row["symptom"] for row in mine}
+    assert set(mine[0]) == {"symptom", "max_grade", "reports"}
 
 
 def test_replay_and_eval(client):

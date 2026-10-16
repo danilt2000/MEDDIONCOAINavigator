@@ -305,6 +305,12 @@ export interface SymptomStat {
   reports: number;
 }
 
+export interface PatientSymptom {
+  symptom: string;
+  max_grade: number;
+  reports: number;
+}
+
 export interface SymptomPatient {
   patient_id: string;
   name: string;

@@ -732,6 +732,34 @@ tr.selected {
   color: var(--md-sys-color-on-surface-variant);
 }
 
+.day-card.highlight {
+  box-shadow: 0 0 0 2px var(--md-sys-color-primary);
+}
+
+.context-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 8px;
+  color: var(--md-sys-color-on-surface);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.context-link:hover {
+  background: var(--md-sys-color-surface-container);
+  border-color: var(--md-sys-color-outline);
+}
+
 .day-card {
   display: grid;
   grid-template-columns: 260px minmax(0, 1fr) minmax(0, 1.3fr) 170px;
