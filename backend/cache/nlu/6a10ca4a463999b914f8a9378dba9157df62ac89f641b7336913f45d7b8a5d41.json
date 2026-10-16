@@ -1,0 +1,44 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[chat] Můžu mamince dát další Oramorph?\nKolik dávek už dnes bylo a jak moc bolest povolila?\nDostala už dvě dávky a bolest je pořád 8",
+ "usage": {
+  "completion_tokens": 211,
+  "prompt_tokens": 2102,
+  "total_tokens": 2313,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 91,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "rescue_doses_per_day",
+    "value": 2,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "Dostala už dvě dávky"
+   },
+   {
+    "type": "pain_nrs",
+    "value": 8,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "bolest je pořád 8"
+   }
+  ],
+  "negations": [],
+  "patient_questions": [
+   "Můžu mamince dát další Oramorph?",
+   "Kolik dávek už dnes bylo a jak moc bolest povolila?"
+  ]
+ }
+}

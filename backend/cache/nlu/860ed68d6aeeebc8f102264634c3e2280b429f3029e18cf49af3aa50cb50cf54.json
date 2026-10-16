@@ -1,0 +1,41 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[chat] zvracela jsem … a teplota 38,2\nPíšete, že jste zvracel(a) … za den – je to tak?\nne, jen 2x",
+ "usage": {
+  "completion_tokens": 247,
+  "prompt_tokens": 2102,
+  "total_tokens": 2349,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 155,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "vomiting_episodes_24h",
+    "value": 2,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "jen 2x"
+   },
+   {
+    "type": "temperature_c",
+    "value": 38.2,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "teplota 38,2"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

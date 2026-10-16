@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "summary",
+ "user": "Language: cs.\nHeader: ONC-014 · Ludmila T., 76 let · souhrn při eskalaci (2026-09-22, 07:30)\nFacts:\n- 2026-09-22: spavost, 8 dechů/min po navýšení opioidu (záznam)\n- 2026-09-22: Úroveň ČERVENÁ – neodkladná pomoc (odhad systému) (odhad systému)\n- Protinádorová léčba ukončena 08/2026; sledování symptomů, ambulantní paliativní tým (záznam)\n- DVP: Nepřeje si resuscitaci, umělou plicní ventilaci ani přijetí na JIP … (záznam)\n- vyplňuje dcera (záznam)\n- komorbidity: Chronické srdeční selhání (NYHA II), Diabetes mellitus 2. typu (dieta) (záznam)\n- 2026-09-22: 22. 9. „Mamka je od včera hodně spavá, skoro nereaguje, dýchá pomalu.“ (dcera) (dcera)\n- 2026-09-22: dech 8/min od 22. 9. (naměřeno) (naměřeno)\n- 2026-09-22: nechutenství 9. 9. hubne → 19. 9. hubne → 22. 9. příjem na minimu (pacient) (pacient)\n- 2026-09-19: bolest břicha 9. 9. střední → 16. 9. mírná → 19. 9. mírná (pacient) (pacient)\n- 2026-09-22: horečku, krvácení, bolest na hrudi (dcera) (pacient)\n- somnolence / nereaguje; bradypnoe (odhad systému)",
+ "usage": {
+  "completion_tokens": 321,
+  "prompt_tokens": 746,
+  "total_tokens": 1067,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 31,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Proč teď: Úroveň ČERVENÁ – neodkladná pomoc; od včera je hodně spavá, skoro nereaguje, dýchá pomalu po navýšení opioidu (odhad systému) (dcera) (záznam).\nLéčba: Protinádorová léčba ukončena 08/2026; sledování symptomů, ambulantní paliativní tým (záznam).\nVývoj: 9. 9. nechutenství/hubne → 19. 9. hubne → 22. 9. příjem na minimu; 9. 9. bolest břicha střední → 16. 9. mírná → 19. 9. mírná (pacient).\nLaboratoř:\nNehlásí: horečku, krvácení, bolest na hrudi (dcera) (pacient).\nK posouzení lékařem: k posouzení somnolence a bradypnoe, možná souvislost s opioidem; k posouzení DVP: nepřeje si resuscitaci, umělou plicní ventilaci ani přijetí na JIP (záznam)."
+ }
+}

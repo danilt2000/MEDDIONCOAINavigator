@@ -1,0 +1,34 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Doma beru prednison 60 mg stolice skoro normalni",
+ "usage": {
+  "completion_tokens": 146,
+  "prompt_tokens": 2077,
+  "total_tokens": 2223,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 83,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "stolice skoro normalni",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "stolice skoro normalni"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

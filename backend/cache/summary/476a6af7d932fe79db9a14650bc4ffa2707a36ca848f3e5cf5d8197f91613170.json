@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "summary",
+ "user": "Language: cs.\nHeader: ONC-017 · Pavel K., 57 let · souhrn při eskalaci (2026-09-09, 07:10)\nFacts:\n- 2026-09-09: kožní změny bolestivé, omezují činnosti (2. st.); osimertinib 80 mg denně (9. měsíc léčby) (záznam)\n- 2026-09-09: Úroveň ŽLUTÁ – kontakt týmu (odhad systému) (odhad systému)\n- osimertinib 80 mg denně (9. měsíc léčby) (záznam)\n- 2026-09-06: 6. 9. „Zanícený nehet na palci u nohy, bolí v botě.“ (pacient) (pacient)\n- 2026-09-09: kůže 1. 9. minimální změny → 6. 9. bolestivé, omezuje → 9. 9. bolestivé, omezuje (pacient) (pacient)\n- 2026-09-09: úroveň 1. 9. zelená → 3. 9. zelená → 6. 9. žlutá → 9. 9. žlutá (odhad systému) (odhad systému)\n- 2026-09-01: bez odchylek (naměřeno) (naměřeno)\n- 2026-09-09: horečku, dušnost, krvácení, bolest na hrudi (pacient) (pacient)\n- kožní změny bolestivé, omezují činnosti (2. st.) (odhad systému)",
+ "usage": {
+  "completion_tokens": 352,
+  "prompt_tokens": 686,
+  "total_tokens": 1038,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 131,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Proč teď: Kožní změny jsou 9. 9. bolestivé a omezují činnosti, při žluté úrovni je potřeba posouzení týmem (odhad systému).\nLéčba: osimertinib 80 mg denně, 9. měsíc léčby (záznam).\nVývoj: 1. 9. minimální změny → 6. 9. bolestivé, omezuje → 9. 9. bolestivé, omezuje (pacient); 1. 9. zelená → 3. 9. zelená → 6. 9. žlutá → 9. 9. žlutá (odhad systému).\nK posouzení lékařem: k posouzení závažnost kožních změn a zaníceného nehtu na palci u nohy s bolestí v botě (pacient)."
+ }
+}

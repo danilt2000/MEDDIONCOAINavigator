@@ -1,0 +1,41 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] mam 38 a boli me hlava",
+ "usage": {
+  "completion_tokens": 174,
+  "prompt_tokens": 2070,
+  "total_tokens": 2244,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 92,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "temperature_c",
+    "value": 38,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "38"
+   },
+   {
+    "type": "other",
+    "value": "bolest hlavy",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "boli me hlava"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

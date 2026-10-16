@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "summary",
+ "user": "Language: cs.\nHeader: ONC-007 · Hana D., 55 let · souhrn při eskalaci (2026-09-10, 07:30)\nFacts:\n- 2026-09-10: nově ortopnoe; +3 kg za 7 dní na trastuzumabu (záznam)\n- 2026-09-10: Úroveň ORANŽOVÁ – telekonzultace dnes (odhad systému) (odhad systému)\n- trastuzumab 600 mg s.c. à 21 dní (dokončení 1 roku léčby) + letrozol; C12 D17 (záznam)\n- 2026-05-26: ECHO srdce 26. 5.: LVEF 58 % (před léčbou 64 %) (naměřeno)\n- komorbidity: Obezita (BMI 31) (záznam)\n- 2026-09-10: 10. 9. „spát na dvou polštářích“ (pacient) (pacient)\n- 2026-09-10: váha 3. 9. 83,4 kg → 9. 9. 85,8 kg → 10. 9. 86,4 kg (naměřeno) (naměřeno)\n- 2026-09-10: tep 28. 8. 78 → 9. 9. 76 → 10. 9. 94 (naměřeno) (naměřeno)\n- 2026-09-10: dušnost lehce omezuje od 3. 9. (pacient) (pacient)\n- 2026-09-10: horečku, krvácení, bolest na hrudi (pacient) (pacient)\n- ortopnoe; rychlý přírůstek hmotnosti (odhad systému)",
+ "usage": {
+  "completion_tokens": 360,
+  "prompt_tokens": 725,
+  "total_tokens": 1085,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 56,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Proč teď: Nově ortopnoe a rychlý přírůstek hmotnosti na trastuzumabu; dnes telekonzultace, k posouzení lékařem stav dýchání a další postup. (odhad systému)\nLéčba: trastuzumab 600 mg s.c. à 21 dní, dokončení 1 roku léčby, + letrozol; C12 D17. (záznam)\nVývoj: 3. 9. 83,4 kg → 9. 9. 85,8 kg → 10. 9. 86,4 kg; tep 28. 8. 78 → 9. 9. 76 → 10. 9. 94. (naměřeno)\nLaboratoř: LVEF 58 % 26. 5. při ECHO srdce, před léčbou 64 %. (naměřeno)\nNehlásí: horečku, krvácení, bolest na hrudi. (pacient)\nK posouzení lékařem: k posouzení ortopnoe, dušnost od 3. 9. a „spát na dvou polštářích“, možná souvislost s retencí tekutin. (pacient)"
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "summary",
+ "user": "Language: cs.\nHeader: ONC-004 · Lucie H., 41 let · souhrn při eskalaci (2026-09-11, 06:40)\nFacts:\n- 2026-09-11: 8 stolic, krev ve stolici, bolest 7 (záznam)\n- 2026-09-11: Úroveň ČERVENÁ – neodkladná pomoc (odhad systému) (odhad systému)\n- ipilimumab 3 mg/kg + nivolumab 1 mg/kg à 21 dní, 4 cykly, poté nivolumab udržovací; sledování od C2; C2 D10 (záznam)\n- 2026-09-11: 11. 9. „krev ve stolici“ (pacient) (pacient)\n- 2026-09-11: teplota 2. 9. 36,6 °C → 10. 9. 36,2 °C → 11. 9. 37,8 °C (naměřeno) (naměřeno)\n- 2026-09-11: tep 112 od 11. 9. (naměřeno) (naměřeno)\n- 2026-09-11: průjem 9. 9. ≤ 3 stolice navíc → 10. 9. 4–6 stolic navíc → 11. 9. ≥ 7 stolic navíc (pacient) (pacient)\n- 2026-09-11: bolest břicha 10. 9. mírná → 11. 9. silná (pacient) (pacient)\n- 2026-09-02: bez odchylek (naměřeno) (naměřeno)\n- 2026-09-11: dušnost (pacient) (pacient)\n- krev ve stolici; ≥ 7 stolic/24 h; tachykardie (odhad systému)",
+ "usage": {
+  "completion_tokens": 436,
+  "prompt_tokens": 744,
+  "total_tokens": 1180,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 109,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Proč teď: ČERVENÁ – neodkladná pomoc (odhad systému); při C2 D10 je nyní 8 stolic, krev ve stolici, bolest 7 a dušnost, k urgentnímu posouzení lékařem. (odhad systému; pacient; záznam)\nLéčba: ipilimumab 3 mg/kg + nivolumab 1 mg/kg à 21 dní, 4 cykly, poté nivolumab udržovací; sledování od C2. (záznam)\nVývoj: 2. 9. 36,6 °C → 10. 9. 36,2 °C → 11. 9. 37,8 °C; 9. 9. ≤ 3 stolice navíc → 10. 9. 4–6 stolic navíc → 11. 9. ≥ 7 stolic navíc; 10. 9. mírná bolest břicha → 11. 9. silná. (naměřeno; pacient)\nNehlásí: bez odchylek 2026-09-02. (naměřeno)\nK posouzení lékařem: k posouzení krev ve stolici, tachykardie 112 od 11. 9. a dušnost. (pacient; naměřeno; odhad systému)"
+ }
+}

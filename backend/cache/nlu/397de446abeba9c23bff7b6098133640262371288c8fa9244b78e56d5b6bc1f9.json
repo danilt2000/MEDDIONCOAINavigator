@@ -1,0 +1,26 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Dnes druha chemo, pry dostanu i injekci na bile krvinky.",
+ "usage": {
+  "completion_tokens": 66,
+  "prompt_tokens": 2080,
+  "total_tokens": 2146,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 35,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [],
+  "negations": [],
+  "patient_questions": []
+ }
+}

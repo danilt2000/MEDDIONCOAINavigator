@@ -1,48 +1,119 @@
-import calendarIcon from '@material-symbols/svg-400/outlined/calendar_month.svg?raw';
-import dashboardIcon from '@material-symbols/svg-400/outlined/dashboard.svg?raw';
-import groupIcon from '@material-symbols/svg-400/outlined/group.svg?raw';
-import searchIcon from '@material-symbols/svg-400/outlined/search.svg?raw';
-import { List, ListItem, OutlinedCard, OutlinedTextField, SvgIcon } from '@navigator/ui';
-import { useState } from 'react';
+import type { DemoState, QueueItem } from '@navigator/api';
+import { FilledButton, OutlinedSelect, SelectOption, SvgIcon } from '@navigator/ui';
+import { useEffect, useRef, useState } from 'react';
+import { NavLink, Outlet, useNavigate, useOutletContext } from 'react-router';
+import { emergencyIcon, shieldIcon } from './icons';
+import { addDays, beep, fmtDayTime, fmtDuration, inWorkingHours, isoDay, useApi, useNow, type Loadable } from './lib';
 
-const sections = [
-  { label: 'Dashboard', icon: dashboardIcon },
-  { label: 'Patients', icon: groupIcon },
-  { label: 'Schedule', icon: calendarIcon },
-];
+export interface Shell {
+  offsetMs: number;
+  range: { from: string; to: string; days: number };
+  queue: Loadable<QueueItem[]>;
+  dataset: string;
+}
+
+export const useShell = () => useOutletContext<Shell>();
+
+const RANGES = [7, 14, 30, 60];
 
 export function App() {
-  const [activeSection, setActiveSection] = useState(sections[0].label);
+  const demo = useApi<DemoState>('/api/demo/state', 15000);
+  const queue = useApi<QueueItem[]>('/api/queue?status=open', 4000);
+  const [offsetMs, setOffsetMs] = useState(0);
+  const [days, setDays] = useState(30);
+
+  const serverNow = demo.data?.now;
+  useEffect(() => {
+    if (serverNow) setOffsetMs(new Date(serverNow).getTime() - Date.now());
+  }, [serverNow]);
+
+  const to = isoDay(Date.now() + offsetMs);
+  const shell: Shell = {
+    offsetMs,
+    range: { from: addDays(to, 1 - days), to, days },
+    queue,
+    dataset: demo.data?.dataset ?? 'dev',
+  };
+  const openCount = queue.data?.filter((item) => item.status !== 'completed').length ?? 0;
 
   return (
-    <div className="layout">
-      <nav className="sidebar">
-        <h1 className="brand md-typescale-title-large">Onco Navigator</h1>
-        <List>
-          {sections.map((section) => (
-            <ListItem
-              key={section.label}
-              type="button"
-              className={section.label === activeSection ? 'active' : undefined}
-              onClick={() => setActiveSection(section.label)}
-            >
-              <SvgIcon slot="start" svg={section.icon} />
-              {section.label}
-            </ListItem>
+    <div className="app">
+      <header className="topbar">
+        <div className="brand">
+          <SvgIcon svg={shieldIcon} />
+          <span>MEDDI navigátor · Monitorovací centrum MOÚ</span>
+        </div>
+        <OutlinedSelect
+          className="range-select"
+          aria-label="Období"
+          value={String(days)}
+          onChange={(event) => setDays(Number((event.target as HTMLSelectElement).value))}
+        >
+          {RANGES.map((range) => (
+            <SelectOption key={range} value={String(range)} selected={range === days}>
+              <div slot="headline">Posledních {range} dní</div>
+            </SelectOption>
           ))}
-        </List>
+        </OutlinedSelect>
+        <Duty offsetMs={offsetMs} />
+      </header>
+      <nav className="tabs" aria-label="Sekce">
+        <NavLink to="/fronta">
+          Fronta{openCount > 0 && <span className="count">{openCount}</span>}
+        </NavLink>
+        <NavLink to="/monitoring">Monitoring</NavLink>
+        <NavLink to="/pacienti">Pacienti</NavLink>
+        <NavLink to="/replay">Replay a evaluace</NavLink>
+        <NavLink to="/pravidla">Pravidla</NavLink>
       </nav>
+      <RedBanner items={queue.data} offsetMs={offsetMs} />
       <main className="main">
-        <header className="toolbar">
-          <h2 className="md-typescale-headline-small">{activeSection}</h2>
-          <OutlinedTextField label="Search patients" type="search">
-            <SvgIcon slot="leading-icon" svg={searchIcon} />
-          </OutlinedTextField>
-        </header>
-        <OutlinedCard className="panel">
-          <p className="md-typescale-body-large">Placeholder: {activeSection} view.</p>
-        </OutlinedCard>
+        <Outlet context={shell} />
       </main>
+    </div>
+  );
+}
+
+function Duty({ offsetMs }: { offsetMs: number }) {
+  const now = useNow(offsetMs, 15000);
+  const working = inWorkingHours(now);
+  return (
+    <span className="duty">
+      <span className="muted">{fmtDayTime(now)}</span>
+      <span>Služba: {working ? 'monitorovací centrum (Po–Pá 7:00–15:30)' : 'sloužící lékař MOÚ 724 590 848'}</span>
+    </span>
+  );
+}
+
+function RedBanner({ items, offsetMs }: { items: QueueItem[] | undefined; offsetMs: number }) {
+  const navigate = useNavigate();
+  const now = useNow(offsetMs);
+  const seen = useRef(new Set<string>());
+  const red = (items ?? []).filter((item) => item.uroven === 4 && item.status === 'requested');
+
+  useEffect(() => {
+    const fresh = red.filter((item) => !seen.current.has(item.id));
+    fresh.forEach((item) => seen.current.add(item.id));
+    if (fresh.length) beep();
+  });
+
+  if (!red.length) return null;
+  const first = red[0];
+  const remaining = first.sla_do ? new Date(first.sla_do).getTime() - now : null;
+  return (
+    <div className="red-banner" role="alert">
+      <SvgIcon svg={emergencyIcon} />
+      <strong>Červená · Volejte ihned</strong>
+      <span>
+        {first.patient_name}, {first.age} – {first.why}
+      </span>
+      {remaining !== null && (
+        <span className="sla-pill">{remaining >= 0 ? `na převzetí zbývá ${fmtDuration(remaining)}` : `po termínu ${fmtDuration(remaining)}`}</span>
+      )}
+      {red.length > 1 && <span>+ {red.length - 1} další</span>}
+      <FilledButton className="on-red" onClick={() => navigate(`/fronta?task=${encodeURIComponent(first.id)}`)}>
+        Otevřít
+      </FilledButton>
     </div>
   );
 }

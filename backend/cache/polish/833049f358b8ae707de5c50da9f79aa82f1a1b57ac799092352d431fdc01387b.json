@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 2. Addressee: pecujici.\nTemplate:\nZáznam vaší maminky jsme předali týmu monitorovacího centra, ozve se vám nejpozději do konce následujícího pracovního dne. Morfin roztok (Oramorph) podávejte podle rozpisu (10 mg, max 6× denně). Volejte ihned 155, pokud: bolest nepovolí ani po záchranné dávce.",
+ "usage": {
+  "completion_tokens": 188,
+  "prompt_tokens": 373,
+  "total_tokens": 561,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 79,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Záznam vaší maminky jsme předali týmu monitorovacího centra, ozve se vám nejpozději do konce následujícího pracovního dne. Morfin roztok (Oramorph) jí podávejte podle rozpisu (10 mg, max 6× denně). Volejte ihned 155, pokud: bolest nepovolí ani po záchranné dávce."
+ }
+}

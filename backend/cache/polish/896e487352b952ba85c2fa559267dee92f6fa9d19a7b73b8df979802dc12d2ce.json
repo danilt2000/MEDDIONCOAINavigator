@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 3. Addressee: pecujici.\nTemplate:\nPotíže vaší maminky je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby nepodávejte další dávky nad rámec rozpisu. Volejte ihned 155, pokud: bolest, která nepovolí ani po záchranné dávce. Můžete volat i 24hodinovou linku paliativního týmu.",
+ "usage": {
+  "completion_tokens": 172,
+  "prompt_tokens": 378,
+  "total_tokens": 550,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 59,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Potíže vaší maminky je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby nepodávejte další dávky nad rámec rozpisu. Volejte ihned 155, pokud: bolest, která nepovolí ani po záchranné dávce. Můžete volat i 24hodinovou linku paliativního týmu."
+ }
+}

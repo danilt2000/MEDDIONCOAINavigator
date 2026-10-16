@@ -1,0 +1,36 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: sk. Written by: pacient.\nTexts:\n[chat] Kedy mi zavolá lekár? Stolica je trochu redšia.",
+ "usage": {
+  "completion_tokens": 136,
+  "prompt_tokens": 2078,
+  "total_tokens": 2214,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 63,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "sk",
+  "facts": [
+   {
+    "type": "other",
+    "value": "redšia stolica",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Stolica je trochu redšia"
+   }
+  ],
+  "negations": [],
+  "patient_questions": [
+   "Kedy mi zavolá lekár?"
+  ]
+ }
+}

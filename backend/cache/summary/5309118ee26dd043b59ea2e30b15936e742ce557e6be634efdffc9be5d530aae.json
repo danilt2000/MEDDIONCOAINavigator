@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "summary",
+ "user": "Language: cs.\nHeader: ONC-017 · Pavel K., 57 let · souhrn na vyžádání (2026-09-17, 19:25)\nFacts:\n- 2026-09-17: 3. chybějící záznam za sebou (záznam)\n- 2026-09-17: Úroveň ŽLUTÁ – kontakt týmu (odhad systému) (odhad systému)\n- osimertinib 80 mg denně (9. měsíc léčby) (záznam)\n- 2026-09-06: 6. 9. „Zanícený nehet na palci u nohy, bolí v botě.“ (pacient) (pacient)\n- 2026-09-11: kůže 6. 9. bolestivé, omezuje → 9. 9. bolestivé, omezuje → 11. 9. minimální změny (pacient) (pacient)\n- 2026-09-17: nevyplněno: 13. 9., 15. 9., 17. 9. (záznam)\n- 2026-09-17: 17. 9. pokus_o_kontakt: Sestra: 3 nevyplněné check-iny, telefon nedostupný, odeslána SMS. (tým) (tým)\n- 2026-09-11: horečku, dušnost, krvácení, bolest na hrudi (pacient, 11. 9.) (pacient)\n- 3. chybějící záznam za sebou (odhad systému)",
+ "usage": {
+  "completion_tokens": 487,
+  "prompt_tokens": 677,
+  "total_tokens": 1164,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 241,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Proč teď: 3 chybějící záznamy za sebou a Úroveň ŽLUTÁ – kontakt týmu; 17. 9. telefon nedostupný, odeslána SMS, k posouzení další postup (odhad systému, tým).\nLéčba: osimertinib 80 mg denně, 9. měsíc léčby (záznam).\nVývoj: 6. 9. zanícený nehet na palci u nohy, bolí v botě (pacient); kůže 6. 9. bolestivé, omezuje → 9. 9. bolestivé, omezuje → 11. 9. minimální změny (pacient).\nNehlásí: horečku, dušnost, krvácení, bolest na hrudi (pacient).\nK posouzení lékařem: k posouzení nehet na palci u nohy a kožní obtíže, možná souvislost s léčbou (pacient)."
+ }
+}

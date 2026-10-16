@@ -1,0 +1,41 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[zprava] Bolest bricha silnejsi, davala jsem mamce 3 davky Oramorphu za den.",
+ "usage": {
+  "completion_tokens": 252,
+  "prompt_tokens": 2089,
+  "total_tokens": 2341,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 151,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "bolest bricha silnejsi",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Bolest bricha silnejsi"
+   },
+   {
+    "type": "rescue_doses_per_day",
+    "value": 3,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "3 davky Oramorphu za den"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

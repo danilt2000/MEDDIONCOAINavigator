@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 3. Addressee: pacient.\nTemplate:\nVaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby pijte po malých doušcích. Volejte ihned 155, pokud: zvracení víc než 5× za den nebo když přestanete močit.",
+ "usage": {
+  "completion_tokens": 130,
+  "prompt_tokens": 354,
+  "total_tokens": 484,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 39,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby pijte po malých doušcích. Volejte ihned 155, pokud: zvracení víc než 5× za den nebo když přestanete močit."
+ }
+}

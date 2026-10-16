@@ -1,0 +1,1073 @@
+[
+ {
+  "source": "pravidla_triaze",
+  "section": "Pravidla triáže",
+  "txt": "Pravidla triáže: Podle těchto pravidel je anotováno referenční vyhodnocení (ground truth). Vycházejí ze semaforové triáže onkologických pacientů (UKONS 24h Triage Tool), gradace nežádoucích účinků CTCAE v5 a pacientem hlášených výstupů PRO-CTCAE.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 1,
+  "cite": "guide:pravidla_triaze#pravidla-tri-e"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Pravidla triáže",
+  "txt": "Pravidla triáže: Tvrdá pravidla (část 3) určují **nejnižší přípustnou úroveň**: řešení smí situaci vyhodnotit výš, nikdy ne níž. Ground truth ve vývojové ani ve skryté testovací sadě žádné tvrdé pravidlo neporušuje. Části 4–6 popisují typické situace a kontext, kde rozhoduje klinický úsudek.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 2,
+  "cite": "guide:pravidla_triaze#pravidla-tri-e"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "1. Úrovně a doporučený krok",
+  "txt": "1. Úrovně a doporučený krok: 1 ZELENÁ – `dalsi_sledovani` – režimová doporučení, kdy se ozvat dřív – ne – Očekávané mírné obtíže (1. stupeň), stabilní stav",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 3,
+  "cite": "guide:pravidla_triaze#rovn-a-doporu-en-krok"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "1. Úrovně a doporučený krok",
+  "txt": "1. Úrovně a doporučený krok: 2 ŽLUTÁ – `kontaktovat_tym` – tým se ozve – ano – 2. stupeň bez varovných příznaků, nepříznivý trend, neadherence, psychická zátěž, výpadek dat",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 4,
+  "cite": "guide:pravidla_triaze#rovn-a-doporu-en-krok"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "1. Úrovně a doporučený krok",
+  "txt": "1. Úrovně a doporučený krok: 3 ORANŽOVÁ – `telekonzultace` – lékař ještě dnes – ano, s vysokou prioritou – 3. stupeň, 2. stupeň u rizikové léčby, hrozící dehydratace, podezření na závažnou toxicitu bez bezprostředního ohrožení",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 5,
+  "cite": "guide:pravidla_triaze#rovn-a-doporu-en-krok"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "1. Úrovně a doporučený krok",
+  "txt": "1. Úrovně a doporučený krok: 4 ČERVENÁ – `neodkladna_pomoc` – ihned 155 / urgentní příjem – ano, okamžitě – Život ohrožující stav",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 6,
+  "cite": "guide:pravidla_triaze#rovn-a-doporu-en-krok"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "2. Pracovní doba a komu pacienta poslat (`doporuceny_kontakt`)",
+  "txt": "2. Pracovní doba a komu pacienta poslat (`doporuceny_kontakt`): Monitorovací centrum pracuje **v pracovní dny 7:00–15:30**. Mimo tuto dobu je v akutních případech k dispozici **sloužící lékař MOÚ (724 590 848)** a kdykoli **155**.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 7,
+  "cite": "guide:pravidla_triaze#pracovn-doba-a-komu-pacienta-poslat-doporuceny-kontakt"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "2. Pracovní doba a komu pacienta poslat (`doporuceny_kontakt`)",
+  "txt": "2. Pracovní doba a komu pacienta poslat (`doporuceny_kontakt`): 1 – Tým vidí záznam v přehledu – Totéž",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 8,
+  "cite": "guide:pravidla_triaze#pracovn-doba-a-komu-pacienta-poslat-doporuceny-kontakt"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "2. Pracovní doba a komu pacienta poslat (`doporuceny_kontakt`)",
+  "txt": "2. Pracovní doba a komu pacienta poslat (`doporuceny_kontakt`): 2 – Monitorovací centrum, vyřízení do konce následujícího pracovního dne – Monitorovací centrum následující pracovní den; pacient dostane instrukce, kdy volat dřív",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 9,
+  "cite": "guide:pravidla_triaze#pracovn-doba-a-komu-pacienta-poslat-doporuceny-kontakt"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "2. Pracovní doba a komu pacienta poslat (`doporuceny_kontakt`)",
+  "txt": "2. Pracovní doba a komu pacienta poslat (`doporuceny_kontakt`): 3 – Telekonzultace s lékařem MOÚ, kontakt do 2 hodin – Sloužící lékař MOÚ ihned",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 10,
+  "cite": "guide:pravidla_triaze#pracovn-doba-a-komu-pacienta-poslat-doporuceny-kontakt"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "2. Pracovní doba a komu pacienta poslat (`doporuceny_kontakt`)",
+  "txt": "2. Pracovní doba a komu pacienta poslat (`doporuceny_kontakt`): 4 – 155 / urgentní příjem; tým upozorněn do 15 minut – 155 / urgentní příjem, případně sloužící lékař MOÚ",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 11,
+  "cite": "guide:pravidla_triaze#pracovn-doba-a-komu-pacienta-poslat-doporuceny-kontakt"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Horečka – Teplota ≥ 38,0 °C nebo zimnice během chemoterapie nebo do 6 týdnů po ní",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 12,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Dýchání – Dušnost v klidu, SpO2 < 90 %, náhle vzniklá dušnost s bolestí na hrudi nebo bušením srdce",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 13,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Hrudník – Nově vzniklá bolest na hrudi",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 14,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Neurologie – Zmatenost, porucha vědomí nebo probuditelnosti, epileptický záchvat, nová slabost končetin, porucha řeči",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 15,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Krvácení – Krev ve stolici nebo zvratcích, černá stolice, krev v moči, krvácení z nosu > 20 minut, úraz hlavy na antikoagulaci",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 16,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Průjem – ≥ 7 stolic nad normál za 24 h, nebo průjem s krví",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 17,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Zvracení – > 5 epizod za 24 h, nebo neudrží tekutiny se známkami dehydratace",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 18,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Dehydratace / oběh – Nemočí > 10 h, mdloba, systolický TK < 90 mmHg",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 19,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Břicho – Zástava odchodu plynů a stolice se zvracením nebo kolikovitou bolestí",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 20,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Tlak – TK ≥ 180/110, nebo vysoký tlak se silnou bolestí hlavy, poruchou zraku, řeči či bolestí na hrudi",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 21,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Metabolismus – Zvracení + bolest břicha + zrychlené dýchání u diabetika nebo pacienta na imunoterapii (podezření na ketoacidózu)",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 22,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Opioidy – Nově vzniklá nápadná spavost, nereagování nebo zpomalené dýchání",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 23,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Červená – úroveň 4",
+  "txt": "Červená – úroveň 4: Psychika – Myšlenky na sebevraždu s plánem, úmyslem nebo prostředky",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 24,
+  "cite": "guide:pravidla_triaze#erven-rove-4"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Celkový stav – Odpověď „5 = velmi špatně“ u „Jak se celkově cítíte?“",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 25,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Dýchání – SpO2 < 92 % nebo pokles o ≥ 3 body proti obvyklé hodnotě pacienta; nová ortopnoe (spí vsedě / na více polštářích)",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 26,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Průjem – 4–6 stolic nad normál při imunoterapii, fluoropyrimidinech (5-FU, kapecitabin) nebo irinotekanu; jakýkoli průjem, který nereaguje na loperamid podle schématu",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 27,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Průjem na imunoterapii – Jakýkoli průjem s bolestí břicha",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 28,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Příjem a tekutiny – Neudrží tekutiny; nově zvládá jen tekutou stravu a bolest není kontrolovaná; málo močí nebo se mu točí hlava při vstávání při sníženém příjmu",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 29,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Zvracení – 3–5 epizod za 24 h a zároveň neudrží tekutiny",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 30,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Tlak – TK ≥ 160/100 při antiangiogenní léčbě (sunitinib, bevacizumab a podobně)",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 31,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Krvácení – Jakékoli krvácení nebo nové modřiny na antikoagulaci",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 32,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Žíly – Jednostranný otok a bolest lýtka (možná trombóza) – vždy s poučením o příznacích plicní embolie",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 33,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Bolest – NRS ≥ 7, která nepovolí po záchranné (SOS) dávce",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 34,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Mozkový nádor – Ranní bolest hlavy se zvracením",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 35,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Imunoterapie – Velká žízeň, časté močení a hubnutí",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 36,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Glykémie – Pod 4 mmol/l u pacienta na inzulinu",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 37,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Psychika – Odpověď „Ano“ na „napadá mě, že bych si nejraději vzal/a život“; výroky beznaděje („nemá to cenu“)",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 38,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "Oranžová – nejméně úroveň 3",
+  "txt": "Oranžová – nejméně úroveň 3: Opakovaná eskalace – Stav se zhoršuje, přestože už je naplánované vyšetření – nečekat na termín",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 39,
+  "cite": "guide:pravidla_triaze#oran-ov-nejm-n-rove-3"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): Příznak 2. stupně bez varovných příznaků (nevolnost se sníženým příjmem jídla, zácpa ≥ 3 dny, afty omezující jídlo, paronychie, syndrom ruka-noha omezující činnosti).",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 40,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): Průjem do 3 stolic nad normál **na imunoterapii** (u ostatní léčby je to úroveň 1).",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 41,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): 3–5 epizod zvracení, pokud pacient pije.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 42,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): Opakovaně TK ≥ 140/90 (nejméně 3 měření), nebo hypotenze se závratí po vstávání.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 43,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): Glykémie > 15 mmol/l se žízní a častým močením – tým kontaktovat ještě týž den.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 44,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): Přetrvávající neuropatie mezi cykly nebo neuropatie omezující jemnou motoriku – předat lékaři **před další aplikací**.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 45,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): Nový tinnitus na cisplatině – předat před další dávkou.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 46,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): Otoky 2. stupně nebo přírůstek hmotnosti > 2 kg za 3 dny u kardiotoxické léčby (antracykliny, trastuzumab).",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 47,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): Úbytek hmotnosti ≥ 5 % za měsíc, pokles soběstačnosti o dva stupně, postupný pokles příjmu.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 48,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): Bolest NRS 4–6, nebo potřeba ≥ 3 záchranných dávek analgetik denně.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 49,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): Smutek nebo úzkost středního stupně, vyčerpání pečující osoby, vynechávání léků.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 50,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "4. Typické žluté situace (úroveň 2)",
+  "txt": "4. Typické žluté situace (úroveň 2): 3 nevyplněné check-iny za sebou (u stabilního pacienta). Po 1–2 vynechaných stačí připomenutí.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 51,
+  "cite": "guide:pravidla_triaze#typick-lut-situace-rove-2"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "5. Kontext, který mění úroveň",
+  "txt": "5. Kontext, který mění úroveň: Den 7–14 po myelosupresivní chemoterapii (nadir) – Horečku nepodceňovat, pacienta poučit o měření teploty",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 52,
+  "cite": "guide:pravidla_triaze#kontext-kter-m-n-rove"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "5. Kontext, který mění úroveň",
+  "txt": "5. Kontext, který mění úroveň: Imunoterapie (anti-PD-1/PD-L1, anti-CTLA-4) – Imunitní toxicita může nastoupit kdykoli a rychle progredovat. Nový průjem, kašel, dušnost, žízeň nebo únava se vždy hlásí týmu",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 53,
+  "cite": "guide:pravidla_triaze#kontext-kter-m-n-rove"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "5. Kontext, který mění úroveň",
+  "txt": "5. Kontext, který mění úroveň: Fluoropyrimidiny, irinotekan – Průjem 2. stupně řeší lékař týž den. U irinotekanu se loperamid užívá, dokud pacient není 12 h bez průjmu – do té doby nejméně žlutá",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 54,
+  "cite": "guide:pravidla_triaze#kontext-kter-m-n-rove"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "5. Kontext, který mění úroveň",
+  "txt": "5. Kontext, který mění úroveň: Antikoagulace + interagující léky (např. kapecitabin a warfarin) – Krvácení posuzovat přísněji",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 55,
+  "cite": "guide:pravidla_triaze#kontext-kter-m-n-rove"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "5. Kontext, který mění úroveň",
+  "txt": "5. Kontext, který mění úroveň: Antiangiogenní léčba – Hypertenze, krvácení, riziko perforace",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 56,
+  "cite": "guide:pravidla_triaze#kontext-kter-m-n-rove"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "5. Kontext, který mění úroveň",
+  "txt": "5. Kontext, který mění úroveň: Pauza v cyklické léčbě (např. sunitinib 4/2) – Tlak klesá, léky na tlak nastavené na léčbu mohou způsobit hypotenzi",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 57,
+  "cite": "guide:pravidla_triaze#kontext-kter-m-n-rove"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "5. Kontext, který mění úroveň",
+  "txt": "5. Kontext, který mění úroveň: Chronická onemocnění (CHOPN, diabetes, srdeční selhání, onemocnění ledvin) – Hodnotit změnu proti obvyklému stavu pacienta, ne absolutní hodnotu (dušnost u CHOPN, saturace, glykémie)",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 58,
+  "cite": "guide:pravidla_triaze#kontext-kter-m-n-rove"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "5. Kontext, který mění úroveň",
+  "txt": "5. Kontext, který mění úroveň: Vysoký věk, život o samotě, nízká digitální gramotnost – Nižší práh pro eskalaci a ověření telefonem",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 59,
+  "cite": "guide:pravidla_triaze#kontext-kter-m-n-rove"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "5. Kontext, který mění úroveň",
+  "txt": "5. Kontext, který mění úroveň: Paliativní péče a dříve vyslovená přání – Přání je informace pro tým. Nikdy není důvodem nedoporučit pomoc – doporučit 24h linku paliativního týmu / hospice, při nedostupnosti 155",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 60,
+  "cite": "guide:pravidla_triaze#kontext-kter-m-n-rove"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "6. Obecná pravidla",
+  "txt": "6. Obecná pravidla: **Trend.** Několik zhoršujících se záznamů za sebou může znamenat vyšší úroveň, i když jednotlivě vypadají nevinně (hmotnost, otoky, saturace, příjem, soběstačnost).",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 61,
+  "cite": "guide:pravidla_triaze#obecn-pravidla"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "6. Obecná pravidla",
+  "txt": "6. Obecná pravidla: **Zpráva pacienta má přednost před dotazníkem.** Když si odporují, systém se doptá a do té doby počítá s horší variantou.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 62,
+  "cite": "guide:pravidla_triaze#obecn-pravidla"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "6. Obecná pravidla",
+  "txt": "6. Obecná pravidla: **Stav, který tým už řeší.** Po zásahu týmu (telekonzultace, hospitalizace) se zlepšující se stav hodnotí podle aktuálních údajů. Nový nebo zhoršený příznak se hodnotí znovu od začátku.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 63,
+  "cite": "guide:pravidla_triaze#obecn-pravidla"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "6. Obecná pravidla",
+  "txt": "6. Obecná pravidla: **Doplňující otázky.** Při nejasnosti se systém doptá. Do odpovědi platí vyšší z možných úrovní.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 64,
+  "cite": "guide:pravidla_triaze#obecn-pravidla"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "6. Obecná pravidla",
+  "txt": "6. Obecná pravidla: **Bez diagnózy a změny léčby.** Pacientovi systém neříká diagnózu a nemění léky ani dávky. Smí připomenout postup, který má pacient předem od lékaře (např. schéma loperamidu, „Paralen neužívat, dokud vás nevyšetří lékař“).",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 65,
+  "cite": "guide:pravidla_triaze#obecn-pravidla"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "6. Obecná pravidla",
+  "txt": "6. Obecná pravidla: **Vysvětlitelnost.** Každé vyhodnocení uvádí klíčové nálezy a varovné příznaky, ze kterých vychází.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 66,
+  "cite": "guide:pravidla_triaze#obecn-pravidla"
+ },
+ {
+  "source": "pravidla_triaze",
+  "section": "6. Obecná pravidla",
+  "txt": "6. Obecná pravidla: **Pečující.** Když vyplňuje blízká osoba, oslovovat ji a hodnotit i její zátěž.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 67,
+  "cite": "guide:pravidla_triaze#obecn-pravidla"
+ },
+ {
+  "source": "readme",
+  "section": "Povinná pravidla řešení",
+  "txt": "Povinná pravidla řešení: **Nestanovuje diagnózu a nemění léčbu.** Ve zdůvodnění pro lékaře smí napsat „podezření na…“, pacientovi ale nesděluje diagnózu a nemění léky ani dávky. Smí připomenout postup, který má pacient předem od lékaře (např. schéma léku na průjem).",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 68,
+  "cite": "guide:readme#povinn-pravidla-e-en"
+ },
+ {
+  "source": "readme",
+  "section": "Povinná pravidla řešení",
+  "txt": "Povinná pravidla řešení: **Při pochybnosti eskaluje.** Nejistota se řeší vyšší úrovní nebo doplňující otázkou, nikdy nižší úrovní.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 69,
+  "cite": "guide:readme#povinn-pravidla-e-en"
+ },
+ {
+  "source": "readme",
+  "section": "Povinná pravidla řešení",
+  "txt": "Povinná pravidla řešení: **Nepodhodnotí tvrdá pravidla** z `docs/pravidla_triaze.md` (část 3).",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 70,
+  "cite": "guide:readme#povinn-pravidla-e-en"
+ },
+ {
+  "source": "readme",
+  "section": "Povinná pravidla řešení",
+  "txt": "Povinná pravidla řešení: **Pracuje s kontextem a trendem**, ne jen s jednou odpovědí.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 71,
+  "cite": "guide:readme#povinn-pravidla-e-en"
+ },
+ {
+  "source": "readme",
+  "section": "Povinná pravidla řešení",
+  "txt": "Povinná pravidla řešení: **Zpráva pacienta má přednost před dotazníkem.** Když si odporují, doptá se a do té doby počítá s horší variantou.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 72,
+  "cite": "guide:readme#povinn-pravidla-e-en"
+ },
+ {
+  "source": "readme",
+  "section": "Povinná pravidla řešení",
+  "txt": "Povinná pravidla řešení: **Je vysvětlitelné.** Každé vyhodnocení uvádí, z čeho vychází, aby ho lékař ověřil za pár sekund.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 73,
+  "cite": "guide:readme#povinn-pravidla-e-en"
+ },
+ {
+  "source": "readme",
+  "section": "Povinná pravidla řešení",
+  "txt": "Povinná pravidla řešení: **Lidský dohled.** Úrovně 2–4 vždy končí u zdravotníka. Systém pacienta nikdy jen „neuklidní“ místo předání.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 74,
+  "cite": "guide:readme#povinn-pravidla-e-en"
+ },
+ {
+  "source": "readme",
+  "section": "Povinná pravidla řešení",
+  "txt": "Povinná pravidla řešení: **Respektuje pracovní dobu.** Monitorovací centrum funguje v pracovní dny 7:00–15:30. Mimo ni pacienta s oranžovou úrovní nasměruje na sloužícího lékaře MOÚ (724 590 848), s červenou na 155.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 75,
+  "cite": "guide:readme#povinn-pravidla-e-en"
+ },
+ {
+  "source": "readme",
+  "section": "Povinná pravidla řešení",
+  "txt": "Povinná pravidla řešení: **Ochrana údajů.** MEDDI běží na AWS se servery v Evropě. Ostré řešení musí jít provozovat tam. Pro prototyp nad těmito smyšlenými daty můžete použít jakýkoli jazykový model; v prezentaci ukažte, jak by řešení běželo v AWS v EU, a do modelu posílejte jen nezbytné údaje.",
+  "lang": "cs",
+  "audience": "clinician",
+  "id": 76,
+  "cite": "guide:readme#povinn-pravidla-e-en"
+ },
+ {
+  "source": "dotazniky",
+  "section": "nevolnost",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Jak nevolnosti a zvracení omezuje Váš příjem stravy a tekutin? Silné nevolnosti mohou vést k vážné dehydrataci a podvýživě, může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích.",
+  "id": 77,
+  "cite": "guide:dotazniky#nevolnost"
+ },
+ {
+  "source": "dotazniky",
+  "section": "zvraceni",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Kolikrát za 24 hodin došlo ke zvracení? Opakované zvracení může vést k vážné dehydrataci a může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích.",
+  "id": 78,
+  "cite": "guide:dotazniky#zvraceni"
+ },
+ {
+  "source": "dotazniky",
+  "section": "prujem",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Kolik průjmovitých stolic jste měl/a během posledních 24hodin? Průjmy mohou vést k vážné dehydrataci a dalším komplikacím. Může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích.",
+  "id": 79,
+  "cite": "guide:dotazniky#prujem"
+ },
+ {
+  "source": "dotazniky",
+  "section": "afty",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Jak afty a bolesti hrdla ovlivňují váš příjem potravy a tekutin? Nedostatečný příjem stravy může v kombinaci s ostatními potížemi vést k vážné dehydrataci a může se jednat o závažný stav. Zvažte telefonickou konzultaci s naším lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích.",
+  "id": 80,
+  "cite": "guide:dotazniky#afty"
+ },
+ {
+  "source": "dotazniky",
+  "section": "bol_hrud",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Měl/a jste nebo máte bolesti na hrudi? Bolesti na hrudi nemusí, ale mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích.",
+  "id": 81,
+  "cite": "guide:dotazniky#bol-hrud"
+ },
+ {
+  "source": "dotazniky",
+  "section": "bol_bricho",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Jak Vás bolesti břicha omezují? Nově vzniklé bolesti břicha mohou být závažným příznakem. Zvažte konzultaci potíží s lékařem k vyloučení vážnější příčiny potíží. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích.",
+  "id": 82,
+  "cite": "guide:dotazniky#bol-bricho"
+ },
+ {
+  "source": "dotazniky",
+  "section": "teplota",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Měl/a jste zvýšenou tělesnou teplotu nebo horečky? Po aplikaci chemoterapie může dojít k poklesům bílých krvinek, ve spojení s horečkou se může jednat za určitých okolností o velmi závažný stav. Zvažte telefonickou konzultaci s lékařem. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích.",
+  "id": 83,
+  "cite": "guide:dotazniky#teplota"
+ },
+ {
+  "source": "dotazniky",
+  "section": "moceni",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Pociťujete pálení nebo řezání při močení? Sledujete zkalení moče? Přítomnost krve v moči? Bolesti, pálení nebo řezání při močení, případně zkalená moč mohou být příznakem močové infekce, obzvláště ve spojení se zvýšenou tělesnou teplotou - pokud potíže neustoupí do druhého dne, je nutné zvážit telefonickou konzultaci s lékařem.",
+  "id": 84,
+  "cite": "guide:dotazniky#moceni"
+ },
+ {
+  "source": "dotazniky",
+  "section": "dusnost",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Pociťujete dušnost? Pocit nedostatku vzduchu? Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích.",
+  "id": 85,
+  "cite": "guide:dotazniky#dusnost"
+ },
+ {
+  "source": "pacient",
+  "section": "kdy_volat",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Volejte ihned 155 (mimo pracovní dobu případně sloužícího lékaře MOÚ 724 590 848), pokud máte: teplotu 38 °C a víc nebo zimnici během chemoterapie či do 6 týdnů po ní, dušnost v klidu, novou bolest na hrudi, zmatenost, záchvat, novou slabost rukou nebo nohou, krev ve stolici, zvratcích nebo moči, černou stolici, 7 a více stolic denně navíc, zvracení víc než 5× za den, neudržíte tekutiny, nemočíte déle než 10 hodin nebo omdlíte. Nečekejte do rána.",
+  "id": 86,
+  "cite": "guide:pacient#kdy_volat"
+ },
+ {
+  "source": "pacient",
+  "section": "kdy_volat",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Volajte ihneď 155 (mimo pracovného času prípadne službukonajúceho lekára MOÚ 724 590 848), ak máte: teplotu 38 °C a viac alebo zimnicu počas chemoterapie či do 6 týždňov po nej, dýchavičnosť v pokoji, novú bolesť na hrudi, zmätenosť, záchvat, novú slabosť rúk alebo nôh, krv v stolici, zvratkoch alebo moči, čiernu stolicu, 7 a viac stolíc denne navyše, zvracanie viac ako 5× za deň, neudržíte tekutiny, nemočíte dlhšie ako 10 hodín alebo odpadnete. Nečakajte do rána.",
+  "id": 87,
+  "cite": "guide:pacient#kdy_volat"
+ },
+ {
+  "source": "pacient",
+  "section": "kontakty",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Monitorovací centrum MOÚ pracuje v pracovní dny od 7:00 do 15:30. Mimo tuto dobu volejte v akutních případech sloužícího lékaře MOÚ na čísle 724 590 848. Při ohrožení života volejte kdykoli 155. Chat ani dotazník neslouží k přivolání pomoci v neodkladných situacích.",
+  "id": 88,
+  "cite": "guide:pacient#kontakty"
+ },
+ {
+  "source": "pacient",
+  "section": "kontakty",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Monitorovacie centrum MOÚ pracuje v pracovné dni od 7:00 do 15:30. Mimo tohto času volajte v akútnych prípadoch službukonajúceho lekára MOÚ na čísle 724 590 848. Pri ohrození života volajte kedykoľvek 155. Chat ani dotazník neslúžia na privolanie pomoci v neodkladných situáciách.",
+  "id": 89,
+  "cite": "guide:pacient#kontakty"
+ },
+ {
+  "source": "pacient",
+  "section": "horecka",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Horečka během chemoterapie může znamenat, že tělo má málo bílých krvinek, které ho chrání, a potřebuje okamžité vyšetření. Při teplotě 38 °C a víc nebo při zimnici nečekejte do rána a volejte ihned. Paralen neužívejte, dokud vás nevyšetří lékař, protože by horečku jen zakryl.",
+  "id": 90,
+  "cite": "guide:pacient#horecka"
+ },
+ {
+  "source": "pacient",
+  "section": "horecka",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Horúčka počas chemoterapie môže znamenať, že telo má málo bielych krviniek, ktoré ho chránia, a potrebuje okamžité vyšetrenie. Pri teplote 38 °C a viac alebo pri zimnici nečakajte do rána a volajte ihneď. Paralen neužívajte, kým vás nevyšetrí lekár, pretože by horúčku iba zakryl.",
+  "id": 91,
+  "cite": "guide:pacient#horecka"
+ },
+ {
+  "source": "pacient",
+  "section": "mereni_teploty",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Mezi 7. a 14. dnem po chemoterapii je obranyschopnost těla nejslabší. V tu dobu si měřte teplotu ráno i večer a pokaždé, když je vám zima, třesete se nebo se necítíte dobře.",
+  "id": 92,
+  "cite": "guide:pacient#mereni_teploty"
+ },
+ {
+  "source": "pacient",
+  "section": "mereni_teploty",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Medzi 7. a 14. dňom po chemoterapii je obranyschopnosť tela najslabšia. Vtedy si merajte teplotu ráno aj večer a zakaždým, keď je vám zima, trasiete sa alebo sa necítite dobre.",
+  "id": 93,
+  "cite": "guide:pacient#mereni_teploty"
+ },
+ {
+  "source": "pacient",
+  "section": "prujem",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Při průjmu pijte často po malých doušcích, třeba vodu, čaj nebo neperlivou minerálku. Pokud máte od lékaře schéma léku na průjem, užívejte ho přesně podle něj. Ozvěte se týmu, když máte 4 a více stolic denně navíc, průjem s bolestí břicha nebo průjem nepovoluje. Při krvi ve stolici, 7 a více stolicích navíc, závratích nebo když málo močíte, volejte ihned 155.",
+  "id": 94,
+  "cite": "guide:pacient#prujem"
+ },
+ {
+  "source": "pacient",
+  "section": "prujem",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Pri hnačke pite často po malých dúškoch, napríklad vodu, čaj alebo neperlivú minerálku. Ak máte od lekára schému lieku na hnačku, užívajte ho presne podľa nej. Ozvite sa tímu, keď máte 4 a viac stolíc denne navyše, hnačku s bolesťou brucha alebo hnačka neustupuje. Pri krvi v stolici, 7 a viac stoliciach navyše, závratoch alebo keď málo močíte, volajte ihneď 155.",
+  "id": 95,
+  "cite": "guide:pacient#prujem"
+ },
+ {
+  "source": "pacient",
+  "section": "zvraceni",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Při nevolnosti a zvracení pijte po lžičkách nebo malých doušcích a jezte málo a často. Léky proti nevolnosti užívejte tak, jak je máte předepsané. Když zvracíte 3–5× za den, dejte vědět týmu. Když zvracíte víc než 5× za den nebo neudržíte žádné tekutiny, volejte ihned.",
+  "id": 96,
+  "cite": "guide:pacient#zvraceni"
+ },
+ {
+  "source": "pacient",
+  "section": "zvraceni",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Pri nevoľnosti a zvracaní pite po lyžičkách alebo malých dúškoch a jedzte málo a často. Lieky proti nevoľnosti užívajte tak, ako ich máte predpísané. Keď zvraciate 3–5× za deň, dajte vedieť tímu. Keď zvraciate viac ako 5× za deň alebo neudržíte žiadne tekutiny, volajte ihneď.",
+  "id": 97,
+  "cite": "guide:pacient#zvraceni"
+ },
+ {
+  "source": "pacient",
+  "section": "afty",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Při aftech si po jídle vyplachujte ústa, používejte měkký kartáček a jezte měkká jídla bez kyselého a ostrého. Pokud vám afty brání v jídle nebo pití, ozvěte se týmu. Když nezvládnete pít, volejte ještě dnes.",
+  "id": 98,
+  "cite": "guide:pacient#afty"
+ },
+ {
+  "source": "pacient",
+  "section": "afty",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Pri aftách si po jedle vyplachujte ústa, používajte mäkkú kefku a jedzte mäkké jedlá bez kyslého a štipľavého. Ak vám afty bránia v jedle alebo pití, ozvite sa tímu. Keď nezvládnete piť, volajte ešte dnes.",
+  "id": 99,
+  "cite": "guide:pacient#afty"
+ },
+ {
+  "source": "pacient",
+  "section": "bolest",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Léky na bolest užívejte přesně podle rozpisu od lékaře, včetně dávek při bolesti. Dávky ani jejich počet sami neměňte. Když potřebujete záchrannou dávku 3× a víc za den nebo bolest nepovolí ani po ní, ozvěte se týmu; v paliativní péči volejte 24h linku paliativního týmu nebo hospice, a když se nedovoláte, 155.",
+  "id": 100,
+  "cite": "guide:pacient#bolest"
+ },
+ {
+  "source": "pacient",
+  "section": "bolest",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Lieky na bolesť užívajte presne podľa rozpisu od lekára, vrátane dávok pri bolesti. Dávky ani ich počet sami nemeňte. Keď potrebujete záchrannú dávku 3× a viac za deň alebo bolesť nepovolí ani po nej, ozvite sa tímu; v paliatívnej starostlivosti volajte 24h linku paliatívneho tímu alebo hospicu, a keď sa nedovoláte, 155.",
+  "id": 101,
+  "cite": "guide:pacient#bolest"
+ },
+ {
+  "source": "pacient",
+  "section": "spavost_opioidy",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Pokud je váš blízký po lécích na bolest nápadně spavý, nejde ho probudit, nereaguje nebo dýchá pomalu, volejte ihned 155.",
+  "id": 102,
+  "cite": "guide:pacient#spavost_opioidy"
+ },
+ {
+  "source": "pacient",
+  "section": "spavost_opioidy",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Ak je váš blízky po liekoch na bolesť nápadne ospalý, nedá sa zobudiť, nereaguje alebo dýcha pomaly, volajte ihneď 155.",
+  "id": 103,
+  "cite": "guide:pacient#spavost_opioidy"
+ },
+ {
+  "source": "pacient",
+  "section": "nalada",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Smutek, úzkost nebo pocit, že je toho moc, k léčbě často patří a není to selhání. Řekněte o tom týmu, může vám zprostředkovat psychologa. Pokud máte myšlenky, že byste si chtěli ublížit nebo vzít život, volejte ihned 155 nebo Linku první psychické pomoci 116 123 (nonstop).",
+  "id": 104,
+  "cite": "guide:pacient#nalada"
+ },
+ {
+  "source": "pacient",
+  "section": "nalada",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Smútok, úzkosť alebo pocit, že je toho priveľa, k liečbe často patria a nie je to zlyhanie. Povedzte o tom tímu, môže vám sprostredkovať psychológa. Ak máte myšlienky, že by ste si chceli ublížiť alebo vziať život, volajte ihneď 155.",
+  "id": 105,
+  "cite": "guide:pacient#nalada"
+ },
+ {
+  "source": "pacient",
+  "section": "pecujici",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Péče o blízkého je náročná. Pokud jste vyčerpaní, nespíte nebo nevíte, jak dál, řekněte to týmu. Může zajistit pomoc, například domácí hospic, paliativní tým nebo sociální pracovnici.",
+  "id": 106,
+  "cite": "guide:pacient#pecujici"
+ },
+ {
+  "source": "pacient",
+  "section": "pecujici",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Starostlivosť o blízkeho je náročná. Ak ste vyčerpaní, nespíte alebo neviete, ako ďalej, povedzte to tímu. Môže zabezpečiť pomoc, napríklad domáci hospic, paliatívny tím alebo sociálnu pracovníčku.",
+  "id": 107,
+  "cite": "guide:pacient#pecujici"
+ },
+ {
+  "source": "pacient",
+  "section": "leky_a_davky",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Navigátor nemění léky ani dávky. Může vám připomenout jen to, co máte předepsané od lékaře, přesně podle rozpisu. O každé další dávce nebo změně rozhoduje lékař, proto se v takovém případě obraťte na tým.",
+  "id": 108,
+  "cite": "guide:pacient#leky_a_davky"
+ },
+ {
+  "source": "pacient",
+  "section": "leky_a_davky",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Navigátor nemení lieky ani dávky. Môže vám pripomenúť iba to, čo máte predpísané od lekára, presne podľa rozpisu. O každej ďalšej dávke alebo zmene rozhoduje lekár, preto sa v takom prípade obráťte na tím.",
+  "id": 109,
+  "cite": "guide:pacient#leky_a_davky"
+ },
+ {
+  "source": "pacient",
+  "section": "diagnoza",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Chat neurčuje diagnózu. Co vaše potíže znamenají, posoudí lékař. Navigátor vám pomůže popsat potíže a předat je týmu monitorovacího centra, který se vám ozve.",
+  "id": 110,
+  "cite": "guide:pacient#diagnoza"
+ },
+ {
+  "source": "pacient",
+  "section": "diagnoza",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Chat neurčuje diagnózu. Čo vaše ťažkosti znamenajú, posúdi lekár. Navigátor vám pomôže opísať ťažkosti a odovzdať ich tímu monitorovacieho centra, ktorý sa vám ozve.",
+  "id": 111,
+  "cite": "guide:pacient#diagnoza"
+ },
+ {
+  "source": "pacient",
+  "section": "dych_hrudnik",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Dušnost v klidu, náhlá dušnost s bolestí na hrudi nebo bušením srdce a nová bolest na hrudi jsou důvodem volat ihned 155. Pokud nově spíte vsedě nebo na více polštářích, ozvěte se ještě dnes týmu.",
+  "id": 112,
+  "cite": "guide:pacient#dych_hrudnik"
+ },
+ {
+  "source": "pacient",
+  "section": "dych_hrudnik",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Dýchavičnosť v pokoji, náhla dýchavičnosť s bolesťou na hrudi alebo búšením srdca a nová bolesť na hrudi sú dôvodom volať ihneď 155. Ak novo spíte posediačky alebo na viacerých vankúšoch, ozvite sa ešte dnes tímu.",
+  "id": 113,
+  "cite": "guide:pacient#dych_hrudnik"
+ },
+ {
+  "source": "pacient",
+  "section": "krvaceni",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Krev ve stolici, zvratcích nebo moči, černá stolice nebo krvácení z nosu déle než 20 minut jsou důvodem volat ihned 155. Při léčbě na ředění krve hlaste týmu i menší krvácení nebo nové modřiny.",
+  "id": 114,
+  "cite": "guide:pacient#krvaceni"
+ },
+ {
+  "source": "pacient",
+  "section": "krvaceni",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Krv v stolici, zvratkoch alebo moči, čierna stolica alebo krvácanie z nosa dlhšie ako 20 minút sú dôvodom volať ihneď 155. Pri liečbe na riedenie krvi hláste tímu aj menšie krvácanie alebo nové modriny.",
+  "id": 115,
+  "cite": "guide:pacient#krvaceni"
+ },
+ {
+  "source": "pacient",
+  "section": "mezitim",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Než se vám tým ozve: pijte, odpočívejte, měřte si teplotu a mějte telefon u sebe. Zapište si, kdy potíže začaly a jaké léky jste vzali. Pokud se stav zhorší, nečekejte a volejte.",
+  "id": 116,
+  "cite": "guide:pacient#mezitim"
+ },
+ {
+  "source": "pacient",
+  "section": "mezitim",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Kým sa vám tím ozve: pite, odpočívajte, merajte si teplotu a majte telefón pri sebe. Zapíšte si, kedy ťažkosti začali a aké lieky ste užili. Ak sa stav zhorší, nečakajte a volajte.",
+  "id": 117,
+  "cite": "guide:pacient#mezitim"
+ },
+ {
+  "source": "pacient",
+  "section": "zacpa",
+  "lang": "cs",
+  "audience": "patient",
+  "txt": "Při zácpě pijte dostatek tekutin, hýbejte se, jak to jde, a užívejte projímadla podle rozpisu. Bez stolice 3 dny a víc hlaste týmu. Když neodcházejí plyny ani stolice a k tomu zvracíte nebo máte křečovitou bolest břicha, volejte ihned 155.",
+  "id": 118,
+  "cite": "guide:pacient#zacpa"
+ },
+ {
+  "source": "pacient",
+  "section": "zacpa",
+  "lang": "sk",
+  "audience": "patient",
+  "txt": "Pri zápche pite dostatok tekutín, hýbte sa, ako sa dá, a užívajte preháňadlá podľa rozpisu. Bez stolice 3 dni a viac hláste tímu. Keď neodchádzajú plyny ani stolica a k tomu zvraciate alebo máte kŕčovitú bolesť brucha, volajte ihneď 155.",
+  "id": 119,
+  "cite": "guide:pacient#zacpa"
+ }
+]

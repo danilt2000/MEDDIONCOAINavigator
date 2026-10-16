@@ -1,0 +1,62 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[zprava] v noci 7x zvracela od vcera vecer sem nemocila mota se mi hlava pise dcera\n[dotaznik] nemočila od včerejšího večera, motá se hlava",
+ "usage": {
+  "completion_tokens": 395,
+  "prompt_tokens": 2113,
+  "total_tokens": 2508,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 205,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "vomiting_episodes_24h",
+    "value": 7,
+    "period_h": 12,
+    "certainty": "exact",
+    "quote": "7x zvracela"
+   },
+   {
+    "type": "no_urine_hours",
+    "value": 12,
+    "period_h": 12,
+    "certainty": "approx",
+    "quote": "od vcera vecer sem nemocila"
+   },
+   {
+    "type": "other",
+    "value": "motá se hlava",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "mota se mi hlava"
+   },
+   {
+    "type": "no_urine_hours",
+    "value": 12,
+    "period_h": 12,
+    "certainty": "approx",
+    "quote": "nemočila od včerejšího večera"
+   },
+   {
+    "type": "other",
+    "value": "motá se hlava",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "motá se hlava"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

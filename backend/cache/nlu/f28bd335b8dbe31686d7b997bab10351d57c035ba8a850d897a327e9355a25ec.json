@@ -1,0 +1,41 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] klouby boli vic spatne spim",
+ "usage": {
+  "completion_tokens": 175,
+  "prompt_tokens": 2071,
+  "total_tokens": 2246,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 87,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "pain_nrs",
+    "value": null,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "klouby boli vic"
+   },
+   {
+    "type": "other",
+    "value": "špatně spím",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "spatne spim"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

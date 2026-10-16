@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 2. Addressee: pacient.\nTemplate:\nVáš záznam jsme předali týmu monitorovacího centra, ozve se vám nejpozději do konce následujícího pracovního dne. Volejte ihned 155, pokud: dušnost vleže nebo v klidu nebo bolest na hrudi.",
+ "usage": {
+  "completion_tokens": 107,
+  "prompt_tokens": 341,
+  "total_tokens": 448,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 29,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Váš záznam jsme předali týmu monitorovacího centra, ozve se vám nejpozději do konce následujícího pracovního dne. Volejte ihned 155, pokud: dušnost vleže nebo v klidu nebo bolest na hrudi."
+ }
+}

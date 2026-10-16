@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: sk. Level: 3. Addressee: pacient.\nTemplate:\nPíšete, že máte hnačku asi 6× za deň – je to tak? Vaše ťažkosti je potrebné ešte dnes prebrať s lekárom. Lekár MOÚ cez monitorovacie centrum vám zavolá do 2 hodín. Do tej doby užite loperamid podľa schémy, ktorú máte od lekára: „4 mg pri prvej riedkej stolici, potom 2 mg každé 2 h až 12 h bez hnačky“, a pite dostatok tekutín. Pri horúčke, krvi v stolici alebo závratiach volajte 155.",
+ "usage": {
+  "completion_tokens": 195,
+  "prompt_tokens": 416,
+  "total_tokens": 611,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 42,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Píšete, že máte hnačku asi 6× za deň – je to tak? Vaše ťažkosti je potrebné ešte dnes prebrať s lekárom. Lekár MOÚ cez monitorovacie centrum vám zavolá do 2 hodín. Do tej doby užite loperamid podľa schémy, ktorú máte od lekára: „4 mg pri prvej riedkej stolici, potom 2 mg každé 2 h až 12 h bez hnačky“, a pite dostatok tekutín. Pri horúčke, krvi v stolici alebo závratiach volajte 155."
+ }
+}

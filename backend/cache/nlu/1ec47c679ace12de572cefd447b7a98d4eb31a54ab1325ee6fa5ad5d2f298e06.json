@@ -1,0 +1,34 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] par pupinku na obliceji.",
+ "usage": {
+  "completion_tokens": 87,
+  "prompt_tokens": 2070,
+  "total_tokens": 2157,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 20,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "pupínky na obličeji",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "par pupinku na obliceji"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

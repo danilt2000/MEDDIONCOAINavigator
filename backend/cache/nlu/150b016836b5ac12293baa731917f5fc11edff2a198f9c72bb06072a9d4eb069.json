@@ -1,0 +1,41 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] V noci musim spat na dvou polstarich jinak se spatne dycha\n[dotaznik] v noci spím na dvou polštářích, jinak se špatně dýchá, otoky nohou",
+ "usage": {
+  "completion_tokens": 120,
+  "prompt_tokens": 2115,
+  "total_tokens": 2235,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 22,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "orthopnea",
+    "value": true,
+    "period_h": 12,
+    "certainty": "exact",
+    "quote": "V noci musim spat na dvou polstarich jinak se spatne dycha"
+   },
+   {
+    "type": "edema",
+    "value": "nohou",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "otoky nohou"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

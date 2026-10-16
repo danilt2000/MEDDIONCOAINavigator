@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 3. Addressee: pacient.\nTemplate:\nVaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Dávkování léků na ředění krve neměňte bez pokynu lékaře. Volejte ihned 155, pokud: černá stolice, krev v moči, krvácení z nosu déle než 20 minut nebo úraz hlavy.",
+ "usage": {
+  "completion_tokens": 173,
+  "prompt_tokens": 372,
+  "total_tokens": 545,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 64,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Dávkování léků na ředění krve neměňte bez pokynu lékaře. Volejte ihned 155, pokud: černá stolice, krev v moči, krvácení z nosu déle než 20 minut nebo úraz hlavy."
+ }
+}

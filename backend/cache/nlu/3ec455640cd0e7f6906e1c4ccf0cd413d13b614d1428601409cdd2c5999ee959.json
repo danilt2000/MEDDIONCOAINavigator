@@ -1,0 +1,55 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] na chodidlech bolestive mozoly a puchyre, chuze boli.\n[priloha] foto_chodidla.jpg – zarudnutí, hyperkeratóza a puchýře na ploskách obou nohou\n[dotaznik] bolest – chodidla",
+ "usage": {
+  "completion_tokens": 447,
+  "prompt_tokens": 2123,
+  "total_tokens": 2570,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 311,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "bolestivé mozoly",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "bolestive mozoly"
+   },
+   {
+    "type": "skin_blisters",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "puchyre"
+   },
+   {
+    "type": "pain_nrs",
+    "value": null,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "chuze boli"
+   },
+   {
+    "type": "other",
+    "value": "zarudnutí",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "zarudnutí"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

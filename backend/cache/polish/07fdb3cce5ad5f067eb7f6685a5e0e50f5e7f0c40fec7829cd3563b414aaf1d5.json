@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 4. Addressee: pacient.\nTemplate:\nVolejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848. Nečekejte do rána. Vezměte si s sebou seznam léků.",
+ "usage": {
+  "completion_tokens": 89,
+  "prompt_tokens": 325,
+  "total_tokens": 414,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 27,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Volejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848. Nečekejte do rána. Vezměte si s sebou seznam léků."
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] svírá mě na hrudi",
+ "usage": {
+  "completion_tokens": 119,
+  "prompt_tokens": 2069,
+  "total_tokens": 2188,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 56,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "chest_pain_new",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "svírá mě na hrudi"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] 3 dny bez stolice, beru laktulózu.",
+ "usage": {
+  "completion_tokens": 167,
+  "prompt_tokens": 2078,
+  "total_tokens": 2245,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 104,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "no_stool_no_gas",
+    "value": true,
+    "period_h": 72,
+    "certainty": "exact",
+    "quote": "3 dny bez stolice"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

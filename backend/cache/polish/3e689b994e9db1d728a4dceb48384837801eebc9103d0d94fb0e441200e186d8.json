@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: sk. Level: 4. Addressee: pacient.\nTemplate:\nVolajte ihneď 155 alebo choďte na urgentný príjem. Nečakajte, kým to prejde. Paralen neužívajte, kým vás nevyšetrí lekár. Vezmite si so sebou zoznam liekov.",
+ "usage": {
+  "completion_tokens": 103,
+  "prompt_tokens": 337,
+  "total_tokens": 440,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 29,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Volajte ihneď 155 alebo choďte na urgentný príjem. Nečakajte, kým to prejde. Paralen neužívajte, kým vás nevyšetrí lekár. Vezmite si so sebou zoznam liekov."
+ }
+}

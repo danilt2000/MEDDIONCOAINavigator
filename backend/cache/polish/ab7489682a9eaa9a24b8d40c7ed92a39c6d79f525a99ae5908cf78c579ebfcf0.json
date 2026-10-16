@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 4. Addressee: pacient.\nTemplate:\nVolejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848. Nečekejte do rána. Paralen neužívejte, dokud vás nevyšetří lékař. Vezměte si s sebou seznam léků.",
+ "usage": {
+  "completion_tokens": 105,
+  "prompt_tokens": 343,
+  "total_tokens": 448,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 25,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Volejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848. Nečekejte do rána. Paralen neužívejte, dokud vás nevyšetří lékař. Vezměte si s sebou seznam léků."
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Dnes už 5× průjem i přes loperamid, křeče v břiše. Piju, ale moc toho nesním.",
+ "usage": {
+  "completion_tokens": 232,
+  "prompt_tokens": 2093,
+  "total_tokens": 2325,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 112,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "stool_count_above_normal",
+    "value": 5,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "5× průjem"
+   },
+   {
+    "type": "colicky_pain",
+    "value": true,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "křeče v břiše"
+   },
+   {
+    "type": "other",
+    "value": "moc toho nesním",
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "moc toho nesním"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

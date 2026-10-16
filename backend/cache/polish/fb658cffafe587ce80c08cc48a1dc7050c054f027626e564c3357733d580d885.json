@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 2. Addressee: pacient.\nTemplate:\nVáš záznam jsme předali týmu monitorovacího centra, ozve se vám následující pracovní den. Tlak si dál měřte ráno a večer. Volejte ihned 155, pokud: silná bolest hlavy, porucha zraku nebo omdlení.",
+ "usage": {
+  "completion_tokens": 137,
+  "prompt_tokens": 344,
+  "total_tokens": 481,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 56,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Váš záznam jsme předali týmu monitorovacího centra, ozve se vám následující pracovní den. Tlak si dál měřte ráno a večer. Volejte ihned 155, pokud: silná bolest hlavy, porucha zraku nebo omdlení."
+ }
+}

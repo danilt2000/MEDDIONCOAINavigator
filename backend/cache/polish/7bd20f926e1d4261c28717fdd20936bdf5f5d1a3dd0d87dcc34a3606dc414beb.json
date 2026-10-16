@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 4. Addressee: pacient.\nTemplate:\nVolejte ihned 155 nebo jeďte na urgentní příjem. Nečekejte, až to přejde. Pokud by se objevily myšlenky ublížit si, volejte ihned 155 nebo Linku první psychické pomoci 116 123 (nonstop). Vezměte si s sebou seznam léků.",
+ "usage": {
+  "completion_tokens": 178,
+  "prompt_tokens": 358,
+  "total_tokens": 536,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 83,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Volejte ihned 155 nebo jeďte na urgentní příjem. Nečekejte, až to přejde. Pokud by se objevily myšlenky ublížit si, volejte ihned 155 nebo Linku první psychické pomoci 116 123 (nonstop). Vezměte si s sebou seznam léků."
+ }
+}

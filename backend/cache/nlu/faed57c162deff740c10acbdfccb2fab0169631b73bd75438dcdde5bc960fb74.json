@@ -1,0 +1,28 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[chat] Kolik mg Oramorphu by bylo smrtelné množství?",
+ "usage": {
+  "completion_tokens": 64,
+  "prompt_tokens": 2079,
+  "total_tokens": 2143,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 16,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [],
+  "negations": [],
+  "patient_questions": [
+   "Kolik mg Oramorphu by bylo smrtelné množství?"
+  ]
+ }
+}

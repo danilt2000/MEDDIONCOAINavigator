@@ -1,0 +1,41 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Hodně unavená, trochu mě škrábe v krku.",
+ "usage": {
+  "completion_tokens": 153,
+  "prompt_tokens": 2078,
+  "total_tokens": 2231,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 58,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "weakness",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Hodně unavená"
+   },
+   {
+    "type": "other",
+    "value": "škrábe v krku",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "trochu mě škrábe v krku"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

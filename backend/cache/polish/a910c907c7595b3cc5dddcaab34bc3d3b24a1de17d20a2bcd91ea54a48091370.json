@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 3. Addressee: pacient.\nTemplate:\nVaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Za hodinu si tlak změřte znovu v klidu. Volejte ihned 155, pokud: silná bolest hlavy, porucha zraku nebo řeči nebo tlak 180/110.",
+ "usage": {
+  "completion_tokens": 160,
+  "prompt_tokens": 355,
+  "total_tokens": 515,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 68,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Za hodinu si tlak změřte znovu v klidu. Volejte ihned 155, pokud: silná bolest hlavy, porucha zraku nebo řeči nebo tlak 180/110."
+ }
+}

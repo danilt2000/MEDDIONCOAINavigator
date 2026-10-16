@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 4. Addressee: pacient.\nTemplate:\nVolejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848. Nečekejte do rána. Můžete volat i 24hodinovou linku paliativního týmu. Vezměte si s sebou seznam léků.",
+ "usage": {
+  "completion_tokens": 130,
+  "prompt_tokens": 344,
+  "total_tokens": 474,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 49,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Volejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848. Nečekejte do rána. Můžete volat i 24hodinovou linku paliativního týmu. Vezměte si s sebou seznam léků."
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Doma, beru prednison 60 mg, stolice skoro normální.",
+ "usage": {
+  "completion_tokens": 85,
+  "prompt_tokens": 2080,
+  "total_tokens": 2165,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 54,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [],
+  "negations": [],
+  "patient_questions": []
+ }
+}

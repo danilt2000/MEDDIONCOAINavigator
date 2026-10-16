@@ -1,0 +1,48 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[zprava] Maminka je od večera zmatená a skoro nereaguje, dýchá pomalu.",
+ "usage": {
+  "completion_tokens": 157,
+  "prompt_tokens": 2085,
+  "total_tokens": 2242,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 45,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "confusion",
+    "value": true,
+    "period_h": 12,
+    "certainty": "exact",
+    "quote": "zmatená"
+   },
+   {
+    "type": "drowsiness_new",
+    "value": true,
+    "period_h": 12,
+    "certainty": "exact",
+    "quote": "skoro nereaguje"
+   },
+   {
+    "type": "breathing_slow",
+    "value": null,
+    "period_h": 12,
+    "certainty": "exact",
+    "quote": "dýchá pomalu"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

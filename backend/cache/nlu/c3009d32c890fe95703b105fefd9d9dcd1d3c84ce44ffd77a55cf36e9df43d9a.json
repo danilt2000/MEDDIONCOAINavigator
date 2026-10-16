@@ -1,0 +1,36 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: sk. Written by: pacient.\nTexts:\n[chat] Píšete, že máte hnačku asi 6× za deň – je to tak?\nUz je to lepsie, dnes len 3 krat",
+ "usage": {
+  "completion_tokens": 178,
+  "prompt_tokens": 2093,
+  "total_tokens": 2271,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 94,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "sk",
+  "facts": [
+   {
+    "type": "stool_count_above_normal",
+    "value": 3,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "dnes len 3 krat"
+   }
+  ],
+  "negations": [],
+  "patient_questions": [
+   "Píšete, že máte hnačku asi 6× za deň – je to tak?"
+  ]
+ }
+}

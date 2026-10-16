@@ -1,0 +1,39 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] tlak 168/102 i pres novy lek hlava trochu boli vidim normalne",
+ "usage": {
+  "completion_tokens": 138,
+  "prompt_tokens": 2080,
+  "total_tokens": 2218,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 66,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "bolest hlavy",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "hlava trochu boli"
+   }
+  ],
+  "negations": [
+   {
+    "type": "vision_problem",
+    "quote": "vidim normalne"
+   }
+  ],
+  "patient_questions": []
+ }
+}

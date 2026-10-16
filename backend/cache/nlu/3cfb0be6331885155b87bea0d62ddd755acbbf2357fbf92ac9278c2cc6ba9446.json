@@ -1,0 +1,41 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Od odpoledne mi je zima a třese mě, naměřila jsem 38,4.",
+ "usage": {
+  "completion_tokens": 101,
+  "prompt_tokens": 2085,
+  "total_tokens": 2186,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 14,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "chills",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "mi je zima a třese mě"
+   },
+   {
+    "type": "temperature_c",
+    "value": 38.4,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "38,4"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

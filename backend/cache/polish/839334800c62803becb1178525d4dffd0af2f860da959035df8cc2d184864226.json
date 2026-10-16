@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 2. Addressee: pecujici.\nTemplate:\nZáznam vaší maminky jsme předali týmu monitorovacího centra, ozve se vám následující pracovní den. Péče je náročná a je v pořádku říct si o pomoc. Volejte ihned 155, pokud: náhlé zhoršení stavu blízkého.",
+ "usage": {
+  "completion_tokens": 112,
+  "prompt_tokens": 350,
+  "total_tokens": 462,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 44,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Záznam vaší maminky jsme předali týmu monitorovacího centra, ozve se vám následující pracovní den. Volejte ihned 155, pokud: náhlé zhoršení stavu blízkého."
+ }
+}

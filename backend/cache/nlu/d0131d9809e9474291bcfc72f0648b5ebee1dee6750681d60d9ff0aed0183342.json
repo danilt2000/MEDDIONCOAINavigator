@@ -1,0 +1,34 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: sk. Written by: pacient.\nTexts:\n[chat] Uz je to lepsie, dnes len 3 krat",
+ "usage": {
+  "completion_tokens": 278,
+  "prompt_tokens": 2073,
+  "total_tokens": 2351,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 219,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "sk",
+  "facts": [
+   {
+    "type": "other",
+    "value": "3 krát",
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "dnes len 3 krat"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

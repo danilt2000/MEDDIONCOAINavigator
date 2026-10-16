@@ -1,0 +1,172 @@
+# Triage rules (spec §8.3–8.5, pravidla_triaze.md). Engine code implements each id; this file is the source of truth
+# for the minimum level, area, source, the doctor-facing label/rationale and the patient-facing hint.
+version: "rules 2026-10-16"
+rules:
+  # --- red: level 4 -------------------------------------------------------------------------------------------
+  - {id: R-FEVER, min_level: 4, area: horečka, source: "pravidla_triaze §3 Horečka",
+     label: "teplota ≥ 38 °C nebo zimnice během chemoterapie nebo do 6 týdnů po ní",
+     rationale: "Horečka nebo zimnice v době chemoterapie = podezření na febrilní neutropenii; vyšetření a ATB do 1 hodiny, nečekat do rána, nemaskovat antipyretiky.",
+     hint_cs: "teplota 38 °C a více nebo zimnice", hint_sk: "teplota 38 °C a viac alebo zimnica",
+     safety_cs: "Paralen ani jiné léky na horečku neužívejte, dokud vás nevyšetří lékař.", safety_sk: "Paralen ani iné lieky na horúčku neužívajte, kým vás nevyšetrí lekár."}
+  - {id: R-BREATH, min_level: 4, area: dýchání, source: "pravidla_triaze §3 Dýchání",
+     label: "dušnost v klidu, SpO2 < 90 % nebo náhlá dušnost s bolestí na hrudi či bušením srdce",
+     rationale: "Klidová dušnost nebo hypoxémie může být bezprostředně život ohrožující (podezření na plicní embolii, pneumonitidu, srdeční selhání).",
+     hint_cs: "dušnost v klidu", hint_sk: "dýchavičnosť v pokoji"}
+  - {id: R-CHEST, min_level: 4, area: hrudník, source: "pravidla_triaze §3 Hrudník",
+     label: "nově vzniklá bolest na hrudi", rationale: "Nová bolest na hrudi vyžaduje okamžité vyloučení akutního koronárního syndromu nebo plicní embolie.",
+     hint_cs: "bolest na hrudi", hint_sk: "bolesť na hrudi"}
+  - {id: R-NEURO, min_level: 4, area: neurologie, source: "pravidla_triaze §3 Neurologie",
+     label: "zmatenost, porucha vědomí, záchvat, nová slabost končetin nebo porucha řeči",
+     rationale: "Akutní neurologický deficit nebo porucha vědomí – okamžité vyšetření.",
+     hint_cs: "zmatenost, nejde probudit, slabost končetin nebo potíže s řečí", hint_sk: "zmätenosť, nedá sa prebudiť, slabosť končatín alebo problémy s rečou"}
+  - {id: R-BLEED, min_level: 4, area: krvácení, source: "pravidla_triaze §3 Krvácení",
+     label: "krev ve stolici, zvratcích nebo moči, černá stolice, krvácení z nosu > 20 min, úraz hlavy na antikoagulaci",
+     rationale: "Závažné krvácení – riziko hemodynamické nestability, okamžité vyšetření.",
+     hint_cs: "krev ve stolici, zvratcích nebo moči nebo černá stolice", hint_sk: "krv v stolici, zvratkoch alebo moči alebo čierna stolica"}
+  - {id: R-DIARRHEA, min_level: 4, area: průjem, source: "pravidla_triaze §3 Průjem",
+     label: "≥ 7 stolic nad normál za 24 h nebo průjem s krví",
+     rationale: "Průjem 3. stupně – vysoké riziko dehydratace, rozvratu iontů a sepse.",
+     hint_cs: "průjem 7× a vícekrát za den nebo krev ve stolici", hint_sk: "hnačka 7× a viackrát za deň alebo krv v stolici"}
+  - {id: R-VOMIT, min_level: 4, area: zvracení, source: "pravidla_triaze §3 Zvracení",
+     label: "> 5 epizod zvracení za 24 h nebo neudrží tekutiny se známkami dehydratace",
+     rationale: "Nekontrolované zvracení – riziko těžké dehydratace a akutního poškození ledvin.",
+     hint_cs: "zvracení víc než 5× za den nebo když neudržíte ani vodu", hint_sk: "vracanie viac ako 5× za deň alebo keď neudržíte ani vodu"}
+  - {id: R-DEHYD, min_level: 4, area: dehydratace, source: "pravidla_triaze §3 Dehydratace / oběh",
+     label: "nemočí > 10 h, mdloba, systolický TK < 90 mmHg nebo nedostatečný příjem tekutin se známkami dehydratace",
+     rationale: "Známky hypoperfuze / těžké dehydratace – riziko akutního selhání ledvin, nutná okamžitá i.v. hydratace.",
+     hint_cs: "nemočíte déle než 10 hodin, točí se vám hlava nebo omdlíte", hint_sk: "nemočíte dlhšie ako 10 hodín, točí sa vám hlava alebo odpadnete"}
+  - {id: R-ILEUS, min_level: 4, area: břicho, source: "pravidla_triaze §3 Břicho",
+     label: "zástava plynů a stolice se zvracením nebo kolikovitou bolestí",
+     rationale: "Podezření na střevní neprůchodnost – okamžité chirurgické posouzení.",
+     hint_cs: "neodcházejí plyny ani stolice a zvracíte nebo vás křečovitě bolí břicho", hint_sk: "neodchádzajú plyny ani stolica a vraciate alebo vás kŕčovito bolí brucho"}
+  - {id: R-BP, min_level: 4, area: tlak, source: "pravidla_triaze §3 Tlak",
+     label: "TK ≥ 180/110 nebo vysoký tlak se silnou bolestí hlavy, poruchou zraku, řeči či bolestí na hrudi",
+     rationale: "Možná hypertenzní emergence – okamžité vyšetření.",
+     hint_cs: "tlak 180/110 a vyšší nebo silná bolest hlavy s poruchou zraku či řeči", hint_sk: "tlak 180/110 a vyšší alebo silná bolesť hlavy s poruchou zraku či reči"}
+  - {id: R-DKA, min_level: 4, area: metabolismus, source: "pravidla_triaze §3 Metabolismus",
+     label: "zvracení + bolest břicha + zrychlené dýchání u diabetika nebo na imunoterapii",
+     rationale: "Podezření na diabetickou ketoacidózu – okamžité vyšetření.",
+     hint_cs: "zvracení s bolestí břicha a zrychleným dýcháním", hint_sk: "vracanie s bolesťou brucha a zrýchleným dýchaním"}
+  - {id: R-OPIOID, min_level: 4, area: opioidy, source: "pravidla_triaze §3 Opioidy",
+     label: "nově vzniklá nápadná spavost, nereagování nebo zpomalené dýchání na opioidech",
+     rationale: "Možná opioidní toxicita (potenciálně reverzibilní) – okamžité posouzení; dříve vyslovené přání je informace pro tým, ne důvod nedoporučit pomoc.",
+     hint_cs: "je nápadně spavý/á, nejde probudit nebo dýchá pomalu", hint_sk: "je nápadne spavý/á, nedá sa prebudiť alebo dýcha pomaly"}
+  - {id: R-SUICIDE, min_level: 4, area: psychika, source: "pravidla_triaze §3 Psychika",
+     label: "myšlenky na sebevraždu s plánem, úmyslem nebo prostředky",
+     rationale: "Akutní suicidální riziko – okamžitá krizová intervence.",
+     hint_cs: "myšlenky na sebevraždu", hint_sk: "myšlienky na samovraždu"}
+  # --- orange: level 3 ----------------------------------------------------------------------------------------
+  - {id: O-GENERAL, min_level: 3, area: celkový stav, source: "pravidla_triaze §3 Celkový stav",
+     label: "„Jak se celkově cítíte?“ = 5 (velmi špatně)", rationale: "Pacient hodnotí celkový stav jako velmi špatný – posouzení lékařem týž den.",
+     hint_cs: "výrazné zhoršení celkového stavu", hint_sk: "výrazné zhoršenie celkového stavu"}
+  - {id: O-BREATH, min_level: 3, area: dýchání, source: "pravidla_triaze §3 Dýchání",
+     label: "SpO2 < 92 % nebo pokles o ≥ 3 body, nová ortopnoe",
+     rationale: "Nová ortopnoe nebo pokles saturace – podezření na srdeční selhání nebo plicní komplikaci; posouzení týž den, nečekat na plánované vyšetření.",
+     hint_cs: "dušnost v klidu nebo bolest na hrudi", hint_sk: "dýchavičnosť v pokoji alebo bolesť na hrudi"}
+  - {id: O-DIARRHEA-RISK, min_level: 3, area: průjem, source: "pravidla_triaze §3 Průjem",
+     label: "4–6 stolic nad normál při imunoterapii, fluoropyrimidinech nebo irinotekanu; průjem nereagující na loperamid",
+     rationale: "Průjem 2. stupně na rizikové léčbě nebo refrakterní na loperamid – riziko rychlé dehydratace; posouzení lékařem týž den (úprava léčby je rozhodnutím lékaře).",
+     hint_cs: "horečka, krev ve stolici, závratě nebo průjem 7× za den", hint_sk: "horúčka, krv v stolici, závraty alebo hnačka 7× za deň"}
+  - {id: O-IO-DIARRHEA-PAIN, min_level: 3, area: průjem, source: "pravidla_triaze §3 Průjem na imunoterapii",
+     label: "průjem s bolestí břicha na imunoterapii", rationale: "Podezření na imunitně podmíněnou kolitidu; posouzení lékařem týž den (kortikoidy indikuje lékař).",
+     hint_cs: "krev ve stolici, silná bolest břicha nebo horečka", hint_sk: "krv v stolici, silná bolesť brucha alebo horúčka"}
+  - {id: O-INTAKE, min_level: 3, area: příjem, source: "pravidla_triaze §3 Příjem a tekutiny",
+     label: "neudrží tekutiny; jen tekutá strava s nekontrolovanou bolestí; málo močí nebo závratě při sníženém příjmu",
+     rationale: "Hrozící dehydratace při nedostatečném příjmu – posouzení týž den (hydratace, výživa, analgezie).",
+     hint_cs: "nemočíte déle než 10 hodin nebo omdlíte", hint_sk: "nemočíte dlhšie ako 10 hodín alebo odpadnete"}
+  - {id: O-VOMIT, min_level: 3, area: zvracení, source: "pravidla_triaze §3 Zvracení",
+     label: "3–5 epizod zvracení za 24 h a neudrží tekutiny", rationale: "Zvracení s neschopností přijímat tekutiny – riziko dehydratace a rozvratu iontů; posouzení týž den.",
+     hint_cs: "zvracení víc než 5× za den nebo když přestanete močit", hint_sk: "vracanie viac ako 5× za deň alebo keď prestanete močiť"}
+  - {id: O-BP-ANTIANGIO, min_level: 3, area: tlak, source: "pravidla_triaze §3 Tlak",
+     label: "TK ≥ 160/100 při antiangiogenní léčbě", rationale: "Hypertenze 3. stupně na antiangiogenní léčbě; posouzení lékařem týž den.",
+     hint_cs: "silná bolest hlavy, porucha zraku nebo řeči nebo tlak 180/110", hint_sk: "silná bolesť hlavy, porucha zraku alebo reči alebo tlak 180/110"}
+  - {id: O-BLEED-ANTICOAG, min_level: 3, area: krvácení, source: "pravidla_triaze §3 Krvácení",
+     label: "jakékoli krvácení nebo nové modřiny na antikoagulaci", rationale: "Krvácení na antikoagulaci (pozor na lékové interakce zvyšující INR) – stanovit INR, rozhodnutí lékaře týž den.",
+     hint_cs: "černá stolice, krev v moči, krvácení z nosu déle než 20 minut nebo úraz hlavy", hint_sk: "čierna stolica, krv v moči, krvácanie z nosa dlhšie ako 20 minút alebo úraz hlavy"}
+  - {id: O-DVT, min_level: 3, area: žíly, source: "pravidla_triaze §3 Žíly",
+     label: "jednostranný otok a bolest lýtka", rationale: "Podezření na hlubokou žilní trombózu; vždy poučit o příznacích plicní embolie.",
+     hint_cs: "náhlá dušnost nebo bolest na hrudi", hint_sk: "náhla dýchavičnosť alebo bolesť na hrudi"}
+  - {id: O-PAIN, min_level: 3, area: bolest, source: "pravidla_triaze §3 Bolest",
+     label: "bolest NRS ≥ 7, která nepovolí po záchranné dávce", rationale: "Nekontrolovaná bolest – posouzení lékařem týž den; systém nemění dávky.",
+     hint_cs: "bolest, která nepovolí ani po záchranné dávce", hint_sk: "bolesť, ktorá nepovolí ani po záchrannej dávke"}
+  - {id: O-BRAIN, min_level: 3, area: neurologie, source: "pravidla_triaze §3 Mozkový nádor",
+     label: "ranní bolest hlavy se zvracením u mozkového nádoru", rationale: "Možné zvýšení nitrolebního tlaku – posouzení týž den.",
+     hint_cs: "zmatenost, záchvat nebo slabost končetin", hint_sk: "zmätenosť, záchvat alebo slabosť končatín"}
+  - {id: O-IO-ENDO, min_level: 3, area: metabolismus, source: "pravidla_triaze §3 Imunoterapie",
+     label: "velká žízeň, časté močení a hubnutí na imunoterapii", rationale: "Podezření na imunitně podmíněnou endokrinopatii (diabetes) – posouzení týž den.",
+     hint_cs: "zvracení, bolest břicha nebo zrychlené dýchání", hint_sk: "vracanie, bolesť brucha alebo zrýchlené dýchanie"}
+  - {id: O-HYPO, min_level: 3, area: metabolismus, source: "pravidla_triaze §3 Glykémie",
+     label: "glykémie < 4 mmol/l na inzulinu", rationale: "Hypoglykémie na inzulinu – posouzení týž den.",
+     hint_cs: "zmatenost nebo bezvědomí", hint_sk: "zmätenosť alebo bezvedomie"}
+  - {id: O-PSYCH, min_level: 3, area: psychika, source: "pravidla_triaze §3 Psychika",
+     label: "myšlenky na smrt („nejraději bych si vzal/a život“) nebo výroky beznaděje",
+     rationale: "Beznaděj a pasivní suicidální myšlenky jsou rizikový faktor suicidality – posouzení odborníkem týž den, krizové kontakty; při plánu, úmyslu nebo prostředcích jde o červenou úroveň.",
+     hint_cs: "myšlenky na to si ublížit", hint_sk: "myšlienky na to si ublížiť"}
+  - {id: O-REPEAT, min_level: 3, area: trend, source: "pravidla_triaze §3 Opakovaná eskalace",
+     label: "zhoršení přesto, že je vyšetření už naplánováno", rationale: "Stav se zhoršuje před plánovaným vyšetřením – nečekat na termín.",
+     hint_cs: "další zhoršení", hint_sk: "ďalšie zhoršenie"}
+  # --- yellow: level 2 ----------------------------------------------------------------------------------------
+  - {id: Y-FEVER, min_level: 2, area: horečka, source: "spec §15 (mimo chemoterapii)",
+     label: "teplota ≥ 38 °C mimo okno chemoterapie", rationale: "Horečka mimo období chemoterapie – tým má posoudit; ≥ 39 °C posouzení lékařem týž den.",
+     hint_cs: "teplota 39 °C a více, zimnice nebo zhoršení", hint_sk: "teplota 39 °C a viac, zimnica alebo zhoršenie"}
+  - {id: Y-GRADE2, min_level: 2, area: toxicita, source: "pravidla_triaze §4",
+     label: "příznak 2. stupně bez varovných příznaků", rationale: "Středně závažný příznak (2. stupeň) bez varovných příznaků; tým má vyhodnotit do konce následujícího pracovního dne.",
+     hint_cs: "horečka 38 °C a více, krvácení nebo výrazné zhoršení", hint_sk: "horúčka 38 °C a viac, krvácanie alebo výrazné zhoršenie"}
+  - {id: Y-IO-DIARRHEA, min_level: 2, area: průjem, source: "pravidla_triaze §4, §5 Imunoterapie",
+     label: "průjem do 3 stolic nad normál na imunoterapii", rationale: "Na imunoterapii je každý nový průjem potenciálním začátkem imunitní kolitidy a musí o něm vědět tým.",
+     hint_cs: "průjem 4× a vícekrát za den, bolest břicha nebo krev ve stolici", hint_sk: "hnačka 4× a viackrát za deň, bolesť brucha alebo krv v stolici"}
+  - {id: Y-IO-NEW, min_level: 2, area: imunoterapie, source: "pravidla_triaze §5 Imunoterapie",
+     label: "nový kašel, dušnost nebo žízeň na imunoterapii", rationale: "Imunitní toxicita může nastoupit kdykoli a rychle progredovat; tým má o novém příznaku vědět.",
+     hint_cs: "dušnost v klidu, horečka nebo výrazné zhoršení", hint_sk: "dýchavičnosť v pokoji, horúčka alebo výrazné zhoršenie"}
+  - {id: Y-IRINOTECAN, min_level: 2, area: průjem, source: "pravidla_triaze §5 Fluoropyrimidiny, irinotekan",
+     label: "průjem po irinotekanu ještě neustoupil", rationale: "U irinotekanu se loperamid užívá, dokud pacient není 12 h bez průjmu – do té doby nejméně žlutá.",
+     hint_cs: "průjem znovu zesílí, horečka nebo krev ve stolici", hint_sk: "hnačka znovu zosilnie, horúčka alebo krv v stolici"}
+  - {id: Y-VOMIT, min_level: 2, area: zvracení, source: "pravidla_triaze §4",
+     label: "3–5 epizod zvracení, pacient pije", rationale: "Zvracení 2. stupně se zachovaným příjmem tekutin; tým má zvážit úpravu antiemetik.",
+     hint_cs: "neudržíte tekutiny nebo zvracíte víc než 5× za den", hint_sk: "neudržíte tekutiny alebo vraciate viac ako 5× za deň"}
+  - {id: Y-BP, min_level: 2, area: tlak, source: "pravidla_triaze §4",
+     label: "opakovaně TK ≥ 140/90 nad obvyklými hodnotami nebo hypotenze se závratí po vstávání",
+     rationale: "Nepříznivý vývoj tlaku – tým má upravit antihypertenzní léčbu (rozhoduje lékař).",
+     hint_cs: "silná bolest hlavy, porucha zraku nebo omdlení", hint_sk: "silná bolesť hlavy, porucha zraku alebo odpadnutie"}
+  - {id: Y-GLUCOSE, min_level: 2, area: metabolismus, source: "pravidla_triaze §4",
+     label: "glykémie > 15 mmol/l se žízní a častým močením", rationale: "Symptomatická hyperglykémie – tým kontaktovat ještě týž den; bez známek ketoacidózy.",
+     hint_cs: "zvracení, bolest břicha, zrychlené dýchání nebo zmatenost", hint_sk: "vracanie, bolesť brucha, zrýchlené dýchanie alebo zmätenosť"}
+  - {id: Y-NEURO, min_level: 2, area: neuropatie, source: "pravidla_triaze §4",
+     label: "přetrvávající neuropatie nebo neuropatie omezující jemnou motoriku; nový tinnitus na cisplatině",
+     rationale: "Kumulativní neurotoxicita / ototoxicita – lékař má informaci znát před další aplikací (rozhoduje výhradně lékař).",
+     hint_cs: "slabost končetin nebo pády", hint_sk: "slabosť končatín alebo pády"}
+  - {id: Y-CARDIO, min_level: 2, area: kardiotoxicita, source: "pravidla_triaze §4, spec §8.5 T-WEIGHT-GAIN, T-OEDEMA",
+     label: "otoky 2. stupně nebo přírůstek hmotnosti > 2 kg na kardiotoxické léčbě",
+     rationale: "Narůstající otoky a hmotnost u pacienta s rizikem kardiotoxicity; tým má rozhodnout o vyšetření (NT-proBNP, ECHO).",
+     hint_cs: "dušnost vleže nebo v klidu nebo bolest na hrudi", hint_sk: "dýchavičnosť poležiačky alebo v pokoji alebo bolesť na hrudi"}
+  - {id: Y-NUTRITION, min_level: 2, area: výživa, source: "pravidla_triaze §4, spec §8.5 T-WEIGHT-LOSS, T-SELFCARE, T-INTAKE",
+     label: "úbytek hmotnosti ≥ 5 %, pokles soběstačnosti o dva stupně nebo postupně klesající příjem",
+     rationale: "Nepříznivý nutriční trend – tým má posílit nutriční podporu.",
+     hint_cs: "neudržíte tekutiny nebo přestanete močit", hint_sk: "neudržíte tekutiny alebo prestanete močiť"}
+  - {id: Y-PAIN, min_level: 2, area: bolest, source: "pravidla_triaze §4",
+     label: "bolest NRS 4–6 nebo ≥ 3 záchranné dávky denně", rationale: "Bazální analgezie nestačí; lékař má titrovat (dávky systém nemění).",
+     hint_cs: "bolest nepovolí ani po záchranné dávce", hint_sk: "bolesť nepovolí ani po záchrannej dávke"}
+  - {id: Y-PSYCH, min_level: 2, area: psychika, source: "pravidla_triaze §4, spec §15",
+     label: "smutek nebo úzkost středního stupně, zájem o psychologa", rationale: "Emoční distres; vhodné nabídnout psychoonkologickou podporu.",
+     hint_cs: "myšlenky na to si ublížit", hint_sk: "myšlienky na to si ublížiť"}
+  - {id: Y-CAREGIVER, min_level: 2, area: pečující, source: "pravidla_triaze §4, §6.7",
+     label: "vyčerpání pečující osoby", rationale: "Zátěž pečující – riziko kolapsu domácí péče; nabídnout podporu (hospic, respitní péče, psycholog).",
+     hint_cs: "náhlé zhoršení stavu blízkého", hint_sk: "náhle zhoršenie stavu blízkeho"}
+  - {id: Y-ADHERENCE, min_level: 2, area: adherence, source: "pravidla_triaze §4",
+     label: "vynechávání léků", rationale: "Neadherence k léčbě – tým má probrat příčiny a řešení (změna léčby je na lékaři).",
+     hint_cs: "nové nebo zhoršené potíže", hint_sk: "nové alebo zhoršené ťažkosti"}
+  - {id: Y-GAP, min_level: 2, area: výpadek dat, source: "pravidla_triaze §4, spec §8.6",
+     label: "3 nevyplněné check-iny za sebou (u rizikových pacientů 2)", rationale: "Dlouhodobý výpadek dat – systém nemůže vyloučit zhoršení; tým má pacienta kontaktovat.",
+     hint_cs: "jakékoli zhoršení", hint_sk: "akékoľvek zhoršenie"}
+  - {id: Y-PSYCH-FOLLOWUP, min_level: 2, area: psychika, source: "pravidla_triaze §6.3",
+     label: "nedávné myšlenky na smrt nebo beznaděj – trvá sledování", rationale: "Stav známý týmu; po nedávných myšlenkách na smrt pokračovat ve sledování nálady.",
+     hint_cs: "myšlenky na to si ublížit", hint_sk: "myšlienky na to si ublížiť"}
+  - {id: C-CONTRADICTION, min_level: 1, area: rozpor, source: "pravidla_triaze §6.2",
+     label: "zpráva pacienta odporuje dotazníku", rationale: "Zpráva má přednost před dotazníkem; do odpovědi na doplňující otázku platí horší varianta.",
+     hint_cs: "", hint_sk: ""}
+  - {id: O-GRADE3, min_level: 3, area: toxicita, source: "pravidla_triaze §1 (3. stupeň)",
+     label: "příznak 3. stupně", rationale: "Příznak 3. stupně – posouzení lékařem týž den.",
+     hint_cs: "horečka 38 °C a více nebo výrazné zhoršení", hint_sk: "horúčka 38 °C a viac alebo výrazné zhoršenie"}
+  - {id: U-VERIFY, min_level: 2, area: nejistota, source: "pravidla_triaze §6.4, README §6.2",
+     label: "nejistý varovný příznak z volného textu – ověřit", rationale: "Volný text naznačuje možný varovný příznak, který se nepodařilo potvrdit; při nejistotě se systém doptá a tým stav ověří telefonem.",
+     hint_cs: "je nápadně spavý/á, nejde probudit nebo dýchá pomalu", hint_sk: "je nápadne spavý/á, nedá sa prebudiť alebo dýcha pomaly"}

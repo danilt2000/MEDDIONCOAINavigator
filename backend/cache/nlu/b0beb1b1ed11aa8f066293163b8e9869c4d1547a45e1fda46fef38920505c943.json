@@ -1,0 +1,48 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[zprava] V noci 7x zvracela. Od vcera vecer sem nemocila, mota se mi hlava. Pise dcera.\n[dotaznik] nemočila od včerejšího večera, motá se hlava",
+ "usage": {
+  "completion_tokens": 334,
+  "prompt_tokens": 2116,
+  "total_tokens": 2450,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 204,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "vomiting_episodes_24h",
+    "value": 7,
+    "period_h": 12,
+    "certainty": "exact",
+    "quote": "V noci 7x zvracela"
+   },
+   {
+    "type": "no_urine_hours",
+    "value": 12,
+    "period_h": 12,
+    "certainty": "approx",
+    "quote": "Od vcera vecer sem nemocila"
+   },
+   {
+    "type": "other",
+    "value": "závratě",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "mota se mi hlava"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

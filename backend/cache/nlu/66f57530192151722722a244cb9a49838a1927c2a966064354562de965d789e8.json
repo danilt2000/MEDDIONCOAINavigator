@@ -1,0 +1,36 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: sk. Written by: pacient.\nTexts:\n[chat] od vcera mam hnacku\nKoľkokrát ste mali hnačku za posledných …hodín?\nasi 6 krat",
+ "usage": {
+  "completion_tokens": 269,
+  "prompt_tokens": 2090,
+  "total_tokens": 2359,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 190,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "sk",
+  "facts": [
+   {
+    "type": "stool_count_above_normal",
+    "value": 6,
+    "period_h": 24,
+    "certainty": "approx",
+    "quote": "asi 6 krat"
+   }
+  ],
+  "negations": [],
+  "patient_questions": [
+   "Koľkokrát ste mali hnačku za posledných …hodín?"
+  ]
+ }
+}

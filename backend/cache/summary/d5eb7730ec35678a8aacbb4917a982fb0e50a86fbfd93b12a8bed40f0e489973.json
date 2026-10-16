@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "summary",
+ "user": "Language: cs.\nHeader: ONC-005 · Josef M., 72 let · týdenní souhrn (2026-09-14, 16:05)\nFacts:\n- 2026-09-14: bez eskalace, poslední záznam 14. 9. (záznam)\n- ADT (leuprorelin depot à 3 měsíce) + enzalutamid 160 mg denně, kontinuálně (5. měsíc léčby) (záznam)\n- komorbidity: Arteriální hypertenze, Hyperlipidémie (záznam)\n- 2026-09-11: 11. 9. „Bolí mě koleno, celý den jsem byl na zahradě a klečel.“ (pacient) (pacient)\n- 2026-09-14: bolest kloubů 11. 9. střední → 14. 9. mírná (pacient) (pacient)\n- 2026-09-01: testosteron 0,5 nmol/l L (naměřeno) (naměřeno)\n- 2026-09-14: horečku, dušnost, krvácení (pacient) (pacient)\n- průběh od posledního kontaktu (odhad systému)",
+ "usage": {
+  "completion_tokens": 222,
+  "prompt_tokens": 592,
+  "total_tokens": 814,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 34,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Proč teď: bez eskalace, poslední záznam 14. 9.; k posouzení průběh bolesti kloubů po zátěži a další postup (záznam, pacient)\nLéčba: ADT (leuprorelin depot à 3 měsíce) + enzalutamid 160 mg denně, kontinuálně, 5. měsíc léčby (záznam)\nVývoj: 11. 9. bolest kloubů střední → 14. 9. mírná (pacient)\nLaboratoř: testosteron 0,5 nmol/l L 1. 9. (naměřeno)\nNehlásí: horečku, dušnost, krvácení (pacient)"
+ }
+}

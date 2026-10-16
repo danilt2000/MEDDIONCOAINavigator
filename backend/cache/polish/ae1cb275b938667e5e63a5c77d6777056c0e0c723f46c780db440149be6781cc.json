@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 2. Addressee: pacient.\nTemplate:\nVáš záznam jsme předali týmu monitorovacího centra, ozve se vám následující pracovní den. Pijte po malých doušcích. Volejte ihned 155, pokud: průjem 4× a vícekrát za den, bolest břicha nebo krev ve stolici.",
+ "usage": {
+  "completion_tokens": 118,
+  "prompt_tokens": 349,
+  "total_tokens": 467,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 32,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Váš záznam jsme předali týmu monitorovacího centra, ozve se vám následující pracovní den. Pijte po malých doušcích. Volejte ihned 155, pokud máte průjem 4× a vícekrát za den, bolest břicha nebo krev ve stolici."
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 4. Addressee: pecujici.\nTemplate:\nVolejte ihned 155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848). Nečekejte do rána. Maminka je velmi spavá a dýchá pomalu, to je potřeba hned řešit. Dokud ji nevyšetří lékař, nedávejte jí další dávku morfinu, pokud to tak nemáte domluvené.",
+ "usage": {
+  "completion_tokens": 192,
+  "prompt_tokens": 379,
+  "total_tokens": 571,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 87,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Volejte ihned 155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848). Nečekejte do rána. Maminka je velmi spavá a dýchá pomalu. Dokud ji nevyšetří lékař, nedávejte jí další dávku morfinu, pokud to tak nemáte domluvené."
+ }
+}

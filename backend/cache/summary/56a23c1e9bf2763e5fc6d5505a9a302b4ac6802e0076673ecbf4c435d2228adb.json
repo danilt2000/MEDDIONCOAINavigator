@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "summary",
+ "user": "Language: cs.\nHeader: ONC-007 · Hana D., 55 let · souhrn při eskalaci (2026-09-10, 07:35)\nFacts:\n- 2026-09-10: nově ortopnoe: \"spí na dvou polštářích\" (pacient)\n- 2026-09-03: váha 83,4 kg, večer oteklé kotníky (naměřeno)\n- 2026-09-07: váha 85,0 kg, otoky i ráno (naměřeno)\n- 2026-09-10: váha 86,4 kg, tep 94 (naměřeno)\n- trastuzumab s.c. à 21 dní, cyklus C12; letrozol (karta)\n- 2026-06-05: ECHO: LVEF 58 % (před léčbou 64 %) (karta)\n- 2026-09-10: nehlásí dušnost v klidu, bolest na hrudi, mdlobu (pacient)\n- úroveň 3 ORANŽOVÁ – telekonzultace dnes; pravidla Y-CARDIO, O-BREATH (odhad systému)\n- plánované ECHO 2026-09-14 (karta)",
+ "usage": {
+  "completion_tokens": 472,
+  "prompt_tokens": 597,
+  "total_tokens": 1069,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 169,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Proč teď: Nově ortopnoe, vzestup váhy a otoky; dnes telekonzultace, k posouzení kardiální tolerance a dalšího postupu (pacient, odhad systému).\nLéčba: trastuzumab s.c. à 21 dní, cyklus C12; letrozol. ECHO 5. 6. 2026: LVEF 58 % (před léčbou 64 %) (karta).\nVývoj: 3. 9. 83,4 kg → 7. 9. 85,0 kg → 10. 9. 86,4 kg; 3. 9. večer otoky kotníků → 7. 9. otoky i ráno → 10. 9. ortopnoe (naměřeno, pacient).\nLaboratoř: tep 94, LVEF 58 % (naměřeno, karta).\nNehlásí: dušnost v klidu, bolest na hrudi, mdlobu (pacient).\nK posouzení lékařem: k posouzení, zda jde o zhoršení retence tekutin/kardiálního stavu; plánované ECHO 14. 9. 2026 (karta)."
+ }
+}

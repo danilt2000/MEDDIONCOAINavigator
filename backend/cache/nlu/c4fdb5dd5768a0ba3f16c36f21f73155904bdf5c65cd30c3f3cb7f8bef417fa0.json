@@ -1,0 +1,48 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Včera jsem vypil možná půl litru. Točí se mi hlava, málo močím.\n[dotaznik] málo močím, točí se hlava, bolest – None",
+ "usage": {
+  "completion_tokens": 291,
+  "prompt_tokens": 2106,
+  "total_tokens": 2397,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 172,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "málo pije",
+    "period_h": 24,
+    "certainty": "approx",
+    "quote": "možná půl litru"
+   },
+   {
+    "type": "other",
+    "value": "závratě",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Točí se mi hlava"
+   },
+   {
+    "type": "other",
+    "value": "málo močí",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "málo močím"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

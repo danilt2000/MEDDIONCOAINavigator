@@ -1,0 +1,34 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Bolí mě koleno, celý den jsem byl na zahradě a klečel.",
+ "usage": {
+  "completion_tokens": 97,
+  "prompt_tokens": 2080,
+  "total_tokens": 2177,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 38,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "pain_nrs",
+    "value": null,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "Bolí mě koleno"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

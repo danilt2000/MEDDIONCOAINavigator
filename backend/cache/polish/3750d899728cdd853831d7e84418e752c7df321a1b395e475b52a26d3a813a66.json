@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: sk. Level: 3. Addressee: pacient.\nTemplate:\nVaše ťažkosti je potrebné ešte dnes prebrať s lekárom, volajte ihneď službukonajúceho lekára MOÚ 724 590 848. Dovtedy loperamid užívajte podľa rozpisu (4 mg pri prvej riedkej stolici, potom 2 mg každé 2 h až 12 h bez hnačky) a pite po malých dúškoch. Ak sa objaví krv v stolici, horúčka, závraty alebo zástava močenia, volajte ihneď 155. Môžete volať aj 24-hodinovú linku paliatívneho tímu.",
+ "usage": {
+  "completion_tokens": 236,
+  "prompt_tokens": 428,
+  "total_tokens": 664,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 71,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Vaše ťažkosti je potrebné ešte dnes prebrať s lekárom, volajte ihneď službukonajúceho lekára MOÚ 724 590 848. Dovtedy užívajte loperamid podľa rozpisu (4 mg pri prvej riedkej stolici, potom 2 mg každé 2 h až 12 h bez hnačky) a pite po malých dúškoch. Ak sa objaví krv v stolici, horúčka, závraty alebo zástava močenia, volajte ihneď 155. Môžete volať aj 24-hodinovú linku paliatívneho tímu."
+ }
+}

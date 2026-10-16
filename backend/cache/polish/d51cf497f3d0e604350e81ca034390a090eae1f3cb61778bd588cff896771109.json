@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 3. Addressee: pacient.\nTemplate:\nVaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby loperamid užívejte podle rozpisu (4 mg po první řídké stolici, pak 2 mg po každé, max 16 mg/den) a pijte po malých doušcích. Volejte ihned 155, pokud: horečka, krev ve stolici, závratě nebo průjem 7× za den.",
+ "usage": {
+  "completion_tokens": 210,
+  "prompt_tokens": 393,
+  "total_tokens": 603,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 80,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby loperamid užívejte podle rozpisu (4 mg po první řídké stolici, pak 2 mg po každé, max 16 mg/den) a pijte po malých doušcích. Volejte ihned 155, pokud: horečka, krev ve stolici, závratě nebo průjem 7× za den."
+ }
+}

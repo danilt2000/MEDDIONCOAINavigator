@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 1. Addressee: pacient.\nTemplate:\nDěkujeme, dnešní záznam je v očekávaném rozmezí. Pokračujte podle doporučení. Ozvěte se dřív, pokud se objeví teplota 38 °C a víc, dušnost, krvácení nebo jiné náhlé zhoršení.",
+ "usage": {
+  "completion_tokens": 106,
+  "prompt_tokens": 346,
+  "total_tokens": 452,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 23,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Děkujeme, dnešní záznam je v očekávaném rozmezí. Pokračujte podle doporučení. Ozvěte se dřív, pokud se objeví teplota 38 °C a víc, dušnost, krvácení nebo jiné náhlé zhoršení."
+ }
+}

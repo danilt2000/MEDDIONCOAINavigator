@@ -1,0 +1,34 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[chat] Dostala už dvě dávky Oramorphu a bolest je pořád 8",
+ "usage": {
+  "completion_tokens": 77,
+  "prompt_tokens": 2079,
+  "total_tokens": 2156,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 17,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "pain_nrs",
+    "value": 8,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "bolest je pořád 8"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

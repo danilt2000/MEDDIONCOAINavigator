@@ -1,0 +1,28 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: sk. Written by: pacient.\nTexts:\n[chat] Mam otazku, kedy mozem ist na prechadzku po chemoterapii?",
+ "usage": {
+  "completion_tokens": 63,
+  "prompt_tokens": 2082,
+  "total_tokens": 2145,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 10,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "sk",
+  "facts": [],
+  "negations": [],
+  "patient_questions": [
+   "Mam otazku, kedy mozem ist na prechadzku po chemoterapii?"
+  ]
+ }
+}

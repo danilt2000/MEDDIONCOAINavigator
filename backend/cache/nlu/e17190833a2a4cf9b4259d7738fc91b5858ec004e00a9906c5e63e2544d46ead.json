@@ -1,0 +1,39 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] zase vysoky hlava neboli",
+ "usage": {
+  "completion_tokens": 372,
+  "prompt_tokens": 2070,
+  "total_tokens": 2442,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 300,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "zase vysoky",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "zase vysoky"
+   }
+  ],
+  "negations": [
+   {
+    "type": "other",
+    "quote": "hlava neboli"
+   }
+  ],
+  "patient_questions": []
+ }
+}

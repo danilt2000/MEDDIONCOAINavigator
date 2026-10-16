@@ -1,0 +1,41 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: sk. Written by: pacient.\nTexts:\n[chat] od vcera mam hnacku asi 6 krat, slaby som",
+ "usage": {
+  "completion_tokens": 156,
+  "prompt_tokens": 2076,
+  "total_tokens": 2232,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 64,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "sk",
+  "facts": [
+   {
+    "type": "stool_count_above_normal",
+    "value": 6,
+    "period_h": 24,
+    "certainty": "approx",
+    "quote": "od vcera mam hnacku asi 6 krat"
+   },
+   {
+    "type": "weakness",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "slaby som"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

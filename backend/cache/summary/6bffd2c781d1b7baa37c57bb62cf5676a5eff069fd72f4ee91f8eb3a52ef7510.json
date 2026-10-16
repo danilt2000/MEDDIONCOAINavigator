@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "summary",
+ "user": "Language: cs.\nHeader: ONC-001 · Jana K., 48 let · souhrn při eskalaci (2026-09-09, 21:52)\nFacts:\n- 2026-09-09: teplota 38,4 °C, zimnice/třesavka během chemoterapie – období nadiru (D7–14); únava omezuje i běžné činnosti; pokles soběstačnosti o 2 stupně (záznam)\n- 2026-09-09: Úroveň ČERVENÁ – neodkladná pomoc (odhad systému) (odhad systému)\n- AC (doxorubicin + cyklofosfamid) à 21 dní, plánováno 4 cykly, poté paklitaxel týdně; C1 D10 (záznam)\n- komorbidity: Hypotyreóza (substituovaná) (záznam)\n- 2026-09-09: 9. 9. „naměřila jsem 38,4“ (pacient) (pacient)\n- 2026-09-09: teplota 31. 8. 36,7 °C → 8. 9. 36,5 °C → 9. 9. 38,4 °C (naměřeno) (naměřeno)\n- 2026-09-09: tep 31. 8. 74 → 8. 9. 73 → 9. 9. 108 (naměřeno) (naměřeno)\n- 2026-08-31: bez odchylek (naměřeno) (naměřeno)\n- 2026-09-09: dušnost, krvácení (pacient) (pacient)\n- teplota ≥ 38 °C nebo zimnice během chemoterapie nebo do 6 týdnů po ní (odhad systému)",
+ "usage": {
+  "completion_tokens": 322,
+  "prompt_tokens": 733,
+  "total_tokens": 1055,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 23,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Proč teď: Horečka 38,4 °C se zimnicí během chemoterapie v období nadiru, s dušností a krvácením; očekává se neodkladné lékařské zhodnocení. (pacient) (naměřeno) (odhad systému)\nLéčba: AC (doxorubicin + cyklofosfamid) à 21 dní, plánováno 4 cykly, poté paklitaxel týdně; nyní C1 D10. (záznam)\nVývoj: 31. 8. 36,7 °C → 8. 9. 36,5 °C → 9. 9. 38,4 °C; tep 31. 8. 74 → 8. 9. 73 → 9. 9. 108; 31. 8. bez odchylek. (naměřeno)\nLaboratoř: \nNehlásí: \nK posouzení lékařem: k posouzení febrilie a zimnice v nadiru, dušnost, krvácení a pokles soběstačnosti o 2 stupně; možná urgentní postup. (pacient) (odhad systému)"
+ }
+}

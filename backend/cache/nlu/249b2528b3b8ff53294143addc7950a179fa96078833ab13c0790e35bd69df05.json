@@ -1,0 +1,31 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: sk. Written by: pacient.\nTexts:\n[zprava] som v pohode, nemam teplotu",
+ "usage": {
+  "completion_tokens": 76,
+  "prompt_tokens": 2072,
+  "total_tokens": 2148,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 31,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "sk",
+  "facts": [],
+  "negations": [
+   {
+    "type": "temperature_c",
+    "quote": "nemam teplotu"
+   }
+  ],
+  "patient_questions": []
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "summary",
+ "user": "Language: cs.\nHeader: ONC-002 · Petr V., 63 let · souhrn před aplikací C7 (2026-09-21, 07:10)\nFacts:\n- 2026-09-21: neuropatie s omezením jemné motoriky na oxaliplatině (záznam)\n- 2026-09-21: Úroveň ŽLUTÁ – kontakt týmu (odhad systému) (odhad systému)\n- mFOLFOX6 à 14 dní, plánováno 12 cyklů; sledování od C5; C7 D1 (záznam)\n- 2026-09-21: 21. 9. „Brnění v prstech je horší, ráno těžko zapínám knoflíky a padají mi …“ (pacient) (pacient)\n- 2026-09-21: glykémie 7. 9. 8,5 mmol/l → 18. 9. 9,1 mmol/l → 21. 9. 8,3 mmol/l (naměřeno) (naměřeno)\n- 2026-09-12: kreatinin 83 → 80 → 118 µmol/l H (naměřeno) (naměřeno)\n- 2026-09-12: Na 137 → 141 → 134 mmol/l L (naměřeno) (naměřeno)\n- 2026-09-12: K 3,9 → 4,3 → 3,4 mmol/l L (naměřeno) (naměřeno)\n- 2026-09-21: horečku, dušnost, krvácení, bolest na hrudi (pacient) (pacient)\n- stav před dnešní aplikací C7 (odhad systému)\n- neuropatie limitující jemnou motoriku (odhad systému)",
+ "usage": {
+  "completion_tokens": 316,
+  "prompt_tokens": 715,
+  "total_tokens": 1031,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 40,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Proč teď: před aplikací C7 na mFOLFOX6, kvůli zhoršení neuropatie s omezením jemné motoriky je k posouzení další postup [odhad systému].\nLéčba: mFOLFOX6 á 14 dní, plánováno 12 cyklů; sledování od C5; nyní C7 D1 [záznam].\nVývoj: 7. 9. 8,5 mmol/l → 18. 9. 9,1 mmol/l → 21. 9. 8,3 mmol/l [naměřeno]; 2026-09-21 zhoršení brnění v prstech a ráno těžko zapíná knoflíky [pacient].\nLaboratoř: 2026-09-12 kreatinin 83 → 80 → 118 µmol/l H; Na 137 → 141 → 134 mmol/l L; K 3,9 → 4,3 → 3,4 mmol/l L [naměřeno].\nNehlásí: horečku, dušnost, krvácení, bolest na hrudi [pacient]."
+ }
+}

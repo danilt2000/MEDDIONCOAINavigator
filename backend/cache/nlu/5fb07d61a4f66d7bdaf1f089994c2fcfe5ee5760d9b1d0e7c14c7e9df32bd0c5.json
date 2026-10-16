@@ -1,0 +1,41 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[zprava] mamka rika, ze uz nechce nic, at ji nechame. skoro neji a nemluvi.",
+ "usage": {
+  "completion_tokens": 195,
+  "prompt_tokens": 2088,
+  "total_tokens": 2283,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 111,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "skoro neji",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "skoro neji"
+   },
+   {
+    "type": "other",
+    "value": "nemluvi",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "nemluvi"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

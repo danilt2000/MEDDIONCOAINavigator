@@ -1,0 +1,50 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Porad nic bricho nafoukle ale plyny odchazeji nezvracim\n[dotaznik] nafouklé břicho",
+ "usage": {
+  "completion_tokens": 241,
+  "prompt_tokens": 2094,
+  "total_tokens": 2335,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 109,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 1792
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "nafouklé břicho",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "bricho nafoukle"
+   },
+   {
+    "type": "other",
+    "value": "nafouklé břicho",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "nafouklé břicho"
+   }
+  ],
+  "negations": [
+   {
+    "type": "no_stool_no_gas",
+    "quote": "plyny odchazeji"
+   },
+   {
+    "type": "vomiting_episodes_24h",
+    "quote": "nezvracim"
+   }
+  ],
+  "patient_questions": []
+ }
+}

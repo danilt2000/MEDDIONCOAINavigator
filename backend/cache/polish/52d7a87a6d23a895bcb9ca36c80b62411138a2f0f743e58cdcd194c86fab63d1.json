@@ -1,0 +1,23 @@
+{
+ "model": "gpt-5.4-mini",
+ "kind": "polish",
+ "user": "Language: cs. Level: 4. Addressee: pecujici.\nTemplate:\nVolejte ihned 155 nebo jeďte na urgentní příjem. Stav vaší maminky je potřeba posoudit okamžitě, nečekejte. Další dávky léků na bolest teď nepodávejte. Můžete volat i 24hodinovou linku paliativního týmu.",
+ "usage": {
+  "completion_tokens": 124,
+  "prompt_tokens": 354,
+  "total_tokens": 478,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 35,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cached_tokens": 0
+  }
+ },
+ "output": {
+  "text": "Volejte ihned 155 nebo jeďte na urgentní příjem. Stav vaší maminky je potřeba posoudit okamžitě, nečekejte. Další dávky léků na bolest teď nepodávejte. Můžete volat i 24hodinovou linku paliativního týmu."
+ }
+}
