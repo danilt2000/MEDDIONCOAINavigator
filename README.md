@@ -36,7 +36,7 @@ team in time and gives the doctor a short, clear overview of how the patient's c
 
 | The brief asks for | What the navigator does | See |
 |---|---|---|
-| Support between check-ups | Patient PWA: a check-in tailored to the treatment, navigator chat in Czech and Slovak, caregiver mode, history | [Patient PWA](#patient-pwa) |
+| Support between check-ups | Patient PWA: a check-in tailored to the treatment, navigator chat in Czech and Slovak with an optional voice mode, caregiver mode, history | [Patient PWA](#patient-pwa) |
 | Keep following the symptoms | Every check-in and chat message is read with the earlier days: trends, the patient's own baselines, missed check-ins | [Triage flow](#how-a-check-in-is-triaged) |
 | Recognise risky changes | 49 deterministic rules, treatment context (nadir, drug classes), contradictions between the form and the free text | [Triage rules](#triage-rules) |
 | Recommend a safe next step | One of four levels with one step and the right phone numbers; validated texts, no diagnosis, no dose changes | [Red card](#patient-pwa) |
@@ -73,7 +73,7 @@ monitoring centre). A restart of the API resets the clock and the demo state.
 | | Link | What to try |
 |---|---|---|
 | **Patient app** | [pacient.nastasiya.com](https://pacient.nastasiya.com/?patient=ONC-001) | Open it at phone width (or install it); the *DEMO* bar on top switches the patient |
-| | [`?patient=ONC-001`](https://pacient.nastasiya.com/?patient=ONC-001) | Jana K., AC cycle 1 day 10 (nadir): *Check-in* tab, tick *Zvýšená teplota a horečky* and *Únava a slabost*, then *Teplota* 38,4 on the *Naměřené hodnoty* step → red |
+| | [`?patient=ONC-001`](https://pacient.nastasiya.com/?patient=ONC-001) | Jana K., AC cycle 1 day 10 (nadir): the app opens on the check-in; tick *Zvýšená teplota a horečky* and *Únava a slabost*, then *Teplota* 38,4 on the *Naměřené hodnoty* step → red |
 | | [`?patient=ONC-018`](https://pacient.nastasiya.com/?patient=ONC-018) | Štefan Ď., Slovak: tick only *Únava a slabost*, message „od vcera mam hnacku asi 6 krat, slaby som“ → orange with a follow-up |
 | | [`/navigator?patient=ONC-014`](https://pacient.nastasiya.com/navigator?patient=ONC-014) | Ludmila T., palliative care, her daughter writes: the chat opens in caregiver mode (*Píšete za: maminka*, leave it on) → „Můžu mamince dát další Oramorph?“ |
 | **Clinician web** | [lekar.nastasiya.com](https://lekar.nastasiya.com/#/fronta) | Desktop browser |
@@ -83,7 +83,7 @@ monitoring centre). A restart of the API resets the clock and the demo state.
 | | [`#/pacienti`](https://lekar.nastasiya.com/#/pacienti) | Patients sorted by the last level |
 | | [`#/pacienti/ONC-001`](https://lekar.nastasiya.com/#/pacienti/ONC-001) | Patient detail: regimen, tags, vitals trends, timeline |
 | | [`#/pravidla`](https://lekar.nastasiya.com/#/pravidla) | Routing by working hours, SLA and the rules |
-| | [`#/test-notifikace?patient=ONC-001`](https://lekar.nastasiya.com/#/test-notifikace?patient=ONC-001) | Web Push test: turn notifications on in the patient app on a real phone, send a test notification from here, a tap opens the check-in |
+| | [`#/test-notifikace?patient=ONC-001`](https://lekar.nastasiya.com/#/test-notifikace?patient=ONC-001) | Web Push test: on a real phone open the patient app with ONC-001 in the *DEMO* bar (iPhone: add it to the home screen first), *Nastavení* → *Zapnout upozornění*; then send a test notification from here, a tap opens the check-in |
 | **API** | [`/api/health`](https://lekar.nastasiya.com/api/health) | Status of IRIS, FHIR, the LLM and the MCP server |
 | | [`/mock/meddi/requests`](https://lekar.nastasiya.com/mock/meddi/requests) | Alerts (levels 2–4) that the IRIS production forwarded to the proposed MEDDI endpoint; empty after a restart until a new check-in or chat message reaches yellow or higher |
 
@@ -94,12 +94,12 @@ monitoring centre). A restart of the API resets the clock and the demo state.
 <table>
   <tr>
     <td width="33%" align="center" valign="top">
-      <img src="docs/screenshots/patient-home.png" alt="Patient home: today's check-in, treatment AC cycle 1 day 10, ambulance and 155 buttons">
-      <br><sub><b>Home.</b> Today's check-in, the treatment and cycle day, 155 always one tap away.</sub>
+      <img src="docs/screenshots/patient-checkin-start.png" alt="The app opens on the check-in: question 1 of 5, a note that today's check-in was red, a red phone button and the AI button">
+      <br><sub><b>Check-in first.</b> The app opens on today's questions and shows the level of today's check-in; the red phone opens the warning signs, <i>AI</i> the navigator.</sub>
     </td>
     <td width="33%" align="center" valign="top">
       <img src="docs/screenshots/patient-checkin-fever.png" alt="Check-in question about fever, marked as asked because of chemotherapy">
-      <br><sub><b>Check-in.</b> Questions follow the treatment: this one is asked <i>because of chemotherapy</i>. <i>AI</i> opens the navigator when unsure.</sub>
+      <br><sub><b>Questions follow the treatment.</b> This one is asked <i>because of chemotherapy</i>.</sub>
     </td>
     <td width="33%" align="center" valign="top">
       <img src="docs/screenshots/patient-result-red.png" alt="Red result: call 155 or the on-duty doctor, do not take paracetamol, the team has been alerted">
@@ -108,12 +108,12 @@ monitoring centre). A restart of the API resets the clock and the demo state.
   </tr>
   <tr>
     <td align="center" valign="top">
-      <img src="docs/screenshots/patient-chat-caregiver.png" alt="Navigator chat in caregiver mode: prescription quoted verbatim, the doctor decides about another dose">
-      <br><sub><b>Caregiver asks</b> „Můžu mamince dát další Oramorph?“ → yellow: no permission, the prescription quoted verbatim, the palliative line, and a question how many doses she has had today.</sub>
+      <img src="docs/screenshots/patient-acute.png" alt="Akutní potíže dialog: when to call at once, with Ambulance and 155 buttons">
+      <br><sub><b>Akutní potíže?</b> The warning signs in plain words with <i>Ambulance</i> and <i>155</i>, one tap from the check-in.</sub>
     </td>
     <td align="center" valign="top">
-      <img src="docs/screenshots/patient-chat-caregiver-2.png" alt="Navigator chat escalates to orange: call the on-duty doctor now">
-      <br><sub><b>Answer</b> „Dostala už dvě dávky a bolest je pořád 8“ → the chat re-triages to orange: on-duty doctor now.</sub>
+      <img src="docs/screenshots/patient-chat-caregiver-2.png" alt="Navigator chat in caregiver mode escalates to orange: call the on-duty doctor now, no dose beyond the prescription">
+      <br><sub><b>Caregiver mode.</b> After „Dostala už dvě dávky a bolest je pořád 8“ → orange: the on-duty doctor now, no dose beyond the prescription.</sub>
     </td>
     <td align="center" valign="top">
       <img src="docs/screenshots/patient-result-orange-sk.png" alt="Slovak orange result asking back about diarrhoea six times a day">
@@ -270,7 +270,7 @@ Before: `bash scripts/seed.sh --datasets dev,rozsirena --reset`, start API, MCP 
 
 1. **Problem.** MEDDI Onco colours each answer on its own; a fever in nadir, a creeping weight gain on trastuzumab or a
    contradiction between the form and the message gets lost.
-2. **Fever in nadir.** PWA `?patient=ONC-001` (Jana, AC C1 D10) → *Vyplnit dotazník* → tick *Zvýšená teplota* and
+2. **Fever in nadir.** PWA `?patient=ONC-001` (Jana, AC C1 D10) opens on the check-in → tick *Zvýšená teplota* and
    *Únava*, temperature `38,4`, message „Od odpoledne mi je zima a třese mě, naměřila jsem 38,4.“ → red full-screen
    card: *Zavolejte prosím hned*, call 155 and the on-duty doctor, „Paralen neužívejte…“, a phone script. Clinician web
    *Fronta*: pulsing red banner, task for the on-duty doctor with a 15-minute countdown and the escalation summary in
