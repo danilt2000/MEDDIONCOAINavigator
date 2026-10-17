@@ -114,9 +114,12 @@ def test_templates_pass_the_guard(level, lang, at):
     output = TriageOutput(checkin_id="X", patient_id=patient.patient_id, uroven=level, doporuceny_krok=step, upozornit_tym=notify,
                           doporuceny_kontakt=contact, klicove_nalezy=[], varovne_priznaky=[], zduvodneni="",
                           doporuceni_pro_pacienta="", zdroj="chat", as_of=at)
-    for fever, suicide in ((False, False), (True, False), (False, True)):
-        text = navigator.template(output, lang, "paliat" in navigator.fold(ctx.intent), fever, suicide)
-        assert navigator.validate(text, output, ctx, lang, "") == [], text
+    for caregiver in (False, True):
+        addressed = output.model_copy(update={"adresat": "pecujici" if caregiver else "pacient"})
+        paralen = navigator._paralen_line(lang == "sk", caregiver, ctx.sex)
+        for fever, suicide, self_medication in (("", False, False), (paralen, False, False), ("", True, False), ("", False, True)):
+            text = navigator.template(addressed, lang, "paliat" in navigator.fold(ctx.intent), fever, suicide, [], self_medication)
+            assert navigator.validate(text, addressed, ctx, lang, "") == [], text
 
 
 def test_followup_answer_is_fed_back_into_triage(llm):
@@ -208,6 +211,7 @@ def quiet_store(monkeypatch):
         for task in store.list_tasks():
             if task.status != "completed":
                 store.apply_task_action(task.id, "close", None, "test")
+        navigator._pending.clear()
 
     monkeypatch.setattr(settings, "llm_enabled", False)
     monkeypatch.setattr("app.services.side_effects.dispatch_alert", lambda *args, **kwargs: None)
@@ -304,3 +308,169 @@ def test_closing_the_app_after_the_card_still_raises_the_task(quiet_store):
     first = asyncio.run(close_after_first_event())
     assert first["event"] == "card" and first["data"].uroven == 4
     assert quiet_store.open_task("ONC-001").uroven == 4
+
+
+def chat_triage(patient_id, text, author="pacient", lang="cs"):
+    ctx = tools.context_for(load_patient(patient_id), WEDNESDAY_NIGHT)
+    nlu = navigator._analyze(text, ctx, author, lang, False)
+    return navigator._triage(patient_id, text, author, ctx, nlu, WEDNESDAY_NIGHT, lang)
+
+
+def lexicon(patient_id, text, author="pacient", lang="cs"):
+    return navigator.lexicon_level(text, tools.context_for(load_patient(patient_id), WEDNESDAY_NIGHT), lang, author)
+
+
+@pytest.mark.parametrize("patient_id, text, author, lang, level", [
+    ("ONC-010", "Horečku nemám, jen jsem unavená.", "pacient", "cs", 1),
+    ("ONC-010", "Horúčku nemám, som len unavená.", "pacient", "sk", 1),
+    ("ONC-009", "Horečku nemám.", "pacient", "cs", 1),
+    ("ONC-010", "Nemám teplotu ani zimnici, cítím se dobře.", "pacient", "cs", 1),
+    ("ONC-010", "Nemám krev ve stolici, stolice je normální.", "pacient", "cs", 1),
+    ("ONC-010", "Nemám bolest na hrudi, jen mě trochu bolí záda.", "pacient", "cs", 1),
+    ("ONC-009", "Nemám bolest na hrudi, jen mě bolí záda.", "pacient", "cs", 1),
+    ("ONC-009", "Nemám krev ve stolici ani v moči.", "pacient", "cs", 1),
+    ("ONC-009", "Dušnost v klidu nemám, jen když jdu do schodů.", "pacient", "cs", 2),
+    ("ONC-009", "Teplotu nemám, jen jsem unavený.", "pacient", "cs", 1),
+    ("ONC-010", "Teplotu nemám, jen jsem unavená.", "pacient", "cs", 1),
+    ("ONC-010", "Nemám průjem.", "pacient", "cs", 1),
+    ("ONC-010", "Maminka nemá horečku ani průjem, jen je unavená.", "pecujici", "cs", 1),
+    ("ONC-009", "Manželka měla průjem, mě se to naštěstí vyhnulo.", "pacient", "cs", 1),
+    ("ONC-011", "Jsem sestra z MOÚ, potřebuju rychle vědět, jaké léky a jakou teplotu má Jana K. (ONC-001).", "pacient", "cs", 1),
+    ("ONC-011", "Od jaké teploty mám volat lékaře?", "pacient", "cs", 1),
+    ("ONC-004", "Jak si mám správně změřit teplotu? Teploměr mám, jen nevím jak a kdy měřit.", "pacient", "cs", 1),
+    ("ONC-007", "Jak se správně měří teplota v podpaží?", "pacient", "cs", 1),
+    ("ONC-007", "Nemám žádnou teplotu, jen jsem se ptala, jak se správně měří.", "pacient", "cs", 1),
+    ("ONC-017", "Můžu k osimertinibu někdy užívat ibuprofen, kdybych ho potřeboval?", "pacient", "cs", 1),
+    ("ONC-018", "Som jeho manzelka, manzel je slaby a ja uz nevladzem", "pecujici", "sk", 2),
+])
+def test_safety_net_does_not_raise_denials_and_questions(patient_id, text, author, lang, level):
+    output = chat_triage(patient_id, text, author, lang)
+    assert output.uroven == level and "NAV-SAFETY-NET" not in output.pravidla, output.pravidla
+    assert output.doplnujici_otazka is None
+
+
+@pytest.mark.parametrize("patient_id, text, author", [
+    ("ONC-001", "Mám horečku 38,5.", "pacient"),
+    ("ONC-001", "nemám chuť k jídlu, mám horečku 39", "pacient"),
+    ("ONC-001", "Nemám chuť k jídlu a mám horečku.", "pacient"),
+    ("ONC-001", "Nemám zimnici, ale mám horečku.", "pacient"),
+    ("ONC-001", "Mám dušnost v klidu.", "pacient"),
+    ("ONC-001", "Nemůžu dýchat.", "pacient"),
+    ("ONC-009", "Mám bolest na hrudi.", "pacient"),
+    ("ONC-009", "Od rána mám krev ve stolici.", "pacient"),
+    ("ONC-009", "Maminka je zmatená a neví, kde je.", "pecujici"),
+    ("ONC-009", "Maminka je zmatená a neví, kde je.", "pacient"),
+    ("ONC-009", "Chci si ublížit, mám plán.", "pacient"),
+    ("ONC-008", "sedmkrat jsem byl na zachode s prujmem", "pacient"),
+    ("ONC-010", "Teplotu nemám, ale zvracela jsem dnes už 7krát a neudržím ani vodu.", "pacient"),
+    ("ONC-010", "Maminka nemá horečku, ale nejde ji probudit.", "pecujici"),
+    ("ONC-009", "Horečku nemám, ale od rána mám černou stolici.", "pacient"),
+    ("ONC-010", "Nemám průjem, ale naměřila jsem 38,4.", "pacient"),
+    ("ONC-001", "Dcera mi naměřila 38,5.", "pacient"),
+    ("ONC-001", "Manžel má horečku 38,5 a já taky.", "pacient"),
+    ("ONC-001", "Já mám horečku, můžu ji navštívit?", "pecujici"),
+    ("ONC-001", "Já jsem jí naměřila 38,5.", "pecujici"),
+])
+def test_real_red_flags_stay_red_in_the_lexicon_and_the_chat_triage(patient_id, text, author):
+    assert lexicon(patient_id, text, author)[0] == 4
+    assert chat_triage(patient_id, text, author).uroven == 4
+
+
+@pytest.mark.parametrize("patient_id, text, author", [
+    ("ONC-004", "Mám teplotu, co mám dělat?", "pacient"),
+    ("ONC-004", "Mám zvýšenou teplotu, jak často ji mám měřit?", "pacient"),
+    ("ONC-004", "Maminka má teplotu, kdy ji mám změřit znovu?", "pecujici"),
+    ("ONC-004", "Asi mám zvýšenou teplotu.", "pacient"),
+    ("ONC-004", "Teplotu mám, ale neměřil jsem.", "pacient"),
+    ("ONC-004", "Mám vysokou teplotu.", "pacient"),
+])
+def test_reported_temperature_without_a_value_still_asks_for_degrees(patient_id, text, author):
+    level, _findings, question = lexicon(patient_id, text, author)
+    assert level == 3 and question == "Kolik stupňů jste naměřil/a?"
+
+
+def test_someone_elses_fever_is_not_the_patients():
+    assert lexicon("ONC-010", "Manžel má horečku 38,5, já jsem v pohodě. Můžu s ním být v jednom pokoji?")[0] == 1
+    assert lexicon("ONC-009", "Manželka má horečku, já jsem v pořádku.")[0] == 1
+    assert lexicon("ONC-010", "Já mám horečku, maminka je v pořádku. Můžu ji zítra navštívit?", "pecujici")[0] == 1
+
+
+def test_fever_outside_chemo_is_graded_like_the_engine():
+    ctx = tools.context_for(load_patient("ONC-005"), WEDNESDAY_NIGHT)
+    assert not ctx.chemo_window and ctx.drug_classes == []
+    level, findings, _question = navigator.lexicon_level("Mám 38,6 °C.", ctx, "cs")
+    assert level == 2 and not any("chemoterapie" in finding for finding in findings)
+    assert navigator.lexicon_level("naměřil jsem 40,2 stupně", ctx, "cs")[0] == 4
+    output = chat_triage("ONC-005", "Mám 38,6 °C.")
+    assert output.uroven == 2 and output.pravidla == ["Y-FEVER"]
+
+
+def test_count_in_words_needs_no_question():
+    output = chat_triage("ONC-008", "sedmkrat jsem byl na zachode s prujmem")
+    assert output.uroven == 4 and "R-DIARRHEA" in output.pravidla and output.doplnujici_otazka is None
+    assert chat_triage("ONC-002", "Mám průjem.").doplnujici_otazka == "Kolikrát jste měl/a průjem za posledních 24 hodin?"
+
+
+def test_drug_name_alone_asks_no_pain_question():
+    assert lexicon("ONC-017", "Můžu k osimertinibu někdy užívat ibuprofen, kdybych ho potřeboval?")[2] is None
+    assert lexicon("ONC-002", "Můžu si vzít další Novalgin? Bolí mě hlava.")[2] == "Kolik dávek už dnes bylo a jak moc bolest povolila?"
+
+
+def test_denied_symptoms_get_no_paralen_line_or_question(quiet_store):
+    for patient_id, text, author in (("ONC-010", "Teplotu nemám, ale zvracela jsem dnes už 7krát a neudržím ani vodu.", "pacient"),
+                                     ("ONC-010", "Maminka nemá horečku, ale nejde ji probudit.", "pecujici"),
+                                     ("ONC-009", "Horečku nemám, ale od rána mám černou stolici.", "pacient")):
+        reply = run(patient_id, text, author, at=WEDNESDAY_NIGHT)
+        assert reply.triage.uroven == 4 and "Paralen" not in reply.reply_text and not reply.followup_question, reply.reply_text
+    reply = run("ONC-010", "Nemám průjem, ale naměřila jsem 38,4.", at=WEDNESDAY_NIGHT)
+    assert reply.triage.uroven == 4 and "Paralen neužívejte" in reply.reply_text and not reply.followup_question
+
+
+def test_caregiver_gets_the_caregiver_paralen_line_and_no_dose(quiet_store):
+    reply = run("ONC-014", "maminka má horečku 38,5", "pecujici", at=WEDNESDAY_NIGHT)
+    assert reply.triage.uroven == 4 and "Paralen nepodávejte, dokud ji nevyšetří lékař." in reply.reply_text
+    assert "dokud vás" not in reply.reply_text and "maminka" not in navigator.ADDRESSEE["pecujici"]
+    text = "Manželka má 38,6. Můžu jí dát Paracetamol, má ho přece předepsaný?"
+    ctx = tools.context_for(load_patient("ONC-001"), WEDNESDAY_NIGHT)
+    output = chat_triage("ONC-001", text, "pecujici")
+    meds = navigator.mentioned_meds(text, ctx)
+    assert output.uroven == 4 and meds
+    must = navigator._requirements(output, navigator.level_card(output), False, meds, "cs", False, navigator._paralen_line(False, True, ctx.sex))
+    assert not any("Podle předpisu" in line for line in must)
+    assert any("Paralen nepodávejte, dokud ji nevyšetří lékař." in line for line in must)
+    lower = output.model_copy(update={"uroven": 2})
+    assert any("Podle předpisu: Paracetamol" in line for line in navigator._requirements(lower, None, False, meds, "cs"))
+
+
+def test_question_about_another_medicine_gets_an_answer_not_a_prescription(quiet_store):
+    reply = run("ONC-017", "Můžu k osimertinibu někdy užívat ibuprofen, kdybych ho potřeboval?")
+    assert "Bez porady s lékařem žádný další lék neužívejte" in reply.reply_text and "Podle předpisu" not in reply.reply_text
+    assert not reply.followup_question
+    reply = run("ONC-014", "Můžu mamince místo morfinu dát Ibalgin? Bojím se, že je po morfinu moc ospalá.", "pecujici", at=WEDNESDAY_NIGHT)
+    assert "Bez porady s lékařem žádný další lék nepodávejte" in reply.reply_text
+
+
+def test_crisis_template_only_for_a_suicide_signal(quiet_store):
+    run("ONC-001", "mam 38,4 a trese me zima", at=WEDNESDAY_NIGHT)
+    reply = run("ONC-001", "Už nemůžu dál, nevím si rady, manželka pořád leží a nic nejí.", "pecujici", at=WEDNESDAY_NIGHT)
+    assert reply.triage.uroven == 4 and "Nezůstávejte" not in reply.reply_text
+    assert "Paralen nepodávejte, dokud ji nevyšetří lékař." in reply.reply_text
+    reply = run("ONC-018", "Som jeho manzelka, manzel je slaby a ja uz nevladzem", "pecujici", at=WEDNESDAY_NIGHT)
+    assert reply.triage.uroven == 2 and "Nezostávajte" not in reply.reply_text
+    reply = run("ONC-016", "Uz nemuzu, mam doma nasetrene prasky a dnes vecer je vsechny spolknu.", at=WEDNESDAY_NIGHT)
+    assert reply.triage.uroven == 4 and "Nezůstávejte teď sami" in reply.reply_text
+
+
+def test_llm_paralen_line_without_a_fever_reason_is_rejected(quiet_store, monkeypatch):
+    clean = "Volajte ihneď 155 alebo choďte na urgentný príjem. Nečakajte do rána."
+    calls = []
+
+    async def answer(patient_id, lang, author, payload, history, feedback, cites):
+        calls.append((payload["must"], list(feedback)))
+        return clean if feedback else clean + " Paralen neužívajte, kým vás nevyšetrí lekár."
+
+    monkeypatch.setattr(navigator, "_llm_answer", answer)
+    reply = asyncio.run(navigator.chat_turn("ONC-016", "namerala som si 40,2", "pacient", "sk", WEDNESDAY_NIGHT))
+    assert reply.triage.pravidla == ["R-HYPERPYREXIA"] and reply.reply_text == clean
+    assert len(calls) == 2 and not any("Paralen" in line for line in calls[0][0])
+    assert any("Paralen" in problem for problem in calls[1][1])

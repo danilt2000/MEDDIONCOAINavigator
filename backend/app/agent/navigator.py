@@ -13,6 +13,7 @@ from app.adapters.meddi_json import load_patient
 from app.agent import tools
 from app.config import settings
 from app.models import Fact, LevelCard, NavigatorReply, NluResult, PatientContext, TriageOutput
+from app.nlu.lexicon_cs_sk import _count, _negated
 
 log = logging.getLogger("navigator")
 
@@ -22,6 +23,7 @@ ON_DUTY_PHONE = "724 590 848"
 
 _fallback_history: dict[str, list[dict]] = {}
 _pending: dict[str, tuple[str, str, int]] = {}
+_resolved: dict[str, tuple[str, int]] = {}
 RESOLVABLE_RULES = {"C-CONTRADICTION", "U-VERIFY"}
 _locks: dict[str, asyncio.Lock] = {}
 _turns: set[asyncio.Task] = set()
@@ -34,9 +36,9 @@ def fold(text: str) -> str:
 
 # ---------- conservative lexicon (engine fallback and red-flag safety net) ----------
 
-SUICIDE = r"zabi(t|ju|jem|t sa)|spolknu|vsechny prasky|vsetky tabletky|vsechny tablety|ublizit si|ublizim si|ukoncim to|skoncim to|nechci tu byt|nechcem tu byt|vzit si zivot|vziat si zivot|skoncit (se|so) zivotem|skoncit so zivotom|sebevrazd|samovrazd|predavkuj|obesit|obesim|skocim|skocit z"
+SUICIDE = r"zabi(t|ju|jem|t sa)|spolknu|vsechny prasky|vsetky tabletky|vsechny tablety|ublizit si|ublizim si|si ublizit|si ublizim|ukoncim to|skoncim to|nechci tu byt|nechcem tu byt|vzit si zivot|vziat si zivot|skoncit (se|so) zivotem|skoncit so zivotom|sebevrazd|samovrazd|predavkuj|obesit|obesim|skocim|skocit z"
 SUICIDE_PLAN = r"plan|priprav|prasky|tablet|naspor|nasetr|promysl|premysl|dnes|zitra|zajtra|vim jak|viem ako|provaz|skocim|mam doma|mam u sebe"
-HOPELESS = r"uz nemuzu dal|uz nevladzem|nema to cenu|nema to zmysel|nechci (uz )?zit|nechcem (uz )?zit|chci umrit|chcem zomriet"
+HOPELESS = r"uz nemuzu dal|uz nevladzem dalej|nema to cenu|nema to zmysel|nechci (uz )?zit|nechcem (uz )?zit|chci umrit|chcem zomriet"
 RED_FLAGS = {
     "dusnost v klidu": r"nemuzu dychat|nemozem dychat|dusim se|dusi sa|lapa(m)? po dechu|dusnost v klidu",
     "bolest na hrudi": r"bolest (na |v )?hrud|bolest na prsou|pichani na hrudi|tlak na hrudi|bolest v hrudniku|bolest na hrudniku",
@@ -68,35 +70,64 @@ RED_FLAGS = {
         r"\b(jedn|lev|lav|prav)[a-z]{0,3}\s+(ruk|ruc|noh|stran|polovin|polovic)\w*\s+(\w+\s+){0,3}(necit|slab|nehyb|neovlad|ochab|neposlouch|neposluch)",
     ]),
 }
-NO_FEVER = r"(nemam|nema|bez|zadn\w*|ziadn\w*)\s+(\w+\s+)?(horeck|horuck|teplot|zimnic)|teplot\w* (je |mam |ma )?(normaln|v poradku|v poriadku|ok\b)"
+NO_FEVER = r"teplot\w* (je |mam |ma )?(normaln|v poradku|v poriadku|ok\b)"
+FEVER_REPORT = (r"\b(mam|ma|mame|mate|mel\w*|mal\w*)\s+((asi|trochu|nejak\w*|zvysen\w*|vysok\w*|lehk\w*|mirn\w*|porad|stale|zase|uz|taky|tez|tiez"
+                r"|jeste|este|jsem|som|vcera|dnes)\s+){0,2}teplot|zvysen\w* teplot|vysok\w* teplot|teplotu mam|\bteplot(im|i)\b")
 SYMPTOMS = r"bolest|bolet|boli|nevoln|zvrac|prujem|prujm|hnack|stolic|zacp|unav|slab|kasl|kasel|otok|oteklo|vyrazk|afty|pali|svedi|krvac|modrin|zavrat|tocit|necit|brneni|smut|uzkost|nespim|vycerp|teplot|horec|horuc|zimnic"
-DOSE_QUESTION = r"(muzu|mozem|smim|smiem|mam|dat|podat|vzit|zobrat|uzit|pridat|zvysit|dalsi|jeste|este|vic|viac)\b.*\b(davk|oramorph|morfin|tablet|lek|liek|prasek|kapk|loperamid|paralen|paracetamol|ibalgin|ibuprofen|novalgin)"
+DOSE_QUESTION = r"(muzu|mozem|smim|smiem|mam|dat|podat|vzit|zobrat|uzit|pridat|zvysit|dalsi|jeste|este|vic|viac)\b.*\b(davk|oramorph|morfin|tablet|lek(?!ar)|liek|prasek|kapk|loperamid|paralen|paracetamol|ibalgin|ibuprofen|novalgin)"
+CLAUSE_END = r"([!?;\n]|(?<!\d)\.|\.(?!\d)|(?<!\d),|,(?!\d))"
+# ponytail: (clause subject, pronoun that keeps the clause, contrast the writer must state). A symptom clause led by another person
+# (pacient) or by "já mám …" (pecujici) is dropped only when the writer also says the patient is fine, since a caregiver may leave the
+# app's caregiver switch in the wrong position; no real subject parsing, ambiguous texts stay in.
+SOMEONE_ELSE = {
+    "pacient": (r"\s*(a |ale |muj |moje |moj |nas |nase )?(manzel|partner|dcer|syn|vnuk|vnuc|sestr|bratr|mama|mamka|maminka|tata|tatka|tatinek|otec|matk"
+                r"|kamarad|soused)\w*\s+(\w+\s+)?(ma|mel\w*|mal\w*|nema|je|byl\w*|bol\w*)\b",
+                r"\b(mi|me|mne|mna|ja|jsem|som|mam|taky|tez|tiez|oba|obe|obaja)\b",
+                r"\b(jsem|som) (\w+ )?(v pohode|v poradku|v poriadku|ok\b|zdrav)|\b(mne|me|mna) (se|sa) to (\w+ )?vyhnul|\bja (nic )?nemam\b"),
+    "pecujici": (r"\s*(a |ale |i |aj )?ja\s+(taky |tez |tiez |ted |teraz )?(mam|mivam)\s+(\w+\s+)?(horec|horuc|teplot|zimnic|prujem|prujm|hnack|kasel|kasl"
+                 r"|ryma|chripk|nachlad|viroz|covid)",
+                 r"\b(ona|on|ji|ju|jej|ho|mu|taky|tez|tiez|oba|obe|obaja)\b",
+                 r"\bje (\w+ )?(v pohode|v poradku|v poriadku|ok\b|zdrav)"),
+}
 
 
 def _numbers(pattern: str, text: str) -> list[float]:
     return [float(match.group(1).replace(",", ".")) for match in re.finditer(pattern, text)]
 
 
-def lexicon_level(text: str, ctx: PatientContext, lang: str) -> tuple[int, list[str], str | None]:
+def _said(pattern: str, text: str) -> bool:
+    """A match the writer does not deny ("nemám bolest na hrudi", "horečku nemám")."""
+    return any(not _negated(text, match.start(), match.end()) for match in re.finditer(pattern, text))
+
+
+def _own_clauses(folded: str, author: str) -> str:
+    """The text with the clauses about someone else blanked out, so positions and numbers elsewhere stay as written."""
+    subject, pointer, contrast = SOMEONE_ELSE["pecujici" if author == "pecujici" else "pacient"]
+    if not re.search(contrast, folded):
+        return folded
+    return "".join(" " * len(part) if re.match(subject, part) and not re.search(pointer, part) else part
+                   for part in re.split(CLAUSE_END, folded))
+
+
+def lexicon_level(text: str, ctx: PatientContext, lang: str, author: str = "pacient") -> tuple[int, list[str], str | None]:
     """(level, findings, follow-up question). Escalates when unsure; never used to lower the engine's level."""
-    folded = fold(text)
+    folded = _own_clauses(fold(text), author)
     sk = lang == "sk"
     found: list[tuple[int, str]] = []
     question = None
-    chemo = ctx.chemo_window or "cytotoxic" in ctx.drug_classes or not ctx.drug_classes
+    chemo = ctx.chemo_window or "cytotoxic" in ctx.drug_classes
     temperatures = _numbers(r"\b(3[5-9](?:[.,]\d)?|4[0-2](?:[.,]\d)?)\s*(?:°|stup|c\b)", folded)
     temperatures += _numbers(r"\b(3[5-9][.,]\d|4[0-2][.,]\d)\b", folded)
     if re.search(r"teplot|horec|horuc|namer", folded):
         temperatures += _numbers(r"\b(3[5-9]|4[0-2])\b", folded)
-    chills = re.search(r"zimnic|tresavk|triask|\btres(e|u)\b|\btras(ie|iem|u)\b|klepu se", folded)
+    chills = _said(r"zimnic|tresavk|triask|\btres(e|u)\b|\btras(ie|iem|u)\b|klepu se", folded)
     if (temperatures and max(temperatures) >= 38.0) or chills:
         hot = bool(temperatures) and max(temperatures) >= 40
-        found.append((4 if chemo or hot else 3, "teplota ≥ 38 °C nebo zimnice" + (" během chemoterapie" if chemo else "")))
-    elif re.search(NO_FEVER, folded):
-        pass
-    elif re.search(r"horec|horuc", folded):
+        level = 4 if chemo or hot else 3 if temperatures and max(temperatures) >= 39 else 2
+        found.append((level, "teplota ≥ 38 °C nebo zimnice" + (" během chemoterapie" if chemo else "")))
+    elif _said(r"horec|horuc", folded):
         found.append((4 if chemo else 3, "hlášená horečka"))
-    elif re.search(r"teplot", folded) and not temperatures:
+    elif _said(FEVER_REPORT, folded) and not temperatures and not re.search(NO_FEVER, folded):
         found.append((3, "zvýšená teplota bez hodnoty"))
         question = "Koľko stupňov ste namerali?" if sk else "Kolik stupňů jste naměřil/a?"
     if re.search(SUICIDE, folded):
@@ -104,16 +135,18 @@ def lexicon_level(text: str, ctx: PatientContext, lang: str) -> tuple[int, list[
     elif re.search(HOPELESS, folded):
         found.append((3, "výroky beznaděje"))
     for finding, pattern in RED_FLAGS.items():
-        if re.search(pattern, folded):
+        if _said(pattern, folded):
             found.append((4, finding))
-    stools = _numbers(r"(\d+)\s*(?:x|×|-?krat)(?![a-z])", folded) if re.search(r"prujem|prujm|hnack|stolic", folded) else []
+    counts = _numbers(r"(\d+)\s*(?:x|×|-?krat)(?![a-z])", folded)
+    counts += [count for word in re.findall(r"\w+[\s-]?krat\b", folded) if (count := _count(word))]
+    stools = counts if _said(r"prujem|prujm|hnack|stolic", folded) else []
     if stools:
         count = max(stools)
         found.append((4 if count >= 7 else 3 if count >= 4 else 2, f"průjem asi {count:g}× za den"))
-    elif re.search(r"prujem|prujm|hnack", folded):
+    elif _said(r"prujem|prujm|hnack", folded):
         found.append((2, "průjem bez počtu stolic"))
         question = question or ("Koľkokrát ste mali hnačku za posledných 24 hodín?" if sk else "Kolikrát jste měl/a průjem za posledních 24 hodin?")
-    vomits = _numbers(r"(\d+)\s*(?:x|×|-?krat)(?![a-z])", folded) if re.search(r"zvrac|vracia|vraci", folded) and not stools else []
+    vomits = counts if re.search(r"zvrac|vracia|vraci", folded) and not stools else []
     if vomits:
         found.append((4 if max(vomits) > 5 else 2, f"zvracení {max(vomits):g}× za den"))
     if re.search(r"neudrz\w* (ani )?(vodu|tekutin|nic|pit)|nemuze pit|nemoze pit|nemoc\w* (uz )?\d+|nemoci od|nemocila|nemocil\b|nemocim\b", folded):
@@ -122,7 +155,7 @@ def lexicon_level(text: str, ctx: PatientContext, lang: str) -> tuple[int, list[
         found.append((3, "silná bolest nereagující na léky"))
     if re.search(DOSE_QUESTION, folded):
         found.append((2, "dotaz na další dávku léku – rozhoduje tým"))
-        if re.search(r"oramorph|morfin|bolest|bolet|\bboli|tramal|novalgin|ibalgin|ibuprofen", folded):
+        if re.search(r"oramorph|morfin|bolest|bolet|\bboli|(dalsi|jeste|este|vic|viac|znovu)\b.*\b(tramal|novalgin|ibalgin|ibuprofen)", folded):
             question = question or ("Koľko dávok už dnes bolo a ako veľmi bolesť povolila?" if sk else "Kolik dávek už dnes bylo a jak moc bolest povolila?")
         elif re.search(r"paralen|paracetamol|teplot|horec|horuc|zima|zimnic", folded) and not temperatures:
             question = question or ("Koľko stupňov ste namerali?" if sk else "Kolik stupňů jste naměřil/a?")
@@ -135,7 +168,7 @@ def lexicon_level(text: str, ctx: PatientContext, lang: str) -> tuple[int, list[
 
 
 def _fallback_triage(patient_id: str, text: str, author: str, ctx: PatientContext, at: datetime, lang: str) -> TriageOutput:
-    level, findings, question = lexicon_level(text, ctx, lang)
+    level, findings, question = lexicon_level(text, ctx, lang, author)
     step, contact, notify, sla = tools.route(level, at)
     return TriageOutput(
         checkin_id=f"{patient_id}-CHAT-{at:%Y%m%d%H%M%S}", patient_id=patient_id, uroven=level, doporuceny_krok=step,
@@ -300,15 +333,21 @@ def mentioned_meds(text: str, ctx: PatientContext) -> list:
     return [med for med in ctx.meds if any(word[:6] in folded for word in re.findall(r"\w{5,}", fold(med.lek)))]
 
 
-def template(output: TriageOutput, lang: str, palliative: bool, fever: bool, suicide: bool, meds: list = []) -> str:
+def template(output: TriageOutput, lang: str, palliative: bool, fever: str, suicide: bool, meds: list = [],
+             self_medication: bool = False) -> str:
+    """fever: the Paralen sentence to add, or "" when it does not belong to this reply."""
     sk = lang == "sk"
     contact = output.doporuceny_kontakt or ""
-    prescription = " ".join(
-        (f"Podľa predpisu: {med.lek} {med.davka}, {med.frekvence}; o ďalšej dávke navyše rozhoduje lekár." if sk
-         else f"Podle předpisu: {med.lek} {med.davka}, {med.frekvence}; o další dávce navíc rozhoduje lékař.")
-        for med in meds[:1]
-    )
     level_text = _level_template(output, contact, sk, palliative, fever, suicide)
+    if self_medication:
+        fits = len(re.split(r"(?<=[.!?])\s+", level_text)) < 4
+        prescription = _self_medication_line(sk, output.adresat == "pecujici") if fits else ""
+    else:
+        prescription = " ".join(
+            (f"Podľa predpisu: {med.lek} {med.davka}, {med.frekvence}; o ďalšej dávke navyše rozhoduje lekár." if sk
+             else f"Podle předpisu: {med.lek} {med.davka}, {med.frekvence}; o další dávce navíc rozhoduje lékař.")
+            for med in meds[:1]
+        )
     return f"{prescription} {level_text}" if prescription and output.uroven < 4 else level_text
 
 
@@ -317,7 +356,20 @@ def _palliative_line(sk: bool) -> str:
             else "V paliativní péči můžete kdykoli volat 24h linku paliativního týmu nebo hospice.")
 
 
-def _level_template(output: TriageOutput, contact: str, sk: bool, palliative: bool, fever: bool, suicide: bool) -> str:
+def _paralen_line(sk: bool, caregiver: bool, sex: str | None) -> str:
+    if caregiver:
+        whom = {"F": "ju " if sk else "ji ", "M": "ho "}.get(sex or "", "")
+        return f"Paralen nepodávajte, kým {whom}nevyšetrí lekár." if sk else f"Paralen nepodávejte, dokud {whom}nevyšetří lékař."
+    return "Paralen neužívajte, kým vás nevyšetrí lekár." if sk else "Paralen neužívejte, dokud vás nevyšetří lékař."
+
+
+def _self_medication_line(sk: bool, caregiver: bool) -> str:
+    if sk:
+        return f"Bez porady s lekárom žiadny ďalší liek {'nepodávajte' if caregiver else 'neužívajte'} a nič nevymieňajte ani nevysadzujte."
+    return f"Bez porady s lékařem žádný další lék {'nepodávejte' if caregiver else 'neužívejte'} a nic nevyměňujte ani nevysazujte."
+
+
+def _level_template(output: TriageOutput, contact: str, sk: bool, palliative: bool, fever: str, suicide: bool) -> str:
     if output.uroven == 4 and suicide:
         if sk:
             return "Volajte prosím ihneď 155. Nezostávajte teraz sami – povedzte niekomu blízkemu, nech je s vami, a dajte lieky z dosahu."
@@ -329,7 +381,7 @@ def _level_template(output: TriageOutput, contact: str, sk: bool, palliative: bo
             parts.append(f"Môžete volať aj službukonajúceho lekára MOÚ {ON_DUTY_PHONE}." if sk else f"Můžete volat i sloužícího lékaře MOÚ {ON_DUTY_PHONE}.")
         parts.append("Nečakajte do rána." if sk else "Nečekejte do rána.")
         if fever:
-            parts.append("Paralen neužívajte, kým vás nevyšetrí lekár." if sk else "Paralen neužívejte, dokud vás nevyšetří lékař.")
+            parts.append(fever)
         return " ".join(parts)
     if output.uroven == 3:
         if ON_DUTY_PHONE in contact:
@@ -338,7 +390,10 @@ def _level_template(output: TriageOutput, contact: str, sk: bool, palliative: bo
         else:
             who = ("Lekár MOÚ vám zavolá cez monitorovacie centrum do 2 hodín." if sk
                    else "Lékař MOÚ vám zavolá přes monitorovací centrum do 2 hodin.")
-        first = "Vaše ťažkosti je potrebné ešte dnes prebrať s lekárom." if sk else "Vaše potíže je potřeba ještě dnes probrat s lékařem."
+        if output.adresat == "pecujici":
+            first = "Ťažkosti vášho blízkeho je potrebné ešte dnes prebrať s lekárom." if sk else "Potíže vašeho blízkého je potřeba ještě dnes probrat s lékařem."
+        else:
+            first = "Vaše ťažkosti je potrebné ešte dnes prebrať s lekárom." if sk else "Vaše potíže je potřeba ještě dnes probrat s lékařem."
         last = "Ak sa stav zhorší, volajte 155." if sk else "Pokud se stav zhorší, volejte 155."
         return " ".join([first, who, _palliative_line(sk), last] if palliative else [first, who, last])
     if output.uroven == 2:
@@ -367,7 +422,7 @@ Pravidla, která nikdy neporušíš:
 3. Úroveň závažnosti a kontakt určil bezpečnostní triážní systém (pole triage a level_card). Nikdy je nesnižuj, nezlehčuj a nevymýšlej jiný kontakt. U úrovně 2–4 už byl tým upozorněn automaticky: nenabízej předání, ale přirozeně řekni, kdo se ozve nebo koho volat a kdy (kontakt a čas z level_card), a nepiš uklidňování typu „nemusíte se bát“ nebo „to je normální“.
 U úrovně 1 tým sám nevolá: neslibuj, že se někdo ozve, jen nabídni, že dotaz můžeš předat týmu.
 4. U úrovně 4 začni první větou výzvou k okamžitému volání (např. „Volejte ihned …“) a vždy uveď 155. Ohrožení života = vždy 155.
-5. Paralen zmiň jen tehdy, když pacient hlásí horečku nebo zimnici, a to jen větou „Paralen neužívejte, dokud vás nevyšetří lékař.“ Jinak léky na horečku nezmiňuj.
+5. Paralen ani jiné léky na horečku nezmiňuj, pokud to nepožaduje pole must nebo se na ně pisatel sám neptá; větu o Paralenu z pole must napiš přesně tak, jak je.
 6. Odpovídej výhradně v jazyce: {language}. Nejvýš 4 krátké věty, jednoduchá slova bez odborných termínů, vykej.
 7. {addressee}
 8. Vycházej jen ze schválených textů (guidance) a z údajů pacienta v kontextu. Když si nejsi jistý, nabídni předání týmu. Nikdy nepiš jména ani data narození.
@@ -377,7 +432,7 @@ Ostatní nástroje použij, jen když v kontextu něco chybí; jinak odpověz ro
 
 ADDRESSEE = {
     "pacient": "Píše pacient sám – oslovuj přímo jeho.",
-    "pecujici": "Píše pečující (blízká osoba, např. dcera). Oslovuj pečujícího a o pacientovi mluv ve 3. osobě (např. „maminka“).",
+    "pecujici": "Píše pečující (blízká osoba pacienta). Oslovuj pečujícího a o pacientovi mluv ve 3. osobě; vztah pojmenuj jen tak, jak ho napsal pisatel (manželka, tatínek …), jinak piš „váš blízký“. Pokyny piš pro pečujícího (např. „nepodávejte“), ne pro pacienta.",
 }
 
 
@@ -480,12 +535,14 @@ def _contact_phrase(contact: str) -> str:
 
 
 def _requirements(output: TriageOutput, card: LevelCard | None, palliative: bool, meds: list, lang: str, suicide: bool = False,
-                  fever: bool = False, followup: bool = False) -> list[str]:
+                  fever: str = "", followup: bool = False, self_medication: bool = False) -> list[str]:
     must = [f"jazyk: {'slovenčina' if lang == 'sk' else 'čeština'}, nejvýš {3 if followup else 4} krátké věty"]
     if "NAV-OPEN-EPISODE" in output.pravidla:
         must.append("platí dřívější pokyn z otevřené epizody – zopakuj ho, nic neruš a neuklidňuj; zrušit ho může jen člověk z týmu")
     if fever:
-        must.append("přidej větu „" + ("Paralen neužívajte, kým vás nevyšetrí lekár." if lang == "sk" else "Paralen neužívejte, dokud vás nevyšetří lékař.") + "“")
+        must.append(f"přidej větu „{fever}“")
+    if self_medication:
+        must.append(f"odpověz na dotaz na lék smyslem věty „{_self_medication_line(lang == 'sk', output.adresat == 'pecujici')}“ – rozhoduje lékař")
     if card is not None and card.kontakt:
         must.append(f"kontakt a čas řekni přirozeně, smyslem této věty (přelož do jazyka odpovědi, text karty nekopíruj): „{_contact_phrase(card.kontakt)}“")
     if suicide and lang == "cs":
@@ -494,7 +551,8 @@ def _requirements(output: TriageOutput, card: LevelCard | None, palliative: bool
         must.append(f"první věta začíná slovem „{'Volajte' if lang == 'sk' else 'Volejte'}“ a obsahuje 155")
     if palliative and output.uroven in (2, 3):
         must.append("zmiň 24h linku paliativního týmu nebo hospice (když se nedovolají, 155)")
-    for med in meds[:2]:
+    # an emergency or fever reply never quotes a dose: next to "no Paralen" a Paracetamol line reads as permission
+    for med in [] if output.uroven == 4 or fever else meds[:1]:
         must.append(f"předpis jen zopakuj větou „Podle předpisu: {med.lek} {med.davka}, {med.frekvence}.“ – nikdy nepiš, že další dávku můžete/smíte dát; o tom rozhoduje lékař")
     return must
 
@@ -525,20 +583,35 @@ def _checkin_followup(patient_id: str, at: datetime) -> tuple[str, str, int] | N
     return (checkin.zprava_pacienta or "") if checkin else "", last.doplnujici_otazka, _resolvable_level(last)
 
 
-def _followup_text(pending: tuple[str, str, int], answer: str) -> str:
-    """An answer with its own numbers supersedes only the numbers the question asked about; a bare 'yes' keeps them."""
-    earlier = f"{pending[0]}\n{pending[1]}"
-    if re.search(r"\d", answer):
-        for number in set(re.findall(r"\d+(?:[.,]\d+)?", pending[1])):
+def _followup_text(pending: tuple[str, str, int], answer: str) -> tuple[str, bool]:
+    """(text to triage, whether the answer answers the question). The question's own words ("…nebo nejde probudit?") join the
+    text only for a bare yes or number. A count supersedes only the counts the question asked about, a temperature only its
+    temperature; an answer about something else (an unrelated number included) leaves them and answers nothing."""
+    folded = fold(answer)
+    yes = re.match(r"\W*(ano|jo|jj)\b", folded)
+    bare = re.fullmatch(r"\W*\d+(?:[.,]\d+)?\W*", folded)
+    count = bare or _count(folded)
+    temperature = bare or re.search(r"\b(3[5-9]|4[0-2])([.,]\d)?\b", folded)
+    earlier = f"{pending[0]}\n{pending[1]}" if yes or bare else pending[0]
+    for number, unit in set(re.findall(r"(\d+(?:[.,]\d+)?)\s*(×|°)?", pending[1])):
+        if (count and unit != "°") or (temperature and unit == "°"):
             earlier = re.sub(rf"(?<![\d.,]){re.escape(number)}(?![\d]|[.,]\d)\s*(?:×|x\b|-?\s?krat|-?\s?krát)?", "…", earlier)
-    return f"{earlier}\n{answer}"
+    return f"{earlier}\n{answer}", bool(yes or count or re.match(r"\W*(ne|nie)\b", folded))
 
 
 def _open_episode_floor(patient_id: str, output: TriageOutput, at: datetime, answered_level: int = 0) -> TriageOutput:
-    """While an orange/red task is open, a chat message cannot bring the patient's level or instruction below it (spec §9)."""
+    """While an orange/red task is open, a chat message cannot bring the patient's level or instruction below it (spec §9).
+    An answer that resolves the task's own contradiction / verify question lifts the floor for that task at that level, until a
+    new orange or red message."""
     live = _store()
     task = live.open_task(patient_id) if live is not None and hasattr(live, "open_task") else None
-    if task is None or task.uroven < 3 or task.uroven <= output.uroven or answered_level >= task.uroven:
+    if task is None or task.uroven < 3:
+        return output
+    if output.uroven >= 3:
+        _resolved.pop(patient_id, None)
+    elif answered_level >= task.uroven:
+        _resolved[patient_id] = (task.id, task.uroven)
+    if task.uroven <= output.uroven or answered_level >= task.uroven or _resolved.get(patient_id) == (task.id, task.uroven):
         return output
     step, contact, _notify, sla = tools.route(task.uroven, at)
     return output.model_copy(update={
@@ -652,8 +725,8 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
     _add_message(patient_id, {"role": "user", "author": author, "text": text})
 
     pending = (_pending.pop(patient_id, None) if previous else None) or _checkin_followup(patient_id, at)
-    triage_text = _followup_text(pending, text) if pending else text
-    answered_level = pending[2] if pending else 0
+    triage_text, answered = _followup_text(pending, text) if pending else (text, False)
+    answered_level = pending[2] if answered else 0
     # ponytail: the rules-only card goes out first (fast); the LLM facts can only add, so a second card only ever raises it
     quick_nlu = await asyncio.to_thread(_analyze, triage_text, ctx, author, lang, False)
     quick_raw = await asyncio.to_thread(_triage, patient_id, triage_text, author, ctx, quick_nlu, at, lang)
@@ -673,12 +746,19 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
     await asyncio.to_thread(_alert, output, "NAV-OPEN-EPISODE" not in output.pravidla, nlu)
 
     folded = fold(" ".join([triage_text, *output.varovne_priznaky]))
-    # "no Paralen" belongs to fever during chemotherapy (do not mask neutropenia), not to 40 °C outside it
-    fever = (output.uroven == 4 and output.pravidla != ["R-HYPERPYREXIA"]
-             and bool(re.search(r"teplot|horec|horuc|zimnic|\btres|\btras|3[89][.,]\d", folded)))
-    suicide = bool(re.search(SUICIDE + "|" + HOPELESS, folded))
+    # "no Paralen" belongs to fever during chemotherapy (do not mask neutropenia), not to 40 °C outside it; the warning signs
+    # carry a fever only when a rule fired on it, so "Teplotu nemám, ale zvracím" gets no Paralen line
+    fever = _paralen_line(lang == "sk", output.adresat == "pecujici", ctx.sex) if (
+        output.uroven == 4 and output.pravidla != ["R-HYPERPYREXIA"]
+        and re.search(r"teplot|horec|horuc|zimnic|\btres|\btras|3[89][.,]\d", fold(" ".join(output.varovne_priznaky)))) else ""
+    suicide = bool(re.search(SUICIDE, folded))
+    hopeless = suicide or bool(re.search(HOPELESS, folded))
     palliative = tools.palliative_care(ctx)
     meds = mentioned_meds(text, ctx)
+    message = fold(text)
+    prescribed = fold(" ".join(med.lek for med in ctx.meds))
+    self_medication = (any(drug not in prescribed for drug in re.findall(OTC_DRUGS, message))
+                       or bool((meds or re.search(r"\b(lek|liek|tablet|prask)", message)) and re.search(r"vysad|vymen|nahrad|\bmisto\b|\bmiesto\b", message)))
     guidance = await asyncio.to_thread(tools.search_guidance, " ".join([text, *(med.indikace for med in meds), *output.klicove_nalezy[:2]]), lang)
     cites = [hit["cite"] for hit in guidance[:3]]
     followup = output.doplnujici_otazka if not (pending and output.doplnujici_otazka == pending[1]) else None
@@ -695,7 +775,7 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
                     "meds": tools.med_lines(ctx), "allergies": ctx.allergies},
         "guidance": [{"cite": hit["cite"], "text": hit["text"]} for hit in guidance],
     }
-    payload["must"] = _requirements(output, card, palliative, meds, lang, suicide, fever, bool(followup))
+    payload["must"] = _requirements(output, card, palliative, meds, lang, hopeless, fever, bool(followup), self_medication)
     allowed_text = " ".join(hit["text"] for hit in guidance)
     reply_text = None
     feedback: list[str] = []
@@ -709,11 +789,13 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
             yield {"event": "card", "data": card}
             payload["triage"].update(level=output.uroven, step=output.doporuceny_krok)
             payload["level_card"] = card.model_dump(mode="json")
-            payload["must"] = _requirements(output, card, palliative, meds, lang, suicide, fever, bool(followup))
+            payload["must"] = _requirements(output, card, palliative, meds, lang, hopeless, fever, bool(followup), self_medication)
         candidate = " ".join(candidate.split())
         if followup:
             candidate = " ".join(part for part in re.split(r"(?<=[.!?])\s+", candidate) if fold(part) != fold(followup))
         feedback = validate(f"{candidate} {followup}" if followup else candidate, output, ctx, lang, allowed_text)
+        if re.search(r"paralen|paracetamol", fold(candidate)) and not re.search(r"paralen|paracetamol", fold(" ".join([text, *payload["must"]]))):
+            feedback.append("Paralen ani léky na horečku nezmiňuj, pole must to nepožaduje")
         if not feedback:
             reply_text = candidate
             break
@@ -731,13 +813,14 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
         await asyncio.to_thread(_alert, output, False, nlu)
     generated_by = "llm" if reply_text else "template"
     if reply_text is None:
-        reply_text = template(output, lang, palliative, fever, suicide, meds)
+        reply_text = template(output, lang, palliative, fever, suicide, meds, self_medication)
     llm_followup = tools.pop_followup(patient_id)
     followup = followup or llm_followup
     if followup:
         if fold(followup) not in fold(reply_text):
             reply_text = f"{reply_text} {followup}"
-        _pending[patient_id] = (triage_text, followup, _resolvable_level(output))
+        # the level before the open-episode floor: answering a verify question must not release some other open episode
+        _pending[patient_id] = (triage_text, followup, _resolvable_level(raw))
 
     reply = NavigatorReply(
         reply_text=reply_text, lang=lang, level_card=card, followup_question=followup,
