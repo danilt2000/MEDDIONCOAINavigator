@@ -3,7 +3,7 @@ import { FilledButton, SvgIcon } from '@navigator/ui';
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, Outlet, useNavigate, useOutletContext } from 'react-router';
 import { emergencyIcon } from './icons';
-import { addDays, beep, fmtDayTime, fmtDuration, inWorkingHours, isoDay, useApi, useNow, type Loadable } from './lib';
+import { addDays, beep, fmtDuration, inWorkingHours, isoDay, useApi, useNow, type Loadable } from './lib';
 
 export interface Shell {
   offsetMs: number;
@@ -63,7 +63,6 @@ function Duty({ offsetMs }: { offsetMs: number }) {
   const working = inWorkingHours(now);
   return (
     <span className="duty">
-      <span className="muted">{fmtDayTime(now)}</span>
       <span>Služba: {working ? 'monitorovací centrum (Po–Pá 7:00–15:30)' : 'sloužící lékař MOÚ 724 590 848'}</span>
     </span>
   );

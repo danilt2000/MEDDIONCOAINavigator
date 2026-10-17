@@ -385,6 +385,7 @@ md-linear-progress { width: 100%; }
 /* navigator chat */
 .chat { padding-bottom: 0; }
 .chat-header { display: flex; flex-direction: column; gap: 6px; }
+.chat-title-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .next-step {
   position: sticky;
   top: 0;

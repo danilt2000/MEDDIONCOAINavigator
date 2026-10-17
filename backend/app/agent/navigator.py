@@ -553,6 +553,16 @@ def history(patient_id: str) -> list[dict]:
     return live.list_chat(patient_id) if live is not None else list(_fallback_history.get(patient_id, []))
 
 
+def clear_history(patient_id: str) -> None:
+    """Clears the patient's chat view only: team tasks, alerts and the FHIR copy of every message stay."""
+    live = _store()
+    if live is not None:
+        live.clear_chat(patient_id)
+    _fallback_history.pop(patient_id, None)
+    _pending.pop(patient_id, None)
+    tools.pop_followup(patient_id)
+
+
 def _add_message(patient_id: str, message: dict) -> dict:
     live = _store()
     if live is not None:

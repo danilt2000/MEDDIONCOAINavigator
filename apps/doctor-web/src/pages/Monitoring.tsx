@@ -1,12 +1,12 @@
 import type { DailyStat, QueueItem, SymptomStat } from '@navigator/api';
-import { FilledTonalButton, OutlinedCard, OutlinedTextField, SvgIcon } from '@navigator/ui';
+import { OutlinedCard, OutlinedTextField, SvgIcon } from '@navigator/ui';
 import { useMemo, useState, type CSSProperties } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { Area, AreaChart, Brush, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useShell } from '../App';
 import { Load } from '../components';
-import { trendingUpIcon, warningIcon } from '../icons';
-import { addDays, fmtDay, shortRegimen, useApi, type Loadable } from '../lib';
+import { warningIcon } from '../icons';
+import { fmtDay, shortRegimen, useApi, type Loadable } from '../lib';
 
 const dayHref = (date: string) => `/monitoring/den/${date}`;
 const symptomHref = (symptom: string) => `/monitoring/priznak/${encodeURIComponent(symptom)}`;
@@ -53,7 +53,6 @@ export function MonitoringPage() {
               {(items) => <RegimenTable items={items.filter((item) => item.created.slice(0, 10) >= range.from)} />}
             </Load>
           </OutlinedCard>
-          <TrendCard to={range.to} />
         </aside>
       </div>
     </div>
@@ -273,41 +272,5 @@ function RegimenTable({ items }: { items: QueueItem[] }) {
         ))}
       </tbody>
     </table>
-  );
-}
-
-function TrendCard({ to }: { to: string }) {
-  const navigate = useNavigate();
-  const recent = useApi<SymptomStat[]>(`/api/stats/symptoms?from=${addDays(to, -6)}&to=${to}`);
-  const before = useApi<SymptomStat[]>(`/api/stats/symptoms?from=${addDays(to, -13)}&to=${addDays(to, -7)}`);
-  const previous = new Map((before.data ?? []).map((row) => [row.symptom, row.reports]));
-  const rising = (recent.data ?? [])
-    .filter((row) => row.alerts === 0)
-    .map((row) => ({ ...row, before: previous.get(row.symptom) ?? 0 }))
-    .filter((row) => row.reports > row.before)
-    .sort((left, right) => right.reports - right.before - (left.reports - left.before))[0];
-
-  return (
-    <OutlinedCard className="card trend-card">
-      <div className="row top">
-        <SvgIcon svg={trendingUpIcon} className="trend-icon" />
-        <div className="column">
-          <span className="overline">Možný trend · zatím bez upozornění</span>
-          {rising ? (
-            <>
-              <strong>{rising.symptom} přibývá</strong>
-              <span className="muted">
-                Za posledních 7 dní {rising.reports} hlášení u {rising.patients} pacientů, týden předtím {rising.before}.
-              </span>
-            </>
-          ) : (
-            <span className="muted">{recent.loading ? 'Počítám…' : 'Žádný příznak bez upozornění nepřibývá.'}</span>
-          )}
-        </div>
-      </div>
-      {rising && (
-        <FilledTonalButton onClick={() => navigate(symptomHref(rising.symptom))}>Prozkoumat: {rising.patients} pacientů</FilledTonalButton>
-      )}
-    </OutlinedCard>
   );
 }

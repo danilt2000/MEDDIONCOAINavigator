@@ -249,6 +249,12 @@ def list_chat(patient_id: str) -> list[dict]:
         return list(_state["chat"].get(patient_id, []))
 
 
+def clear_chat(patient_id: str) -> None:
+    _ensure_started()
+    with _lock:
+        _state["chat"].pop(patient_id, None)
+
+
 def set_summary(summary: DoctorSummary) -> None:
     with _lock:
         _state["summaries"][summary.patient_id] = summary

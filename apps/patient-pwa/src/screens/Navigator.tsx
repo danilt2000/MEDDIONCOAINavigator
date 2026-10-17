@@ -1,9 +1,12 @@
+import deleteIcon from '@material-symbols/svg-400/outlined/delete.svg?raw';
 import micIcon from '@material-symbols/svg-400/outlined/mic.svg?raw';
 import sendIcon from '@material-symbols/svg-400/outlined/send.svg?raw';
 import stopIcon from '@material-symbols/svg-400/outlined/stop.svg?raw';
-import { postSse, type ChatMessage, type LevelCard, type NavigatorReply } from '@navigator/api';
+import { api, postSse, type ChatMessage, type LevelCard, type NavigatorReply } from '@navigator/api';
 import {
   ChipSet,
+  Dialog,
+  FilledButton,
   FilledIconButton,
   FilterChip,
   IconButton,
@@ -15,7 +18,7 @@ import {
 } from '@navigator/ui';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
-import { callTargets, capitalize, formatDayTime, useApi, useApp, type CallTarget } from '../app-state';
+import { callTargets, capitalize, formatDayTime, store, useApi, useApp, type CallTarget } from '../app-state';
 import { format } from '../i18n';
 import { AmbulanceAnd155, CallButtons } from '../ui';
 
@@ -70,7 +73,9 @@ export function Navigator() {
   const routeState = useLocation().state as { followup?: string; intro?: string; patientId?: string } | null;
   const followup = routeState?.patientId === patientId ? routeState.followup : undefined;
   const intro = routeState?.patientId === patientId ? routeState.intro : undefined;
-  const history = useApi<ChatMessage[]>(`/api/chat/${patientId}/messages`);
+  const historyPath = `/api/chat/${patientId}/messages`;
+  const history = useApi<ChatMessage[]>(historyPath);
+  const [clearing, setClearing] = useState(false);
   const [local, setLocal] = useState<UiMessage[]>(() =>
     followup
       ? [{ id: 'followup', role: 'navigator', text: followup, followup_question: followup }]
@@ -142,6 +147,14 @@ export function Navigator() {
     }
   }
 
+  async function clearChat() {
+    setClearing(false);
+    await api.delete(historyPath);
+    store.set(`cache:${historyPath}`, []);
+    setLocal([]);
+    history.reload();
+  }
+
   const retry = (message: UiMessage) => {
     const failed = message.failed!;
     setLocal((previous) => previous.filter((item) => item.id !== message.id && item.id !== failed.userId));
@@ -169,7 +182,14 @@ export function Navigator() {
   return (
     <main className="content chat">
       <header className="chat-header">
-        <h1 className="title">{t.chatTitle}</h1>
+        <div className="chat-title-row">
+          <h1 className="title">{t.chatTitle}</h1>
+          {hasUserMessages && (
+            <IconButton aria-label={t.clearChat} title={t.clearChat} disabled={busy} onClick={() => setClearing(true)}>
+              <SvgIcon svg={deleteIcon} />
+            </IconButton>
+          )}
+        </div>
         <p className="muted small">{t.chatSubtitle}</p>
         <ChipSet>
           <FilterChip
@@ -179,6 +199,15 @@ export function Navigator() {
           />
         </ChipSet>
       </header>
+
+      <Dialog open={clearing} onClosed={() => setClearing(false)}>
+        <div slot="headline">{t.clearChat}</div>
+        <div slot="content">{t.clearChatText}</div>
+        <div slot="actions">
+          <TextButton onClick={() => setClearing(false)}>{t.cancel}</TextButton>
+          <FilledButton onClick={() => void clearChat()}>{t.clear}</FilledButton>
+        </div>
+      </Dialog>
 
       {card && card.uroven >= 2 && <NextStepCard card={card} />}
 

@@ -21,6 +21,5 @@ export { default as scienceIcon } from '@material-symbols/svg-400/outlined/scien
 export { default as skipNextIcon } from '@material-symbols/svg-400/outlined/skip_next.svg?raw';
 export { default as taskAltIcon } from '@material-symbols/svg-400/outlined/task_alt.svg?raw';
 export { default as timerIcon } from '@material-symbols/svg-400/outlined/timer.svg?raw';
-export { default as trendingUpIcon } from '@material-symbols/svg-400/outlined/trending_up.svg?raw';
 export { default as videoCallIcon } from '@material-symbols/svg-400/outlined/video_call.svg?raw';
 export { default as warningIcon } from '@material-symbols/svg-400/outlined/warning.svg?raw';

@@ -32,6 +32,13 @@ def list_messages(patient_id: str) -> list[dict]:
     return navigator.history(patient_id)
 
 
+@router.delete("/chat/{patient_id}/messages")
+def clear_messages(patient_id: str) -> list[dict]:
+    _check_patient(patient_id)
+    navigator.clear_history(patient_id)
+    return []
+
+
 @router.post("/chat/{patient_id}/messages")
 async def post_message(patient_id: str, body: ChatRequest) -> NavigatorReply:
     _check_patient(patient_id)

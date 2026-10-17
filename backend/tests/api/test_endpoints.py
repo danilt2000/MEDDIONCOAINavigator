@@ -128,6 +128,12 @@ def test_stats(client):
     assert set(mine[0]) == {"symptom", "max_grade", "reports"}
 
 
+def test_clear_chat(client):
+    assert client.delete("/api/chat/ONC-005/messages").json() == []
+    assert client.get("/api/chat/ONC-005/messages").json() == []
+    assert client.delete("/api/chat/NOPE/messages").status_code == 404
+
+
 def test_replay_and_eval(client):
     run_id = client.post("/api/replay", json={"dataset": "dev", "patients": ["ONC-004"], "speed": 0}).json()["run_id"]
     events = []

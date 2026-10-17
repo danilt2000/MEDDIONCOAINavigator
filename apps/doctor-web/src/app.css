@@ -718,15 +718,6 @@ tr.selected {
   white-space: nowrap;
 }
 
-.trend-card {
-  border-left: 0;
-}
-
-.trend-icon {
-  color: var(--chart-2);
-  --md-icon-size: 28px;
-}
-
 .breadcrumb {
   font-size: 0.9rem;
   color: var(--md-sys-color-on-surface-variant);

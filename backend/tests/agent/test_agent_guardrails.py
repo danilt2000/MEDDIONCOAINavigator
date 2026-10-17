@@ -263,6 +263,14 @@ def test_reply_is_checked_against_the_level_the_llm_escalated_to(quiet_store, mo
     assert reply.reply_text == "Volejte ihned 155. Nečekejte do rána."
 
 
+def test_clearing_the_chat_keeps_the_team_task(quiet_store):
+    first = run("ONC-018", "od vcera mam hnacku", at=WEDNESDAY_NIGHT)
+    assert first.followup_question and quiet_store.open_task("ONC-018") is not None
+    navigator.clear_history("ONC-018")
+    assert navigator.history("ONC-018") == [] and "ONC-018" not in navigator._pending
+    assert quiet_store.open_task("ONC-018") is not None
+
+
 def test_closing_the_app_after_the_card_still_raises_the_task(quiet_store):
     async def close_after_first_event():
         stream = navigator.stream_chat_turn("ONC-001", "mam 38,4 a trese me zima", "pacient", None, WEDNESDAY_NIGHT)
