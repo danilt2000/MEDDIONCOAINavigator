@@ -587,7 +587,7 @@ def _checkin_followup(patient_id: str, at: datetime) -> tuple[str, str, int] | N
     last = outputs[-1] if outputs else None
     if last is None or not last.doplnujici_otazka or (at - last.as_of).total_seconds() > 24 * 3600:
         return None
-    if any(message.get("role") == "user" and message.get("at", "") > last.as_of.isoformat() for message in history(patient_id)[:-1]):
+    if any(message.get("role") == "user" and message.get("at", "") > last.as_of.isoformat() for message in live.list_chat(patient_id)[:-1]):
         return None
     checkin = live.get_checkin(last.checkin_id)
     return (checkin.zprava_pacienta or "") if checkin else "", last.doplnujici_otazka, _resolvable_level(last)

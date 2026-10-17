@@ -120,7 +120,8 @@ def record_checkin(checkin_id, when, message, vitals=None):
 def contradiction_checkin(monkeypatch, vitals=None):
     output = record_checkin("ONC-018-T02", at(2026, 9, 11, 9, 0), "od vcera mam hnacku asi 6 krat", vitals)
     assert output.uroven == (4 if vitals else 3) and "C-CONTRADICTION" in output.pravidla
-    navigator.hide_history("ONC-018")
+    monkeypatch.setitem(store._state["chat"], "ONC-018", [])
+    monkeypatch.setitem(store._state["chat_hidden"], "ONC-018", 0)
 
     def say(text, minute):
         when = at(2026, 9, 11, 9, minute)
@@ -144,6 +145,14 @@ def test_answered_contradiction_is_not_floored_back_on_the_next_message(monkeypa
     assert say("mam horucku 38,6", 14).triage.uroven == 4
     reply = say("Mozem normalne jest a pit?", 16)
     assert reply.triage.uroven == 4 and "NAV-OPEN-EPISODE" in reply.triage.pravidla
+
+
+def test_hidden_chat_does_not_bring_back_an_answered_checkin_question(monkeypatch):
+    say = contradiction_checkin(monkeypatch)
+    assert say("nie, dnes len 2 krat", 10).triage.uroven == 2
+    navigator.hide_history("ONC-018")
+    reply = say("Mozem normalne jest a pit?", 12)
+    assert reply.triage.uroven < 3 and "O-DIARRHEA-RISK" not in reply.triage.pravidla
 
 
 def test_answer_does_not_release_a_fever_from_the_checkin_form(monkeypatch):
