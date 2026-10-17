@@ -1,0 +1,35 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Polykání bolí, jím kašovitou stravu.",
+ "usage": {
+  "completion_tokens": 117,
+  "prompt_tokens": 2077,
+  "total_tokens": 2194,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 55,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 35,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "bolest při polykání",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Polykání bolí"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

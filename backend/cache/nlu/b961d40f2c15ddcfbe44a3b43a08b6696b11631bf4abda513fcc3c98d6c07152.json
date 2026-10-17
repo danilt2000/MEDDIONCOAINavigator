@@ -1,0 +1,35 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] od vcera ridsi stolice asi 3× navic",
+ "usage": {
+  "completion_tokens": 138,
+  "prompt_tokens": 2076,
+  "total_tokens": 2214,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 67,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 34,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "stool_count_above_normal",
+    "value": 3,
+    "period_h": 24,
+    "certainty": "approx",
+    "quote": "od vcera ridsi stolice asi 3× navic"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

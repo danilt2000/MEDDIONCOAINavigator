@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[zprava] mamka rika, ze uz nechce nic, at ji nechame. skoro neji a nemluvi.",
+ "usage": {
+  "completion_tokens": 198,
+  "prompt_tokens": 2088,
+  "total_tokens": 2286,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 114,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 46,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "skoro nejí",
+    "period_h": null,
+    "certainty": "approx",
+    "quote": "skoro neji"
+   },
+   {
+    "type": "other",
+    "value": "nemluví",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "nemluvi"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

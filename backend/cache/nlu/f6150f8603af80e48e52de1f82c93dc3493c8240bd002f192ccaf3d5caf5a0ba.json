@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Klouby bolí víc, špatně spím.",
+ "usage": {
+  "completion_tokens": 138,
+  "prompt_tokens": 2076,
+  "total_tokens": 2214,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 48,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 34,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "pain_nrs",
+    "value": null,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Klouby bolí víc"
+   },
+   {
+    "type": "other",
+    "value": "špatně spím",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "špatně spím"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

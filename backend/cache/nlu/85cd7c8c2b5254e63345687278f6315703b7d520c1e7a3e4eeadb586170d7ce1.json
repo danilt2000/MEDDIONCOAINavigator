@@ -1,0 +1,35 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Otoky i ráno, ponožky dělají rýhy.\n[dotaznik] otoky nohou i ráno",
+ "usage": {
+  "completion_tokens": 185,
+  "prompt_tokens": 2092,
+  "total_tokens": 2277,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 122,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 50,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "edema",
+    "value": "nohy ráno",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "otoky nohou i ráno"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

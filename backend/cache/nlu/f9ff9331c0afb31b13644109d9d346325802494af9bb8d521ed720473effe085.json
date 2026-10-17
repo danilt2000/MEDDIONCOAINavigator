@@ -1,0 +1,49 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Dnes uz 5× prujem i pres loperamid krece v brise Piju ale moc toho nesnim",
+ "usage": {
+  "completion_tokens": 211,
+  "prompt_tokens": 2087,
+  "total_tokens": 2298,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 91,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 45,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "stool_count_above_normal",
+    "value": 5,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "Dnes uz 5× prujem"
+   },
+   {
+    "type": "colicky_pain",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "krece v brise"
+   },
+   {
+    "type": "other",
+    "value": "málo jí",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "moc toho nesnim"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

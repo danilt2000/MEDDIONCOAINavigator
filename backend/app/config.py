@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=REPO_ROOT / ".env", extra="ignore")
 
     openai_api_key: str = ""
-    llm_model: str = "gpt-5.4-mini"
+    llm_model: str = "gpt-6-luna"
     embed_model: str = "text-embedding-3-small"
     embed_dims: int = 1536
     llm_enabled: bool = True

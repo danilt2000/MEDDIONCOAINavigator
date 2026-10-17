@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] V noci musím spát na dvou polštářích, jinak se špatně dýchá.\n[dotaznik] v noci spím na dvou polštářích, jinak se špatně dýchá, otoky nohou",
+ "usage": {
+  "completion_tokens": 100,
+  "prompt_tokens": 2122,
+  "total_tokens": 2222,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 80,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "orthopnea",
+    "value": true,
+    "period_h": 12,
+    "certainty": "exact",
+    "quote": "V noci musím spát na dvou polštářích, jinak se špatně dýchá."
+   },
+   {
+    "type": "edema",
+    "value": "nohou",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "otoky nohou"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

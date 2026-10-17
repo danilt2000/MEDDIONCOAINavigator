@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[chat] Manželka říká, že jsem se u oběda na chvíli úplně vypnul, koukal jsem do zdi a nereagoval na ni, a teď si vůbec nepamatuju, jak jsem se dostal do obýváku.",
+ "usage": {
+  "completion_tokens": 307,
+  "prompt_tokens": 2116,
+  "total_tokens": 2423,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 205,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 0,
+   "cached_tokens": 2113
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "nereagoval",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "nereagoval na ni"
+   },
+   {
+    "type": "other",
+    "value": "výpadek paměti",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "vůbec nepamatuju, jak jsem se dostal do obýváku"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

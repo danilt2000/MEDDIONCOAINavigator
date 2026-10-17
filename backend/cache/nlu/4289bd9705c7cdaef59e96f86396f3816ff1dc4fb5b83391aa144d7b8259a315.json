@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Zvracim po vsem i po vode 5x za den.",
+ "usage": {
+  "completion_tokens": 155,
+  "prompt_tokens": 2078,
+  "total_tokens": 2233,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 66,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 36,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "vomiting_episodes_24h",
+    "value": 5,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "5x za den"
+   },
+   {
+    "type": "cannot_keep_fluids",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "i po vode"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

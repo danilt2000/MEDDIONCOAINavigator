@@ -1,0 +1,44 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Vecer mi je zima, tresu se, namerila jsem 38,4. Mam si vzit Paralen a pockat do rana?\n[dotaznik] zimnice, třesu se",
+ "usage": {
+  "completion_tokens": 204,
+  "prompt_tokens": 2106,
+  "total_tokens": 2310,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 104,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 64,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "chills",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "zimnice"
+   },
+   {
+    "type": "temperature_c",
+    "value": 38.4,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "namerila jsem 38,4"
+   }
+  ],
+  "negations": [],
+  "patient_questions": [
+   "Mam si vzit Paralen a pockat do rana?"
+  ]
+ }
+}

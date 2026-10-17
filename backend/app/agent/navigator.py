@@ -24,6 +24,7 @@ _fallback_history: dict[str, list[dict]] = {}
 _pending: dict[str, tuple[str, str, int]] = {}
 RESOLVABLE_RULES = {"C-CONTRADICTION", "U-VERIFY"}
 _locks: dict[str, asyncio.Lock] = {}
+_turns: set[asyncio.Task] = set()
 _client = None
 
 
@@ -42,6 +43,30 @@ RED_FLAGS = {
     "porucha vědomí": r"nejde (ji |ho )?probudit|neda sa zobudit|\b(neda|nejde|nelze|nemuz\w*|nemoz\w*|nemohu)\s+(\w+\s+){0,3}(pro|vz|z|zo|pre)bud|nereaguje|bezvedom|zmaten|nevi kde je|nevie kde je|zachvat|kroutilo|dycha pomalu|dycha (velmi )?pomaly",
     "krvácení": r"(krev|krv)\w* (ve |v )?(stolic|moc|zvrat)|zvracel\w* krev|zvracal\w* krv|cern\w* stolic|ciern\w* stolic|vykaslav\w* krev",
     "mdloba": r"omdlel|odpadl|odpadol|mdlob|zkolaboval",
+    # ponytail: hand-written stroke phrasings (cs/sk); the LLM escalate rule and the 155 backstop cover wordings missing here
+    "pokles koutku, porucha řeči, zraku nebo síly jedné strany": "|".join([
+        # face: the mouth corner with any droop verb, broader face words only with face-specific verbs (hair loss is common)
+        r"\b(pad|pokles|povis|visi|ovis|spadl|klesl|klesa)\w*\s+(\w+\s+){0,3}(koutek|koutk|kutik)",
+        r"\b(koutek|koutk|kutik)\w*\s+(\w+\s+){0,3}(pad|pokles|povis|visi|ovis|spadl|klesl|klesa)",
+        r"\b(pokles|povis|ovis|kriv|pokriv|zkriv|skriv)\w*\s+(\w+\s+){0,2}(tvar[a-z]?\b|oblic|pus[a-z]?\b|ust\b|usta\b)",
+        r"\b(tvar[a-z]?|oblic\w*|pus[a-z]?|ust|usta)\s+(\w+\s+){0,2}(visi|povis|ovis|pokles|klesa|pad|kriv)",
+        r"\b(pad|spadl|klesl|pokles)\w*\s+(\w+\s+)?(pulk|polovin)\w*\s+(tvar|oblic)",
+        # speech
+        r"nesrozumiteln|nezrozumiteln|\bhuhl|\bdrmol|\bblabol|zadrhav|porucha reci|plete s[ea] m\w* (jazyk|rec|slova)|nejdou m\w* slova",
+        r"\b(nem\w*|nevedel\w*) (najit|najst) slov",
+        r"\b(najednou|nahle|zrazu|odrazu)\s+(\w+\s+){0,2}nem[ou]z\w*\s+(\w+\s+){0,2}(mluvit|hovorit|rozpravat)",
+        r"\b(nemuze|nemoze|nedokaze|nevie|nejde (mu|jej|ji))\s+(\w+\s+){0,2}(mluvit|hovorit|rozpravat)",
+        r"\bmluv\w* (jako opil|divne|zvlastne|z cesty|nesmysl)|\b(hovor|rozprav)\w* (ako opit|divne|zvlastne|z cesty|nezmysl)",
+        r"\b(zle|tazko|spatne|tezko) s[ea] (mu|jej|ji) (mluvi|hovori|rozprava)",
+        # vision on one eye, double vision
+        r"\b(nevid|nevyd|rozmazan|zatm|prestal\w* (\w+ )?vid)\w*\s+(\w+\s+){0,3}(jedn|lev|lav|prav)[a-z]{0,3}\s+(ok|oc)",
+        r"\b(jedn|lev|lav|prav)[a-z]{0,3}\s+(ok|oc)\w*\s+(\w+\s+){0,3}(nevid|nevyd|rozmazan|zatm|oslep|prestal)",
+        r"dvojit\w* vid|\bvid\w* dvoj(it|mo)|\boslep",
+        # weakness or numbness of one side
+        r"\bochrn|\b(necit|slab|nehyb|neovlad|ochab|nem[ou]z\w* (zvednout|zdvihnut|pohnout|pohnut|hybat))\w*\s+(\w+\s+){0,3}"
+        r"(jedn|lev|lav|prav)[a-z]{0,3}\s+(ruk|ruc|noh|stran|polovin|polovic)",
+        r"\b(jedn|lev|lav|prav)[a-z]{0,3}\s+(ruk|ruc|noh|stran|polovin|polovic)\w*\s+(\w+\s+){0,3}(necit|slab|nehyb|neovlad|ochab|neposlouch|neposluch)",
+    ]),
 }
 NO_FEVER = r"(nemam|nema|bez|zadn\w*|ziadn\w*)\s+(\w+\s+)?(horeck|horuck|teplot|zimnic)|teplot\w* (je |mam |ma )?(normaln|v poradku|v poriadku|ok\b)"
 SYMPTOMS = r"bolest|bolet|boli|nevoln|zvrac|prujem|prujm|hnack|stolic|zacp|unav|slab|kasl|kasel|otok|oteklo|vyrazk|afty|pali|svedi|krvac|modrin|zavrat|tocit|necit|brneni|smut|uzkost|nespim|vycerp|teplot|horec|horuc|zimnic"
@@ -187,6 +212,9 @@ NEGATION = r"\bne(uzivejte|uzivajte|berte|davejte|davajte|brat|uzivat|podavejte|
 DOSE = r"\d+(?:[.,]\d+)?\s*(?:mg|ml|µg|μg|ug|mcg|g\b|tbl|tablet|kapk|kapsl|davk|×|x\b|krat)"
 PERMISSION = r"\b(muzete|smite|mozete|smiete|lze|mate)\b[^.;]{0,40}\b(dat|podat|vzit|uzit|zobrat|davat|podavat|pridat)\b|\b(dejte|podejte|vezmete si|vezmite si|uzijte|dajte|podajte|pridejte)\b"
 CALL = r"volejte|zavolejte|volajte|zavolajte|vytocte"
+CONDITIONAL = r"\b(pokud|kdyby|jestli\w*|kdyz|kdykoli\w*|jakmile|ak|keby|ked|kedykolvek|akonahle|v pripade|pri)\b"
+CONCESSIVE = r"\b(i|aj|ani) (kdyz|ked)\b"
+LATER_CALLBACK = r"do konce nasledujic|nasledujic\w* pracovn|do konca nasledujuc|nasledujuc\w* pracovn"
 TIME_BY_LEVEL = {2: r"do konce|nasledujic|nasledujuc|pracovn|zitra|zajtra|ozve|ihned|hned", 3: r"dnes|do 2|ihned|hned|okamzit",
                  4: r"ihned|hned|okamzit|ted\b|teraz|necekejte|necakajte"}
 
@@ -227,12 +255,23 @@ def guard(text: str, level: int, lang: str, meds_text: str, contact: str | None,
             problems.append("chybí kontakt z karty")
         if not re.search(TIME_BY_LEVEL[level], folded):
             problems.append("chybí čas")
+    if level >= 3 and re.search(LATER_CALLBACK, folded):
+        problems.append("slib pozdějšího kontaktu u vysoké úrovně")
     if level == 4:
         if "155" not in text:
             problems.append("chybí 155")
         if sentences and not re.search(CALL, fold(sentences[0])):
             problems.append("úroveň 4 nezačíná výzvou k volání")
     return problems
+
+
+def urges_155(text: str) -> bool:
+    """A sentence tells the patient to call 155 now ("i když už to odeznělo" included), not "if it gets worse"."""
+    for sentence in re.split(r"(?<=[.!?])\s+", fold(text)):
+        sentence = re.sub(CONCESSIVE, "", sentence)
+        if "155" in sentence and re.search(CALL, sentence) and not re.search(CONDITIONAL, sentence):
+            return True
+    return False
 
 
 def validate(text: str, output: TriageOutput, ctx: PatientContext, lang: str, allowed_text: str) -> list[str]:
@@ -332,7 +371,8 @@ U úrovně 1 tým sám nevolá: neslibuj, že se někdo ozve, jen nabídni, že 
 7. {addressee}
 8. Vycházej jen ze schválených textů (guidance) a z údajů pacienta v kontextu. Když si nejsi jistý, nabídni předání týmu. Nikdy nepiš jména ani data narození.
 9. Doplňující otázku (followup_question) připojí systém sám za tvou odpověď – nepiš ji ani jinou otázku na totéž.
-Nástroje můžeš použít, když v kontextu něco chybí; jinak odpověz rovnou. Výstup je jen text odpovědi pro pacienta."""
+10. Když zpráva popisuje něco vážnějšího, než ukazuje triage (např. náhlý pokles koutku, porucha řeči, zraku nebo síly jedné strany těla, bezvědomí, silné krvácení), nejdřív zavolej nástroj escalate s vyšší úrovní (4 = ohrožení života, 3 = lékař ještě dnes, 2 = tým do následujícího pracovního dne) a krátkým důvodem, teprve potom odpověz podle nové úrovně.
+Ostatní nástroje použij, jen když v kontextu něco chybí; jinak odpověz rovnou. Výstup je jen text odpovědi pro pacienta."""
 
 ADDRESSEE = {
     "pacient": "Píše pacient sám – oslovuj přímo jeho.",
@@ -353,7 +393,8 @@ def _tool_specs() -> list[dict]:
         spec("search_guidance", "Schválené texty pro pacienty (IRIS Vector Search).", {"query": {"type": "string"}}, ["query"]),
         spec("get_contact", "Správný kontakt pro úroveň 1–4 v aktuální čas.", {"level": {"type": "integer"}}, ["level"]),
         spec("ask_followup", "Položit pacientovi jednu doplňující otázku.", {"question": {"type": "string"}}, ["question"]),
-        spec("escalate", "Předat týmu / zvýšit úroveň (jen zvýšit, nikdy snížit).",
+        spec("escalate", "Zvýšit úroveň a upozornit tým, když je zpráva vážnější než triage (jen zvýšit, nikdy snížit). "
+                         "2 = tým do následujícího pracovního dne, 3 = lékař ještě dnes, 4 = ohrožení života / 155.",
              {"level": {"type": "integer"}, "reason": {"type": "string"}, "evidence": {"type": "string"}}, ["level", "reason"]),
     ]
 
@@ -554,18 +595,40 @@ def _chunks(text: str) -> list[str]:
 
 async def stream_chat_turn(patient_id: str, text: str, author: str, lang: str | None = None,
                            at: datetime | None = None) -> AsyncIterator[dict]:
-    lock = _locks.setdefault(patient_id, asyncio.Lock())
-    async with lock:
-        try:
-            async for event in _turn(patient_id, text.strip(), "pecujici" if author == "pecujici" else "pacient", lang, at):
-                yield event
-        except Exception:
-            log.exception("chat turn failed")
-            sk = lang == "sk"
-            safe = (f"Prepáčte, odpoveď sa nepodarilo pripraviť. Ak sa necítite dobre, volajte 155 alebo službukonajúceho lekára MOÚ {ON_DUTY_PHONE}."
-                    if sk else f"Omlouváme se, odpověď se nepodařilo připravit. Pokud se necítíte dobře, volejte 155 nebo sloužícího lékaře MOÚ {ON_DUTY_PHONE}.")
-            yield {"event": "delta", "data": safe}
-            yield {"event": "done", "data": NavigatorReply(reply_text=safe, lang="sk" if sk else "cs")}
+    """The turn runs in its own task: a patient who closes the app after the red card must not cancel the team's alert."""
+    events: asyncio.Queue = asyncio.Queue()
+
+    async def run() -> None:
+        lock = _locks.setdefault(patient_id, asyncio.Lock())
+        async with lock:
+            try:
+                async for event in _turn(patient_id, text.strip(), "pecujici" if author == "pecujici" else "pacient", lang, at):
+                    events.put_nowait(event)
+            except Exception:
+                log.exception("chat turn failed")
+                sk = lang == "sk"
+                safe = (f"Prepáčte, odpoveď sa nepodarilo pripraviť. Ak sa necítite dobre, volajte 155 alebo službukonajúceho lekára MOÚ {ON_DUTY_PHONE}."
+                        if sk else f"Omlouváme se, odpověď se nepodařilo připravit. Pokud se necítíte dobře, volejte 155 nebo sloužícího lékaře MOÚ {ON_DUTY_PHONE}.")
+                events.put_nowait({"event": "delta", "data": safe})
+                events.put_nowait({"event": "done", "data": NavigatorReply(reply_text=safe, lang="sk" if sk else "cs")})
+            finally:
+                events.put_nowait(None)
+
+    task = asyncio.create_task(run())
+    _turns.add(task)
+    task.add_done_callback(_turns.discard)
+    while (event := await events.get()) is not None:
+        yield event
+
+
+def _escalated(patient_id: str, output: TriageOutput, at: datetime) -> TriageOutput | None:
+    """The output raised to the level escalate set during this turn, or None."""
+    level = tools.floor(patient_id)
+    if level <= output.uroven:
+        return None
+    step, contact, _notify, sla = tools.route(level, at)
+    return output.model_copy(update={"uroven": level, "doporuceny_krok": step, "doporuceny_kontakt": contact, "upozornit_tym": True,
+                                     "sla_do": sla, "pravidla": [*output.pravidla, "NAV-ESCALATE"]})
 
 
 async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: datetime | None) -> AsyncIterator[dict]:
@@ -627,6 +690,12 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
         candidate = await _llm_answer(patient_id, lang, author, payload, previous, feedback, cites)
         if candidate is None:
             break
+        if raised := _escalated(patient_id, output, at):
+            output, card = raised, level_card(raised)
+            yield {"event": "card", "data": card}
+            payload["triage"].update(level=output.uroven, step=output.doporuceny_krok)
+            payload["level_card"] = card.model_dump(mode="json")
+            payload["must"] = _requirements(output, card, palliative, meds, lang, suicide, fever, bool(followup))
         candidate = " ".join(candidate.split())
         if followup:
             candidate = " ".join(part for part in re.split(r"(?<=[.!?])\s+", candidate) if fold(part) != fold(followup))
@@ -636,6 +705,14 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
             break
         log.warning("navigator reply rejected: %s", feedback)
         feedback = [f"návrh: „{candidate}“", *feedback]
+    # ponytail: the model may tell the patient to call 155 without calling escalate; its own words then raise the alert
+    if reply_text and tools.floor(patient_id) < 4 and urges_155(reply_text):
+        await asyncio.to_thread(tools.escalate, patient_id, 4, "navigátor v odpovědi vyzval k volání 155", text)
+    if raised := _escalated(patient_id, output, at):
+        output, card = raised, level_card(raised)
+        yield {"event": "card", "data": card}
+        if reply_text and validate(reply_text, output, ctx, lang, allowed_text):
+            reply_text = None
     generated_by = "llm" if reply_text else "template"
     if reply_text is None:
         reply_text = template(output, lang, palliative, fever, suicide, meds)

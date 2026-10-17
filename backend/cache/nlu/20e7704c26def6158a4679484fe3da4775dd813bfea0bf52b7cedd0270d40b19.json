@@ -1,0 +1,35 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Od rána asi 3× řidší stolice než normálně.",
+ "usage": {
+  "completion_tokens": 162,
+  "prompt_tokens": 2078,
+  "total_tokens": 2240,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 93,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 36,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "stool_count_above_normal",
+    "value": 3,
+    "period_h": null,
+    "certainty": "approx",
+    "quote": "asi 3× řidší stolice než normálně"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

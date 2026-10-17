@@ -1,0 +1,56 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] v noci 8× prujem, na papiru krev, hrozne boli bricho, toci se mi hlava.\n[dotaznik] Krev na toaletním papíře a ve stolici, od noci, pořád.\n[dotaznik] točí se mi hlava",
+ "usage": {
+  "completion_tokens": 327,
+  "prompt_tokens": 2126,
+  "total_tokens": 2453,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 158,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 84,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "stool_count_above_normal",
+    "value": 8,
+    "period_h": 12,
+    "certainty": "exact",
+    "quote": "v noci 8× prujem"
+   },
+   {
+    "type": "blood_in_stool",
+    "value": true,
+    "period_h": 12,
+    "certainty": "exact",
+    "quote": "Krev na toaletním papíře a ve stolici, od noci, pořád."
+   },
+   {
+    "type": "abdominal_pain_nrs",
+    "value": null,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "hrozne boli bricho"
+   },
+   {
+    "type": "other",
+    "value": "závratě",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "točí se mi hlava"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

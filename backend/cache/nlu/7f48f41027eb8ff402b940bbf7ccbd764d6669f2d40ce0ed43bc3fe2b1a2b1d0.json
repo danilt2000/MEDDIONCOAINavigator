@@ -1,0 +1,49 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Zaniceny nehet na palci u nohy boli v bote\n[priloha] foto_palec.jpg – zarudlý, oteklý nehtový val palce pravé nohy\n[dotaznik] bolest – palec nohy – nehtový val",
+ "usage": {
+  "completion_tokens": 268,
+  "prompt_tokens": 2122,
+  "total_tokens": 2390,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 132,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 80,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "nail_fold_inflammation",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Zaniceny nehet na palci u nohy"
+   },
+   {
+    "type": "pain_nrs",
+    "value": null,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "boli v bote"
+   },
+   {
+    "type": "edema",
+    "value": "nehtový val palce pravé nohy",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "oteklý nehtový val palce pravé nohy"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

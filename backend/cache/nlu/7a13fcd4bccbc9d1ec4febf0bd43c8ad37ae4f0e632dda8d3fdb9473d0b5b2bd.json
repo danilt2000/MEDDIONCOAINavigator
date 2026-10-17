@@ -1,0 +1,35 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Pár pupínků na obličeji.",
+ "usage": {
+  "completion_tokens": 65,
+  "prompt_tokens": 2073,
+  "total_tokens": 2138,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 31,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "pupínky na obličeji",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Pár pupínků na obličeji."
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

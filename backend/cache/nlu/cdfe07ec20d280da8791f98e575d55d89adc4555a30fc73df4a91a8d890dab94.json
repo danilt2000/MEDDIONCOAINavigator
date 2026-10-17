@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Dnes 4× průjem navíc, dlaně pálí.",
+ "usage": {
+  "completion_tokens": 162,
+  "prompt_tokens": 2079,
+  "total_tokens": 2241,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 68,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 37,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "stool_count_above_normal",
+    "value": 4,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "4× průjem navíc"
+   },
+   {
+    "type": "other",
+    "value": "pálení dlaní",
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "dlaně pálí"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

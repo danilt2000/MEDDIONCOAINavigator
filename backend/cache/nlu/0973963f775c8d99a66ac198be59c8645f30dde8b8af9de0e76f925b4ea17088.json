@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[zprava] Mamka říká, že už nechce nic, ať ji necháme. Skoro nejí a nemluví.",
+ "usage": {
+  "completion_tokens": 179,
+  "prompt_tokens": 2090,
+  "total_tokens": 2269,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 95,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 48,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "skoro nejí",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Skoro nejí"
+   },
+   {
+    "type": "other",
+    "value": "nemluví",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "nemluví"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

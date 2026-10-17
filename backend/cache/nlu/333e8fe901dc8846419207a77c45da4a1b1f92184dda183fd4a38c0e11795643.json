@@ -1,0 +1,27 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Psychoterapie pomáhá, začala jsem chodit plavat.",
+ "usage": {
+  "completion_tokens": 25,
+  "prompt_tokens": 2077,
+  "total_tokens": 2102,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 0,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 35,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [],
+  "negations": [],
+  "patient_questions": []
+ }
+}

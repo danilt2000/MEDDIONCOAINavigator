@@ -1,0 +1,27 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Konečně, ulevilo se.",
+ "usage": {
+  "completion_tokens": 60,
+  "prompt_tokens": 2071,
+  "total_tokens": 2131,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 29,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 29,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [],
+  "negations": [],
+  "patient_questions": []
+ }
+}

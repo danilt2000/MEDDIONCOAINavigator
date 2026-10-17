@@ -5,18 +5,18 @@
   "orange_recall": 100.0,
   "under_triage_by_2": 0,
   "under_triage": 0.0,
-  "false_alarms": 3.7,
+  "false_alarms": 3.6,
   "false_alarms_3plus": 0.0,
-  "notify_agreement": 97.6,
-  "routing": 97.6,
-  "routing_exact": 97.6,
-  "exact_level": 97.6,
-  "step_agreement": 97.6
+  "notify_agreement": 97.7,
+  "routing": 97.7,
+  "routing_exact": 97.7,
+  "exact_level": 97.7,
+  "step_agreement": 97.7
  },
  "confusion": [
   [
-   724,
-   28,
+   725,
+   27,
    0,
    0
   ],
@@ -346,29 +346,6 @@
     "mukozitida 2. st.",
     "bolest při polykání NRS 4",
     "váha -1,8 % od začátku RT"
-   ],
-   "kind": "over"
-  },
-  {
-   "checkin_id": "ONC-R053-C01",
-   "patient_id": "ONC-R053",
-   "expected": 1,
-   "predicted": 2,
-   "expected_contact": null,
-   "predicted_contact": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
-   "rules": [
-    "U-VERIFY"
-   ],
-   "findings": [
-    "zmínka o spavosti – ověřit, zda jde o nápadnou změnu (podezření, nepotvrzeno)",
-    "Protinádorová léčba ukončena 08/2026",
-    "rizikové léky: opioidy",
-    "vyplňuje dcera"
-   ],
-   "expected_findings": [
-    "unava_0_4=3",
-    "snizena_chut_k_jidlu_0_4=3",
-    "bolest_nrs_0_10=3 (břicho)"
    ],
    "kind": "over"
   },
@@ -1452,7 +1429,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "asi 3×",
+     "citace": "asi 3× řidší stolice než normálně",
      "checkin_id": "ONC-R017-C04",
      "datum": "2026-02-18"
     }
@@ -1511,12 +1488,6 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "38,4",
-     "checkin_id": "ONC-R071-C07",
-     "datum": "2026-02-18"
-    },
-    {
-     "zdroj": "zprava",
      "citace": "Vecer mi je zima, tresu se, namerila jsem 38,4",
      "checkin_id": "ONC-R071-C07",
      "datum": "2026-02-18"
@@ -1556,7 +1527,7 @@
    "upozornit_tym": true,
    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
    "klicove_nalezy": [
-    "průjem 2. st. (4 stolic nad normál) při imunoterapii",
+    "průjem 2. st. (průjem 4–6 stolic nad normál) při imunoterapii",
     "průjem s bolestí břicha na imunoterapii",
     "ipilimumab 3 mg/kg + nivolumab 1 mg/kg, 4 cykly, poté nivolumab udržovací, C2 D9",
     "rizikové léky: imunoterapie"
@@ -1576,12 +1547,6 @@
     {
      "zdroj": "dotaznik",
      "citace": "Kolik průjmovitých stolic jste měl/a během posledních 24hodin? – Sleduji zvýšení počtu stolic za den o 4-6 oproti normálu. Pokud máte stomii: Do stomie odchází výraznější množství odpadu.",
-     "checkin_id": "ONC-R017-C05",
-     "datum": "2026-02-19"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "Dnes 4×",
      "checkin_id": "ONC-R017-C05",
      "datum": "2026-02-19"
     },
@@ -1805,7 +1770,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "5× prujem",
+     "citace": "Dnes uz 5× prujem",
      "checkin_id": "ONC-R058-C07",
      "datum": "2026-02-20"
     }
@@ -1855,7 +1820,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "5× průjem",
+     "citace": "Dnes už 5× průjem",
      "checkin_id": "ONC-R100-C07",
      "datum": "2026-02-20"
     },
@@ -2254,7 +2219,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "dásně při čištění",
+     "citace": "Krvácí mi dásně při čištění",
      "checkin_id": "ONC-R094-C06",
      "datum": "2026-02-25"
     },
@@ -2377,7 +2342,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "hnacku asi 6 krat",
+     "citace": "asi 6 krat",
      "checkin_id": "ONC-R014-C03",
      "datum": "2026-02-27"
     },
@@ -2678,7 +2643,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "ráno těžko zapínám knoflíky a padají mi věci z ruky",
+     "citace": "těžko zapínám knoflíky a padají mi věci z ruky",
      "checkin_id": "ONC-R100-C10",
      "datum": "2026-03-02"
     }
@@ -3555,7 +3520,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "po vode",
+     "citace": "i po vode",
      "checkin_id": "ONC-R064-C03",
      "datum": "2026-03-12"
     }
@@ -3744,7 +3709,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "5× průjem",
+     "citace": "Dnes už 5× průjem",
      "checkin_id": "ONC-R016-C08",
      "datum": "2026-03-13"
     },
@@ -4223,7 +4188,7 @@
    "dukazy": [
     {
      "zdroj": "zprava",
-     "citace": "spí většinu dne",
+     "citace": "Mamka spí většinu dne",
      "checkin_id": "ONC-R039-C01",
      "datum": "2026-03-17"
     }
@@ -4518,7 +4483,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "po vode",
+     "citace": "i po vode",
      "checkin_id": "ONC-R008-C03",
      "datum": "2026-03-19"
     }
@@ -5026,7 +4991,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "ráno těžko zapínám knoflíky a padají mi věci z ruky",
+     "citace": "těžko zapínám knoflíky a padají mi věci z ruky",
      "checkin_id": "ONC-R016-C12",
      "datum": "2026-03-23"
     }
@@ -5274,7 +5239,7 @@
    "dukazy": [
     {
      "zdroj": "zprava",
-     "citace": "spí většinu dne",
+     "citace": "Mamka spí většinu dne",
      "checkin_id": "ONC-R095-C01",
      "datum": "2026-03-24"
     }
@@ -5525,7 +5490,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "asi 3×",
+     "citace": "asi 3× řidší stolice než normálně",
      "checkin_id": "ONC-R031-C03",
      "datum": "2026-03-25"
     }
@@ -5695,7 +5660,7 @@
    "upozornit_tym": true,
    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
    "klicove_nalezy": [
-    "průjem 2. st. (4 stolic nad normál) při imunoterapii",
+    "průjem 2. st. (průjem 4–6 stolic nad normál) při imunoterapii",
     "průjem s bolestí břicha na imunoterapii",
     "ipilimumab 3 mg/kg + nivolumab 1 mg/kg, 4 cykly, poté nivolumab udržovací, C2 D9",
     "rizikové léky: imunoterapie"
@@ -5715,12 +5680,6 @@
     {
      "zdroj": "dotaznik",
      "citace": "Kolik průjmovitých stolic jste měl/a během posledních 24hodin? – Sleduji zvýšení počtu stolic za den o 4-6 oproti normálu. Pokud máte stomii: Do stomie odchází výraznější množství odpadu.",
-     "checkin_id": "ONC-R031-C04",
-     "datum": "2026-03-26"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "Dnes 4×",
      "checkin_id": "ONC-R031-C04",
      "datum": "2026-03-26"
     },
@@ -5969,6 +5928,12 @@
     {
      "zdroj": "zprava",
      "citace": "Bolest hrozná, ani po 2 dávkách Oramorphu po sobě, mamka sténá",
+     "checkin_id": "ONC-R039-C05",
+     "datum": "2026-03-27"
+    },
+    {
+     "zdroj": "zprava",
+     "citace": "po 2 dávkách Oramorphu po sobě",
      "checkin_id": "ONC-R039-C05",
      "datum": "2026-03-27"
     },
@@ -7523,6 +7488,12 @@
      "datum": "2026-04-03"
     },
     {
+     "zdroj": "zprava",
+     "citace": "po 2 dávkách Oramorphu po sobě",
+     "checkin_id": "ONC-R095-C05",
+     "datum": "2026-04-03"
+    },
+    {
      "zdroj": "dotaznik",
      "citace": "Jak Vás bolesti břicha omezují? – Bolesti jsou silné a omezují mne v běžných denních činnostech.",
      "checkin_id": "ONC-R095-C05",
@@ -8608,7 +8579,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "asi 3×",
+     "citace": "asi 3× řidší stolice než normálně",
      "checkin_id": "ONC-R045-C04",
      "datum": "2026-04-08"
     }
@@ -8754,7 +8725,7 @@
    "upozornit_tym": true,
    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
    "klicove_nalezy": [
-    "průjem 2. st. (4 stolic nad normál) při imunoterapii",
+    "průjem 2. st. (průjem 4–6 stolic nad normál) při imunoterapii",
     "průjem s bolestí břicha na imunoterapii",
     "ipilimumab 3 mg/kg + nivolumab 1 mg/kg, 4 cykly, poté nivolumab udržovací, C2 D9",
     "rizikové léky: imunoterapie"
@@ -8774,12 +8745,6 @@
     {
      "zdroj": "dotaznik",
      "citace": "Kolik průjmovitých stolic jste měl/a během posledních 24hodin? – Sleduji zvýšení počtu stolic za den o 4-6 oproti normálu. Pokud máte stomii: Do stomie odchází výraznější množství odpadu.",
-     "checkin_id": "ONC-R045-C05",
-     "datum": "2026-04-09"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "Dnes 4×",
      "checkin_id": "ONC-R045-C05",
      "datum": "2026-04-09"
     },
@@ -9081,6 +9046,12 @@
     {
      "zdroj": "zprava",
      "citace": "Připadám si k ničemu, nemá cenu se snažit",
+     "checkin_id": "ONC-R012-C05",
+     "datum": "2026-04-10"
+    },
+    {
+     "zdroj": "zprava",
+     "citace": "Připadám si k ničemu",
      "checkin_id": "ONC-R012-C05",
      "datum": "2026-04-10"
     },
@@ -9930,12 +9901,6 @@
     {
      "zdroj": "zprava",
      "citace": "Nepolknu skoro nic, ani vodu moc ne, sliny vyplivuju",
-     "checkin_id": "ONC-R009-C08",
-     "datum": "2026-04-15"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "ani vodu moc ne",
      "checkin_id": "ONC-R009-C08",
      "datum": "2026-04-15"
     },
@@ -11484,7 +11449,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "po vode",
+     "citace": "i po vode",
      "checkin_id": "ONC-R036-C02",
      "datum": "2026-04-30"
     }
@@ -12083,7 +12048,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "Trochu se mi točí hlava, když rychle vstanu",
+     "citace": "když rychle vstanu",
      "checkin_id": "ONC-R091-C12",
      "datum": "2026-05-04"
     },
@@ -12160,7 +12125,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "Trochu se mi točí hlava, když rychle vstanu",
+     "citace": "když rychle vstanu",
      "checkin_id": "ONC-R021-C11",
      "datum": "2026-05-04"
     },
@@ -12594,7 +12559,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "dásně při čištění",
+     "citace": "Krvácí mi dásně při čištění",
      "checkin_id": "ONC-R024-C06",
      "datum": "2026-05-06"
     },
@@ -12655,7 +12620,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "dásně při čištění",
+     "citace": "Krvácí mi dásně při čištění",
      "checkin_id": "ONC-R038-C06",
      "datum": "2026-05-06"
     },
@@ -13777,12 +13742,6 @@
      "datum": "2026-05-13"
     },
     {
-     "zdroj": "zprava",
-     "citace": "ani vodu moc ne",
-     "checkin_id": "ONC-R093-C08",
-     "datum": "2026-05-13"
-    },
-    {
      "zdroj": "dotaznik",
      "citace": "Označte na stupni od 0 do 10 stupeň Vaší bolesti – 7",
      "checkin_id": "ONC-R093-C08",
@@ -13913,7 +13872,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "asi 3×",
+     "citace": "asi 3× řidší stolice než normálně",
      "checkin_id": "ONC-R073-C04",
      "datum": "2026-05-13"
     }
@@ -14281,7 +14240,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "po vode",
+     "citace": "i po vode",
      "checkin_id": "ONC-R078-C03",
      "datum": "2026-05-14"
     }
@@ -14302,7 +14261,7 @@
    "upozornit_tym": true,
    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
    "klicove_nalezy": [
-    "průjem 2. st. (4 stolic nad normál) při imunoterapii",
+    "průjem 2. st. (průjem 4–6 stolic nad normál) při imunoterapii",
     "průjem s bolestí břicha na imunoterapii",
     "ipilimumab 3 mg/kg + nivolumab 1 mg/kg, 4 cykly, poté nivolumab udržovací, C2 D9",
     "rizikové léky: imunoterapie"
@@ -14322,12 +14281,6 @@
     {
      "zdroj": "dotaznik",
      "citace": "Kolik průjmovitých stolic jste měl/a během posledních 24hodin? – Sleduji zvýšení počtu stolic za den o 4-6 oproti normálu. Pokud máte stomii: Do stomie odchází výraznější množství odpadu.",
-     "checkin_id": "ONC-R073-C05",
-     "datum": "2026-05-14"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "Dnes 4×",
      "checkin_id": "ONC-R073-C05",
      "datum": "2026-05-14"
     },
@@ -15500,7 +15453,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "dásně při čištění",
+     "citace": "Krvácí mi dásně při čištění",
      "checkin_id": "ONC-R066-C06",
      "datum": "2026-05-20"
     },
@@ -16029,12 +15982,6 @@
      "datum": "2026-05-22"
     },
     {
-     "zdroj": "zprava",
-     "citace": "nema cenu se snazit",
-     "checkin_id": "ONC-R082-C05",
-     "datum": "2026-05-22"
-    },
-    {
      "zdroj": "dotaznik",
      "citace": "Strach, tíseň, úzkost – 7",
      "checkin_id": "ONC-R082-C05",
@@ -16362,7 +16309,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "Trochu se mi točí hlava, když rychle vstanu",
+     "citace": "když rychle vstanu",
      "checkin_id": "ONC-R063-C12",
      "datum": "2026-05-25"
     },
@@ -17053,12 +17000,6 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "38,4",
-     "checkin_id": "ONC-R099-C05",
-     "datum": "2026-05-27"
-    },
-    {
-     "zdroj": "zprava",
      "citace": "Vecer mi je zima, tresu se, namerila jsem 38,4",
      "checkin_id": "ONC-R099-C05",
      "datum": "2026-05-27"
@@ -17190,7 +17131,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "hnacku asi 6 krat",
+     "citace": "asi 6 krat",
      "checkin_id": "ONC-R042-C03",
      "datum": "2026-05-29"
     },
@@ -18512,7 +18453,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "po vode",
+     "citace": "i po vode",
      "checkin_id": "ONC-R022-C03",
      "datum": "2026-06-04"
     }
@@ -18643,7 +18584,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "7x zvracela",
+     "citace": "v noci 7x zvracela",
      "checkin_id": "ONC-R022-C04",
      "datum": "2026-06-05"
     },
@@ -18718,7 +18659,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "hnacku asi 6 krat",
+     "citace": "asi 6 krat",
      "checkin_id": "ONC-R056-C03",
      "datum": "2026-06-05"
     },
@@ -18774,7 +18715,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "5× průjem",
+     "citace": "Dnes už 5× průjem",
      "checkin_id": "ONC-R044-C07",
      "datum": "2026-06-05"
     },
@@ -19711,12 +19652,6 @@
      "datum": "2026-06-10"
     },
     {
-     "zdroj": "zprava",
-     "citace": "Nepolknu skoro nic ani vodu",
-     "checkin_id": "ONC-R079-C08",
-     "datum": "2026-06-10"
-    },
-    {
      "zdroj": "dotaznik",
      "citace": "Označte na stupni od 0 do 10 stupeň Vaší bolesti – 7",
      "checkin_id": "ONC-R079-C08",
@@ -19847,7 +19782,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "asi 3×",
+     "citace": "asi 3× ridsi stolice nez normalne",
      "checkin_id": "ONC-R087-C04",
      "datum": "2026-06-10"
     }
@@ -20418,7 +20353,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "5× průjem",
+     "citace": "Dnes už 5× průjem",
      "checkin_id": "ONC-R072-C08",
      "datum": "2026-06-12"
     },
@@ -20837,7 +20772,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "ráno těžko zapínám knoflíky a padají mi věci z ruky",
+     "citace": "těžko zapínám knoflíky a padají mi věci z ruky",
      "checkin_id": "ONC-R044-C10",
      "datum": "2026-06-15"
     }
@@ -21145,7 +21080,7 @@
    "dukazy": [
     {
      "zdroj": "zprava",
-     "citace": "spí většinu dne",
+     "citace": "Mamka spí většinu dne",
      "checkin_id": "ONC-R025-C01",
      "datum": "2026-06-16"
     }
@@ -21224,7 +21159,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "dásně při čištění",
+     "citace": "Krvácí mi dásně při čištění",
      "checkin_id": "ONC-R052-C06",
      "datum": "2026-06-17"
     },
@@ -21583,7 +21518,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "hnacku asi 6 krat",
+     "citace": "asi 6 krat",
      "checkin_id": "ONC-R028-C02",
      "datum": "2026-06-19"
     },
@@ -22022,7 +21957,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "ráno těžko zapínám knoflíky a padají mi věci z ruky",
+     "citace": "těžko zapínám knoflíky a padají mi věci z ruky",
      "checkin_id": "ONC-R072-C12",
      "datum": "2026-06-22"
     }
@@ -22842,7 +22777,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "hnacku asi 6 krat",
+     "citace": "asi 6 krat",
      "checkin_id": "ONC-R098-C03",
      "datum": "2026-06-26"
     },
@@ -22949,6 +22884,12 @@
      "datum": "2026-06-26"
     },
     {
+     "zdroj": "zprava",
+     "citace": "po 2 dávkách Oramorphu po sobě",
+     "checkin_id": "ONC-R025-C05",
+     "datum": "2026-06-26"
+    },
+    {
      "zdroj": "dotaznik",
      "citace": "Jak Vás bolesti břicha omezují? – Bolesti jsou silné a omezují mne v běžných denních činnostech.",
      "checkin_id": "ONC-R025-C05",
@@ -22990,6 +22931,12 @@
     {
      "zdroj": "zprava",
      "citace": "Připadám si k ničemu, nemá cenu se snažit",
+     "checkin_id": "ONC-R054-C05",
+     "datum": "2026-06-26"
+    },
+    {
+     "zdroj": "zprava",
+     "citace": "Připadám si k ničemu",
      "checkin_id": "ONC-R054-C05",
      "datum": "2026-06-26"
     },
@@ -23607,7 +23554,7 @@
    "dukazy": [
     {
      "zdroj": "zprava",
-     "citace": "spí většinu dne",
+     "citace": "Mamka spí většinu dne",
      "checkin_id": "ONC-R067-C01",
      "datum": "2026-06-30"
     }
@@ -24412,7 +24359,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "Trochu se mi točí hlava, když rychle vstanu",
+     "citace": "když rychle vstanu",
      "checkin_id": "ONC-R049-C12",
      "datum": "2026-07-06"
     },
@@ -24516,33 +24463,21 @@
   {
    "checkin_id": "ONC-R053-C01",
    "patient_id": "ONC-R053",
-   "uroven": 2,
-   "doporuceny_krok": "kontaktovat_tym",
-   "upozornit_tym": true,
-   "doporuceny_kontakt": "monitorovací centrum – vyřízení do konce následujícího pracovního dne",
+   "uroven": 1,
+   "doporuceny_krok": "dalsi_sledovani",
+   "upozornit_tym": false,
+   "doporuceny_kontakt": null,
    "klicove_nalezy": [
-    "zmínka o spavosti – ověřit, zda jde o nápadnou změnu (podezření, nepotvrzeno)",
-    "Protinádorová léčba ukončena 08/2026",
-    "rizikové léky: opioidy",
-    "vyplňuje dcera"
+    "mírné obtíže (dotazník): nechutenství, bolest břicha, únava"
    ],
    "varovne_priznaky": [],
-   "zduvodneni": "Volný text naznačuje možný varovný příznak, který se nepodařilo potvrdit; při nejistotě se systém doptá a tým stav ověří telefonem.",
-   "doporuceni_pro_pacienta": "Je spavost výrazně větší než obvykle, nebo nejde probudit? Záznam vaší maminky jsme předali týmu monitorovacího centra, ozve se vám nejpozději do konce následujícího pracovního dne. Volejte ihned 155, pokud: je nápadně spavý/á, nejde probudit nebo dýchá pomalu.",
-   "doplnujici_otazka": "Je spavost výrazně větší než obvykle, nebo nejde probudit?",
-   "pravidla": [
-    "U-VERIFY"
-   ],
-   "dukazy": [
-    {
-     "zdroj": "zprava",
-     "citace": "spi vetsinu dne",
-     "checkin_id": "ONC-R053-C01",
-     "datum": "2026-07-07"
-    }
-   ],
-   "jistota": "stredni",
-   "sla_do": "2026-07-08T15:30:00+02:00",
+   "zduvodneni": "Bez varovných příznaků a bez nepříznivého trendu; očekávané mírné obtíže (nejvýše 1. stupeň).",
+   "doporuceni_pro_pacienta": "Děkujeme, dnešní záznam vaší maminky je v očekávaném rozmezí. Pokračujte podle doporučení. Ozvěte se dřív, pokud se u ní objeví teplota 38 °C a víc, dušnost, krvácení nebo jiné náhlé zhoršení.",
+   "doplnujici_otazka": null,
+   "pravidla": [],
+   "dukazy": [],
+   "jistota": "vysoka",
+   "sla_do": null,
    "verze": "engine 0.1.0, rules 2026-10-16",
    "lang": "cs",
    "adresat": "pecujici",
@@ -25086,7 +25021,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "hnacku asi 6 krat",
+     "citace": "asi 6 krat",
      "checkin_id": "ONC-R070-C03",
      "datum": "2026-07-10"
     },
@@ -25167,6 +25102,12 @@
     {
      "zdroj": "zprava",
      "citace": "Bolest hrozná, ani po 2 dávkách Oramorphu po sobě, mamka sténá",
+     "checkin_id": "ONC-R067-C04",
+     "datum": "2026-07-10"
+    },
+    {
+     "zdroj": "zprava",
+     "citace": "po 2 dávkách Oramorphu po sobě",
      "checkin_id": "ONC-R067-C04",
      "datum": "2026-07-10"
     },
@@ -25853,7 +25794,7 @@
    "dukazy": [
     {
      "zdroj": "zprava",
-     "citace": "spí většinu dne",
+     "citace": "Mamka spí většinu dne",
      "checkin_id": "ONC-R011-C01",
      "datum": "2026-07-14"
     }
@@ -26424,7 +26365,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "5× průjem",
+     "citace": "Dnes už 5× průjem",
      "checkin_id": "ONC-R002-C08",
      "datum": "2026-07-17"
     },
@@ -27533,7 +27474,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "dásně při čištění",
+     "citace": "Krvácí mi dásně při čištění",
      "checkin_id": "ONC-R080-C04",
      "datum": "2026-07-22"
     },
@@ -27592,12 +27533,6 @@
     {
      "zdroj": "zprava",
      "citace": "Nepolknu skoro nic, ani vodu moc ne, sliny vyplivuju",
-     "checkin_id": "ONC-R051-C08",
-     "datum": "2026-07-22"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "ani vodu moc ne",
      "checkin_id": "ONC-R051-C08",
      "datum": "2026-07-22"
     },
@@ -27830,12 +27765,6 @@
     {
      "zdroj": "zprava",
      "citace": "namerila jsem 38,4",
-     "checkin_id": "ONC-R029-C06",
-     "datum": "2026-07-22"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "38,4",
      "checkin_id": "ONC-R029-C06",
      "datum": "2026-07-22"
     },
@@ -28180,6 +28109,12 @@
      "datum": "2026-07-24"
     },
     {
+     "zdroj": "zprava",
+     "citace": "po 2 dávkách Oramorphu po sobě",
+     "checkin_id": "ONC-R011-C05",
+     "datum": "2026-07-24"
+    },
+    {
      "zdroj": "dotaznik",
      "citace": "Jak Vás bolesti břicha omezují? – Bolesti jsou silné a omezují mne v běžných denních činnostech.",
      "checkin_id": "ONC-R011-C05",
@@ -28276,6 +28211,12 @@
     {
      "zdroj": "zprava",
      "citace": "Připadám si k ničemu, nemá cenu se snažit",
+     "checkin_id": "ONC-R068-C05",
+     "datum": "2026-07-24"
+    },
+    {
+     "zdroj": "zprava",
+     "citace": "Připadám si k ničemu",
      "checkin_id": "ONC-R068-C05",
      "datum": "2026-07-24"
     },
@@ -28502,7 +28443,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "ráno těžko zapínám knoflíky a padají mi věci z ruky",
+     "citace": "těžko zapínám knoflíky a padají mi věci z ruky",
      "checkin_id": "ONC-R002-C12",
      "datum": "2026-07-27"
     }
@@ -29059,12 +29000,6 @@
      "datum": "2026-07-29"
     },
     {
-     "zdroj": "zprava",
-     "citace": "ani vodu moc ne",
-     "checkin_id": "ONC-R065-C08",
-     "datum": "2026-07-29"
-    },
-    {
      "zdroj": "dotaznik",
      "citace": "Označte na stupni od 0 do 10 stupeň Vaší bolesti – 7",
      "checkin_id": "ONC-R065-C08",
@@ -29404,7 +29339,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "po vode",
+     "citace": "i po vode",
      "checkin_id": "ONC-R092-C03",
      "datum": "2026-07-30"
     }
@@ -30081,7 +30016,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "Trochu se mi točí hlava, když rychle vstanu",
+     "citace": "když rychle vstanu",
      "checkin_id": "ONC-R007-C12",
      "datum": "2026-08-03"
     },
@@ -30611,7 +30546,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "po vode",
+     "citace": "i po vode",
      "checkin_id": "ONC-R050-C03",
      "datum": "2026-08-06"
     }
@@ -32469,7 +32404,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "Trochu se mi toci hlava, kdyz rychle vstanu",
+     "citace": "kdyz rychle vstanu",
      "checkin_id": "ONC-R035-C10",
      "datum": "2026-08-17"
     },
@@ -32821,7 +32756,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "dásně při čištění",
+     "citace": "Krvácí mi dásně při čištění",
      "checkin_id": "ONC-R010-C05",
      "datum": "2026-08-19"
     },
@@ -32880,12 +32815,6 @@
     {
      "zdroj": "zprava",
      "citace": "Nepolknu skoro nic, ani vodu moc ne, sliny vyplivuju",
-     "checkin_id": "ONC-R023-C08",
-     "datum": "2026-08-19"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "ani vodu moc ne",
      "checkin_id": "ONC-R023-C08",
      "datum": "2026-08-19"
     },
@@ -33348,6 +33277,12 @@
      "datum": "2026-08-21"
     },
     {
+     "zdroj": "zprava",
+     "citace": "Připadám si k ničemu",
+     "checkin_id": "ONC-R026-C05",
+     "datum": "2026-08-21"
+    },
+    {
      "zdroj": "dotaznik",
      "citace": "Strach, tíseň, úzkost – 7",
      "checkin_id": "ONC-R026-C05",
@@ -33407,6 +33342,12 @@
     {
      "zdroj": "zprava",
      "citace": "Připadám si k ničemu, nemá cenu se snažit",
+     "checkin_id": "ONC-R096-C05",
+     "datum": "2026-08-21"
+    },
+    {
+     "zdroj": "zprava",
+     "citace": "Připadám si k ničemu",
      "checkin_id": "ONC-R096-C05",
      "datum": "2026-08-21"
     },
@@ -34636,6 +34577,12 @@
      "datum": "2026-08-28"
     },
     {
+     "zdroj": "zprava",
+     "citace": "k nicemu",
+     "checkin_id": "ONC-R040-C05",
+     "datum": "2026-08-28"
+    },
+    {
      "zdroj": "dotaznik",
      "citace": "Strach, tíseň, úzkost – 7",
      "checkin_id": "ONC-R040-C05",
@@ -35200,7 +35147,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "Trochu se mi točí hlava, když rychle vstanu",
+     "citace": "když rychle vstanu",
      "checkin_id": "ONC-R077-C11",
      "datum": "2026-08-31"
     },
@@ -35533,7 +35480,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "jen tekute",
+     "citace": "jim jen tekute",
      "checkin_id": "ONC-R037-C05",
      "datum": "2026-09-02"
     },
@@ -36759,7 +36706,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "asi 3×",
+     "citace": "asi 3× řidší stolice než normálně",
      "checkin_id": "ONC-R059-C04",
      "datum": "2026-09-09"
     }
@@ -36994,7 +36941,7 @@
    "upozornit_tym": true,
    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
    "klicove_nalezy": [
-    "průjem 2. st. (4 stolic nad normál) při imunoterapii",
+    "průjem 2. st. (průjem 4–6 stolic nad normál) při imunoterapii",
     "průjem s bolestí břicha na imunoterapii",
     "ipilimumab 3 mg/kg + nivolumab 1 mg/kg, 4 cykly, poté nivolumab udržovací, C2 D9",
     "rizikové léky: imunoterapie"
@@ -37014,12 +36961,6 @@
     {
      "zdroj": "dotaznik",
      "citace": "Kolik průjmovitých stolic jste měl/a během posledních 24hodin? – Sleduji zvýšení počtu stolic za den o 4-6 oproti normálu. Pokud máte stomii: Do stomie odchází výraznější množství odpadu.",
-     "checkin_id": "ONC-R059-C05",
-     "datum": "2026-09-10"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "Dnes 4×",
      "checkin_id": "ONC-R059-C05",
      "datum": "2026-09-10"
     },
@@ -37241,7 +37182,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "5× průjem",
+     "citace": "Dnes už 5× průjem",
      "checkin_id": "ONC-R030-C08",
      "datum": "2026-09-11"
     },
@@ -38151,7 +38092,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "uz nevim jak to zvladat nespim",
+     "citace": "nevim jak to zvladat nespim",
      "checkin_id": "ONC-R081-C07",
      "datum": "2026-09-19"
     }
@@ -38288,7 +38229,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "ráno těžko zapínám knoflíky a padají mi věci z ruky",
+     "citace": "těžko zapínám knoflíky a padají mi věci z ruky",
      "checkin_id": "ONC-R030-C12",
      "datum": "2026-09-21"
     }
@@ -38609,6 +38550,12 @@
     {
      "zdroj": "zprava",
      "citace": "od rana asi 3× ridsi stolice nez normalne",
+     "checkin_id": "ONC-R003-C04",
+     "datum": "2026-09-23"
+    },
+    {
+     "zdroj": "zprava",
+     "citace": "asi 3× ridsi stolice nez normalne",
      "checkin_id": "ONC-R003-C04",
      "datum": "2026-09-23"
     }
@@ -38936,7 +38883,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "5× průjem",
+     "citace": "Dnes už 5× průjem",
      "checkin_id": "ONC-R086-C07",
      "datum": "2026-09-25"
     },
@@ -39452,7 +39399,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "ráno těžko zapínám knoflíky a padají mi věci z ruky",
+     "citace": "těžko zapínám knoflíky a padají mi věci z ruky",
      "checkin_id": "ONC-R086-C11",
      "datum": "2026-10-05"
     }

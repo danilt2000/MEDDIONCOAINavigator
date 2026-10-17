@@ -130,3 +130,147 @@ def test_followup_answer_is_fed_back_into_triage(llm):
 
 def test_guard_blocks_lay_diagnosis_paraphrase():
     assert navigator.guard("Nevím, zda jde o zánět střev, posoudí to lékař.", 1, "cs", "", None)
+
+
+@pytest.mark.parametrize("text, lang", [
+    ("Od rána vidím rozmazaně na jedno oko a padá mi koutek úst.", "cs"),
+    ("Manželovi najednou poklesl koutek a mluví nesrozumitelně.", "cs"),
+    ("Necítím levou ruku a nemůžu ji zvednout.", "cs"),
+    ("Pravá noha mě neposlouchá.", "cs"),
+    ("Maminka nemůže mluvit.", "cs"),
+    ("Vidím dvojitě.", "cs"),
+    ("Mamine ovisol kútik a nemôže hovoriť.", "sk"),
+    ("Zrazu necítim ľavú ruku.", "sk"),
+    ("Tatínkovi poklesla polovina obličeje.", "cs"),
+    ("Má najednou křivou pusu.", "cs"),
+    ("Pusa mu visí na jednu stranu.", "cs"),
+    ("Na levé oko najednou nic nevidím.", "cs"),
+    ("Přestala jsem vidět na levé oko.", "cs"),
+    ("Na pravé oko zrazu nič nevidím.", "sk"),
+    ("Najednou nemůže pořádně mluvit.", "cs"),
+    ("Mluví jako opilý, přitom nepil.", "cs"),
+    ("Před chvílí jsem asi minutu nemohla najít slova.", "cs"),
+    ("Zle sa mu rozpráva, akoby bol opitý.", "sk"),
+])
+def test_stroke_signs_are_red(text, lang):
+    ctx = tools.context_for(load_patient("ONC-001"), WORKDAY_NOON)
+    assert navigator.lexicon_level(text, ctx, lang)[0] == 4
+
+
+@pytest.mark.parametrize("text", [
+    "Mám afty v koutku úst.",
+    "Praskají mi koutky.",
+    "Vidím trochu rozmazaně, když jsem unavená.",
+    "Brní mě prsty na obou rukou.",
+    "Mám slabost v nohou.",
+    "Nepadá mi koutek, jen jsem unavená.",
+    "Pravidelně beru léky na tlak.",
+    "Padají mi vlasy a pusa mě pálí.",
+    "Bolí mě pusa, nemůžu pořádně mluvit ani jíst.",
+])
+def test_ordinary_complaints_are_not_stroke(text):
+    ctx = tools.context_for(load_patient("ONC-001"), WORKDAY_NOON)
+    assert navigator.lexicon_level(text, ctx, "cs")[0] < 4
+
+
+def test_urges_155_only_unconditionally():
+    assert navigator.urges_155("Volejte ihned 155. Nečekejte.")
+    assert navigator.urges_155("Zavolajte prosím ihneď 155 a nezostávajte sami.")
+    assert navigator.urges_155("Volejte ihned 155, i když už příznaky odezněly.")
+    assert navigator.urges_155("Volajte ihneď 155, aj keď sa už cítite lepšie.")
+    assert navigator.urges_155("To, co popisujete, je potřeba řešit hned. Volejte ihned 155.")
+    assert not navigator.urges_155("Pokud se stav zhorší, volejte 155.")
+    assert not navigator.urges_155("Ak sa stav zhorší, volajte 155.")
+    assert not navigator.urges_155("Vaši zprávu jsme předali týmu. Pokud se stav zhorší, volejte ihned 155.")
+    assert not navigator.urges_155("Při ohrožení života, například při dušnosti v klidu, volejte ihned 155.")
+    assert not navigator.urges_155("Pri výraznej dýchavičnosti volajte ihneď 155.")
+    assert not navigator.urges_155("Volejte 155, kdykoli máte dušnost v klidu.")
+
+
+def test_guard_rejects_later_callback_at_high_levels():
+    assert navigator.guard("Volejte ihned 155. Tým se vám ozve do konce následujícího pracovního dne.", 4, "cs", "", "155 / urgentní příjem")
+    assert not navigator.guard("Tým se vám ozve do konce následujícího pracovního dne.", 2, "cs", "",
+                               "monitorovací centrum – vyřízení do konce následujícího pracovního dne")
+
+
+@pytest.fixture
+def quiet_store(monkeypatch):
+    from app import store
+
+    def close_open_tasks():
+        for task in store.list_tasks():
+            if task.status != "completed":
+                store.apply_task_action(task.id, "close", None, "test")
+
+    monkeypatch.setattr(settings, "llm_enabled", False)
+    monkeypatch.setattr("app.services.side_effects.dispatch_alert", lambda *args, **kwargs: None)
+    close_open_tasks()
+    yield store
+    close_open_tasks()
+
+
+def test_reply_urging_155_raises_the_alert(quiet_store, monkeypatch):
+    async def answer(*args):
+        return "Volejte ihned 155. Nečekejte do rána."
+
+    monkeypatch.setattr(navigator, "_llm_answer", answer)
+    reply = run("ONC-002", "Je mi nějak divně.")
+    assert reply.triage.uroven == 4 and "NAV-ESCALATE" in reply.triage.pravidla
+    assert reply.level_card.uroven == 4 and "tel:155" in reply.level_card.buttons
+    assert quiet_store.open_task("ONC-002").uroven == 4
+
+
+def test_llm_escalate_call_updates_the_card(quiet_store, monkeypatch):
+    async def answer(patient_id, lang, *args):
+        navigator._run_tool(patient_id, lang, "escalate", {"level": 3, "reason": "náhlá silná bolest hlavy"})
+        return "Lékař MOÚ vám zavolá přes monitorovací centrum do 2 hodin."
+
+    monkeypatch.setattr(navigator, "_llm_answer", answer)
+    reply = run("ONC-002", "Je mi nějak divně.")
+    assert reply.triage.uroven == 3 and reply.level_card.uroven == 3
+    assert quiet_store.open_task("ONC-002").why == "náhlá silná bolest hlavy"
+
+
+def test_escalate_beside_an_open_task_of_that_level_still_raises_the_reply(quiet_store, monkeypatch):
+    step, contact, _notify, sla = tools.route(2, WORKDAY_NOON)
+    quiet_store.raise_task(TriageOutput(checkin_id="X-OPEN", patient_id="ONC-002", uroven=2, doporuceny_krok=step, upozornit_tym=True,
+                                        doporuceny_kontakt=contact, klicove_nalezy=["zvracení"], varovne_priznaky=[], zduvodneni="",
+                                        doporuceni_pro_pacienta="", sla_do=sla, zdroj="chat", as_of=WORKDAY_NOON), side_effects=False)
+
+    async def answer(patient_id, lang, *args):
+        navigator._run_tool(patient_id, lang, "escalate", {"level": 2, "reason": "bledost a celková změna stavu"})
+        return "Vaši zprávu jsme předali týmu monitorovacího centra, ozve se vám následující pracovní den."
+
+    monkeypatch.setattr(navigator, "_llm_answer", answer)
+    reply = run("ONC-002", "Je mi nějak divně.")
+    assert reply.level_card.uroven == 2
+    assert any("bledost" in note.text for note in quiet_store.open_task("ONC-002").notes)
+
+
+def test_reply_is_checked_against_the_level_the_llm_escalated_to(quiet_store, monkeypatch):
+    levels = []
+
+    async def answer(patient_id, lang, author, payload, *args):
+        levels.append(payload["triage"]["level"])
+        if len(levels) == 1:
+            navigator._run_tool(patient_id, lang, "escalate", {"level": 4, "reason": "krátká ztráta vědomí"})
+            return "Volejte ihned 155. Tým se vám ozve do konce následujícího pracovního dne."
+        return "Volejte ihned 155. Nečekejte do rána."
+
+    monkeypatch.setattr(navigator, "_llm_answer", answer)
+    reply = run("ONC-002", "Je mi nějak divně.")
+    assert levels[-1] == 4 and reply.level_card.uroven == 4
+    assert reply.reply_text == "Volejte ihned 155. Nečekejte do rána."
+
+
+def test_closing_the_app_after_the_card_still_raises_the_task(quiet_store):
+    async def close_after_first_event():
+        stream = navigator.stream_chat_turn("ONC-001", "mam 38,4 a trese me zima", "pacient", None, WEDNESDAY_NIGHT)
+        first = await anext(stream)
+        await stream.aclose()
+        await asyncio.gather(*navigator._turns)
+        return first
+
+    first = asyncio.run(close_after_first_event())
+    assert first["event"] == "card" and first["data"].uroven == 4
+    assert quiet_store.open_task("ONC-001").uroven == 4

@@ -1,0 +1,49 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Svedi me kuze na zadech jinak dobry\n[priloha] foto_zada.jpg – suchá kůže zad s exkoriacemi po škrábání",
+ "usage": {
+  "completion_tokens": 266,
+  "prompt_tokens": 2103,
+  "total_tokens": 2369,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 132,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 61,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "svědění kůže",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Svedi me kuze na zadech"
+   },
+   {
+    "type": "other",
+    "value": "suchá kůže zad",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "suchá kůže zad"
+   },
+   {
+    "type": "other",
+    "value": "exkoriace po škrábání",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "exkoriacemi po škrábání"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

@@ -208,13 +208,19 @@ def set_floor(patient_id: str, level: int) -> None:
     _escalations[patient_id] = level
 
 
+def floor(patient_id: str) -> int:
+    return _escalations.get(patient_id, 1)
+
+
 @logged
 def escalate(patient_id: str, level: int, reason: str, evidence: str = "") -> dict:
-    """Create or raise the patient's task. Can only raise the current level, never lower it."""
+    """Create or raise the patient's task. Can only raise the current level, never lower it.
+
+    An open task at the same or a higher level still gets the reason as a note (raise_task never lowers it).
+    """
     level = int(level)
     live = store()
-    task = live.open_task(patient_id) if live is not None and hasattr(live, "open_task") else None
-    current = max(_escalations.get(patient_id, 1), task.uroven if task else 1)
+    current = _escalations.get(patient_id, 1)
     if level <= current or level not in (2, 3, 4):
         return {"raised": False, "level": current, "note": "eskalace může úroveň jen zvýšit"}
     at = now()

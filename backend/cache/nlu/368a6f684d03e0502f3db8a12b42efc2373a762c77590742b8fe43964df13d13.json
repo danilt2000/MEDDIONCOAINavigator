@@ -1,0 +1,35 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Tablety jsem pár dní vynechala, kvůli kloubům.",
+ "usage": {
+  "completion_tokens": 137,
+  "prompt_tokens": 2079,
+  "total_tokens": 2216,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 72,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 37,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "missed_medication",
+    "value": "tablety",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Tablety jsem pár dní vynechala"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

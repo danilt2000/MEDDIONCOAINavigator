@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Vcera jsem vypil mozna pul litru Toci se mi hlava malo mocim\n[dotaznik] málo močím, točí se hlava, bolest – None",
+ "usage": {
+  "completion_tokens": 316,
+  "prompt_tokens": 2102,
+  "total_tokens": 2418,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 227,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 60,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "závratě",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Toci se mi hlava"
+   },
+   {
+    "type": "other",
+    "value": "málo močí",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "málo močím"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[chat] Můžu mamince dát další Oramorph?\nKolik dávek už dnes bylo a jak moc bolest povolila?\nMůžu mamince dát další Oramorph?",
+ "usage": {
+  "completion_tokens": 116,
+  "prompt_tokens": 2100,
+  "total_tokens": 2216,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 45,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 58,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [],
+  "negations": [],
+  "patient_questions": [
+   "Můžu mamince dát další Oramorph?",
+   "Kolik dávek už dnes bylo a jak moc bolest povolila?",
+   "Můžu mamince dát další Oramorph?"
+  ]
+ }
+}

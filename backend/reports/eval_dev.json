@@ -622,7 +622,7 @@
    "dukazy": [
     {
      "zdroj": "zprava",
-     "citace": "spí většinu dne",
+     "citace": "Mamka spí většinu dne",
      "checkin_id": "ONC-014-C01",
      "datum": "2026-09-01"
     }
@@ -1928,7 +1928,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "asi 3×",
+     "citace": "asi 3× řidší stolice než normálně",
      "checkin_id": "ONC-004-C04",
      "datum": "2026-09-09"
     }
@@ -2187,7 +2187,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "po vode",
+     "citace": "i po vode",
      "checkin_id": "ONC-010-C03",
      "datum": "2026-09-10"
     }
@@ -2208,7 +2208,7 @@
    "upozornit_tym": true,
    "doporuceny_kontakt": "telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h",
    "klicove_nalezy": [
-    "průjem 2. st. (4 stolic nad normál) při imunoterapii",
+    "průjem 2. st. (průjem 4–6 stolic nad normál) při imunoterapii",
     "průjem s bolestí břicha na imunoterapii",
     "ipilimumab 3 mg/kg + nivolumab 1 mg/kg, 4 cykly, poté nivolumab udržovací, C2 D9",
     "rizikové léky: imunoterapie"
@@ -2228,12 +2228,6 @@
     {
      "zdroj": "dotaznik",
      "citace": "Kolik průjmovitých stolic jste měl/a během posledních 24hodin? – Sleduji zvýšení počtu stolic za den o 4-6 oproti normálu. Pokud máte stomii: Do stomie odchází výraznější množství odpadu.",
-     "checkin_id": "ONC-004-C05",
-     "datum": "2026-09-10"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "Dnes 4×",
      "checkin_id": "ONC-004-C05",
      "datum": "2026-09-10"
     },
@@ -2598,7 +2592,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "hnacku asi 6 krat",
+     "citace": "asi 6 krat",
      "checkin_id": "ONC-018-C03",
      "datum": "2026-09-11"
     },
@@ -2654,7 +2648,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "5× průjem",
+     "citace": "Dnes už 5× průjem",
      "checkin_id": "ONC-002-C08",
      "datum": "2026-09-11"
     },
@@ -2739,6 +2733,12 @@
      "datum": "2026-09-11"
     },
     {
+     "zdroj": "zprava",
+     "citace": "po 2 dávkách Oramorphu po sobě",
+     "checkin_id": "ONC-014-C05",
+     "datum": "2026-09-11"
+    },
+    {
      "zdroj": "dotaznik",
      "citace": "Jak Vás bolesti břicha omezují? – Bolesti jsou silné a omezují mne v běžných denních činnostech.",
      "checkin_id": "ONC-014-C05",
@@ -2804,6 +2804,12 @@
     {
      "zdroj": "zprava",
      "citace": "Připadám si k ničemu, nemá cenu se snažit",
+     "checkin_id": "ONC-016-C05",
+     "datum": "2026-09-11"
+    },
+    {
+     "zdroj": "zprava",
+     "citace": "Připadám si k ničemu",
      "checkin_id": "ONC-016-C05",
      "datum": "2026-09-11"
     },
@@ -3512,12 +3518,6 @@
     {
      "zdroj": "zprava",
      "citace": "Nepolknu skoro nic, ani vodu moc ne, sliny vyplivuju",
-     "checkin_id": "ONC-011-C08",
-     "datum": "2026-09-16"
-    },
-    {
-     "zdroj": "zprava",
-     "citace": "ani vodu moc ne",
      "checkin_id": "ONC-011-C08",
      "datum": "2026-09-16"
     },
@@ -4273,7 +4273,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "ráno těžko zapínám knoflíky a padají mi věci z ruky",
+     "citace": "těžko zapínám knoflíky a padají mi věci z ruky",
      "checkin_id": "ONC-002-C12",
      "datum": "2026-09-21"
     }
@@ -4445,7 +4445,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "Trochu se mi točí hlava, když rychle vstanu",
+     "citace": "když rychle vstanu",
      "checkin_id": "ONC-009-C12",
      "datum": "2026-09-21"
     },
@@ -4715,7 +4715,7 @@
     },
     {
      "zdroj": "zprava",
-     "citace": "dásně při čištění",
+     "citace": "Krvácí mi dásně při čištění",
      "checkin_id": "ONC-013-C06",
      "datum": "2026-09-23"
     },

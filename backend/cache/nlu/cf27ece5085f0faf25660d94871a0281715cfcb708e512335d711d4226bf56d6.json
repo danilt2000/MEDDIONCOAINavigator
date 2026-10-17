@@ -1,0 +1,49 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[zprava] v noci 7x zvracela od vcera vecer sem nemocila mota se mi hlava pise dcera\n[dotaznik] nemočila od včerejšího večera, motá se hlava",
+ "usage": {
+  "completion_tokens": 237,
+  "prompt_tokens": 2113,
+  "total_tokens": 2350,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 105,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 71,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "vomiting_episodes_24h",
+    "value": 7,
+    "period_h": 12,
+    "certainty": "exact",
+    "quote": "v noci 7x zvracela"
+   },
+   {
+    "type": "no_urine_hours",
+    "value": 12,
+    "period_h": null,
+    "certainty": "approx",
+    "quote": "nemočila od včerejšího večera"
+   },
+   {
+    "type": "other",
+    "value": "závratě",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "motá se hlava"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] klouby boli vic spatne spim",
+ "usage": {
+  "completion_tokens": 165,
+  "prompt_tokens": 2071,
+  "total_tokens": 2236,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 78,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 29,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "pain_nrs",
+    "value": null,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "klouby boli"
+   },
+   {
+    "type": "other",
+    "value": "špatně spím",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "spatne spim"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

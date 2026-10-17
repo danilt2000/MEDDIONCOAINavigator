@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Krvácí mi dásně při čištění a na rukou mám modřiny, nevím odkud.\n[priloha] foto_ruce.jpg – několik hematomů na předloktí\n[dotaznik] Dásně při čištění zubů, přestane asi po 5 minutách. Modřiny na rukou bez úrazu.",
+ "usage": {
+  "completion_tokens": 201,
+  "prompt_tokens": 2143,
+  "total_tokens": 2344,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 104,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 101,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "bleeding_site",
+    "value": "dásně",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Krvácí mi dásně při čištění"
+   },
+   {
+    "type": "bruises_new",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "na rukou mám modřiny"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

@@ -44,7 +44,7 @@ Rules for parallel work: write only inside the area you own; do not commit; do n
 | FHIR R4 base | `http://localhost:52773/fhir/r4` (Basic auth, `application/fhir+json`) |
 | IRIS portal | `http://localhost:52773/csp/sys/UtilHome.csp` |
 | Host folder in the container | `./iris` is mounted at `/home/irisowner/meddi` (HL7 file drop: `iris/inbox`) |
-| LLM | OpenAI, `settings.llm_model` (`gpt-5.4-mini`), embeddings `text-embedding-3-small` (1536) |
+| LLM | OpenAI, `settings.llm_model` (`gpt-6-luna`), embeddings `text-embedding-3-small` (1536) |
 | Patient PWA / clinician web | Vite on 5173 / 5174, `/api` proxied to 8100 |
 
 IRIS Community Edition allows 8 connections: open at most 2 DB-API connections per process and close them.

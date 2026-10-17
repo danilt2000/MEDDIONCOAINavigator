@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[zprava] Bolest hrozná, ani po 2 dávkách Oramorphu po sobě, mamka sténá.",
+ "usage": {
+  "completion_tokens": 209,
+  "prompt_tokens": 2091,
+  "total_tokens": 2300,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 112,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 49,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "pain_nrs",
+    "value": null,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Bolest hrozná"
+   },
+   {
+    "type": "rescue_doses_per_day",
+    "value": 2,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "po 2 dávkách Oramorphu po sobě"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

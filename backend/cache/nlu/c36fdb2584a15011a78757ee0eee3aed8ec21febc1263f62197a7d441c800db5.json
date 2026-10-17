@@ -1,0 +1,44 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Pořád nic, břicho nafouklé, ale plyny odcházejí, nezvracím.\n[dotaznik] nafouklé břicho",
+ "usage": {
+  "completion_tokens": 214,
+  "prompt_tokens": 2100,
+  "total_tokens": 2314,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 113,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 58,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "nafouklé břicho",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "břicho nafouklé"
+   }
+  ],
+  "negations": [
+   {
+    "type": "vomiting_episodes_24h",
+    "quote": "nezvracím"
+   },
+   {
+    "type": "no_stool_no_gas",
+    "quote": "plyny odcházejí"
+   }
+  ],
+  "patient_questions": []
+ }
+}

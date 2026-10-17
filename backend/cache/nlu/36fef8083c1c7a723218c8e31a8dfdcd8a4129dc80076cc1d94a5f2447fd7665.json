@@ -1,0 +1,47 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Tlak 168/102 i přes nový lék, hlava trochu bolí, vidím normálně.",
+ "usage": {
+  "completion_tokens": 174,
+  "prompt_tokens": 2085,
+  "total_tokens": 2259,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 70,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 43,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "tlak 168/102",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Tlak 168/102"
+   },
+   {
+    "type": "other",
+    "value": "bolest hlavy",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "hlava trochu bolí"
+   }
+  ],
+  "negations": [
+   {
+    "type": "vision_problem",
+    "quote": "vidím normálně"
+   }
+  ],
+  "patient_questions": []
+ }
+}

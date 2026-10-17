@@ -1,0 +1,40 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] zase vysoky hlava neboli",
+ "usage": {
+  "completion_tokens": 211,
+  "prompt_tokens": 2070,
+  "total_tokens": 2281,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 139,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 28,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "zase vysoký",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "zase vysoky"
+   }
+  ],
+  "negations": [
+   {
+    "type": "other",
+    "quote": "hlava neboli"
+   }
+  ],
+  "patient_questions": []
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[chat] Pred chvíľou som asi minútu nevedela nájsť slová, teraz je to už v poriadku.",
+ "usage": {
+  "completion_tokens": 67,
+  "prompt_tokens": 2088,
+  "total_tokens": 2155,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 36,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 46,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "sk",
+  "facts": [],
+  "negations": [],
+  "patient_questions": []
+ }
+}

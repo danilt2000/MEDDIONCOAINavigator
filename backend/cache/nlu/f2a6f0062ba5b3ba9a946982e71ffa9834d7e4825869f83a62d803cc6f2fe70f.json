@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Cukr 17,8, mám pořád žízeň a chodím často čůrat.\n[dotaznik] velká žízeň, časté močení, cukr 17,8",
+ "usage": {
+  "completion_tokens": 237,
+  "prompt_tokens": 2108,
+  "total_tokens": 2345,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 136,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 66,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "thirst_polyuria",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "mám pořád žízeň a chodím často čůrat"
+   },
+   {
+    "type": "other",
+    "value": "cukr 17,8",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Cukr 17,8"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

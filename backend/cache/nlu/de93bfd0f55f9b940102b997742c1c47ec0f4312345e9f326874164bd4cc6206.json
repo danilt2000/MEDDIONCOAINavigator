@@ -1,0 +1,35 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pecujici.\nTexts:\n[zprava] mamka 4 dny bez stolice.",
+ "usage": {
+  "completion_tokens": 174,
+  "prompt_tokens": 2074,
+  "total_tokens": 2248,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 111,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 32,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "4 dny bez stolice",
+    "period_h": 96,
+    "certainty": "exact",
+    "quote": "4 dny bez stolice"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] cely den nevolno rano jsem jednou zvracela jim jen suchary ale piju caj ondansetron beru jak mam",
+ "usage": {
+  "completion_tokens": 205,
+  "prompt_tokens": 2091,
+  "total_tokens": 2296,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 113,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 49,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "nevolnost",
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "cely den nevolno"
+   },
+   {
+    "type": "vomiting_episodes_24h",
+    "value": 1,
+    "period_h": 24,
+    "certainty": "exact",
+    "quote": "jednou zvracela"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

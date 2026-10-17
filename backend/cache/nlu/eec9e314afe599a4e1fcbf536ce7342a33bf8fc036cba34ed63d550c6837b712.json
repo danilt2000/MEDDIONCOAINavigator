@@ -1,0 +1,35 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Návaly horka pořád, jinak ok.\n[dotaznik] návaly horka",
+ "usage": {
+  "completion_tokens": 92,
+  "prompt_tokens": 2083,
+  "total_tokens": 2175,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 30,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 41,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "other",
+    "value": "návaly horka",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Návaly horka pořád"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

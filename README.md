@@ -33,7 +33,7 @@ Working hours of the monitoring centre: Mon–Fri 07:00–15:30, Europe/Prague.
 | `iris/` | InterSystems IRIS for Health container, interoperability production, SQL | 52773, 1972 |
 | `docs/` | `spec.md` (product spec), `architecture.md`, `intersystems.md`, `fhir-mapping.md`, `interop.md` | – |
 
-Stack: Python 3.12, FastAPI, OpenAI (`gpt-5.4-mini`, `text-embedding-3-small`), FastMCP, InterSystems IRIS for Health
+Stack: Python 3.12, FastAPI, OpenAI (`gpt-6-luna`, `text-embedding-3-small`), FastMCP, InterSystems IRIS for Health
 Community; React 19, Vite 8, TypeScript 7, pnpm workspaces, `vite-plugin-pwa`, Material Web (`@material/web`).
 
 ## Architecture

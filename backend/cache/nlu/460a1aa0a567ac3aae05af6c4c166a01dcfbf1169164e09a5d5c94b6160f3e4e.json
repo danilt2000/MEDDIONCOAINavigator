@@ -1,0 +1,35 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: sk. Written by: pacient.\nTexts:\n[zprava] Stolica trochu redsia, zobral som loperamid.",
+ "usage": {
+  "completion_tokens": 157,
+  "prompt_tokens": 2075,
+  "total_tokens": 2232,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 96,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 33,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "sk",
+  "facts": [
+   {
+    "type": "other",
+    "value": "řidší stolice",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Stolica trochu redsia"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

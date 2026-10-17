@@ -1,0 +1,56 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Zimnice, 38,6, kolem portu je kůže zarudlá a bolí to.\n[priloha] foto_port.jpg – zarudnutí cca 4 cm v okolí portu, bez hnisu\n[dotaznik] zarudnutí a bolest kolem portu, zimnice, bolest – okolí portu",
+ "usage": {
+  "completion_tokens": 265,
+  "prompt_tokens": 2135,
+  "total_tokens": 2400,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 124,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 93,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "chills",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "Zimnice"
+   },
+   {
+    "type": "temperature_c",
+    "value": 38.6,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "38,6"
+   },
+   {
+    "type": "port_redness",
+    "value": 4,
+    "period_h": null,
+    "certainty": "approx",
+    "quote": "zarudnutí cca 4 cm v okolí portu"
+   },
+   {
+    "type": "pain_nrs",
+    "value": null,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "bolí to"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

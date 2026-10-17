@@ -1,0 +1,35 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] Po prášcích na odvodnění lepší, spím zase normálně.\n[dotaznik] otoky nohou",
+ "usage": {
+  "completion_tokens": 121,
+  "prompt_tokens": 2090,
+  "total_tokens": 2211,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 63,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 48,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "edema",
+    "value": "nohy",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "otoky nohou"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}

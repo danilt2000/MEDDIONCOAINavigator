@@ -1,0 +1,63 @@
+{
+ "model": "gpt-6-luna",
+ "kind": "nlu",
+ "user": "Profile language: cs. Written by: pacient.\nTexts:\n[zprava] na chodidlech bolestive mozoly a puchyre, chuze boli.\n[priloha] foto_chodidla.jpg – zarudnutí, hyperkeratóza a puchýře na ploskách obou nohou\n[dotaznik] bolest – chodidla",
+ "usage": {
+  "completion_tokens": 339,
+  "prompt_tokens": 2123,
+  "total_tokens": 2462,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 0,
+   "audio_tokens": 0,
+   "reasoning_tokens": 155,
+   "rejected_prediction_tokens": 0
+  },
+  "prompt_tokens_details": {
+   "audio_tokens": 0,
+   "cache_write_tokens": 81,
+   "cached_tokens": 2039
+  }
+ },
+ "output": {
+  "lang": "cs",
+  "facts": [
+   {
+    "type": "pain_nrs",
+    "value": null,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "chuze boli"
+   },
+   {
+    "type": "skin_blisters",
+    "value": true,
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "puchyre"
+   },
+   {
+    "type": "other",
+    "value": "bolestivé mozoly",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "bolestive mozoly"
+   },
+   {
+    "type": "other",
+    "value": "zarudnutí plosek",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "zarudnutí, hyperkeratóza a puchýře na ploskách obou nohou"
+   },
+   {
+    "type": "other",
+    "value": "hyperkeratóza",
+    "period_h": null,
+    "certainty": "exact",
+    "quote": "hyperkeratóza"
+   }
+  ],
+  "negations": [],
+  "patient_questions": []
+ }
+}
