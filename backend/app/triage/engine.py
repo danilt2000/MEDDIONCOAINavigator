@@ -368,7 +368,9 @@ def evaluate(s: Signals, ctx: PatientContext, previous: list[Checkin]) -> list[H
         hit("R-DEHYD", 4, "mdloba", s.ev_fact("fainting"), True)
     if 0 < s.vitals.get("tk_sys", 999) < 90:
         hit("R-DEHYD", 4, f"systolický TK {_num(s.vitals['tk_sys'])} mmHg", s.ev_vital("tk_sys"))
-    if severe_intake and len(signs) >= 2:
+    # organisers' clarification (17 Oct): cannot keep fluids plus any one sign (little urine, dizziness, pulse > 100, SBP < 90) is red
+    clarified_sign = s.has("oliguria") or s.has("dizziness_standing") or s.vitals.get("tepova_frekvence", 0) > 100 or 0 < s.vitals.get("tk_sys", 999) < 90
+    if severe_intake and (len(signs) >= 2 or clarified_sign):
         hit("R-DEHYD", 4, f"nedostatečný příjem tekutin se známkami dehydratace ({', '.join(signs)})", intake_evidence + s.ev_fact("oliguria", "dizziness_standing") + s.ev_vital("tepova_frekvence"))
     if severe_intake:
         hit("O-INTAKE", 3, "neudrží tekutiny / příjem na minimu", intake_evidence, not any(s.idx(q) is not None and s.idx(q) >= (2 if q == "nevolnost" else 3) for q in ("nevolnost", "nechutenstvi", "afty")))

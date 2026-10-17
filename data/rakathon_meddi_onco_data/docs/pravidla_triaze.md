@@ -37,8 +37,9 @@ Monitorovací centrum pracuje **v pracovní dny 7:00–15:30**. Mimo tuto dobu j
 | Neurologie | Zmatenost, porucha vědomí nebo probuditelnosti, epileptický záchvat, nová slabost končetin, porucha řeči |
 | Krvácení | Krev ve stolici nebo zvratcích, černá stolice, krev v moči, krvácení z nosu > 20 minut, úraz hlavy na antikoagulaci |
 | Průjem | ≥ 7 stolic nad normál za 24 h, nebo průjem s krví |
-| Zvracení | > 5 epizod za 24 h, nebo neudrží tekutiny se známkami dehydratace |
+| Zvracení | > 5 epizod za 24 h |
 | Dehydratace / oběh | Nemočí > 10 h, mdloba, systolický TK < 90 mmHg |
+| Dehydratace při selhání příjmu | Nepřijme nebo neudrží tekutiny z jakékoli příčiny (zvracení, bolestivé polykání, mukozitida) **a zároveň** známky dehydratace: málo močí, závrať, tep > 100 nebo systolický TK < 90. Zvlášť závažné u cisplatiny a jiné léčby zatěžující ledviny |
 | Břicho | Zástava odchodu plynů a stolice se zvracením nebo kolikovitou bolestí |
 | Tlak | TK ≥ 180/110, nebo vysoký tlak se silnou bolestí hlavy, poruchou zraku, řeči či bolestí na hrudi |
 | Metabolismus | Zvracení + bolest břicha + zrychlené dýchání u diabetika nebo pacienta na imunoterapii (podezření na ketoacidózu) |
