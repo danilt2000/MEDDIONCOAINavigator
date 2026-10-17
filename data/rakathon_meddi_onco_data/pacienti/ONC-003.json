@@ -1,0 +1,1753 @@
+{
+  "patient_id": "ONC-003",
+  "synteticka_data": true,
+  "sada": "eval",
+  "nazev_scenare": null,
+  "obdobi_sledovani": {
+    "od": "2026-08-24",
+    "do": "2026-10-03"
+  },
+  "demografie": {
+    "jmeno_fiktivni": "Miroslav S.",
+    "vek": 67,
+    "pohlavi": "M",
+    "jazyk": "cs",
+    "kraj": "Zlínský",
+    "domacnost": "s manželkou",
+    "digitalni_gramotnost": "stredni",
+    "vyplnuje": "pacient"
+  },
+  "diagnoza": {
+    "diagnoza": "Adenokarcinom pravé plíce s metastázami do nadledviny",
+    "mkn10": "C34.1",
+    "stadium": "IV",
+    "biomarkery": "PD-L1 TPS 60 %, EGFR/ALK/ROS1 negativní",
+    "datum_diagnozy": "2026-03-30"
+  },
+  "ecog_vychozi": 1,
+  "komorbidity": [
+    "CHOPN (GOLD 2)",
+    "Bývalý kuřák (35 balíčkoroků)",
+    "Hyperlipidémie"
+  ],
+  "alergie": [],
+  "predem_vyslovena_prani": null,
+  "antropometrie": {
+    "vyska_cm": 174,
+    "vaha_kg_vychozi": 76.0,
+    "bmi": 25.1
+  },
+  "lecba": {
+    "zamer": "paliativní",
+    "rezim": "pembrolizumab 200 mg i.v. à 21 dní (6.–7. cyklus)",
+    "leky": [
+      "pembrolizumab 200 mg i.v. D1"
+    ],
+    "delka_cyklu": 21,
+    "cykly": [
+      {
+        "cyklus": 6,
+        "den_sledovani": 1,
+        "datum_d1": "2026-08-24"
+      }
+    ],
+    "poznamka": "C7 plánována D22 – neaplikována (hospitalizace)."
+  },
+  "leky": [
+    {
+      "lek": "Tiotropium",
+      "davka": "18 µg inh.",
+      "frekvence": "1× denně",
+      "indikace": "CHOPN",
+      "typ": "chronicky",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": false,
+      "od_data": null,
+      "do_data": null
+    },
+    {
+      "lek": "Salbutamol",
+      "davka": "100 µg inh.",
+      "frekvence": "dle potřeby",
+      "indikace": "dušnost",
+      "typ": "chronicky",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": true,
+      "od_data": null,
+      "do_data": null
+    },
+    {
+      "lek": "Atorvastatin",
+      "davka": "20 mg",
+      "frekvence": "1× denně",
+      "indikace": "hyperlipidémie",
+      "typ": "chronicky",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": false,
+      "od_data": null,
+      "do_data": null
+    },
+    {
+      "lek": "Prednison",
+      "davka": "60 mg, postupně snižovat",
+      "frekvence": "ráno",
+      "indikace": "imunitní pneumonitida",
+      "typ": "podpurny",
+      "od_dne": 28,
+      "do_dne": null,
+      "pri_potizich": false,
+      "od_data": "2026-09-20",
+      "do_data": null
+    }
+  ],
+  "laboratore": [
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "leu",
+      "test": "Leukocyty",
+      "hodnota": 5.8,
+      "jednotka": "10^9/l",
+      "ref_min": 4.0,
+      "ref_max": 10.0,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "neu",
+      "test": "Neutrofily abs.",
+      "hodnota": 3.8,
+      "jednotka": "10^9/l",
+      "ref_min": 2.0,
+      "ref_max": 7.0,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "hb",
+      "test": "Hemoglobin",
+      "hodnota": 133,
+      "jednotka": "g/l",
+      "ref_min": 120,
+      "ref_max": 160,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "plt",
+      "test": "Trombocyty",
+      "hodnota": 237,
+      "jednotka": "10^9/l",
+      "ref_min": 150,
+      "ref_max": 400,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "kreat",
+      "test": "Kreatinin",
+      "hodnota": 68,
+      "jednotka": "µmol/l",
+      "ref_min": 44,
+      "ref_max": 104,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "na",
+      "test": "Natrium",
+      "hodnota": 141,
+      "jednotka": "mmol/l",
+      "ref_min": 136,
+      "ref_max": 146,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "k",
+      "test": "Kalium",
+      "hodnota": 4.3,
+      "jednotka": "mmol/l",
+      "ref_min": 3.8,
+      "ref_max": 5.1,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "alt",
+      "test": "ALT",
+      "hodnota": 0.39,
+      "jednotka": "µkat/l",
+      "ref_min": 0.1,
+      "ref_max": 0.78,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "bili",
+      "test": "Bilirubin celkový",
+      "hodnota": 9,
+      "jednotka": "µmol/l",
+      "ref_min": 2,
+      "ref_max": 17,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "crp",
+      "test": "CRP",
+      "hodnota": 2.1,
+      "jednotka": "mg/l",
+      "ref_min": 0,
+      "ref_max": 5,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L01",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "tsh",
+      "test": "TSH",
+      "hodnota": 1.9,
+      "jednotka": "mIU/l",
+      "ref_min": 0.27,
+      "ref_max": 4.2,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L02",
+      "datum": "2026-09-14",
+      "cas": "13:00",
+      "den_sledovani": 22,
+      "misto": "urgentní příjem",
+      "kod": "leu",
+      "test": "Leukocyty",
+      "hodnota": 11.2,
+      "jednotka": "10^9/l",
+      "ref_min": 4.0,
+      "ref_max": 10.0,
+      "priznak": "H"
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L02",
+      "datum": "2026-09-14",
+      "cas": "13:00",
+      "den_sledovani": 22,
+      "misto": "urgentní příjem",
+      "kod": "neu",
+      "test": "Neutrofily abs.",
+      "hodnota": 8.6,
+      "jednotka": "10^9/l",
+      "ref_min": 2.0,
+      "ref_max": 7.0,
+      "priznak": "H"
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L02",
+      "datum": "2026-09-14",
+      "cas": "13:00",
+      "den_sledovani": 22,
+      "misto": "urgentní příjem",
+      "kod": "hb",
+      "test": "Hemoglobin",
+      "hodnota": 131,
+      "jednotka": "g/l",
+      "ref_min": 120,
+      "ref_max": 160,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L02",
+      "datum": "2026-09-14",
+      "cas": "13:00",
+      "den_sledovani": 22,
+      "misto": "urgentní příjem",
+      "kod": "plt",
+      "test": "Trombocyty",
+      "hodnota": 238,
+      "jednotka": "10^9/l",
+      "ref_min": 150,
+      "ref_max": 400,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L02",
+      "datum": "2026-09-14",
+      "cas": "13:00",
+      "den_sledovani": 22,
+      "misto": "urgentní příjem",
+      "kod": "kreat",
+      "test": "Kreatinin",
+      "hodnota": 81,
+      "jednotka": "µmol/l",
+      "ref_min": 44,
+      "ref_max": 104,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L02",
+      "datum": "2026-09-14",
+      "cas": "13:00",
+      "den_sledovani": 22,
+      "misto": "urgentní příjem",
+      "kod": "na",
+      "test": "Natrium",
+      "hodnota": 141,
+      "jednotka": "mmol/l",
+      "ref_min": 136,
+      "ref_max": 146,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L02",
+      "datum": "2026-09-14",
+      "cas": "13:00",
+      "den_sledovani": 22,
+      "misto": "urgentní příjem",
+      "kod": "k",
+      "test": "Kalium",
+      "hodnota": 3.9,
+      "jednotka": "mmol/l",
+      "ref_min": 3.8,
+      "ref_max": 5.1,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L02",
+      "datum": "2026-09-14",
+      "cas": "13:00",
+      "den_sledovani": 22,
+      "misto": "urgentní příjem",
+      "kod": "alt",
+      "test": "ALT",
+      "hodnota": 0.41,
+      "jednotka": "µkat/l",
+      "ref_min": 0.1,
+      "ref_max": 0.78,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L02",
+      "datum": "2026-09-14",
+      "cas": "13:00",
+      "den_sledovani": 22,
+      "misto": "urgentní příjem",
+      "kod": "bili",
+      "test": "Bilirubin celkový",
+      "hodnota": 9,
+      "jednotka": "µmol/l",
+      "ref_min": 2,
+      "ref_max": 17,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-003",
+      "odber_id": "ONC-003-L02",
+      "datum": "2026-09-14",
+      "cas": "13:00",
+      "den_sledovani": 22,
+      "misto": "urgentní příjem",
+      "kod": "crp",
+      "test": "CRP",
+      "hodnota": 64,
+      "jednotka": "mg/l",
+      "ref_min": 0,
+      "ref_max": 5,
+      "priznak": "H"
+    }
+  ],
+  "vysetreni": [
+    {
+      "den_sledovani": 22,
+      "datum": "2026-09-14",
+      "vysetreni": "HRCT plic",
+      "vysledek": "Oboustranné opacity mléčného skla, obraz odpovídá pneumonitidě; bez PE"
+    }
+  ],
+  "udalosti_tymu": [
+    {
+      "patient_id": "ONC-003",
+      "datum": "2026-09-10",
+      "cas": "13:30",
+      "den_sledovani": 18,
+      "typ": "telekonzultace",
+      "autor": "onkolog",
+      "text": "Lékař: doporučen RTG plic a CRP; pacient se domluvil na příjezd v pondělí (D22)."
+    },
+    {
+      "patient_id": "ONC-003",
+      "datum": "2026-09-14",
+      "cas": "12:30",
+      "den_sledovani": 22,
+      "typ": "hospitalizace",
+      "autor": "FN – pneumoonkologie",
+      "text": "Přijat: imunitně podmíněná pneumonitida 3. st., kortikoidy i.v., pembrolizumab přerušen."
+    },
+    {
+      "patient_id": "ONC-003",
+      "datum": "2026-09-19",
+      "cas": "14:00",
+      "den_sledovani": 27,
+      "typ": "propusteni",
+      "autor": "FN – pneumoonkologie",
+      "text": "Propuštěn na prednisonu 60 mg s plánem snižování, SpO2 93 % bez kyslíku."
+    }
+  ],
+  "checkiny": [
+    {
+      "checkin_id": "ONC-003-C01",
+      "patient_id": "ONC-003",
+      "datum": "2026-08-24",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "cyklus": 6,
+      "den_cyklu": 1,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C01-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        },
+        {
+          "vyplneni_id": "ONC-003-C01-PSY",
+          "dotaznik_id": "psychoonkologicky_screening",
+          "dotaznik_nazev": "Psychoonkologický screening MOÚ",
+          "odpovedi": [
+            {
+              "otazka_id": "uzkost",
+              "otazka": "Strach, tíseň, úzkost",
+              "odpoved": 3,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "depresivita",
+              "otazka": "Depresivita",
+              "odpoved": 1,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvladani",
+              "otazka": "Zvládání situace",
+              "odpoved": 9,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "deti",
+              "otazka": "Mám v péči dítě/děti ve věku do 15 let",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "trapeni",
+              "otazka": "Kromě svého současného onemocnění prožívám další životní trápení",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sam",
+              "otazka": "Mám pocit, že jsem na vše sám/a",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psychiatr",
+              "otazka": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sebevrazda",
+              "otazka": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psycholog",
+              "otazka": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": null,
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.3,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 93,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C02",
+      "patient_id": "ONC-003",
+      "datum": "2026-08-27",
+      "cas": "21:30",
+      "den_sledovani": 4,
+      "cyklus": 6,
+      "den_cyklu": 4,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C02-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.4,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 93,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C03",
+      "patient_id": "ONC-003",
+      "datum": "2026-08-31",
+      "cas": "15:55",
+      "den_sledovani": 8,
+      "cyklus": 6,
+      "den_cyklu": 8,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C03-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.4,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 94,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C04",
+      "patient_id": "ONC-003",
+      "datum": "2026-09-03",
+      "cas": "11:10",
+      "den_sledovani": 11,
+      "cyklus": 6,
+      "den_cyklu": 11,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C04-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.8,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 93,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C05",
+      "patient_id": "ONC-003",
+      "datum": "2026-09-07",
+      "cas": "17:10",
+      "den_sledovani": 15,
+      "cyklus": 6,
+      "den_cyklu": 15,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C05-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        },
+        {
+          "vyplneni_id": "ONC-003-C05-PSY",
+          "dotaznik_id": "psychoonkologicky_screening",
+          "dotaznik_nazev": "Psychoonkologický screening MOÚ",
+          "odpovedi": [
+            {
+              "otazka_id": "uzkost",
+              "otazka": "Strach, tíseň, úzkost",
+              "odpoved": 2,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "depresivita",
+              "otazka": "Depresivita",
+              "odpoved": 2,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvladani",
+              "otazka": "Zvládání situace",
+              "odpoved": 8,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "deti",
+              "otazka": "Mám v péči dítě/děti ve věku do 15 let",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "trapeni",
+              "otazka": "Kromě svého současného onemocnění prožívám další životní trápení",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sam",
+              "otazka": "Mám pocit, že jsem na vše sám/a",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psychiatr",
+              "otazka": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sebevrazda",
+              "otazka": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psycholog",
+              "otazka": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": null,
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.8,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 93,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": "Víc kašlu, suchý kašel, asi nachlazení.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C06",
+      "patient_id": "ONC-003",
+      "datum": "2026-09-10",
+      "cas": "10:40",
+      "den_sledovani": 18,
+      "cyklus": 6,
+      "den_cyklu": 18,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C06-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.5,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 91,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": "Dech horší při chůzi do schodů, inhalátor moc nepomáhá.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C07",
+      "patient_id": "ONC-003",
+      "datum": "2026-09-12",
+      "cas": "17:30",
+      "den_sledovani": 20,
+      "cyklus": 6,
+      "den_cyklu": 20,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C07-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Zvýšená teplota a horečky",
+                "Únava a slabost",
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                5,
+                7,
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "teplota",
+              "otazka": "Měl/a jste zvýšenou tělesnou teplotu nebo horečky?",
+              "odpoved": "37,0 - 37,9°C",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "unava",
+              "otazka": "Pomůže Vám odpočinek ke zmírnění únavy?",
+              "odpoved": "Ne, únava mě však omezuje pouze v náročnějších aktivitách.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 37.4,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 91,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": "Pořád stejné, spíš horší.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C08",
+      "patient_id": "ONC-003",
+      "datum": "2026-09-14",
+      "cas": "07:10",
+      "den_sledovani": 22,
+      "cyklus": 6,
+      "den_cyklu": 22,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C08-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "4",
+              "odpoved_index": 3,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Ano jsem soběstačný/á a mimo lůžko trávím více než 50% denní doby.",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Zvýšená teplota a horečky",
+                "Únava a slabost",
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                5,
+                7,
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "teplota",
+              "otazka": "Měl/a jste zvýšenou tělesnou teplotu nebo horečky?",
+              "odpoved": "37,0 - 37,9°C",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "unava",
+              "otazka": "Pomůže Vám odpočinek ke zmírnění únavy?",
+              "odpoved": "Ne, únava mě omezuje výrazně i v běžných denních činnostech.",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "V klidu bez obtíží. Ale již běžné aktivity (oblékání, mytí, apod.) způsobují dušnost.",
+              "odpoved_index": 2,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 37.6,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 88,
+          "zdroj": "pulzni_oxymetr"
+        },
+        "tepova_frekvence": {
+          "hodnota": 104,
+          "zdroj": "domaci_tlakomer"
+        }
+      },
+      "zprava_pacienta": "Dušno i při oblékání, nemůžu dojít na záchod bez zastavení.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C09",
+      "patient_id": "ONC-003",
+      "datum": "2026-09-21",
+      "cas": "16:50",
+      "den_sledovani": 29,
+      "cyklus": 6,
+      "den_cyklu": 29,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C09-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Únava a slabost",
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                7,
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "unava",
+              "otazka": "Pomůže Vám odpočinek ke zmírnění únavy?",
+              "odpoved": "Ne, únava mě však omezuje pouze v náročnějších aktivitách.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        },
+        {
+          "vyplneni_id": "ONC-003-C09-PSY",
+          "dotaznik_id": "psychoonkologicky_screening",
+          "dotaznik_nazev": "Psychoonkologický screening MOÚ",
+          "odpovedi": [
+            {
+              "otazka_id": "uzkost",
+              "otazka": "Strach, tíseň, úzkost",
+              "odpoved": 3,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "depresivita",
+              "otazka": "Depresivita",
+              "odpoved": 2,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvladani",
+              "otazka": "Zvládání situace",
+              "odpoved": 9,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "deti",
+              "otazka": "Mám v péči dítě/děti ve věku do 15 let",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "trapeni",
+              "otazka": "Kromě svého současného onemocnění prožívám další životní trápení",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sam",
+              "otazka": "Mám pocit, že jsem na vše sám/a",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psychiatr",
+              "otazka": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sebevrazda",
+              "otazka": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psycholog",
+              "otazka": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": null,
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.7,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 93,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": "Doma, beru prednison, dýchá se líp.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C10",
+      "patient_id": "ONC-003",
+      "datum": "2026-09-25",
+      "cas": "10:50",
+      "den_sledovani": 33,
+      "cyklus": 6,
+      "den_cyklu": 33,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C10-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Únava a slabost",
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                7,
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "unava",
+              "otazka": "Pomůže Vám odpočinek ke zmírnění únavy?",
+              "odpoved": "Ano.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.3,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 94,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C11",
+      "patient_id": "ONC-003",
+      "datum": "2026-09-29",
+      "cas": "11:35",
+      "den_sledovani": 37,
+      "cyklus": 6,
+      "den_cyklu": 37,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C11-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.6,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 94,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": "Snižuju prednison podle rozpisu.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-003-C12",
+      "patient_id": "ONC-003",
+      "datum": "2026-10-03",
+      "cas": "18:10",
+      "den_sledovani": 41,
+      "cyklus": 6,
+      "den_cyklu": 41,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-003-C12-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Zadýchávání",
+                "Jiné nežádoucí účinky"
+              ],
+              "odpoved_index": [
+                10,
+                11
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "dusnost",
+              "otazka": "Pociťujete dušnost? Pocit nedostatku vzduchu?",
+              "odpoved": "Dušnost mě lehce omezuje v tělesné aktivitě. Rychlejší chůzi zvládám.",
+              "odpoved_index": 1,
+              "barva": "zluta",
+              "upozorneni": "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            },
+            {
+              "otazka_id": "jine",
+              "otazka": "Jaké jiné nežádoucí účinky máte?",
+              "odpoved": "kašel",
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zluta",
+          "zobrazena_upozorneni": [
+            "Nově vzniklá dušnost nebo její zhoršení mohou být i příznakem závažného onemocnění, které Vás může ohrožovat bezprostředně na životě. V případě potíží kontaktujte rychlou záchrannou službu na čísle 155. Pokud se chcete spojit s naším lékařem, využijte telefonu. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.6,
+          "zdroj": "domaci_teplomer"
+        },
+        "spo2_pct": {
+          "hodnota": 94,
+          "zdroj": "pulzni_oxymetr"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    }
+  ]
+}

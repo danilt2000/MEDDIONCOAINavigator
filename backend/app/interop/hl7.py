@@ -37,6 +37,11 @@ LOINC = {
     "glu": ("14749-6", "Glucose [Moles/volume] in Serum or Plasma"),
     "moc_bilk": ("20454-5", "Protein [Presence] in Urine by Test strip"),
     "ntprobnp": ("33762-6", "Natriuretic peptide.B prohormone N-Terminal [Mass/volume] in Serum or Plasma"),
+    "ca": ("2000-8", "Calcium [Moles/volume] in Serum or Plasma"),
+    "ca125": ("10334-1", "Cancer Ag 125 [Units/volume] in Serum or Plasma"),
+    "ddimer": ("48065-7", "Fibrin D-dimer FEU [Mass/volume] in Platelet poor plasma"),
+    "ketony": ("53060-9", "3-Hydroxybutyrate [Moles/volume] in Blood"),
+    "ph": ("2744-1", "pH of Arterial blood"),
 }
 
 

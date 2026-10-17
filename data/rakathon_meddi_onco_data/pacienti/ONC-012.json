@@ -1,0 +1,1473 @@
+{
+  "patient_id": "ONC-012",
+  "synteticka_data": true,
+  "sada": "eval",
+  "nazev_scenare": null,
+  "obdobi_sledovani": {
+    "od": "2026-09-02",
+    "do": "2026-09-22"
+  },
+  "demografie": {
+    "jmeno_fiktivni": "Alena F.",
+    "vek": 59,
+    "pohlavi": "F",
+    "jazyk": "cs",
+    "kraj": "Praha",
+    "domacnost": "s manželem",
+    "digitalni_gramotnost": "vysoka",
+    "vyplnuje": "pacient"
+  },
+  "diagnoza": {
+    "diagnoza": "High-grade serózní karcinom ovaria, platinově senzitivní recidiva",
+    "mkn10": "C56",
+    "stadium": "recidiva s peritoneální karcinomatózou",
+    "biomarkery": "BRCA wt, HRD negativní",
+    "datum_diagnozy": "2024-03-12"
+  },
+  "ecog_vychozi": 1,
+  "komorbidity": [
+    "Hypertenze"
+  ],
+  "alergie": [],
+  "predem_vyslovena_prani": null,
+  "antropometrie": {
+    "vyska_cm": 167,
+    "vaha_kg_vychozi": 66.0,
+    "bmi": 23.7
+  },
+  "lecba": {
+    "zamer": "paliativní",
+    "rezim": "karboplatina AUC5 + paklitaxel 175 mg/m² + bevacizumab 15 mg/kg à 21 dní (cyklus 3)",
+    "leky": [
+      "karboplatina AUC5 i.v. D1",
+      "paklitaxel 175 mg/m² i.v. D1",
+      "bevacizumab 15 mg/kg i.v. D1"
+    ],
+    "delka_cyklu": 21,
+    "cykly": [
+      {
+        "cyklus": 3,
+        "den_sledovani": 1,
+        "datum_d1": "2026-09-02"
+      }
+    ],
+    "poznamka": ""
+  },
+  "leky": [
+    {
+      "lek": "Laktulóza",
+      "davka": "15 ml",
+      "frekvence": "2× denně",
+      "indikace": "zácpa",
+      "typ": "podpurny",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": false,
+      "od_data": null,
+      "do_data": null
+    },
+    {
+      "lek": "Bisakodyl čípek",
+      "davka": "10 mg",
+      "frekvence": "dle potřeby",
+      "indikace": "zácpa",
+      "typ": "podpurny",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": true,
+      "od_data": null,
+      "do_data": null
+    },
+    {
+      "lek": "Ondansetron",
+      "davka": "8 mg",
+      "frekvence": "D1–D3",
+      "indikace": "nevolnost",
+      "typ": "podpurny",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": false,
+      "od_data": null,
+      "do_data": null
+    },
+    {
+      "lek": "Dexametazon",
+      "davka": "20 mg",
+      "frekvence": "premedikace D1",
+      "indikace": "premedikace paklitaxelu",
+      "typ": "podpurny",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": false,
+      "od_data": null,
+      "do_data": null
+    },
+    {
+      "lek": "Perindopril",
+      "davka": "5 mg",
+      "frekvence": "1× denně",
+      "indikace": "hypertenze",
+      "typ": "chronicky",
+      "od_dne": null,
+      "do_dne": null,
+      "pri_potizich": false,
+      "od_data": null,
+      "do_data": null
+    }
+  ],
+  "laboratore": [
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "leu",
+      "test": "Leukocyty",
+      "hodnota": 6.6,
+      "jednotka": "10^9/l",
+      "ref_min": 4.0,
+      "ref_max": 10.0,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "neu",
+      "test": "Neutrofily abs.",
+      "hodnota": 3.6,
+      "jednotka": "10^9/l",
+      "ref_min": 2.0,
+      "ref_max": 7.0,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "hb",
+      "test": "Hemoglobin",
+      "hodnota": 129,
+      "jednotka": "g/l",
+      "ref_min": 120,
+      "ref_max": 160,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "plt",
+      "test": "Trombocyty",
+      "hodnota": 244,
+      "jednotka": "10^9/l",
+      "ref_min": 150,
+      "ref_max": 400,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "kreat",
+      "test": "Kreatinin",
+      "hodnota": 76,
+      "jednotka": "µmol/l",
+      "ref_min": 44,
+      "ref_max": 104,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "na",
+      "test": "Natrium",
+      "hodnota": 141,
+      "jednotka": "mmol/l",
+      "ref_min": 136,
+      "ref_max": 146,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "k",
+      "test": "Kalium",
+      "hodnota": 4.4,
+      "jednotka": "mmol/l",
+      "ref_min": 3.8,
+      "ref_max": 5.1,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "alt",
+      "test": "ALT",
+      "hodnota": 0.36,
+      "jednotka": "µkat/l",
+      "ref_min": 0.1,
+      "ref_max": 0.78,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "bili",
+      "test": "Bilirubin celkový",
+      "hodnota": 9,
+      "jednotka": "µmol/l",
+      "ref_min": 2,
+      "ref_max": 17,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "crp",
+      "test": "CRP",
+      "hodnota": 2.0,
+      "jednotka": "mg/l",
+      "ref_min": 0,
+      "ref_max": 5,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L01",
+      "datum": "2026-09-02",
+      "cas": "09:30",
+      "den_sledovani": 1,
+      "misto": "onkologická ambulance",
+      "kod": "ca125",
+      "test": "CA-125",
+      "hodnota": 212,
+      "jednotka": "kU/l",
+      "ref_min": 0,
+      "ref_max": 35,
+      "priznak": "H"
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L02",
+      "datum": "2026-09-14",
+      "cas": "18:00",
+      "den_sledovani": 13,
+      "misto": "urgentní příjem",
+      "kod": "leu",
+      "test": "Leukocyty",
+      "hodnota": 12.1,
+      "jednotka": "10^9/l",
+      "ref_min": 4.0,
+      "ref_max": 10.0,
+      "priznak": "H"
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L02",
+      "datum": "2026-09-14",
+      "cas": "18:00",
+      "den_sledovani": 13,
+      "misto": "urgentní příjem",
+      "kod": "neu",
+      "test": "Neutrofily abs.",
+      "hodnota": 10.2,
+      "jednotka": "10^9/l",
+      "ref_min": 2.0,
+      "ref_max": 7.0,
+      "priznak": "H"
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L02",
+      "datum": "2026-09-14",
+      "cas": "18:00",
+      "den_sledovani": 13,
+      "misto": "urgentní příjem",
+      "kod": "hb",
+      "test": "Hemoglobin",
+      "hodnota": 125,
+      "jednotka": "g/l",
+      "ref_min": 120,
+      "ref_max": 160,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L02",
+      "datum": "2026-09-14",
+      "cas": "18:00",
+      "den_sledovani": 13,
+      "misto": "urgentní příjem",
+      "kod": "plt",
+      "test": "Trombocyty",
+      "hodnota": 233,
+      "jednotka": "10^9/l",
+      "ref_min": 150,
+      "ref_max": 400,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L02",
+      "datum": "2026-09-14",
+      "cas": "18:00",
+      "den_sledovani": 13,
+      "misto": "urgentní příjem",
+      "kod": "kreat",
+      "test": "Kreatinin",
+      "hodnota": 74,
+      "jednotka": "µmol/l",
+      "ref_min": 44,
+      "ref_max": 104,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L02",
+      "datum": "2026-09-14",
+      "cas": "18:00",
+      "den_sledovani": 13,
+      "misto": "urgentní příjem",
+      "kod": "na",
+      "test": "Natrium",
+      "hodnota": 142,
+      "jednotka": "mmol/l",
+      "ref_min": 136,
+      "ref_max": 146,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L02",
+      "datum": "2026-09-14",
+      "cas": "18:00",
+      "den_sledovani": 13,
+      "misto": "urgentní příjem",
+      "kod": "k",
+      "test": "Kalium",
+      "hodnota": 3.1,
+      "jednotka": "mmol/l",
+      "ref_min": 3.8,
+      "ref_max": 5.1,
+      "priznak": "L"
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L02",
+      "datum": "2026-09-14",
+      "cas": "18:00",
+      "den_sledovani": 13,
+      "misto": "urgentní příjem",
+      "kod": "alt",
+      "test": "ALT",
+      "hodnota": 0.42,
+      "jednotka": "µkat/l",
+      "ref_min": 0.1,
+      "ref_max": 0.78,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L02",
+      "datum": "2026-09-14",
+      "cas": "18:00",
+      "den_sledovani": 13,
+      "misto": "urgentní příjem",
+      "kod": "bili",
+      "test": "Bilirubin celkový",
+      "hodnota": 9,
+      "jednotka": "µmol/l",
+      "ref_min": 2,
+      "ref_max": 17,
+      "priznak": ""
+    },
+    {
+      "patient_id": "ONC-012",
+      "odber_id": "ONC-012-L02",
+      "datum": "2026-09-14",
+      "cas": "18:00",
+      "den_sledovani": 13,
+      "misto": "urgentní příjem",
+      "kod": "crp",
+      "test": "CRP",
+      "hodnota": 66,
+      "jednotka": "mg/l",
+      "ref_min": 0,
+      "ref_max": 5,
+      "priznak": "H"
+    }
+  ],
+  "vysetreni": [
+    {
+      "den_sledovani": 13,
+      "datum": "2026-09-14",
+      "vysetreni": "CT břicha",
+      "vysledek": "Dilatace kliček tenkého střeva, přechodová zóna v pánvi při peritoneální diseminaci; bez volného plynu"
+    }
+  ],
+  "udalosti_tymu": [
+    {
+      "patient_id": "ONC-012",
+      "datum": "2026-09-14",
+      "cas": "18:30",
+      "den_sledovani": 13,
+      "typ": "hospitalizace",
+      "autor": "FN – gynekologická onkologie",
+      "text": "Přijata: maligní střevní obstrukce, konzervativní postup (NGS, i.v. hydratace), bevacizumab trvale ukončen."
+    },
+    {
+      "patient_id": "ONC-012",
+      "datum": "2026-09-19",
+      "cas": "13:00",
+      "den_sledovani": 18,
+      "typ": "propusteni",
+      "autor": "FN – gynekologická onkologie",
+      "text": "Propuštěna, obstrukce odezněla, kašovitá strava."
+    }
+  ],
+  "checkiny": [
+    {
+      "checkin_id": "ONC-012-C01",
+      "patient_id": "ONC-012",
+      "datum": "2026-09-02",
+      "cas": "15:55",
+      "den_sledovani": 1,
+      "cyklus": 3,
+      "den_cyklu": 1,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-012-C01-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Brnění a necitlivost na rukou a nohou",
+                "Únava a slabost"
+              ],
+              "odpoved_index": [
+                4,
+                7
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "brneni",
+              "otazka": "Jak silné potíže s brněním, mravenčením, tuhnutím, trnutím, pocitem horka či chladu bez jasného podnětu jsou?",
+              "odpoved": "Mírné potíže, nijak mě nelimitují.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "unava",
+              "otazka": "Pomůže Vám odpočinek ke zmírnění únavy?",
+              "odpoved": "Ano.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        },
+        {
+          "vyplneni_id": "ONC-012-C01-PSY",
+          "dotaznik_id": "psychoonkologicky_screening",
+          "dotaznik_nazev": "Psychoonkologický screening MOÚ",
+          "odpovedi": [
+            {
+              "otazka_id": "uzkost",
+              "otazka": "Strach, tíseň, úzkost",
+              "odpoved": 2,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "depresivita",
+              "otazka": "Depresivita",
+              "odpoved": 2,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvladani",
+              "otazka": "Zvládání situace",
+              "odpoved": 8,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "deti",
+              "otazka": "Mám v péči dítě/děti ve věku do 15 let",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "trapeni",
+              "otazka": "Kromě svého současného onemocnění prožívám další životní trápení",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sam",
+              "otazka": "Mám pocit, že jsem na vše sám/a",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psychiatr",
+              "otazka": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sebevrazda",
+              "otazka": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psycholog",
+              "otazka": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": null,
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.2,
+          "zdroj": "domaci_teplomer"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-012-C02",
+      "patient_id": "ONC-012",
+      "datum": "2026-09-04",
+      "cas": "13:20",
+      "den_sledovani": 3,
+      "cyklus": 3,
+      "den_cyklu": 3,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-012-C02-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Nechutenství, nevolnosti, zvracení",
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                0,
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "nnz_typ",
+              "otazka": "Jaké přesně máte potíže?",
+              "odpoved": [
+                "Nevolnosti"
+              ],
+              "odpoved_index": [
+                1
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "nevolnost",
+              "otazka": "Jak nevolnosti a zvracení omezuje Váš příjem stravy a tekutin?",
+              "odpoved": "Ztráta chuti k jídlu neomezuje můj denní příjem stravy. Jím stále stejné množství jídla.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti svalů a kloubů"
+              ],
+              "odpoved_index": [
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_klouby",
+              "otazka": "Jak silné jsou bolesti svalů a kloubů?",
+              "odpoved": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+              "odpoved_index": 0,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.7,
+          "zdroj": "domaci_teplomer"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-012-C03",
+      "patient_id": "ONC-012",
+      "datum": "2026-09-06",
+      "cas": "10:10",
+      "den_sledovani": 5,
+      "cyklus": 3,
+      "den_cyklu": 5,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-012-C03-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Únava a slabost"
+              ],
+              "odpoved_index": [
+                7
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "unava",
+              "otazka": "Pomůže Vám odpočinek ke zmírnění únavy?",
+              "odpoved": "Ne, únava mě však omezuje pouze v náročnějších aktivitách.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.4,
+          "zdroj": "domaci_teplomer"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-012-C04",
+      "patient_id": "ONC-012",
+      "datum": "2026-09-08",
+      "cas": "12:10",
+      "den_sledovani": 7,
+      "cyklus": 3,
+      "den_cyklu": 7,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-012-C04-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Potíže se stolicí",
+                "Únava a slabost"
+              ],
+              "odpoved_index": [
+                1,
+                7
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "stolice_typ",
+              "otazka": "Jaké přesně máte potíže se stolicí?",
+              "odpoved": [
+                "Zácpa"
+              ],
+              "odpoved_index": [
+                1
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zacpa",
+              "otazka": "Jak vás potíže se zácpou omezují?",
+              "odpoved": "Občasná a přechodná zácpa. Někdy musím užít projímadlo nebo změkčovač stolice či klystýr. K úpravě dojde také po změně stravování.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "unava",
+              "otazka": "Pomůže Vám odpočinek ke zmírnění únavy?",
+              "odpoved": "Ano.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.4,
+          "zdroj": "domaci_teplomer"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-012-C05",
+      "patient_id": "ONC-012",
+      "datum": "2026-09-10",
+      "cas": "20:10",
+      "den_sledovani": 9,
+      "cyklus": 3,
+      "den_cyklu": 9,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-012-C05-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Potíže se stolicí",
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                1,
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "stolice_typ",
+              "otazka": "Jaké přesně máte potíže se stolicí?",
+              "odpoved": [
+                "Zácpa"
+              ],
+              "odpoved_index": [
+                1
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zacpa",
+              "otazka": "Jak vás potíže se zácpou omezují?",
+              "odpoved": "Zácpa stále trvá, léky proti zácpě užívám pravidelně. Zácpa mě mírně omezuje.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti břicha"
+              ],
+              "odpoved_index": [
+                2
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_bricho",
+              "otazka": "Jak Vás bolesti břicha omezují?",
+              "odpoved": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.5,
+          "zdroj": "domaci_teplomer"
+        }
+      },
+      "zprava_pacienta": "Nafouklé břicho, 3 dny bez stolice.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-012-C06",
+      "patient_id": "ONC-012",
+      "datum": "2026-09-12",
+      "cas": "11:35",
+      "den_sledovani": 11,
+      "cyklus": 3,
+      "den_cyklu": 11,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-012-C06-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Nechutenství, nevolnosti, zvracení",
+                "Potíže se stolicí",
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                0,
+                1,
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "nnz_typ",
+              "otazka": "Jaké přesně máte potíže?",
+              "odpoved": [
+                "Nevolnosti"
+              ],
+              "odpoved_index": [
+                1
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "nevolnost",
+              "otazka": "Jak nevolnosti a zvracení omezuje Váš příjem stravy a tekutin?",
+              "odpoved": "Ztráta chuti k jídlu neomezuje můj denní příjem stravy. Jím stále stejné množství jídla.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "stolice_typ",
+              "otazka": "Jaké přesně máte potíže se stolicí?",
+              "odpoved": [
+                "Zácpa"
+              ],
+              "odpoved_index": [
+                1
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zacpa",
+              "otazka": "Jak vás potíže se zácpou omezují?",
+              "odpoved": "Zácpa stále trvá, léky proti zácpě užívám pravidelně. Zácpa mě mírně omezuje.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti břicha"
+              ],
+              "odpoved_index": [
+                2
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_bricho",
+              "otazka": "Jak Vás bolesti břicha omezují?",
+              "odpoved": "Střední bolest, která mě limituje v denních činnostech.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": "Nově vzniklé bolesti břicha mohou být závažným příznakem. Zvažte konzultaci potíží s lékařem k vyloučení vážnější příčiny potíží. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": [
+            "Nově vzniklé bolesti břicha mohou být závažným příznakem. Zvažte konzultaci potíží s lékařem k vyloučení vážnější příčiny potíží. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.3,
+          "zdroj": "domaci_teplomer"
+        }
+      },
+      "zprava_pacienta": "Malá stolice po čípku, břicho pořád nafouklé.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-012-C07",
+      "patient_id": "ONC-012",
+      "datum": "2026-09-14",
+      "cas": "14:20",
+      "den_sledovani": 13,
+      "cyklus": 3,
+      "den_cyklu": 13,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-012-C07-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "4",
+              "odpoved_index": 3,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Nechutenství, nevolnosti, zvracení",
+                "Potíže se stolicí",
+                "Bolesti"
+              ],
+              "odpoved_index": [
+                0,
+                1,
+                3
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "nnz_typ",
+              "otazka": "Jaké přesně máte potíže?",
+              "odpoved": [
+                "Nevolnosti",
+                "Zvracení"
+              ],
+              "odpoved_index": [
+                1,
+                2
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "nevolnost",
+              "otazka": "Jak nevolnosti a zvracení omezuje Váš příjem stravy a tekutin?",
+              "odpoved": "Ztráta chuti k jídlu mírně omezuje můj denní příjem stravy, k hubnutí však nedochází.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvraceni",
+              "otazka": "Kolikrát za 24 hodin došlo ke zvracení?",
+              "odpoved": "1-2 epizody zvracení.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "stolice_typ",
+              "otazka": "Jaké přesně máte potíže se stolicí?",
+              "odpoved": [
+                "Zácpa"
+              ],
+              "odpoved_index": [
+                1
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zacpa",
+              "otazka": "Jak vás potíže se zácpou omezují?",
+              "odpoved": "Zácpa mě velmi omezuje v každodenním životě a činí mi závažné potíže. Nebo: Zácpa mě přinutila navštívit lékaře, který stolici manuálně vybavil.",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti břicha"
+              ],
+              "odpoved_index": [
+                2
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_bricho",
+              "otazka": "Jak Vás bolesti břicha omezují?",
+              "odpoved": "Střední bolest, která mě limituje v denních činnostech.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": "Nově vzniklé bolesti břicha mohou být závažným příznakem. Zvažte konzultaci potíží s lékařem k vyloučení vážnější příčiny potíží. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": [
+            "Nově vzniklé bolesti břicha mohou být závažným příznakem. Zvažte konzultaci potíží s lékařem k vyloučení vážnější příčiny potíží. Tento dotazník neslouží ke kontaktování lékaře v neodkladných situacích."
+          ]
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.5,
+          "zdroj": "domaci_teplomer"
+        },
+        "tepova_frekvence": {
+          "hodnota": 98,
+          "zdroj": "domaci_tlakomer"
+        }
+      },
+      "zprava_pacienta": "4 dny bez stolice, ani plyny neodchází, křeče v břiše, dvakrát jsem zvracela.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-012-C08",
+      "patient_id": "ONC-012",
+      "datum": "2026-09-20",
+      "cas": "20:50",
+      "den_sledovani": 19,
+      "cyklus": 3,
+      "den_cyklu": 19,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-012-C08-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "3",
+              "odpoved_index": 2,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Bolesti",
+                "Únava a slabost"
+              ],
+              "odpoved_index": [
+                3,
+                7
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bolesti_typ",
+              "otazka": "Jaké máte bolesti?",
+              "odpoved": [
+                "Bolesti břicha"
+              ],
+              "odpoved_index": [
+                2
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "bol_bricho",
+              "otazka": "Jak Vás bolesti břicha omezují?",
+              "odpoved": "Mírná bolest, která mě nijak nelimituje. Pouze si jí všímám.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "unava",
+              "otazka": "Pomůže Vám odpočinek ke zmírnění únavy?",
+              "odpoved": "Ne, únava mě však omezuje pouze v náročnějších aktivitách.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        },
+        {
+          "vyplneni_id": "ONC-012-C08-PSY",
+          "dotaznik_id": "psychoonkologicky_screening",
+          "dotaznik_nazev": "Psychoonkologický screening MOÚ",
+          "odpovedi": [
+            {
+              "otazka_id": "uzkost",
+              "otazka": "Strach, tíseň, úzkost",
+              "odpoved": 3,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "depresivita",
+              "otazka": "Depresivita",
+              "odpoved": 1,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "zvladani",
+              "otazka": "Zvládání situace",
+              "odpoved": 8,
+              "odpoved_index": null,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "deti",
+              "otazka": "Mám v péči dítě/děti ve věku do 15 let",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "trapeni",
+              "otazka": "Kromě svého současného onemocnění prožívám další životní trápení",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sam",
+              "otazka": "Mám pocit, že jsem na vše sám/a",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psychiatr",
+              "otazka": "Byl/a jsem, nebo stále jsem v péči psychiatra",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sebevrazda",
+              "otazka": "V posledních dnech mě napadá, že bych si nejraději vzal/vzala život",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "psycholog",
+              "otazka": "Mám zájem o podporu psychologa v rámci své léčby na MOU",
+              "odpoved": "Ne",
+              "odpoved_index": 1,
+              "barva": null,
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": null,
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.2,
+          "zdroj": "domaci_teplomer"
+        }
+      },
+      "zprava_pacienta": "Doma, jím kašovitou stravu, stolice je.",
+      "prilohy": []
+    },
+    {
+      "checkin_id": "ONC-012-C09",
+      "patient_id": "ONC-012",
+      "datum": "2026-09-22",
+      "cas": "17:00",
+      "den_sledovani": 21,
+      "cyklus": 3,
+      "den_cyklu": 21,
+      "stav": "vyplneno",
+      "vyplnil": "pacient",
+      "dotazniky": [
+        {
+          "vyplneni_id": "ONC-012-C09-NU",
+          "dotaznik_id": "nezadouci_ucinky",
+          "dotaznik_nazev": "Nežádoucí účinky onkologické léčby",
+          "odpovedi": [
+            {
+              "otazka_id": "pocit",
+              "otazka": "Jak se celkově cítíte?",
+              "odpoved": "2",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "sobestacnost",
+              "otazka": "Jste po většinu pobytu doma soběstačný/á a schopný/á tělesné aktivity?",
+              "odpoved": "Jsem plně soběstačný, ale zvládám pouze lehčí fyzickou námahu.",
+              "odpoved_index": 1,
+              "barva": "zelena",
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "ucinky",
+              "otazka": "Máte některé z těchto nežádoucích účinků?",
+              "odpoved": [
+                "Únava a slabost"
+              ],
+              "odpoved_index": [
+                7
+              ],
+              "barva": null,
+              "upozorneni": null
+            },
+            {
+              "otazka_id": "unava",
+              "otazka": "Pomůže Vám odpočinek ke zmírnění únavy?",
+              "odpoved": "Ano.",
+              "odpoved_index": 0,
+              "barva": "zelena",
+              "upozorneni": null
+            }
+          ],
+          "nejvyssi_barva": "zelena",
+          "zobrazena_upozorneni": []
+        }
+      ],
+      "vitalni_funkce": {
+        "teplota_c": {
+          "hodnota": 36.2,
+          "zdroj": "domaci_teplomer"
+        }
+      },
+      "zprava_pacienta": null,
+      "prilohy": []
+    }
+  ]
+}

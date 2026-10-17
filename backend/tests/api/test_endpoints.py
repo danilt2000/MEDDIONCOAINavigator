@@ -50,7 +50,7 @@ def test_meta(client):
 
 def test_patients(client):
     patients = client.get("/api/patients").json()
-    assert len(patients) == 14 and all(set(item) == LIST_ITEM_KEYS for item in patients)
+    assert len(patients) == 20 and all(set(item) == LIST_ITEM_KEYS for item in patients)
     jana = next(item for item in patients if item["patient_id"] == "ONC-001")
     assert jana["cycle_day"] == 10 and "nadir" in jana["risk_badges"] and jana["last_level"] is not None
     assert len(client.get("/api/patients?dataset=rozsirena").json()) == 100
