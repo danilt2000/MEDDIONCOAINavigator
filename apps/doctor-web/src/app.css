@@ -16,7 +16,6 @@
 }
 
 body {
-  min-width: 1280px;
   background: var(--md-sys-color-surface-container-low);
 }
 
@@ -414,7 +413,7 @@ a {
 
 .split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
+  grid-template-columns: minmax(0, 1fr) clamp(340px, 28vw, 420px);
   gap: 16px;
   align-items: start;
 }
@@ -493,7 +492,11 @@ tr.selected {
 }
 
 .why .ellipsis {
+  display: -webkit-box;
   max-width: 240px;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .regimen-cell {
@@ -798,8 +801,9 @@ tr.selected {
 }
 
 .step-time {
-  width: 44px;
+  min-width: 44px;
   flex-shrink: 0;
+  white-space: nowrap;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }

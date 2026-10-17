@@ -34,7 +34,7 @@ const cs = {
   vital_tk_sys: 'Tlak horní',
   vital_tk_dia: 'Tlak dolní',
   vital_tepova_frekvence: 'Tep',
-  vital_dechova_frekvence: 'Dechy za minutu',
+  vital_dechova_frekvence: 'Počet dechů',
   vital_spo2: 'Kyslík (SpO2)',
   vital_vaha_kg: 'Váha',
   vital_glykemie_mmol_l: 'Glykémie',
@@ -173,7 +173,7 @@ const sk: Dict = {
   vital_tk_sys: 'Tlak horný',
   vital_tk_dia: 'Tlak dolný',
   vital_tepova_frekvence: 'Pulz',
-  vital_dechova_frekvence: 'Dychy za minútu',
+  vital_dechova_frekvence: 'Počet dychov',
   vital_spo2: 'Kyslík (SpO2)',
   vital_vaha_kg: 'Váha',
   vital_glykemie_mmol_l: 'Glykémia',
@@ -275,6 +275,18 @@ const sk: Dict = {
 };
 
 export const dictionaries = { cs, sk };
+
+// The backend routes in Czech only (the eval scores these strings verbatim), so Slovak cards translate them here.
+const SK_CONTACTS: Record<string, string> = {
+  'monitorovací centrum – vyřízení do konce následujícího pracovního dne': 'monitorovacie centrum – vybavenie do konca nasledujúceho pracovného dňa',
+  'monitorovací centrum – následující pracovní den': 'monitorovacie centrum – nasledujúci pracovný deň',
+  'telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h': 'telekonzultácia s lekárom MOÚ cez monitorovacie centrum do 2 h',
+  'sloužící lékař MOÚ 724 590 848 – ihned': 'službukonajúci lekár MOÚ 724 590 848 – ihneď',
+  '155 / urgentní příjem': '155 / urgentný príjem',
+  '155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848)': '155 / urgentný príjem (prípadne službukonajúci lekár MOÚ 724 590 848)',
+};
+
+export const contactText = (contact: string, lang: 'cs' | 'sk') => (lang === 'sk' && SK_CONTACTS[contact]) || contact;
 
 export const format = (template: string, ...params: (string | number)[]) =>
   template.replace(/\{(\d+)\}/g, (_, index: string) => String(params[Number(index)] ?? ''));

@@ -6,15 +6,15 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>MEDDI navigátor · Monitorovací centrum MOÚ</title>
     <style>
-      .desktop-only { display: none; place-items: center; min-height: 100vh; padding: 24px; text-align: center; }
-      @media (max-width: 1023px) {
+      .desktop-only { display: none; place-items: center; box-sizing: border-box; min-height: 100vh; padding: 24px; text-align: center; }
+      @media (max-width: 1279px) {
         #root { display: none; }
         .desktop-only { display: grid; }
       }
     </style>
   </head>
   <body>
-    <div class="desktop-only md-typescale-title-large">Otevřete monitorovací centrum na počítači (šířka alespoň 1024 px).</div>
+    <div class="desktop-only md-typescale-title-large">Otevřete monitorovací centrum na počítači v okně širokém alespoň 1280&nbsp;px.</div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
