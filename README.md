@@ -1,4 +1,36 @@
+<div align="center">
+
+<img src="apps/patient-pwa/public/favicon.svg" width="84" alt="MEDDI navigator logo">
+
 # MEDDIONCO AI Navigator
+
+**One check-in between oncology visits: the patient learns what to do next, the right clinician learns how fast.**
+
+[![Rakathon 2026](https://img.shields.io/badge/Rakathon-2026-0E6B5C)](https://www.rakathon.cz/eng)
+[![InterSystems IRIS for Health](https://img.shields.io/badge/InterSystems-IRIS%20for%20Health-333695)](docs/intersystems.md)
+[![FHIR R4](https://img.shields.io/badge/HL7%20FHIR-R4-E44D26)](docs/fhir-mapping.md)
+[![Red recall](https://img.shields.io/badge/red%20recall-100%25-B3261E)](#metrics)
+[![Under-triage](https://img.shields.io/badge/under--triage-0%25-0E6B5C)](#metrics)
+[![Triage rules](https://img.shields.io/badge/triage%20rules-49-6B5E10)](#triage-rules)
+
+**[Patient app ↗](https://pacient.nastasiya.com/?patient=ONC-001)** ·
+**[Clinician web ↗](https://lekar.nastasiya.com/#/fronta)** ·
+[Spec](docs/spec.md) · [Architecture](docs/architecture.md) · [InterSystems](docs/intersystems.md)
+
+<table>
+  <tr>
+    <td width="24%" align="center" valign="top">
+      <img src="docs/screenshots/patient-result-red.png" alt="Patient app: red result card asking to call 155 or the on-duty doctor now">
+      <br><sub><b>Patient, 21:52.</b> Fever 38.4 °C in nadir after AC → red: call 155 or the on-duty doctor now.</sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/doctor-queue.png" alt="Clinician web: queue with a red task for Jana K., SLA countdown and a 30-second summary">
+      <br><sub><b>Monitoring centre, the same check-in.</b> Red banner and a task for the on-duty doctor: 10:01 min left of the 15-minute SLA to take it over, 30-second summary.</sub>
+    </td>
+  </tr>
+</table>
+
+</div>
 
 Oncology patient navigator for [Rakathon 2026](https://www.rakathon.cz/eng) and the
 [InterSystems challenge](https://developer.intersystems.com/intersystems-challenge-at-rakathon-2026/).
@@ -21,6 +53,91 @@ Safety rules, enforced in code: the patient is never told a diagnosis, doses are
 | 4 red | volejte ihned | 155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848) | 15 min |
 
 Working hours of the monitoring centre: Mon–Fri 07:00–15:30, Europe/Prague.
+
+## What it looks like
+
+Live demo with synthetic data: [pacient.nastasiya.com](https://pacient.nastasiya.com/?patient=ONC-001) (open it at
+phone width; the *DEMO* bar on top switches the patient) and
+[lekar.nastasiya.com](https://lekar.nastasiya.com/#/fronta) (desktop, 1024 px and wider). The demo clock starts on
+Wed 9 Sep 2026 21:50, out of working hours, so new tasks go to the on-duty doctor.
+
+### Patient PWA
+
+<table>
+  <tr>
+    <td width="33%" align="center" valign="top">
+      <img src="docs/screenshots/patient-home.png" alt="Patient home: today's check-in, treatment AC cycle 1 day 10, ambulance and 155 buttons">
+      <br><sub><b>Home.</b> Today's check-in, the treatment and cycle day, 155 always one tap away.</sub>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <img src="docs/screenshots/patient-checkin-fever.png" alt="Check-in question about fever, marked as asked because of chemotherapy">
+      <br><sub><b>Check-in.</b> Questions follow the treatment: this one is asked <i>because of chemotherapy</i>. <i>AI</i> opens the navigator when unsure.</sub>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <img src="docs/screenshots/patient-result-red.png" alt="Red result: call 155 or the on-duty doctor, do not take paracetamol, the team has been alerted">
+      <br><sub><b>Red.</b> One clear step, both phone numbers, „Paralen neužívejte…“ and a confirmation that the team already knows.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/patient-chat-caregiver.png" alt="Navigator chat in caregiver mode: prescription quoted verbatim, the doctor decides about another dose">
+      <br><sub><b>Caregiver asks</b> „Můžu mamince dát další Oramorph?“ → yellow: no permission, the prescription quoted verbatim, the palliative line, and a question how many doses she has had today.</sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/patient-chat-caregiver-2.png" alt="Navigator chat escalates to orange: call the on-duty doctor now">
+      <br><sub><b>Answer</b> „Dostala už dvě dávky a bolest je pořád 8“ → the chat re-triages to orange: on-duty doctor now.</sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/patient-result-orange-sk.png" alt="Slovak orange result asking back about diarrhoea six times a day">
+      <br><sub><b>Slovak.</b> The form says no diarrhoea, the text says „hnacku asi 6 krat“ → orange plus a follow-up question in Slovak.</sub>
+    </td>
+  </tr>
+</table>
+
+### Clinician web
+
+<table>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src="docs/screenshots/doctor-monitoring.png" alt="Monitoring: alert and check-in charts over one range strip, alerts by treatment">
+      <br><sub><b>Monitoring.</b> Alerts and check-ins share one range strip; click a day, a treatment or a symptom.</sub>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <img src="docs/screenshots/doctor-patient.png" alt="Patient detail: diagnosis, regimen, nadir and cardiotoxic tags, vitals charts and timeline">
+      <br><sub><b>Patient detail.</b> Regimen and cycle day, nadir and drug-class tags, vitals trends, a timeline in the patient's own words.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/doctor-regimen.png" alt="All alerts on sunitinib with the reason and what the team did">
+      <br><sub><b>Drill-down by treatment.</b> Every alert on sunitinib: why it fired and what the team did.</sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/doctor-rules.png" alt="Rules page: routing by working hours, SLA and the rule list">
+      <br><sub><b>Rules.</b> Routing by working hours and SLA; the engine sets the level, AI never does.</sub>
+    </td>
+  </tr>
+</table>
+
+### How a check-in is triaged
+
+```mermaid
+flowchart TD
+    IN["Check-in or chat message<br/>Czech or Slovak<br/>patient or caregiver"] --> CTX["Context known at that time<br/>treatment · cycle day<br/>nadir · baselines · trend"]
+    IN --> NLU["Facts from free text<br/>lexicon ∪ LLM extractor<br/>verbatim quotes<br/>can only raise the level"]
+    CTX --> RULES{"49 rules<br/>level = max"}
+    NLU --> RULES
+    RULES --> PAT["Patient<br/>level card, next step<br/>phone numbers<br/>validated text"]
+    RULES --> TEAM["Monitoring centre<br/>or on-duty doctor<br/>task with SLA timer<br/>30-second summary"]
+    TEAM --> IRIS["IRIS for Health<br/>FHIR resources<br/>alert through the<br/>interoperability production"]
+
+    classDef rules fill:#0E6B5C,stroke:#0E6B5C,color:#fff
+    classDef out fill:#FFF8E1,stroke:#C9A227,color:#1B1B1B
+    class RULES rules
+    class PAT,TEAM out
+```
+
+## Repository
 
 | Path | What | Dev port |
 |---|---|---|
