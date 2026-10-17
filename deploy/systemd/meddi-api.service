@@ -1,0 +1,15 @@
+[Unit]
+Description=MEDDI navigator API (FastAPI on :8100)
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/opt/meddi
+# also write the replayed demo history to IRIS FHIR, as on a developer machine
+Environment=DEMO_WRITE_FHIR=1
+ExecStart=/usr/bin/env bash /opt/meddi/scripts/run-api.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

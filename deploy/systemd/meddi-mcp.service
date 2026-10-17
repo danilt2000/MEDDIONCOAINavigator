@@ -1,0 +1,13 @@
+[Unit]
+Description=MEDDI navigator MCP server (127.0.0.1:8101)
+After=network-online.target meddi-api.service
+
+[Service]
+WorkingDirectory=/opt/meddi/backend
+Environment=PYTHONPATH=. PYTHONIOENCODING=utf-8
+ExecStart=/opt/meddi/backend/.venv/bin/python -m app.agent.mcp_server
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -2,8 +2,13 @@ services:
   iris:
     build: ./iris
     container_name: meddi-iris
+    restart: unless-stopped
     ports:
-      - "1972:1972"
-      - "52773:52773"
+      # localhost only: on a server Docker would publish 0.0.0.0 ports past the firewall
+      - "127.0.0.1:1972:1972"
+      - "127.0.0.1:52773:52773"
+    extra_hosts:
+      # MEDDI.Alert.Operation posts to the API on the host (built into Docker Desktop, needed on Linux)
+      - "host.docker.internal:host-gateway"
     volumes:
       - ./iris:/home/irisowner/meddi
