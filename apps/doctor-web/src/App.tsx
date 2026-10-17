@@ -47,6 +47,7 @@ export function App() {
         <NavLink to="/monitoring">Monitoring</NavLink>
         <NavLink to="/pacienti">Pacienti</NavLink>
         <NavLink to="/pravidla">Pravidla</NavLink>
+        <NavLink to="/notifikace">Notifikace</NavLink>
       </nav>
       <RedBanner items={queue.data} offsetMs={offsetMs} />
       <main className="main">

@@ -584,13 +584,18 @@ def contradictions(s: Signals, lang: str) -> tuple[list[Hit], str | None]:
     return hits, question
 
 
+def gap_high_risk(ctx: PatientContext) -> bool:
+    """Patients for whom missed check-ins escalate one step sooner (also used by the notification rules)."""
+    return ctx.in_nadir or "immunotherapy" in ctx.drug_classes
+
+
 def gap_hits(checkin: Checkin, ctx: PatientContext, previous: list[Checkin]) -> list[Hit]:
     missed = 1
     for item in reversed(previous):
         if item.stav != "nevyplneno":
             break
         missed += 1
-    high_risk = ctx.in_nadir or "immunotherapy" in ctx.drug_classes
+    high_risk = gap_high_risk(ctx)
     evidence = [Evidence(zdroj="checkin", citace=f"nevyplněno ({item.datum})", checkin_id=item.checkin_id, datum=str(item.datum)) for item in previous[-(missed - 1):]] if missed > 1 else []
     evidence.append(Evidence(zdroj="checkin", citace=f"nevyplněno ({checkin.datum})", checkin_id=checkin.checkin_id, datum=str(checkin.datum)))
     if missed >= 3 or (missed >= 2 and high_risk):
