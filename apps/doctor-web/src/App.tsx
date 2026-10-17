@@ -1,6 +1,6 @@
 import type { DemoState, QueueItem } from '@navigator/api';
 import { FilledButton, SvgIcon } from '@navigator/ui';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { NavLink, Outlet, useNavigate, useOutletContext } from 'react-router';
 import { emergencyIcon } from './icons';
 import { addDays, beep, fmtDuration, inWorkingHours, isoDay, useApi, useNow, type Loadable } from './lib';
@@ -17,12 +17,10 @@ export const useShell = () => useOutletContext<Shell>();
 export function App() {
   const demo = useApi<DemoState>('/api/demo/state', 15000);
   const queue = useApi<QueueItem[]>('/api/queue?status=open', 4000);
-  const [offsetMs, setOffsetMs] = useState(0);
-
   const serverNow = demo.data?.now;
-  useEffect(() => {
-    if (serverNow) setOffsetMs(new Date(serverNow).getTime() - Date.now());
-  }, [serverNow]);
+  const offsetMs = useMemo(() => (serverNow ? new Date(serverNow).getTime() - Date.now() : null), [serverNow]);
+  // the demo clock runs weeks behind the real one: render nothing time-based (SLA, banner) before it is known
+  if (offsetMs === null) return <div className="app" />;
 
   const to = isoDay(Date.now() + offsetMs);
   const shell: Shell = {
