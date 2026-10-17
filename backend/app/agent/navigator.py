@@ -583,13 +583,14 @@ def _add_message(patient_id: str, message: dict) -> dict:
     return stored
 
 
-def _alert(output: TriageOutput, raise_task: bool = True) -> None:
+def _alert(output: TriageOutput, raise_task: bool = True, nlu: NluResult | None = None) -> None:
+    """Records the turn's output (with its facts, for the symptom stats) and raises the task from level 2."""
     live = _store()
     if live is None:
         log.warning("level %s from chat but no store to raise a task", output.uroven)
         return
     try:
-        live.record_output(None, output)
+        live.record_output(None, output, nlu=nlu)
         if output.uroven >= 2 and raise_task:
             live.raise_task(output)
     except Exception:
@@ -668,7 +669,7 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
     if output.uroven > quick.uroven:
         card = level_card(output)
         yield {"event": "card", "data": card}
-    await asyncio.to_thread(_alert, output, "NAV-OPEN-EPISODE" not in output.pravidla)
+    await asyncio.to_thread(_alert, output, "NAV-OPEN-EPISODE" not in output.pravidla, nlu)
 
     folded = fold(" ".join([triage_text, *output.varovne_priznaky]))
     fever = output.uroven == 4 and bool(re.search(r"teplot|horec|horuc|zimnic|\btres|\btras|3[89][.,]\d", folded))
@@ -723,6 +724,8 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
         yield {"event": "card", "data": card}
         if reply_text and validate(reply_text, output, ctx, lang, allowed_text):
             reply_text = None
+    if "NAV-ESCALATE" in output.pravidla:
+        await asyncio.to_thread(_alert, output, False, nlu)
     generated_by = "llm" if reply_text else "template"
     if reply_text is None:
         reply_text = template(output, lang, palliative, fever, suicide, meds)

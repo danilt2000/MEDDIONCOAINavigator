@@ -1,7 +1,8 @@
 """Response shapes must match packages/api/src/types.ts."""
 
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
+from urllib.parse import quote
 
 from app.models import PRAGUE, TriageOutput
 
@@ -126,6 +127,30 @@ def test_stats(client):
     mine = client.get(f"/api/stats/patient/{rows[0]['patient_id']}/symptoms").json()
     assert symptoms[0]["symptom"] in {row["symptom"] for row in mine}
     assert set(mine[0]) == {"symptom", "max_grade", "reports"}
+
+
+def test_chat_reports_count_in_monitoring(client):
+    from app import store
+    from app.models import Fact, NluResult
+
+    fever = "Horečka 38 °C a víc"
+    base = client.get("/api/patients/ONC-005/triage").json()[0]
+    now = store.get_now()
+    day = now.astimezone(PRAGUE).date().isoformat()
+    output = TriageOutput.model_validate({**base, "checkin_id": "chat-ONC-005-TEST", "zdroj": "chat", "uroven": 3, "pravidla": ["R-TEST"],
+                                          "as_of": now - timedelta(minutes=1), "sla_do": None})
+    store.record_output(None, output, nlu=NluResult(facts=[Fact(type="temperature_c", value=38.6, quote="38,6", source="chat")]))
+    try:
+        row = next(row for row in client.get("/api/stats/symptoms").json() if row["symptom"] == fever)
+        assert row["patients"] >= 1 and row["alerts"] >= 1
+        assert "ONC-005" in [row["patient_id"] for row in client.get(f"/api/stats/symptom/{quote(fever)}").json()]
+        assert fever in [row["symptom"] for row in client.get("/api/stats/patient/ONC-005/symptoms").json()]
+        assert "chat-ONC-005-TEST" in [row["checkin_id"] for row in client.get(f"/api/stats/day/{day}").json()]
+        assert client.get(f"/api/stats/daily?from={day}&to={day}").json()[0]["by_level"]["3"] >= 1
+    finally:
+        with store._lock:
+            store._state["outputs"].pop("chat-ONC-005-TEST", None)
+            store._state["nlu"].pop("chat-ONC-005-TEST", None)
 
 
 def test_clear_chat(client):

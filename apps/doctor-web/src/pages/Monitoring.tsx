@@ -75,7 +75,7 @@ const questionnaireTip = ({ active, payload, label }: TipProps) => {
   const value = (key: string) => String(payload.find((entry) => entry.dataKey === key)?.value ?? 0);
   return (
     <div className="chart-tip">
-      {fmtDay(String(label))} · <strong>{value('checkins')}</strong> vyplněno · <strong>{value('missed')}</strong> vynecháno
+      {fmtDay(String(label))} · <strong>{value('checkins')}</strong> vyplněno · <strong>{value('missed')}</strong> nevyplněno
     </div>
   );
 };
@@ -161,7 +161,7 @@ function SymptomTable({ source, onOpen }: { source: Loadable<SymptomStat[]>; onO
   return (
     <>
       <div className="row space">
-        <h2 className="section-title">Příznaky z dotazníku MEDDI</h2>
+        <h2 className="section-title">Příznaky z dotazníků a chatu</h2>
         <OutlinedTextField
           className="search"
           type="search"

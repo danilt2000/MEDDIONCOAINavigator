@@ -218,6 +218,15 @@ def test_reply_urging_155_raises_the_alert(quiet_store, monkeypatch):
     assert reply.triage.uroven == 4 and "NAV-ESCALATE" in reply.triage.pravidla
     assert reply.level_card.uroven == 4 and "tel:155" in reply.level_card.buttons
     assert quiet_store.open_task("ONC-002").uroven == 4
+    assert quiet_store.get_output(reply.triage.checkin_id).uroven == 4
+
+
+def test_chat_turn_keeps_its_facts_for_the_symptom_stats(quiet_store):
+    from app.services.symptoms import FEVER, fact_grades
+
+    reply = run("ONC-001", "mam 38,4 a trese me zima", at=WEDNESDAY_NIGHT)
+    nlu = quiet_store.get_nlu(reply.triage.checkin_id)
+    assert nlu is not None and fact_grades(nlu.facts).get(FEVER) == 1
 
 
 def test_llm_escalate_call_updates_the_card(quiet_store, monkeypatch):

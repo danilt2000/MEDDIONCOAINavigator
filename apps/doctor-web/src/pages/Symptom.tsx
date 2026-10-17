@@ -56,7 +56,7 @@ export function SymptomPage() {
       <div className="page-head">
         <div>
           <h1>{symptom}</h1>
-          <p className="muted">Stupeň podle odpovědí v dotazníku MEDDI a zprávy pacienta</p>
+          <p className="muted">Stupeň podle odpovědí v dotazníku MEDDI a zpráv pacienta v chatu</p>
         </div>
       </div>
       <ChipSet className="filters">
