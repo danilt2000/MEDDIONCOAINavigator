@@ -166,7 +166,7 @@ def _triage(patient_id: str, text: str, author: str, ctx: PatientContext, nlu: N
         return fallback
     try:
         try:
-            output = triage_chat(patient_id, text, author, ctx, nlu, at, use_llm=False)
+            output = triage_chat(patient_id, text, author, ctx, nlu, at, use_llm=False, lang=lang)
         except TypeError:
             output = triage_chat(patient_id, text, author, ctx, nlu, at)
     except Exception:

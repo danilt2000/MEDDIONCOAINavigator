@@ -92,7 +92,7 @@ rules:
      hint_cs: "náhlá dušnost nebo bolest na hrudi", hint_sk: "náhla dýchavičnosť alebo bolesť na hrudi"}
   - {id: O-PAIN, min_level: 3, area: bolest, source: "pravidla_triaze §3 Bolest",
      label: "bolest NRS ≥ 7, která nepovolí po záchranné dávce", rationale: "Nekontrolovaná bolest – posouzení lékařem týž den; systém nemění dávky.",
-     hint_cs: "bolest, která nepovolí ani po záchranné dávce", hint_sk: "bolesť, ktorá nepovolí ani po záchrannej dávke"}
+     hint_cs: "nápadná spavost, zpomalené dýchání nebo další zhoršení bolesti", hint_sk: "nápadná spavosť, spomalené dýchanie alebo ďalšie zhoršenie bolesti"}
   - {id: O-BRAIN, min_level: 3, area: neurologie, source: "pravidla_triaze §3 Mozkový nádor",
      label: "ranní bolest hlavy se zvracením u mozkového nádoru", rationale: "Možné zvýšení nitrolebního tlaku – posouzení týž den.",
      hint_cs: "zmatenost, záchvat nebo slabost končetin", hint_sk: "zmätenosť, záchvat alebo slabosť končatín"}
@@ -149,7 +149,7 @@ rules:
      hint_cs: "neudržíte tekutiny nebo přestanete močit", hint_sk: "neudržíte tekutiny alebo prestanete močiť"}
   - {id: Y-PAIN, min_level: 2, area: bolest, source: "pravidla_triaze §4",
      label: "bolest NRS 4–6 nebo ≥ 3 záchranné dávky denně", rationale: "Bazální analgezie nestačí; lékař má titrovat (dávky systém nemění).",
-     hint_cs: "bolest nepovolí ani po záchranné dávce", hint_sk: "bolesť nepovolí ani po záchrannej dávke"}
+     hint_cs: "nápadná spavost, zpomalené dýchání nebo náhlá silná bolest", hint_sk: "nápadná spavosť, spomalené dýchanie alebo náhla silná bolesť"}
   - {id: Y-PSYCH, min_level: 2, area: psychika, source: "pravidla_triaze §4, spec §15",
      label: "smutek nebo úzkost středního stupně, zájem o psychologa", rationale: "Emoční distres; vhodné nabídnout psychoonkologickou podporu.",
      hint_cs: "myšlenky na to si ublížit", hint_sk: "myšlienky na to si ublížiť"}

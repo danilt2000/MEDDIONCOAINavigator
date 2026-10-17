@@ -12,6 +12,7 @@ import yaml
 
 from app.context.builder import fold
 from app.models import Answer, Checkin, Evidence, Fact, NluResult, PatientContext, TriageOutput
+from app.nlu.lexicon_cs_sk import MARKED_DROWSINESS
 from app.triage.router import route
 
 ENGINE_VERSION = "engine 0.1.0"
@@ -269,7 +270,8 @@ def evaluate(s: Signals, ctx: PatientContext, previous: list[Checkin]) -> list[H
         if s.has(fact_type):
             hit("R-NEURO", 4, label, s.ev_fact(fact_type), True)
     if s.has("drowsiness_new"):
-        corroborated = s.lexicon_confirmed("drowsiness_new") or s.has("breathing_slow") or s.has("confusion") or (resp is not None and resp <= 10)
+        marked = any(re.search(MARKED_DROWSINESS, fold(fact.quote)) for fact in s.facts["drowsiness_new"])
+        corroborated = (marked and s.lexicon_confirmed("drowsiness_new")) or s.has("breathing_slow") or s.has("confusion") or (resp is not None and resp <= 10)
         if corroborated:
             hit("R-OPIOID" if opioid else "R-NEURO", 4, "nápadná spavost / nereaguje" + (" na opioidech" if opioid else ""), s.ev_fact("drowsiness_new"), True)
         else:
@@ -657,11 +659,11 @@ def fallback_text(level: int, contact: str | None, lang: str, warnings: list[str
 
 
 def _assemble(checkin: Checkin, ctx: PatientContext, hits: list[Hit], followup: str | None, source: str, at: datetime,
-              missed_only: bool, use_llm: bool) -> TriageOutput:
+              missed_only: bool, use_llm: bool, lang: str | None = None) -> TriageOutput:
     level = max([1, *(item.level for item in hits)])
     step, contact, notify, sla = route(level, at, missed_checkins=missed_only)
     catalog = rules()
-    lang = ctx.lang
+    lang = lang or ctx.lang
     addressee = "pacient" if checkin.vyplnil in ("pacient", "patient", "") else "pecujici"
     ordered = sorted(hits, key=lambda item: -item.level)
     findings: list[str] = []
@@ -769,11 +771,13 @@ def _verify_question(hits: list[Hit], lang: str) -> str | None:
             else "Je spavost výrazně větší než obvykle, nebo nejde probudit?")
 
 
-def triage_chat(patient_id: str, text: str, author: str, ctx: PatientContext, nlu: NluResult, at: datetime, use_llm: bool = True) -> TriageOutput:
+def triage_chat(patient_id: str, text: str, author: str, ctx: PatientContext, nlu: NluResult, at: datetime, use_llm: bool = True,
+                lang: str | None = None) -> TriageOutput:
+    lang = lang or ctx.lang
     message = Checkin(
         checkin_id=f"chat-{patient_id}-{at:%Y%m%d%H%M%S}", patient_id=patient_id, datum=at.date(), cas=at.strftime("%H:%M"),
         den_sledovani=0, stav="vyplneno", vyplnil="pacient" if author in ("pacient", "patient") else author, zprava_pacienta=text,
     )
     previous = _previous(message, ctx)
     hits = evaluate(Signals(message, nlu), ctx, previous)
-    return _assemble(message, ctx, hits, _verify_question(hits, ctx.lang), "chat", at, False, use_llm)
+    return _assemble(message, ctx, hits, _verify_question(hits, lang), "chat", at, False, use_llm, lang)

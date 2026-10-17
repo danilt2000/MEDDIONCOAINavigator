@@ -13,7 +13,19 @@ NUMBER_WORDS = {
 }
 _NUMBER = r"(\d+|" + "|".join(NUMBER_WORDS) + r")"
 _COUNT = re.compile(rf"\b{_NUMBER}\s*(?:x|×|-?\s?krat|kr\b)|\b(jednou|dvakrat|trikrat|ctyrikrat|stirikrat|petkrat|patkrat|sestkrat|sedmkrat|sedemkrat|osmkrat|osemkrat|devetkrat|desetkrat|desatkrat)\b")
-_NEGATOR = re.compile(r"\b(bez|ani|ne|nie|nemam|nema|nemame|nemaji|nemal\w*|zadn\w*|ziadn\w*|neni|nebyl\w*|nebol\w*|nikdy|netrpi\w*|netrapi\w*)\s+(?:\w+\s+){0,2}$")
+_NEGATOR = re.compile(r"\b(bez|ani|ne|nie|nemam|nema|nemame|nemaji|nemal\w*|zadn\w*|ziadn\w*|neni|nejsem|nejsi|nejsme|nejste|nebyl\w*|nebol\w*|nikdy|netrpi\w*|netrapi\w*"
+                      r"|kdyby\w*|keby\w*)\s+(?:\w+\s+){0,2}$")
+_FUSED_NE = re.compile(r"\bne$")
+_THRESHOLD = re.compile(r"\b(pri|pokud|kdyz|ak|jestli|kdyby\w*|keby\w*)\s+((je|bude|budu|mam|mate|ma)\s+)?(teplot|horeck|horuck)\w*\s+(nad|od|vic nez|vice nez|viac ako|viac nez|vyssi nez|vyse)\s+$")
+_FIRST_PERSON = re.compile(r"\b(jsem|sem|som|jsme|sme)\b")
+_RELATIVE = (r"(manzel\w*|partner\w*|dcer\w*|syn\w*|vnuk\w*|vnuc\w*|vnouc\w*|bratr\w*|brat|sestr\w*|mamk\w*|mamin\w*|mama|matk\w*|tatin\w*|tatk\w*|tata"
+             r"|otec|dite|deti|kamarad\w*|soused\w*|kolega|kolegyn\w*)")
+_FINE = r"(v pohode|v poradku|v poriadku|zdrav\w*|ok)\b"
+# a symptom belongs to someone else only when the text also says the other party is fine
+_SELF_FINE = re.compile(rf"\bja\s+(jsem|som|sem)\s+{_FINE}")
+_PATIENT_FINE = re.compile(rf"\b({_RELATIVE}|on|ona)\s+(je|se citi|sa citi)\s+{_FINE}")
+_OTHER_SUBJECT = re.compile(rf"\b{_RELATIVE}\s+(?:(?!(?:mi|me|mne|mna|mnou)\b)\w+\s+){{0,2}}$")
+_SELF_SUBJECT = re.compile(r"\bja\s+(?:uz\s+)?(mam|jsem|sem|som)\s+(?:\w+\s+)?$")
 _NEGATOR_AFTER = re.compile(r"^\w*\s*(ne|nie|nemam|nema|nemame|neni|nebyl\w*|nebol\w*)\b")
 _SENTENCE_END = re.compile(r"[;!?\n]|(?<!\d)\.|\.(?!\d)")
 _PART_END = re.compile(r"(?<!\d),|,(?!\d)")
@@ -36,9 +48,10 @@ def _count(segment: str) -> float | None:
     return _number(match.group(1) or match.group(2))
 
 
-def _temperature(segment: str) -> float | None:
+def _temperature(segment: str, someone_else: re.Pattern | None) -> float | None:
     for match in re.finditer(r"(?<![\d,./])(3[5-9]|4[0-2])(?:[,.](\d))?(?![\d/])\s*(kg|mmol|cm|let|rok|min|dn|den|hod|h\b|tyd|tablet|tbl|davk|kap|krat|x\b|×|%|ml|mg|kus|kc)?", segment):
-        if match.group(3):
+        prefix = segment[:match.start()]
+        if match.group(3) or (_THRESHOLD.search(prefix) and not _FIRST_PERSON.search(segment)) or (someone_else and someone_else.search(prefix)):
             continue
         if match.group(2):
             return float(f"{match.group(1)}.{match.group(2)}")
@@ -76,7 +89,7 @@ def _nrs(segment: str) -> float | None:
 
 
 def _blood_pressure(segment: str) -> tuple[float, float] | None:
-    match = re.search(r"(?<![\d.,])(\d{2,3})\s*/\s*(\d{2,3})(?![\d.,])", segment)
+    match = re.search(r"(?<![\d.,])(\d{2,3})\s*/\s*(\d{2,3})(?!\d|[.,]\d)", segment)
     if not match or not re.search(r"tlak|\btk\b|mmhg", segment):
         return None
     systolic, diastolic = float(match.group(1)), float(match.group(2))
@@ -100,6 +113,12 @@ def _weight(segment: str) -> float | None:
     return value if match.group(1).startswith("pribral") else -value
 
 
+_CONSTIPATION = (rf"{_NUMBER}\s*(dn\w*|den)\s*(bez stolice|((jsem|som|sem) )?(nebyl|nebol)\w*|nic|bez vyprazdneni)"
+                 rf"|(bez stolice|(nebyl|nebol)\w* ((jsem|som|sem) )?na stolici)\s*(uz |asi )?{_NUMBER}")
+MARKED_DROWSINESS = (r"nereaguj|nejde (ji |ho )?probudit|neda se probudit|nemuz\w* (ji |ho )?probudit|tezko (se )?probou?z|somnol|nezvykle spi|ned(a|á) sa zobudit"
+                     r"|\b(neda|nejde|nelze|nemuz\w*|nemoz\w*|nemohu|nemohl\w*|nevieme|nevim)\s+(\w+\s+){0,3}(pro|vz|z|zo|pre|pri)bud|(pro|vz|z|zo|pre)bud\w*\s+(\w+\s+){0,2}(nejde|neda|nelze)\b"
+                     r"|bezvedom|neprobuditeln|\b(napadn|nezvykl|neobvykl|vyrazn|velmi|velice|hodne|moc|strasn|hrozn|extremn|prilis)\w*\s+spav")
+
 Rule = tuple[str, str, Callable[[str], object] | None, bool]
 # (fact type, regex on the folded segment, value function, negatable)
 RULES: list[Rule] = [
@@ -118,29 +137,29 @@ RULES: list[Rule] = [
     ("no_urine_hours", r"\bnemoc(i|il|ila|ilo|im|ime)\b|\bnecural\w*|\bnecikal\w*|\bnemocil\w*|anuri", _hours, False),
     ("oliguria", r"malo moc|moci malo|malo curam|malo cura|oligur|skoro nemoc", None, False),
     ("fainting", r"omdl|mdlob|\bodpadl|\bodpadol|zkolab|kolaps|ztratil\w* vedomi|stratil\w* vedomie|odpadla", None, True),
-    ("dizziness_standing", r"toci se (mi )?hlava|mota se (mi )?hlava|toci sa (mi )?hlava|mota sa (mi )?hlava|zavrat|hlava se (mi )?toci|motam se|hlava (sa )?(mi )?toci|zatmi se (mi )?pred ocima", None, True),
+    ("dizziness_standing", r"toci se (mi )?hlava|mota se (mi )?hlava|toci sa (mi )?hlava|mota sa (mi )?hlava|zavrat|hlava se (mi )?toci|motam se|hlava (sa )?(mi )?toci|zatocil\w* (se |sa )?(mi )?hlava|zatmi se (mi )?pred ocima", None, True),
     ("dyspnea_rest", r"(dych|dusn|dech)\w*.*(i v klidu|i kdyz sedim|i vsede|i vleze|i pri sezeni|aj v pokoji|v pokoji|aj ked sedim|aj v sede|aj v lahu|aj pri sedeni)|(i v klidu|i kdyz sedim|aj v pokoji|aj ked sedim).*(dych|dusn|dech)|dusnost (i |uz )?v klidu|v klidu .*dus|dusi (se|ma)\b|\bdusim\b|nemuz\w* (se )?nadechnout|nemuze dychat|nemuzu dychat|nemohu dychat|lapa\w* po dechu|nemozem dychat", None, True),
     ("dyspnea_exertion", r"tezko se (mi )?dycha|spatne se (mi )?dycha|tezko na dechu|tazko na dych|tazko sa (mi )?dycha|zadych|dusnost|dusna\b|dychavic|tezko se dycha|spatne se dycha|tazko sa dycha|nemam dech", None, True),
     ("orthopnea", r"polstar|vankus|vsede spi|spi vsede|spat vsede|v sede spat|spat v sede|vleze .*dych|nemuz\w* lezet|nemoze lezat", None, True),
     ("chest_pain_new", r"(\bpal|\bsvir|\btlak|\btlac|\bpich|\bbol|\bstah)\w*\s+(\w+\s+){0,3}(na|v|za|pri|u)\s+(prsou|prsech|hrud\w*|srdc\w*)\b|\b(hrud\w*|srdc\w*)\s+(\w+\s+){0,2}(\bpal|\bsvir|\btlac|\bpich|\bboli|\bbolest)|bol\w* (mne |me |mi |ma )?(na|v) prs(ou|ech|iach)|bol\w* (na|v|za) hrud|hrudn\w* bol|tlak na hrudi|pich\w* (na|v) hrud|svira\w* (na )?hrud|bolest na prsou|boli (ma |me |mi )?(na |v )?hrud", None, True),
     ("palpitations", r"busi (mi )?srdce|buseni srdce|busenie srdca|palpitac|srdce (mi )?(bije|busi|tluce|buch)|buchani srdce|busi mi srdce", None, True),
     ("confusion", r"zmaten|dezorient|nevi,? kde je|nevie,? kde je|nepozna (me|nas)|blouzn|mluvi (z cesty|nesmysl)|nesmysly|zmaten|nevi co se deje", None, True),
-    ("drowsiness_new", r"\bspav(a|y|e|ost)\b|nereaguj|nejde (ji |ho )?probudit|neda se probudit|nemuz\w* (ji |ho )?probudit|tezko (se )?probou?z|somnol|nezvykle spi|ned(a|á) sa zobudit|\b(neda|nejde|nelze|nemuz\w*|nemoz\w*|nemohu|nemohl\w*|nevieme|nevim)\s+(\w+\s+){0,3}(pro|vz|z|zo|pre|pri)bud|(pro|vz|z|zo|pre)bud\w*\s+(\w+\s+){0,2}(nejde|neda|nelze)\b|bezvedom|neprobuditeln", None, True),
+    ("drowsiness_new", r"\bspav(a|y|e|ost)\b|" + MARKED_DROWSINESS, None, True),
     ("breathing_slow", r"dycha pomalu|pomalu dycha|zpomalen\w* dych|dycha (velmi )?malo|malo dycha|dycha pomaly|dychani je pomale|dycha (jen )?obcas", None, True),
-    ("fast_breathing", r"rychle dycha|zrychlen\w* dych|dycha rychle|rychly dech|zrychlene dychani", None, True),
+    ("fast_breathing", r"rychl\w* (dech|dych)|zrychlen\w* dych|\bdych\w*\s+(\w+\s+){0,2}rychl|zrychlene dychani", None, True),
     ("seizure", r"zachvat|epilep|krec\w* (cel|tel)|kŕc\w* cel|cukal\w* (se )?cel", None, True),
     ("limb_weakness_new", r"nohy (mu |ji |mi )?vypovid\w*|nemuz\w* (se )?postavit|nemoze (sa )?postavit|slabe nohy|ochabl\w* (ruk|noh)|nemuz\w* hybat|nehybe (rukou|nohou)|ochrn|slabost (v )?(prave|leve|ruky|nohy|ruce|noze)|necit\w* (ruku|nohu)|visi (mu |ji )?koutek|pokles\w* koutek", None, True),
     ("speech_problem", r"nemuz\w* (pro)?mluvit|mluvi nesrozumitel|zadrhava|porucha reci|huhla|nejde (mu |ji )?mluvit|nemoze hovorit|plete (si )?slova|nemuze najit slova", None, True),
     ("abdominal_pain_nrs", r"boli (mne |me |mi |ma |ji |ho )?(brich|bruch)|bolest\w* (brich|bruch)|(bricho|brucho|brisko) (ji |mi |ma |me )?(hrozne |strasne |dost |trochu )?boli|krec\w* v (brise|bruchu)|krc\w* v bruchu", _nrs, True),
     ("colicky_pain", r"\bkolik(a|y|ov)\w*|krec\w* v (brise|bruchu)|krc\w* v bruchu|krec\w* (v )?brich", None, True),
     ("no_stool_no_gas", r"(neodchaz\w*|nejdou|nechod\w*|zastav\w*) (ani )?plyn|plyny neodchaz\w*|ani plyny|zadne plyny|bez plynu|neprdi", None, False),
-    ("constipation_days", rf"{_NUMBER}\s*(dn\w*|den)\s*(bez stolice|nebyl\w*|nic|bez vyprazdneni)|bez stolice\s*{_NUMBER}", lambda segment: _number((re.search(_NUMBER, segment) or [None, None])[1]) if re.search(_NUMBER, segment) else None, True),
+    ("constipation_days", _CONSTIPATION, lambda segment: _number(re.search(_NUMBER, re.search(_CONSTIPATION, segment).group(0)).group(1)), True),
     ("headache_severe", r"(silne|hrozne|strasne|velmi) (mne |me |mi |ma )?boli hlava|(silna|silne|hrozna|hrozne|strasna|strasne|nesnesiteln\w*|krut\w*|velka|velmi) (bolest )?(boli )?(mne |me |mi |ma )?hlav|hlava (mne |me |mi |ma )?(hrozne|strasne|silne|velmi) boli|nejhorsi bolest hlavy|bolest hlavy (je )?(silna|hrozna|nesnesitelna)", None, True),
     ("vision_problem", r"rozmazan|dvojit\w* vid|vidim dvoj|mzitk|nevidim|vypadek (zorneho )?pole|zhorsen\w* zrak|zle vidim|spatne vidim", None, True),
     ("thirst_polyuria", r"zizen|smad|caste moceni|casto (chodim )?(curat|mocit)|chodim (casto )?curat|porad (piju|pije)|casto mocim|polyur|polydips|stale piju", None, True),
     ("weight_change_kg", r"(pribral|zhubl|ubral|schudol|schudla)\w*\s*(jsem |sem |som |jsme )?(asi |skoro |cca |o |uz )?\d", _weight, True),
     ("edema", r"\botok|otekl|oteka|opuch|natekl|nateka", lambda segment: "i ráno" if re.search(r"rano|ryhy|ryha|stehn|cel(e|y|a) (noh|tel)|nezmiz", segment) else True, True),
-    ("calf_swelling_one_side", r"lytk\w*.*(otok|otek|natek|boli|bolest)|(otok|otek|natek|bolest)\w*.*lytk|jednostrann\w* otok", None, True),
+    ("calf_swelling_one_side", r"lytk\w*.*(otok|otek|natek|opuch|\bboli|bolest)|(otok|otek|natek|opuch|\bboli|bolest)\w*.*lytk|jednostrann\w* otok", None, True),
     ("pain_nrs", r"(nrs|bolest\w*|boli\w*)\D{0,25}?\b\d{1,2}|nrs\s*\d", _nrs, False),
     ("rescue_doses_per_day", rf"{_NUMBER}\s*(davk|davek)\w*", lambda segment: _number(re.search(rf"{_NUMBER}\s*(davk|davek)", segment).group(1)), False),
     ("liquids_only", r"jen tekut|pouze tekut|len tekut|jen kase|jen pyre|nutridrink|jen piti\b|iba tekut", None, True),
@@ -149,7 +168,7 @@ RULES: list[Rule] = [
     ("suicide_plan_intent_means", r"mam plan|mam (to )?(uz )?(promyslen|premyslen|naplanovan|pripraven|nachystan)|(nasetril|nasetren|nasporil|nasporen|nazbiran)\w* (si )?(prasky|leky|lieky|tablet)|(prasky|leky|lieky|tablet)\w*.*\bto udelam\b|schoval\w* (si )?(prasky|leky|tablet)|vim,? jak to udelam|udelam to\b|chci to udelat|skoc\w* (z |pod )|obes\w* (se|sa)|predavkuj|predavkovat|mam doma (prasky|leky) na", None, True),
     ("lethal_dose_question", r"smrteln\w* (davk|mnozstv)|letaln|smrtiac\w* (davk|mnozstv)|(kolik|kolko)\w* .*\b(zabil|zabije|zabilo|zabit)\b|predavkovat (se|sa)\b", None, False),
     ("hopelessness", r"nema (to )?(cenu|smysl|zmysel)|k nicemu|beznadej|bez nadeje|vzdavam (to|se)|nic nema (smysl|cenu)|zbytecn\w* (se )?snazit|nema zmysel", None, False),
-    ("missed_medication", r"(vynechal|vynechav|zapomel|zapomnel|zapomn\w*|prestal\w* (brat|uzivat)|nevzal|nebral\w*|vysadil|zabudol|zabudla)\w*(?=.*(tablet|lek|prask|davk|letrozol|kapecitabin|liek|tabletk))|(tablet|lek|prask|liek)\w*.*(vynechal|vynechav|zapomel|zapomn|nebral|nevzal|vysadil|zabudol|zabudla|neberu)", None, False),
+    ("missed_medication", r"(vynechal|vynechav|zapomel|zapomnel|zapomn\w*|prestal\w* (brat|uzivat)|nevzal|nebral\w*|vysadil|zabudol|zabudla)\w*(?=.*(tablet|lek|prask|davk|letrozol|kapecitabin|liek|tabletk))|(tablet|lek|prask|liek|davk)\w*.*\b(vynechal|vynechav|zapomel|zapomn|nebral|nevzal|vysadil|zabudol|zabudla|neberu)", None, False),
     ("caregiver_strain", r"nevim,? jak to (mam )?zvladat|nezvladam|uz nemuzu|jsem (uplne |hrozne )?vycerpan|vycerpana|nespim|jsem na to sam|uz nevladzem|nevladzem|nevim si rady|nevim, co (s tim|mam delat)|uz to nedavam", None, False),
     ("port_redness", r"\bport\w*.*(zarud|cerven|bol|otok|otek|hnis|tepl)|(zarud|cerven|bol|otok|otek|hnis)\w*.*\bport", lambda segment: float(m.group(1)) if (m := re.search(r"(\d+)\s*cm", segment)) else True, True),
     ("nail_fold_inflammation", r"(nehet|nehtov|necht|paronych)\w*.*(zanic|zanet|zarud|otek|bol|hnis)|(zanic|zanet|zarud|otek|hnis)\w*.*(nehet|nehtov|necht)|paronych", None, True),
@@ -184,7 +203,10 @@ def _spans(text: str, boundary: re.Pattern, start: int = 0, end: int | None = No
 
 
 def _negated(folded_segment: str, start: int, end: int) -> bool:
-    return bool(_NEGATOR.search(folded_segment[:start]) or _NEGATOR_AFTER.search(folded_segment[end:]))
+    prefix = folded_segment[:start]
+    # „neomdlel“, „netřese“, „nebolí“ deny the symptom; „nedýchá (se mi dobře)“ is a symptom itself
+    fused = _FUSED_NE.search(prefix) and not folded_segment.startswith(("dych", "dech"), start)
+    return bool(_NEGATOR.search(prefix) or fused or _NEGATOR_AFTER.search(folded_segment[end:]))
 
 
 def lexicon_facts(text: str, source: str = "zprava", author: str = "pacient") -> tuple[list[Fact], list[str]]:
@@ -192,6 +214,8 @@ def lexicon_facts(text: str, source: str = "zprava", author: str = "pacient") ->
     folded = fold(text)
     facts: list[Fact] = []
     negations: list[str] = []
+    patient = author == "pacient"
+    someone_else = (_OTHER_SUBJECT if patient else _SELF_SUBJECT) if (_SELF_FINE if patient else _PATIENT_FINE).search(folded) else None
     for segment_start, segment_end in _spans(folded, _SENTENCE_END):
         segment = folded[segment_start:segment_end]
         quote = text[segment_start:segment_end].strip()
@@ -203,7 +227,7 @@ def lexicon_facts(text: str, source: str = "zprava", author: str = "pacient") ->
         sentence_vomit = bool(_VOMIT_WORDS.search(segment))
         for part_start, part_end in _spans(folded, _PART_END, segment_start, segment_end):
             part, part_quote = folded[part_start:part_end], text[part_start:part_end].strip()
-            temperature = _temperature(part)
+            temperature = _temperature(part, someone_else)
             if temperature is not None:
                 add("temperature_c", temperature, "exact", quote_text=part_quote)
             count = _count(part)
@@ -229,6 +253,8 @@ def lexicon_facts(text: str, source: str = "zprava", author: str = "pacient") ->
             if fact_type == "caregiver_strain" and author == "pacient":
                 continue
             anchors = list(_BLOOD.finditer(segment)) if fact_type in ("blood_in_stool", "bleeding_site", "nosebleed_minutes") else list(pattern.finditer(segment))
+            if someone_else and fact_type != "caregiver_strain" and all(someone_else.search(segment[:anchor.start()]) for anchor in anchors or [match]):
+                continue
             if negatable and all(_negated(segment, anchor.start(), anchor.end()) for anchor in anchors or [match]):
                 if fact_type not in negations:
                     negations.append(fact_type)
