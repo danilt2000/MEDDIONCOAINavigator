@@ -16,11 +16,10 @@ test('the day route accepts only real ISO days', () => {
   for (const day of ['abc', '2026-9-9', '2026-02-31', '2026-13-01', '']) assert.equal(isIsoDay(day), false, day);
 });
 
-test('the desktop-only notice and the layout share one minimum width', () => {
+test('phones and tablets open the 1280 px desktop layout scaled down instead of a desktop-only notice', () => {
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   const css = readFileSync(new URL('../src/app.css', import.meta.url), 'utf8');
-  const breakpoint = Number(html.match(/@media \(max-width: (\d+)px\)/)![1]);
-  const promised = Number(html.match(/alespoň (\d+)/)![1]);
-  assert.equal(breakpoint + 1, promised);
+  assert.match(html, /<meta name="viewport" content="width=1280" \/>/);
+  assert.doesNotMatch(html, /desktop-only/);
   assert.doesNotMatch(css, /body \{[^}]*min-width/);
 });

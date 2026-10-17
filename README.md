@@ -76,7 +76,7 @@ monitoring centre). A restart of the API resets the clock and the demo state.
 | | [`?patient=ONC-001`](https://pacient.nastasiya.com/?patient=ONC-001) | Jana K., AC cycle 1 day 10 (nadir): the app opens on the check-in; tick *Zvýšená teplota a horečky* and *Únava a slabost*, then *Teplota* 38,4 on the *Naměřené hodnoty* step → red |
 | | [`?patient=ONC-018`](https://pacient.nastasiya.com/?patient=ONC-018) | Štefan Ď., Slovak: tick only *Únava a slabost*, message „od vcera mam hnacku asi 6 krat, slaby som“ → orange with a follow-up |
 | | [`/navigator?patient=ONC-014`](https://pacient.nastasiya.com/navigator?patient=ONC-014) | Ludmila T., palliative care, her daughter writes: the chat opens in caregiver mode (*Píšete za: maminka*, leave it on) → „Můžu mamince dát další Oramorph?“ |
-| **Clinician web** | [lekar.nastasiya.com](https://lekar.nastasiya.com/#/fronta) | Desktop browser, window at least 1280 px wide |
+| **Clinician web** | [lekar.nastasiya.com](https://lekar.nastasiya.com/#/fronta) | Desktop browser; on a tablet or phone it opens scaled down |
 | | [`#/fronta`](https://lekar.nastasiya.com/#/fronta) | Queue: level, SLA countdown, task actions, 30-second summary |
 | | [`#/monitoring`](https://lekar.nastasiya.com/#/monitoring) | Alerts and check-ins over time, by treatment and by symptom |
 | | [`#/monitoring/lecba/sunitinib…`](https://lekar.nastasiya.com/#/monitoring/lecba/sunitinib%2050%20mg%201%C3%97%20denn%C4%9B) | Every alert on sunitinib, why it fired and what the team did |
@@ -172,7 +172,7 @@ flowchart TD
 | Path | What | Dev port |
 |---|---|---|
 | `apps/patient-pwa` | PWA for patients: mobile-first, installable, works offline, Czech/Slovak, caregiver mode | 5173 |
-| `apps/doctor-web` | Web app for the monitoring centre and doctors, desktop only (hidden below 1280 px) | 5174 |
+| `apps/doctor-web` | Web app for the monitoring centre and doctors, made for desktop; phones and tablets get the desktop layout scaled down | 5174 |
 | `packages/ui` | Shared Material 3 library used by both apps | – |
 | `packages/api` | TypeScript types of the HTTP API, fetch and SSE helpers | – |
 | `backend/` | FastAPI: triage engine, navigator chat, eval, FHIR/IRIS integration | 8100 |
