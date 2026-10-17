@@ -483,7 +483,8 @@ md-linear-progress { width: 100%; }
 button.timeline-item { padding: 12px 0; border-bottom: 1px solid var(--md-sys-color-outline-variant); }
 .timeline-body { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
 .clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-md-chip-set.quick-replies { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter); }
+/* the chips' 48 px touch targets stick out 8 px above and below: keep them inside so the row only scrolls sideways */
+md-chip-set.quick-replies { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: none; margin: -8px calc(-1 * var(--gutter)); padding: 8px var(--gutter); }
 .content > .triage-chip { align-self: flex-start; }
 
 /* tablets (a touch screen 600+ px on both sides) fill the window with the content centred; phones (also in landscape) and desktop keep the 430 px column */

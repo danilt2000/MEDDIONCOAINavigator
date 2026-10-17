@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { buildFills, buildVitals, optionColor, phoneFacts, toggleOption, treatmentReason, UNKNOWN, visibleSteps, type Questionnaire } from '../src/flow.ts';
+import { buildFills, buildVitals, isUnknown, optionColor, phoneFacts, toggleOption, treatmentReason, UNKNOWN, visibleSteps, type Questionnaire } from '../src/flow.ts';
 import { contactText, dictionaries } from '../src/i18n.ts';
 
 const definitions: Questionnaire[] = JSON.parse(
@@ -110,4 +110,10 @@ test('the breaths-per-minute label is short enough for the two-column vitals gri
   assert.equal(dictionaries.sk.vital_dechova_frekvence, 'Počet dychov');
   const longest = (lang: 'cs' | 'sk') => Math.max(...Object.entries(dictionaries[lang]).filter(([key]) => key.startsWith('vital_')).map(([, label]) => label.length));
   assert.ok(longest('cs') <= 13 && longest('sk') <= 13);
+});
+
+test('an untouched single-choice question counts as „Nevím“, so the AI hint shows right away', () => {
+  assert.ok(isUnknown(undefined));
+  assert.ok(isUnknown(UNKNOWN));
+  assert.equal(isUnknown(0), false);
 });

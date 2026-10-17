@@ -9,6 +9,7 @@ import {
   buildFills,
   buildVitals,
   hasValue,
+  isUnknown,
   optionColor,
   parseVital,
   scaleColor,
@@ -56,7 +57,7 @@ function QuestionInput(props: { questionnaireId: string; item: Item; value: Valu
           <input
             type="radio"
             name={item.id}
-            checked={value === undefined || value === UNKNOWN}
+            checked={isUnknown(value)}
             onChange={() => onChange(UNKNOWN)}
             onClick={() => onChange(UNKNOWN)}
           />
@@ -204,7 +205,7 @@ export function Checkin() {
     }
   };
 
-  const unsure = step?.item.typ === 'jedna' && answers[answerKey(step.questionnaire.id, step.item.id)] === UNKNOWN;
+  const unsure = step?.item.typ === 'jedna' && isUnknown(answers[answerKey(step.questionnaire.id, step.item.id)]);
   const aiIntro = step && unsure ? format(t.aiIntro, step.item.text) : undefined;
 
   let body;

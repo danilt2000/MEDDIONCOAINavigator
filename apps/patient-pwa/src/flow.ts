@@ -61,6 +61,7 @@ export function toggleOption(item: Item, current: number[], index: number): numb
 
 // "Nevím, jak odpovědět": the default of every single-choice question, stored like a skipped answer.
 export const UNKNOWN = -1;
+export const isUnknown = (value: Value | undefined) => value === undefined || value === UNKNOWN;
 
 export const hasValue = (value: Value | undefined) =>
   value !== undefined && value !== UNKNOWN && value !== '' && !(Array.isArray(value) && value.length === 0);
