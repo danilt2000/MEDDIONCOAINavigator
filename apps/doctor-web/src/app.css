@@ -961,3 +961,45 @@ details > summary {
   gap: 16px;
   align-items: start;
 }
+
+.native-select {
+  align-self: flex-start;
+  min-width: 360px;
+  padding: 8px 10px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 8px;
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  font: inherit;
+}
+
+.push-link {
+  font: 600 1.05rem ui-monospace, Consolas, monospace;
+  word-break: break-all;
+}
+
+.push-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.push-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.push-option:has(input:checked) {
+  border-color: var(--md-sys-color-primary);
+  background: var(--md-sys-color-secondary-container);
+}
+
+.push-option input {
+  margin-top: 3px;
+  accent-color: var(--md-sys-color-primary);
+}

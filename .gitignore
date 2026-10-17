@@ -16,3 +16,4 @@ __pycache__/
 .pytest_cache/
 .playwright-mcp/
 *.tsbuildinfo
+backend/cache/push/

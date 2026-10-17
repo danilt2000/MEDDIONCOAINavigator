@@ -10,7 +10,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       pwaAssets: {},
-      workbox: { globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'] },
+      workbox: { globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'], importScripts: ['push-sw.js'] },
       manifest: {
         name: 'MEDDI navigátor',
         short_name: 'MEDDI',

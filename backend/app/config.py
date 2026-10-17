@@ -28,5 +28,9 @@ class Settings(BaseSettings):
     meddi_mock_url: str = "http://localhost:8100/mock/meddi"
     timezone: str = "Europe/Prague"
 
+    vapid_public_key: str = ""
+    vapid_private_key: str = ""
+    vapid_subject: str = "https://pacient.nastasiya.com"
+
 
 settings = Settings()

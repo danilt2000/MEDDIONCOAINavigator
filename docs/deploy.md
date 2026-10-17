@@ -17,7 +17,8 @@ Cloudflare DNS: proxied A records `pacient` and `lekar` pointing at the server.
 
 ```bash
 git clone https://github.com/danilt2000/MEDDIONCOAINavigator.git /opt/meddi && cd /opt/meddi
-# .env with OPENAI_API_KEY (copied from the developer machine, chmod 600)
+# .env with OPENAI_API_KEY (copied from the developer machine) and VAPID_PUBLIC_KEY / VAPID_PRIVATE_KEY
+# (Web Push key pair generated once per server; replacing it breaks existing phone subscriptions), chmod 600
 chown -R 51773:51773 iris/inbox                      # irisowner in the container writes processed HL7 files there
 docker compose up -d --build && sh iris/scripts/install.sh
 python3 -m venv backend/.venv && backend/.venv/bin/pip install -r backend/requirements.txt

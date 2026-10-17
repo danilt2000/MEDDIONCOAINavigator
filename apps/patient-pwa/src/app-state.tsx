@@ -12,6 +12,7 @@ import {
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useNavigate } from 'react-router';
 import { dictionaries, format, type Dict } from './i18n';
+import { syncPushPatient } from './push';
 
 export const store = {
   get<T>(key: string, fallback: T): T {
@@ -266,6 +267,32 @@ export function AppProvider({ children }: { children: ReactNode }) {
     };
   }, [refreshQueue]);
 
+  const selectPatient = useCallback((id: string) => {
+    store.set('patient', id);
+    const url = new URL(location.href);
+    url.searchParams.set('patient', id);
+    history.replaceState(history.state, '', url);
+    setPatientIdState(id);
+    setCaregiverOverride(store.get(`caregiver:${id}`, null));
+  }, []);
+
+  useEffect(() => {
+    if (!('serviceWorker' in navigator)) return;
+    const openFromNotification = (event: MessageEvent<{ type?: string; url?: string }>) => {
+      if (event.data?.type !== 'meddi-open' || !event.data.url) return;
+      const url = new URL(event.data.url, location.origin);
+      const target = url.searchParams.get('patient');
+      if (target && target !== currentPatient.current) selectPatient(target);
+      navigate(url.pathname + url.search);
+    };
+    navigator.serviceWorker.addEventListener('message', openFromNotification);
+    return () => navigator.serviceWorker.removeEventListener('message', openFromNotification);
+  }, [navigate, selectPatient]);
+
+  useEffect(() => {
+    syncPushPatient(patientId);
+  }, [patientId]);
+
   const value = useMemo<AppValue>(() => {
     const patient = detail.data ?? patients.data?.find((item) => item.patient_id === patientId) ?? null;
     const lang = patient?.lang === 'sk' ? 'sk' : 'cs';
@@ -275,14 +302,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const caregiverDefault = /^(peč|pec)/i.test(filledBy.trim());
     return {
       patientId,
-      setPatientId: (id: string) => {
-        store.set('patient', id);
-        const url = new URL(location.href);
-        url.searchParams.set('patient', id);
-        history.replaceState(history.state, '', url);
-        setPatientIdState(id);
-        setCaregiverOverride(store.get(`caregiver:${id}`, null));
-      },
+      setPatientId: selectPatient,
       patients: patients.data ?? [],
       patient,
       patientError: patient ? null : detail.error,
@@ -303,7 +323,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       queued,
       refreshQueue,
     };
-  }, [patientId, patients.data, detail.data, detail.error, demo.data, contacts.data, caregiverOverride, online, queued, refreshQueue]);
+  }, [patientId, selectPatient, patients.data, detail.data, detail.error, demo.data, contacts.data, caregiverOverride, online, queued, refreshQueue]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

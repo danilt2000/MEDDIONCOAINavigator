@@ -135,6 +135,15 @@ const cs = {
   father: 'tatínek',
   husband: 'manžel',
   wife: 'manželka',
+  pushTitle: 'Upozornění',
+  pushOff: 'Pošleme vám připomínku, když bude čas vyplnit dotazník.',
+  pushEnable: 'Zapnout upozornění',
+  pushEnabling: 'Zapínáme…',
+  pushOn: 'Upozornění jsou na tomto zařízení zapnutá.',
+  pushDisable: 'Vypnout',
+  pushIosInstall: 'Na iPhonu nejdřív přidejte aplikaci na plochu: Sdílet → Přidat na plochu. Pak ji otevřete z plochy a upozornění zapněte.',
+  pushDenied: 'Upozornění jsou v prohlížeči zablokovaná. Povolte je v nastavení prohlížeče pro tuto stránku.',
+  pushError: 'Nastavení upozornění se nepodařilo změnit.',
 };
 
 export type Dict = typeof cs;
@@ -276,6 +285,15 @@ const sk: Dict = {
   father: 'otec',
   husband: 'manžel',
   wife: 'manželka',
+  pushTitle: 'Upozornenia',
+  pushOff: 'Pošleme vám pripomienku, keď bude čas vyplniť dotazník.',
+  pushEnable: 'Zapnúť upozornenia',
+  pushEnabling: 'Zapíname…',
+  pushOn: 'Upozornenia sú na tomto zariadení zapnuté.',
+  pushDisable: 'Vypnúť',
+  pushIosInstall: 'Na iPhone najprv pridajte aplikáciu na plochu: Zdieľať → Pridať na plochu. Potom ju otvorte z plochy a upozornenia zapnite.',
+  pushDenied: 'Upozornenia sú v prehliadači zablokované. Povoľte ich v nastaveniach prehliadača pre túto stránku.',
+  pushError: 'Nastavenie upozornení sa nepodarilo zmeniť.',
 };
 
 export const dictionaries = { cs, sk };

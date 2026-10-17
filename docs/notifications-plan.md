@@ -1,4 +1,11 @@
-# Notifications plan (not built yet)
+# Notifications plan
+
+Built so far: Web Push end to end for manual test sends. The patient turns notifications on in the PWA home screen
+(card „Upozornění“); the clinician sends a test notification from https://lekar.nastasiya.com/#/test-notifikace;
+a tap opens `/checkin` (or `/navigator`) for that patient. Code: `backend/app/services/push.py`,
+`backend/app/api/push.py`, `apps/patient-pwa/public/push-sw.js`, `apps/patient-pwa/src/push.ts`,
+`apps/doctor-web/src/pages/PushTest.tsx`. Subscriptions live in `backend/cache/push/subscriptions.json`.
+Not built yet: the scheduler, automatic triggers, e-mail/SMS, settings and the FHIR audit trail below.
 
 Goal: the patient gets a notification on the phone or by e-mail, taps it, and the app opens on the right screen.
 The clinician gets red alerts even when the Fronta tab is closed.

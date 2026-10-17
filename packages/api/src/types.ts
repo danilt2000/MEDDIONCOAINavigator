@@ -333,3 +333,30 @@ export interface EvalReport {
   confusion: number[][];
   errors: Record<string, unknown>[];
 }
+
+export type PushKind = 'checkin' | 'team';
+
+export interface PushDevice {
+  id: string;
+  patient_id: string;
+  service: string;
+  label: string;
+  subscribed_at: string;
+  last_sent_at: string | null;
+  last_status: string | null;
+}
+
+export interface PushTemplate {
+  kind: PushKind;
+  title: string;
+  body: string;
+  url: string;
+}
+
+export interface PushSendResult {
+  sent: number;
+  failed: number;
+  removed: number;
+  notification: PushTemplate;
+  results: { device_id: string; ok: boolean; status: number | null; error: string | null }[];
+}

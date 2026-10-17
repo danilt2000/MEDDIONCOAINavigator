@@ -8,6 +8,7 @@ import { DayPage, RegimenPage } from './pages/Day';
 import { MonitoringPage } from './pages/Monitoring';
 import { PatientDetailPage } from './pages/PatientDetail';
 import { PatientsPage } from './pages/Patients';
+import { PushTestPage } from './pages/PushTest';
 import { QueuePage } from './pages/Queue';
 import { RulesPage } from './pages/Rules';
 import { SymptomPage } from './pages/Symptom';
@@ -26,6 +27,7 @@ const router = createHashRouter([
       { path: 'pacienti/:id', element: <PatientDetailPage /> },
       { path: 'monitoring/lecba/:regimen', element: <RegimenPage /> },
       { path: 'pravidla', element: <RulesPage /> },
+      { path: 'test-notifikace', element: <PushTestPage /> },
       { path: '*', element: <Navigate to="/fronta" replace /> },
     ],
   },

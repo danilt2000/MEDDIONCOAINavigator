@@ -9,4 +9,5 @@ fastmcp
 pyyaml
 python-dotenv
 tzdata
+pywebpush
 pytest
