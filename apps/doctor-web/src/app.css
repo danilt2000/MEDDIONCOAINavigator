@@ -115,6 +115,11 @@ a {
   margin-left: auto;
   --md-filled-button-container-color: var(--triage-4-on-strong);
   --md-filled-button-label-text-color: var(--triage-4-strong);
+  --md-filled-button-hover-label-text-color: var(--triage-4-strong);
+  --md-filled-button-focus-label-text-color: var(--triage-4-strong);
+  --md-filled-button-pressed-label-text-color: var(--triage-4-strong);
+  --md-filled-button-hover-state-layer-color: var(--triage-4-strong);
+  --md-filled-button-pressed-state-layer-color: var(--triage-4-strong);
 }
 
 .sla-pill {
