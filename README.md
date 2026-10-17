@@ -15,25 +15,34 @@
 
 **[Patient app ↗](https://pacient.nastasiya.com/?patient=ONC-001)** ·
 **[Clinician web ↗](https://lekar.nastasiya.com/#/fronta)** ·
+**[Push test ↗](https://lekar.nastasiya.com/#/test-notifikace?patient=ONC-001)** ·
 [Spec](docs/spec.md) · [Architecture](docs/architecture.md) · [InterSystems](docs/intersystems.md)
 
-<table>
-  <tr>
-    <td width="24%" align="center" valign="top">
-      <img src="docs/screenshots/patient-result-red.png" alt="Patient app: red result card asking to call 155 or the on-duty doctor now">
-      <br><sub><b>Patient, 21:52.</b> Fever 38.4 °C in nadir after AC → red: call 155 or the on-duty doctor now.</sub>
-    </td>
-    <td align="center" valign="top">
-      <img src="docs/screenshots/doctor-queue.png" alt="Clinician web: queue with a red task for Jana K., SLA countdown and a 30-second summary">
-      <br><sub><b>Monitoring centre, the same check-in.</b> Red banner and a task for the on-duty doctor: 10:01 min left of the 15-minute SLA to take it over, 30-second summary.</sub>
-    </td>
-  </tr>
-</table>
+<img src="docs/screenshots/hero.png" width="100%" alt="One check-in, two screens: the patient app shows a red card asking to call 155 or the on-duty doctor now; the clinician web shows the red task for Jana K. with a 15-minute SLA countdown and the 30-second summary">
+
+<sub>Jana K., AC cycle 1 day 10 (nadir), reports 38.4 °C and chills at 22:20 → the patient gets one clear step, the on-duty
+doctor gets the task with the SLA countdown and a 30-second summary.</sub>
 
 </div>
 
-Oncology patient navigator for [Rakathon 2026](https://www.rakathon.cz/eng) and the
-[InterSystems challenge](https://developer.intersystems.com/intersystems-challenge-at-rakathon-2026/).
+## The challenge
+
+Our entry for **5. MEDDI ONCO Challenge** (set by MEDDI Hub) at [Rakathon 2026](https://www.rakathon.cz/eng), also
+submitted to the [InterSystems challenge](https://developer.intersystems.com/intersystems-challenge-at-rakathon-2026/).
+The brief: an AI navigator that supports an oncology patient also *between* check-ups. It keeps following the
+symptoms, recognises risky changes and recommends a safe next step; when the patient gets worse, it alerts the care
+team in time and gives the doctor a short, clear overview of how the patient's condition developed.
+
+| The brief asks for | What the navigator does | See |
+|---|---|---|
+| Support between check-ups | Patient PWA: a check-in tailored to the treatment, navigator chat in Czech and Slovak, caregiver mode, history | [Patient PWA](#patient-pwa) |
+| Keep following the symptoms | Every check-in and chat message is read with the earlier days: trends, the patient's own baselines, missed check-ins | [Monitoring](#clinician-web) |
+| Recognise risky changes | 49 deterministic rules, treatment context (nadir, drug classes), contradictions between the form and the free text | [Triage rules](#triage-rules) |
+| Recommend a safe next step | One of four levels with one step and the right phone numbers; validated texts, no diagnosis, no dose changes | [Red card](#patient-pwa) |
+| Alert the team in time | A task in the monitoring-centre queue with an SLA timer (15 min for red), routed by working hours; the alert also goes through the IRIS production | [Queue](#clinician-web) |
+| A short overview for the doctor | A 30-second summary: why now, treatment, trend, labs, what the patient does not report | [Queue](#clinician-web) |
+
+## How it works
 
 Between visits, a patient on cancer treatment (or a relative) fills in the MEDDI Onco check-in or writes to the
 navigator chat. The system reads the answers *together* with the treatment, the trend of earlier days and the
@@ -54,12 +63,29 @@ Safety rules, enforced in code: the patient is never told a diagnosis, doses are
 
 Working hours of the monitoring centre: Mon–Fri 07:00–15:30, Europe/Prague.
 
-## What it looks like
+## Live demo
 
-Live demo with synthetic data: [pacient.nastasiya.com](https://pacient.nastasiya.com/?patient=ONC-001) (open it at
-phone width; the *DEMO* bar on top switches the patient) and
-[lekar.nastasiya.com](https://lekar.nastasiya.com/#/fronta) (desktop, 1024 px and wider). The demo clock starts on
-Wed 9 Sep 2026 21:50, out of working hours, so new tasks go to the on-duty doctor.
+Synthetic data only. The demo clock starts on Wed 9 Sep 2026 21:50, out of working hours, so new tasks go to the
+on-duty doctor; a restart of the API resets the demo state.
+
+| | Link | What to try |
+|---|---|---|
+| **Patient app** | [pacient.nastasiya.com](https://pacient.nastasiya.com/?patient=ONC-001) | Open it at phone width (or install it); the *DEMO* bar on top switches the patient |
+| | [`?patient=ONC-001`](https://pacient.nastasiya.com/?patient=ONC-001) | Jana K., AC cycle 1 day 10 (nadir): *Vyplnit dotazník*, tick fever and fatigue, 38,4 → red |
+| | [`?patient=ONC-018`](https://pacient.nastasiya.com/?patient=ONC-018) | Štefan Ď., Slovak: only *Únava*, message „od vcera mam hnacku asi 6 krat, slaby som“ → orange with a follow-up |
+| | [`/navigator?patient=ONC-014`](https://pacient.nastasiya.com/navigator?patient=ONC-014) | Ludmila T., palliative care: *Píšu za blízkou osobu* → „Můžu mamince dát další Oramorph?“ |
+| **Clinician web** | [lekar.nastasiya.com](https://lekar.nastasiya.com/#/fronta) | Desktop browser |
+| | [`#/fronta`](https://lekar.nastasiya.com/#/fronta) | Queue: level, SLA countdown, task actions, 30-second summary |
+| | [`#/monitoring`](https://lekar.nastasiya.com/#/monitoring) | Alerts and check-ins over time, by treatment and by symptom |
+| | [`#/monitoring/lecba/sunitinib…`](https://lekar.nastasiya.com/#/monitoring/lecba/sunitinib%2050%20mg%201%C3%97%20denn%C4%9B) | Every alert on sunitinib, why it fired and what the team did |
+| | [`#/pacienti`](https://lekar.nastasiya.com/#/pacienti) | Patients sorted by the last level |
+| | [`#/pacienti/ONC-001`](https://lekar.nastasiya.com/#/pacienti/ONC-001) | Patient detail: regimen, tags, vitals trends, timeline |
+| | [`#/pravidla`](https://lekar.nastasiya.com/#/pravidla) | Routing by working hours, SLA and the rules |
+| | [`#/test-notifikace?patient=ONC-001`](https://lekar.nastasiya.com/#/test-notifikace?patient=ONC-001) | Web Push test: turn notifications on in the patient app on a real phone, send a test notification from here, a tap opens the check-in |
+| **API** | [`/api/health`](https://lekar.nastasiya.com/api/health) | Status of IRIS, FHIR, the LLM and the MCP server |
+| | [`/mock/meddi/requests`](https://lekar.nastasiya.com/mock/meddi/requests) | Alerts that the IRIS production forwarded to the proposed MEDDI endpoint |
+
+## What it looks like
 
 ### Patient PWA
 
@@ -96,28 +122,30 @@ Wed 9 Sep 2026 21:50, out of working hours, so new tasks go to the on-duty docto
 
 ### Clinician web
 
-<table>
-  <tr>
-    <td width="50%" align="center" valign="top">
-      <img src="docs/screenshots/doctor-monitoring.png" alt="Monitoring: alert and check-in charts over one range strip, alerts by treatment">
-      <br><sub><b>Monitoring.</b> Alerts and check-ins share one range strip; click a day, a treatment or a symptom.</sub>
-    </td>
-    <td width="50%" align="center" valign="top">
-      <img src="docs/screenshots/doctor-patient.png" alt="Patient detail: diagnosis, regimen, nadir and cardiotoxic tags, vitals charts and timeline">
-      <br><sub><b>Patient detail.</b> Regimen and cycle day, nadir and drug-class tags, vitals trends, a timeline in the patient's own words.</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top">
-      <img src="docs/screenshots/doctor-regimen.png" alt="All alerts on sunitinib with the reason and what the team did">
-      <br><sub><b>Drill-down by treatment.</b> Every alert on sunitinib: why it fired and what the team did.</sub>
-    </td>
-    <td align="center" valign="top">
-      <img src="docs/screenshots/doctor-rules.png" alt="Rules page: routing by working hours, SLA and the rule list">
-      <br><sub><b>Rules.</b> Routing by working hours and SLA; the engine sets the level, AI never does.</sub>
-    </td>
-  </tr>
-</table>
+<img src="docs/screenshots/doctor-queue.png" width="100%" alt="Queue: red task for Jana K. on top with the SLA countdown, orange and yellow tasks below, the task detail with actions and the 30-second summary">
+
+<sub><b>Queue.</b> Sorted by level, then SLA; the red banner stays on every page until someone takes the task over.</sub>
+
+<img src="docs/screenshots/doctor-patient.png" width="100%" alt="Patient detail: diagnosis, regimen, nadir and cardiotoxic tags, vitals charts and timeline">
+
+<sub><b>Patient detail.</b> Regimen and cycle day, nadir and drug-class tags, vitals trends, a timeline in the patient's own words.</sub>
+
+<img src="docs/screenshots/doctor-monitoring.png" width="100%" alt="Monitoring: alert and check-in charts over one range strip, alerts by treatment">
+
+<sub><b>Monitoring.</b> Alerts and check-ins share one range strip; click a day, a treatment or a symptom.</sub>
+
+<details>
+<summary><b>More: drill-down by treatment, rules</b></summary>
+
+<img src="docs/screenshots/doctor-regimen.png" width="100%" alt="All alerts on sunitinib with the reason and what the team did">
+
+<sub><b>Drill-down by treatment.</b> Every alert on sunitinib: why it fired and what the team did.</sub>
+
+<img src="docs/screenshots/doctor-rules.png" width="100%" alt="Rules page: routing by working hours, SLA and the rule list">
+
+<sub><b>Rules.</b> Routing by working hours and SLA; the engine sets the level, AI never does.</sub>
+
+</details>
 
 ### How a check-in is triaged
 
