@@ -91,9 +91,13 @@ monitoring centre). A restart of the API resets the clock and the demo state.
 | | [`#/pacienti`](https://lekar.nastasiya.com/#/pacienti) | Patients sorted by the last level |
 | | [`#/pacienti/ONC-001`](https://lekar.nastasiya.com/#/pacienti/ONC-001) | Patient detail: regimen, tags, vitals trends, timeline |
 | | [`#/pravidla`](https://lekar.nastasiya.com/#/pravidla) | Routing by working hours, SLA and the rules |
-| | [`#/test-notifikace?patient=ONC-001`](https://lekar.nastasiya.com/#/test-notifikace?patient=ONC-001) | Web Push test: on a real phone open the patient app with ONC-001 in the *DEMO* bar (iPhone: add it to the home screen first), *Nastavení* → *Zapnout upozornění*; then send a test notification from here, a tap opens the check-in |
+| | [`#/notifikace?patient=ONC-001`](https://lekar.nastasiya.com/#/notifikace?patient=ONC-001) | Web Push test: on a real phone open the patient app with ONC-001 in the *DEMO* bar (iPhone: add it to the home screen first), *Nastavení* → *Zapnout upozornění*; then send a test notification from here, a tap opens the check-in (`#/test-notifikace` redirects here) |
+| | [`#/notifikace/pravidla`](https://lekar.nastasiya.com/#/notifikace/pravidla) | Notification rules on the demo clock: daily reminder, missed check-in, message from the team, follow-up question, quiet hours; [`#/notifikace/historie`](https://lekar.nastasiya.com/#/notifikace/historie) lists what was sent or skipped |
+| | [`#/iris`](https://lekar.nastasiya.com/#/iris) | Read-only IRIS view (not in the menu): overview, [SQL](https://lekar.nastasiya.com/#/iris/sql) with prepared queries, [FHIR](https://lekar.nastasiya.com/#/iris/fhir) resources as JSON, [production](https://lekar.nastasiya.com/#/iris/produkce) message traces |
 | **API** | [`/api/health`](https://lekar.nastasiya.com/api/health) | Status of IRIS, FHIR, the LLM and the MCP server |
 | | [`/mock/meddi/requests`](https://lekar.nastasiya.com/mock/meddi/requests) | Alerts (levels 2–4) that the IRIS production forwarded to the proposed MEDDI endpoint; empty after a restart until a new check-in or chat message reaches yellow or higher |
+| **IRIS** | [`/fhir/r4/metadata`](https://lekar.nastasiya.com/fhir/r4/metadata) | FHIR R4 CapabilityStatement of the IRIS FHIR server |
+| | [Management Portal](https://lekar.nastasiya.com/csp/sys/UtilHome.csp) | Needs an IRIS login; from there the [SQL explorer](https://lekar.nastasiya.com/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=FHIRSERVER), [FHIR management](https://lekar.nastasiya.com/csp/fhir-management/index.html), [production](https://lekar.nastasiya.com/csp/healthshare/fhirserver/EnsPortal.ProductionConfig.zen) and [message viewer](https://lekar.nastasiya.com/csp/healthshare/fhirserver/EnsPortal.MessageViewer.zen) |
 
 ## Repository
 

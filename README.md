@@ -52,8 +52,25 @@ and opens full screen like any other app, with no app store needed.
 |---|---|---|
 | Open [pacient.nastasiya.com](https://pacient.nastasiya.com/) in **Safari**, tap **Share**, then **Add to Home Screen** | Open the link in **Chrome**, tap the menu **⋮**, then **Install app** or **Add to Home screen** | In **Chrome** or **Edge**, click the install icon in the address bar |
 
-On a phone the app is one clear column; on a tablet it fills the whole screen. Reminders on iPhone and iPad work in
-the installed app (iOS 16.4 or newer). The clinician web is made for computers and also opens on tablets and phones.
+On a phone the app is one clear column; on a tablet it fills the whole screen. The clinician web is made for
+computers and also opens on tablets and phones.
+
+## Reminders on the phone
+
+<img src="docs/screenshots/notifications.png" width="100%" alt="Left: the notification rules in the clinician web. Right: a locked phone showing two MEDDI notifications, a check-in reminder and a message from the team">
+
+The care team decides when patients get a reminder. The patient sees it even on a locked phone, and a tap opens the
+right screen.
+
+- **Daily reminder** at a set time for everyone who has not filled in today's check-in.
+- **Missed check-in** after a few days without one; a day earlier for high-risk patients.
+- **Message from the team** right after the team calls, holds a video consultation or closes the task.
+- **Follow-up question** when the navigator needs one more answer.
+
+The texts never contain health data, because they show on the lock screen. The patient turns reminders on in the app
+under *Nastavení* → *Zapnout upozornění*; on iPhone and iPad this works in the app added to the home screen
+(iOS 16.4 or newer). The team sets the rules and can send a test reminder in
+[Notifikace ↗](https://lekar.nastasiya.com/#/notifikace).
 
 ## What it looks like
 
@@ -131,11 +148,22 @@ expected by the organisers.
 
 The full numbers are in the [technical documentation](docs/README.md#metrics).
 
-## Under the hood
+## InterSystems IRIS for Health
 
-Health data is stored in **InterSystems IRIS for Health** in the healthcare standard **FHIR**, so the navigator can
-connect to existing hospital systems, and alerts go out through a proposed interface for MEDDI. How it is built, how to run it and
-every rule: [technical documentation](docs/README.md).
+<img src="docs/screenshots/demo-iris.gif" width="100%" alt="Recording: the IRIS tab in the clinician web with the FHIRSERVER namespace, almost 7,000 FHIR resources and the running production, a SQL query over FHIR data, a FHIR Task resource and the production trace of an alert">
+
+<sub><b>Live from the demo server.</b> The storage overview, a SQL query that reads Hana's weight straight from FHIR,
+a triage task stored as a FHIR resource, and the same alert travelling through the IRIS production toward MEDDI.</sub>
+
+Everything the navigator works with is stored in **InterSystems IRIS for Health** in the healthcare standard
+**FHIR**: patients, check-ins, triage results, tasks and alerts. Trends are read with SQL straight over the FHIR data,
+the chat looks up guidance with IRIS Vector Search, and every alert also goes through an IRIS production toward MEDDI.
+That is what lets the navigator connect to existing hospital systems.
+
+See it live, no login needed: [overview ↗](https://lekar.nastasiya.com/#/iris) ·
+[SQL ↗](https://lekar.nastasiya.com/#/iris/sql) · [FHIR resources ↗](https://lekar.nastasiya.com/#/iris/fhir) ·
+[production traces ↗](https://lekar.nastasiya.com/#/iris/produkce) · [FHIR API ↗](https://lekar.nastasiya.com/fhir/r4/metadata).
+How it is built, how to run it and every rule: [technical documentation](docs/README.md).
 
 > [!NOTE]
 > This is a hackathon prototype with made-up data. It is not a medical device. If you feel unwell, call your doctor
