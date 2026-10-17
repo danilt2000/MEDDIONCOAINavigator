@@ -120,7 +120,7 @@ def record_checkin(checkin_id, when, message, vitals=None):
 def contradiction_checkin(monkeypatch, vitals=None):
     output = record_checkin("ONC-018-T02", at(2026, 9, 11, 9, 0), "od vcera mam hnacku asi 6 krat", vitals)
     assert output.uroven == (4 if vitals else 3) and "C-CONTRADICTION" in output.pravidla
-    navigator.clear_history("ONC-018")
+    navigator.hide_history("ONC-018")
 
     def say(text, minute):
         when = at(2026, 9, 11, 9, minute)

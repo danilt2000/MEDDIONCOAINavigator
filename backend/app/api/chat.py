@@ -32,11 +32,11 @@ def list_messages(patient_id: str) -> list[dict]:
     return navigator.history(patient_id)
 
 
-@router.delete("/chat/{patient_id}/messages")
-def clear_messages(patient_id: str) -> list[dict]:
+@router.post("/chat/{patient_id}/hide")
+def hide_messages(patient_id: str) -> list[dict]:
     _check_patient(patient_id)
-    navigator.clear_history(patient_id)
-    return []
+    navigator.hide_history(patient_id)
+    return navigator.history(patient_id)
 
 
 @router.post("/chat/{patient_id}/messages")

@@ -283,12 +283,36 @@ def test_reply_is_checked_against_the_level_the_llm_escalated_to(quiet_store, mo
     assert reply.reply_text == "Volejte ihned 155. Nečekejte do rána."
 
 
-def test_clearing_the_chat_keeps_the_team_task(quiet_store):
+def test_hiding_the_chat_keeps_the_team_task(quiet_store):
     first = run("ONC-018", "od vcera mam hnacku", at=WEDNESDAY_NIGHT)
     assert first.followup_question and quiet_store.open_task("ONC-018") is not None
-    navigator.clear_history("ONC-018")
+    navigator.hide_history("ONC-018")
     assert navigator.history("ONC-018") == [] and "ONC-018" not in navigator._pending
     assert quiet_store.open_task("ONC-018") is not None
+
+
+def test_hidden_chat_leaves_the_llm_context_but_stays_in_the_team_timeline(quiet_store, monkeypatch):
+    from app.services.history import timeline
+
+    contexts = []
+
+    async def answer(patient_id, lang, author, payload, history, feedback, cites):
+        contexts.append([message["text"] for message in history])
+        return None
+
+    monkeypatch.setattr(navigator, "_llm_answer", answer)
+    run("ONC-005", "Mám trochu sucho v puse.")
+    run("ONC-005", "A ještě mě pálí žáha.")
+    assert "Mám trochu sucho v puse." in contexts[-1]
+    hidden = [message["id"] for message in navigator.history("ONC-005")]
+    navigator.hide_history("ONC-005")
+    assert navigator.history("ONC-005") == []
+    run("ONC-005", "Jak dlouho to vydrží?")
+    assert contexts[-1] == []
+    visible = navigator.history("ONC-005")
+    assert [message["role"] for message in visible] == ["user", "navigator"] and visible[0]["text"] == "Jak dlouho to vydrží?"
+    team = timeline(quiet_store.with_live_events(load_patient("ONC-005")), quiet_store.get_now())
+    assert {*hidden, *(message["id"] for message in visible)} <= {item["ref"] for item in team if item["kind"] == "chat"}
 
 
 def test_fever_of_41_outside_chemo_is_red_without_the_paralen_ban(quiet_store):

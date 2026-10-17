@@ -43,6 +43,7 @@ def _empty_state(now: datetime, dataset: str, generation: int) -> dict:
         "live": {},
         "tasks": {},
         "chat": {},
+        "chat_hidden": {},
         "summaries": {},
         "nlu": {},
         "accepted_at": {},
@@ -249,10 +250,18 @@ def list_chat(patient_id: str) -> list[dict]:
         return list(_state["chat"].get(patient_id, []))
 
 
-def clear_chat(patient_id: str) -> None:
+def hide_chat(patient_id: str) -> None:
+    """Starts a new patient conversation: the messages so far stay in list_chat for the team, visible_chat skips them."""
     _ensure_started()
     with _lock:
-        _state["chat"].pop(patient_id, None)
+        _state["chat_hidden"][patient_id] = len(_state["chat"].get(patient_id, []))
+
+
+def visible_chat(patient_id: str) -> list[dict]:
+    """The patient's current conversation: the messages after the last hide_chat."""
+    _ensure_started()
+    with _lock:
+        return list(_state["chat"].get(patient_id, [])[_state["chat_hidden"].get(patient_id, 0):])
 
 
 def set_summary(summary: DoctorSummary) -> None:

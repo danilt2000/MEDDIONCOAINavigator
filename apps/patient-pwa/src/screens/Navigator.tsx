@@ -1,7 +1,7 @@
-import deleteIcon from '@material-symbols/svg-400/outlined/delete.svg?raw';
 import micIcon from '@material-symbols/svg-400/outlined/mic.svg?raw';
 import sendIcon from '@material-symbols/svg-400/outlined/send.svg?raw';
 import stopIcon from '@material-symbols/svg-400/outlined/stop.svg?raw';
+import visibilityOffIcon from '@material-symbols/svg-400/outlined/visibility_off.svg?raw';
 import volumeOffIcon from '@material-symbols/svg-400/outlined/volume_off.svg?raw';
 import volumeUpIcon from '@material-symbols/svg-400/outlined/volume_up.svg?raw';
 import { api, postSse, type ChatMessage, type LevelCard, type NavigatorReply } from '@navigator/api';
@@ -108,7 +108,7 @@ export function Navigator() {
   const intro = routeState?.patientId === patientId ? routeState.intro : undefined;
   const historyPath = `/api/chat/${patientId}/messages`;
   const history = useApi<ChatMessage[]>(historyPath);
-  const [clearing, setClearing] = useState(false);
+  const [hiding, setHiding] = useState(false);
   const [local, setLocal] = useState<UiMessage[]>(() =>
     followup
       ? [{ id: 'followup', role: 'navigator', text: followup, followup_question: followup }]
@@ -206,9 +206,9 @@ export function Navigator() {
     }
   }
 
-  async function clearChat() {
-    setClearing(false);
-    await api.delete(historyPath);
+  async function hideChat() {
+    setHiding(false);
+    await api.post(`/api/chat/${patientId}/hide`);
     store.set(`cache:${historyPath}`, []);
     setLocal([]);
     history.reload();
@@ -285,8 +285,8 @@ export function Navigator() {
               </IconButton>
             )}
             {hasUserMessages && (
-              <IconButton aria-label={t.clearChat} title={t.clearChat} disabled={busy} onClick={() => setClearing(true)}>
-                <SvgIcon svg={deleteIcon} />
+              <IconButton aria-label={t.hideChat} title={t.hideChat} disabled={busy} onClick={() => setHiding(true)}>
+                <SvgIcon svg={visibilityOffIcon} />
               </IconButton>
             )}
           </span>
@@ -302,12 +302,12 @@ export function Navigator() {
         </ChipSet>
       </header>
 
-      <Dialog open={clearing} onClosed={() => setClearing(false)}>
-        <div slot="headline">{t.clearChat}</div>
-        <div slot="content">{t.clearChatText}</div>
+      <Dialog open={hiding} onClosed={() => setHiding(false)}>
+        <div slot="headline">{t.hideChat}</div>
+        <div slot="content">{t.hideChatText}</div>
         <div slot="actions">
-          <TextButton onClick={() => setClearing(false)}>{t.cancel}</TextButton>
-          <FilledButton onClick={() => void clearChat()}>{t.clear}</FilledButton>
+          <TextButton onClick={() => setHiding(false)}>{t.cancel}</TextButton>
+          <FilledButton onClick={() => void hideChat()}>{t.hide}</FilledButton>
         </div>
       </Dialog>
 
