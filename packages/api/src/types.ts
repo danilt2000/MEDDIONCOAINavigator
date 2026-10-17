@@ -404,6 +404,8 @@ export interface NotificationLogEntry {
   device: string | null;
   result: NotificationResult;
   detail: string | null;
+}
+
 export interface IrisOverview {
   namespace: string;
   version: string;

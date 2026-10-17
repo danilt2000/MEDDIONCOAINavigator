@@ -85,7 +85,7 @@ export function IrisPage() {
           <p className="muted">Pohled do úložiště, se kterým demo pracuje. Jen pro čtení: server spouští pouze předem připravené dotazy.</p>
         </div>
       </div>
-      <nav className="subtabs" aria-label="Části IRIS">
+      <nav className="iris-tabs" aria-label="Části IRIS">
         {TABS.map(([path, label]) => (
           <NavLink key={path} to={`/iris/${path}`}>
             {label}
