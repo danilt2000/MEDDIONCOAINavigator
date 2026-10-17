@@ -66,7 +66,7 @@ type TipProps = { active?: boolean; payload?: readonly { value?: unknown; dataKe
 const alertTip = ({ active, payload, label }: TipProps) =>
   active && payload?.length ? (
     <div className="chart-tip">
-      {fmtDay(String(label))} · <strong>{String(payload[0].value)}</strong> upozornění
+      {fmtDay(String(label))} · <strong>{String(payload[0].value)}</strong> vyhodnocení se stupněm 2–4
     </div>
   ) : null;
 
@@ -92,7 +92,7 @@ function ActivityCard({ rows, onOpenDay }: { rows: DailyStat[]; onOpenDay: (stat
       <div className="row space">
         <h2 className="section-title row gap-4">
           <SvgIcon svg={warningIcon} className="alert-title-icon" />
-          Upozornění (stupeň 2–4)
+          Vyhodnocení se stupněm 2–4
         </h2>
         <span className="muted">
           celkem <strong>{visible.reduce((sum, row) => sum + row.alerts, 0)}</strong>
@@ -151,7 +151,10 @@ function ActivityCard({ rows, onOpenDay }: { rows: DailyStat[]; onOpenDay: (stat
         <span>{fmtDay(visible[0].date)}</span>
         <span>{fmtDay(visible[visible.length - 1].date)}</span>
       </p>
-      <p className="muted small">Kliknutím do grafu uvidíte pacienty se stupněm 2 a výš v daný den. Posuvníkem dole zúžíte období.</p>
+      <p className="muted small">
+        Graf počítá každé vyhodnocení, i opakovaný check-in nebo zprávu v chatu. Kliknutím do grafu uvidíte pacienty se stupněm 2 a
+        výš v daný den, každého jednou s nejvyšším stupněm. Posuvníkem dole zúžíte období.
+      </p>
     </OutlinedCard>
   );
 }
@@ -177,6 +180,13 @@ function SymptomTable({ source, onOpen }: { source: Loadable<SymptomStat[]>; onO
           const visible = rows
             .filter((row) => row.symptom.toLowerCase().includes(query.trim().toLowerCase()))
             .sort((left, right) => right.alerts - left.alerts || right.reports - left.reports);
+          if (!visible.length) {
+            return (
+              <div className="state" role="status">
+                Žádný příznak neodpovídá hledání „{query.trim()}“.
+              </div>
+            );
+          }
           return (
             <table className="table symptom-table">
               <thead>

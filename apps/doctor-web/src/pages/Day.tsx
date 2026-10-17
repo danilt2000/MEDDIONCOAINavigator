@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
 import { useShell } from '../App';
 import { Breadcrumbs, Kpi, Load, useTrailState } from '../components';
 import { chevronLeftIcon, chevronRightIcon } from '../icons';
-import { addDays, fmtDay, fmtTime, shortRegimen, TASK_STATUS, useApi } from '../lib';
+import { addDays, fmtDay, fmtTime, fmtTimeOrDayTime, isIsoDay, shortRegimen, TASK_STATUS, useApi } from '../lib';
 import { byLevelThenSla, OutOfHoursBadge } from './Queue';
 
 const MONITORING = [{ label: 'Monitoring', to: '/monitoring' }];
@@ -12,8 +12,20 @@ const MONITORING = [{ label: 'Monitoring', to: '/monitoring' }];
 export function DayPage() {
   const { date = '' } = useParams();
   const navigate = useNavigate();
-  const rows = useApi<QueueItem[]>(`/api/stats/day/${date}`);
-  const linkState = useTrailState(MONITORING, fmtDay(date));
+  const valid = isIsoDay(date);
+  const rows = useApi<QueueItem[]>(valid ? `/api/stats/day/${date}` : null);
+  const linkState = useTrailState(MONITORING, valid ? fmtDay(date) : date);
+
+  if (!valid) {
+    return (
+      <div className="page">
+        <Breadcrumbs fallback={MONITORING} current={date} />
+        <div className="state state-error" role="status">
+          Neplatné datum „{date}“. Den vyberte v grafu na stránce Monitoring.
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="page">
@@ -102,7 +114,7 @@ function AlertList({ items, showDay = false, linkState }: { items: QueueItem[]; 
               <ol className="steps">
                 {item.notes.map((note, index) => (
                   <li key={index}>
-                    <span className="step-time">{fmtTime(note.at)}</span>
+                    <span className="step-time">{fmtTimeOrDayTime(note.at, item.created)}</span>
                     <span>
                       {note.text} <span className="muted">· {note.author}</span>
                     </span>
