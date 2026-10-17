@@ -18,6 +18,25 @@
 | [notifications-plan.md](notifications-plan.md) | Web Push: what is built and what is next |
 | [deploy.md](deploy.md) | Server deployment of the live demo |
 
+## The challenge
+
+Our entry for the **MEDDI ONCO Challenge** (challenge 5 of the Prague track, set by MEDDI Hub) at
+[Rakathon 2026](https://www.rakathon.cz/#rv-praha), also submitted to the
+[InterSystems challenge](https://developer.intersystems.com/intersystems-challenge-at-rakathon-2026/).
+
+> An AI navigator that supports an oncology patient also *between* check-ups. It keeps following the symptoms,
+> recognises risky changes and recommends a safe next step. When the patient gets worse, it alerts the care team in
+> time and gives the doctor a short, clear overview of how the patient's condition developed.
+
+| The brief asks for | What the navigator does |
+|---|---|
+| Support between check-ups | Patient PWA: a check-in tailored to the treatment, navigator chat in Czech and Slovak with an optional voice mode, caregiver mode, history |
+| Keep following the symptoms | Every check-in and chat message is read with the earlier days: trends, the patient's own baselines, missed check-ins |
+| Recognise risky changes | 49 deterministic rules, treatment context (nadir, drug classes), contradictions between the form and the free text ([rules](#triage-rules)) |
+| Recommend a safe next step | One of four levels with one step and the right phone numbers; validated texts, no diagnosis, no dose changes |
+| Alert the team in time | A task in the clinician queue with an SLA timer (15 min for red), owned by the monitoring centre in working hours and by the on-duty doctor out of hours; the alert also goes through the IRIS production |
+| A short overview for the doctor | A 30-second summary: why now, treatment, trend, labs, what the patient does not report |
+
 ## Triage levels and safety rules
 
 A check-in or chat message is read *together* with the treatment, the trend of earlier days and the patient's free
