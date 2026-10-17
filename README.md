@@ -6,7 +6,7 @@
 
 **One check-in between oncology visits: the patient learns what to do next, the right clinician learns how fast.**
 
-[![Rakathon 2026](https://img.shields.io/badge/Rakathon-2026-0E6B5C)](https://www.rakathon.cz/eng)
+[![Rakathon 2026](https://img.shields.io/badge/Rakathon-2026-0E6B5C)](https://www.rakathon.cz/#rv-praha)
 [![InterSystems IRIS for Health](https://img.shields.io/badge/InterSystems-IRIS%20for%20Health-333695)](docs/intersystems.md)
 [![FHIR R4](https://img.shields.io/badge/HL7%20FHIR-R4-E44D26)](docs/fhir-mapping.md)
 [![Red recall](https://img.shields.io/badge/red%20recall-100%25-B3261E)](#metrics)
@@ -27,7 +27,8 @@ doctor gets the task with the SLA countdown and a 30-second summary.</sub>
 
 ## The challenge
 
-Our entry for **5. MEDDI ONCO Challenge** (set by MEDDI Hub) at [Rakathon 2026](https://www.rakathon.cz/eng), also
+Our entry for the **MEDDI ONCO Challenge** (challenge 5 of the Prague track, set by MEDDI Hub) at
+[Rakathon 2026](https://www.rakathon.cz/#rv-praha), also
 submitted to the [InterSystems challenge](https://developer.intersystems.com/intersystems-challenge-at-rakathon-2026/).
 The brief: an AI navigator that supports an oncology patient also *between* check-ups. It keeps following the
 symptoms, recognises risky changes and recommends a safe next step; when the patient gets worse, it alerts the care
@@ -36,10 +37,10 @@ team in time and gives the doctor a short, clear overview of how the patient's c
 | The brief asks for | What the navigator does | See |
 |---|---|---|
 | Support between check-ups | Patient PWA: a check-in tailored to the treatment, navigator chat in Czech and Slovak, caregiver mode, history | [Patient PWA](#patient-pwa) |
-| Keep following the symptoms | Every check-in and chat message is read with the earlier days: trends, the patient's own baselines, missed check-ins | [Monitoring](#clinician-web) |
+| Keep following the symptoms | Every check-in and chat message is read with the earlier days: trends, the patient's own baselines, missed check-ins | [Triage flow](#how-a-check-in-is-triaged) |
 | Recognise risky changes | 49 deterministic rules, treatment context (nadir, drug classes), contradictions between the form and the free text | [Triage rules](#triage-rules) |
 | Recommend a safe next step | One of four levels with one step and the right phone numbers; validated texts, no diagnosis, no dose changes | [Red card](#patient-pwa) |
-| Alert the team in time | A task in the monitoring-centre queue with an SLA timer (15 min for red), routed by working hours; the alert also goes through the IRIS production | [Queue](#clinician-web) |
+| Alert the team in time | A task in the clinician queue with an SLA timer (15 min for red), owned by the monitoring centre in working hours and by the on-duty doctor out of hours; the alert also goes through the IRIS production | [Queue](#clinician-web) |
 | A short overview for the doctor | A 30-second summary: why now, treatment, trend, labs, what the patient does not report | [Queue](#clinician-web) |
 
 ## How it works
@@ -66,14 +67,15 @@ Working hours of the monitoring centre: Mon–Fri 07:00–15:30, Europe/Prague.
 ## Live demo
 
 Synthetic data only. The demo clock starts on Wed 9 Sep 2026 21:50, out of working hours, so new tasks go to the
-on-duty doctor; a restart of the API resets the demo state.
+on-duty doctor, and then runs in real time (after about 9 hours it reaches Thu 07:00 and new tasks go to the
+monitoring centre). A restart of the API resets the clock and the demo state.
 
 | | Link | What to try |
 |---|---|---|
 | **Patient app** | [pacient.nastasiya.com](https://pacient.nastasiya.com/?patient=ONC-001) | Open it at phone width (or install it); the *DEMO* bar on top switches the patient |
-| | [`?patient=ONC-001`](https://pacient.nastasiya.com/?patient=ONC-001) | Jana K., AC cycle 1 day 10 (nadir): *Vyplnit dotazník*, tick fever and fatigue, 38,4 → red |
-| | [`?patient=ONC-018`](https://pacient.nastasiya.com/?patient=ONC-018) | Štefan Ď., Slovak: only *Únava*, message „od vcera mam hnacku asi 6 krat, slaby som“ → orange with a follow-up |
-| | [`/navigator?patient=ONC-014`](https://pacient.nastasiya.com/navigator?patient=ONC-014) | Ludmila T., palliative care: *Píšu za blízkou osobu* → „Můžu mamince dát další Oramorph?“ |
+| | [`?patient=ONC-001`](https://pacient.nastasiya.com/?patient=ONC-001) | Jana K., AC cycle 1 day 10 (nadir): *Check-in* tab, tick *Zvýšená teplota a horečky* and *Únava a slabost*, then *Teplota* 38,4 on the *Naměřené hodnoty* step → red |
+| | [`?patient=ONC-018`](https://pacient.nastasiya.com/?patient=ONC-018) | Štefan Ď., Slovak: tick only *Únava a slabost*, message „od vcera mam hnacku asi 6 krat, slaby som“ → orange with a follow-up |
+| | [`/navigator?patient=ONC-014`](https://pacient.nastasiya.com/navigator?patient=ONC-014) | Ludmila T., palliative care, her daughter writes: the chat opens in caregiver mode (*Píšete za: maminka*, leave it on) → „Můžu mamince dát další Oramorph?“ |
 | **Clinician web** | [lekar.nastasiya.com](https://lekar.nastasiya.com/#/fronta) | Desktop browser |
 | | [`#/fronta`](https://lekar.nastasiya.com/#/fronta) | Queue: level, SLA countdown, task actions, 30-second summary |
 | | [`#/monitoring`](https://lekar.nastasiya.com/#/monitoring) | Alerts and check-ins over time, by treatment and by symptom |
@@ -83,7 +85,7 @@ on-duty doctor; a restart of the API resets the demo state.
 | | [`#/pravidla`](https://lekar.nastasiya.com/#/pravidla) | Routing by working hours, SLA and the rules |
 | | [`#/test-notifikace?patient=ONC-001`](https://lekar.nastasiya.com/#/test-notifikace?patient=ONC-001) | Web Push test: turn notifications on in the patient app on a real phone, send a test notification from here, a tap opens the check-in |
 | **API** | [`/api/health`](https://lekar.nastasiya.com/api/health) | Status of IRIS, FHIR, the LLM and the MCP server |
-| | [`/mock/meddi/requests`](https://lekar.nastasiya.com/mock/meddi/requests) | Alerts that the IRIS production forwarded to the proposed MEDDI endpoint |
+| | [`/mock/meddi/requests`](https://lekar.nastasiya.com/mock/meddi/requests) | Alerts (levels 2–4) that the IRIS production forwarded to the proposed MEDDI endpoint; empty after a restart until a new check-in or chat message reaches yellow or higher |
 
 ## What it looks like
 
@@ -126,9 +128,9 @@ on-duty doctor; a restart of the API resets the demo state.
 
 <sub><b>Queue.</b> Sorted by level, then SLA; the red banner stays on every page until someone takes the task over.</sub>
 
-<img src="docs/screenshots/doctor-patient.png" width="100%" alt="Patient detail: diagnosis, regimen, nadir and cardiotoxic tags, vitals charts and timeline">
+<img src="docs/screenshots/doctor-patient.png" width="100%" alt="Patient detail of Hana D. on trastuzumab: cardiotoxic tag, weight rising from 83.4 to 85.8 kg, blood pressure chart and a timeline with check-ins and a nurse note">
 
-<sub><b>Patient detail.</b> Regimen and cycle day, nadir and drug-class tags, vitals trends, a timeline in the patient's own words.</sub>
+<sub><b>Patient detail.</b> Hana D. on trastuzumab (cardiotoxic): weight 83.4 → 85.8 kg in 6 days, blood pressure, a timeline of check-ins and team notes.</sub>
 
 <img src="docs/screenshots/doctor-monitoring.png" width="100%" alt="Monitoring: alert and check-in charts over one range strip, alerts by treatment">
 
@@ -280,7 +282,7 @@ Before: `bash scripts/seed.sh --datasets dev,rozsirena --reset`, start API, MCP 
    with the follow-up „Píšete, že máte hnačku asi 6× za deň – je to tak?“ → *Odpovedať* → „Uz je to lepsie, dnes len
    3 krat“ → the navigator re-triages with the answer: yellow (Y-IRINOTECAN), next working day. The open orange task is
    not lowered automatically; a person closes it.
-5. **Caregiver guardrail.** PWA `?patient=ONC-014` → *Navigátor* → *Píšu za blízkou osobu* → „Můžu mamince dát další
+5. **Caregiver guardrail.** PWA `?patient=ONC-014` → *Navigátor* (opens in caregiver mode, *Píšete za: maminka*) → „Můžu mamince dát další
    Oramorph?“ → no permission, the prescription quoted verbatim („Morfin roztok (Oramorph) 10 mg, max 6× denně“),
    the 24h palliative team or hospice line, then 155, and the question how many doses were given; answer „Dostala už
    dvě dávky a bolest je pořád 8“ → orange (O-PAIN), on-duty doctor.
