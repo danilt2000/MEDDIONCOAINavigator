@@ -157,6 +157,13 @@ def test_stroke_signs_are_red(text, lang):
     assert navigator.lexicon_level(text, ctx, lang)[0] == 4
 
 
+def test_lexicon_fever_of_40_is_red_outside_chemo():
+    ctx = tools.context_for(load_patient("ONC-009"), WEDNESDAY_NIGHT)
+    assert not ctx.chemo_window and ctx.drug_classes == ["antiangiogenic"]
+    assert navigator.lexicon_level("mám teplotu 40,5", ctx, "cs")[0] == 4
+    assert navigator.lexicon_level("mám teplotu 39,5", ctx, "cs")[0] == 3
+
+
 @pytest.mark.parametrize("text", [
     "Mám afty v koutku úst.",
     "Praskají mi koutky.",
@@ -278,6 +285,12 @@ def test_clearing_the_chat_keeps_the_team_task(quiet_store):
     navigator.clear_history("ONC-018")
     assert navigator.history("ONC-018") == [] and "ONC-018" not in navigator._pending
     assert quiet_store.open_task("ONC-018") is not None
+
+
+def test_fever_of_41_outside_chemo_is_red_without_the_paralen_ban(quiet_store):
+    reply = run("ONC-009", "Mám teplotu 41, co mám dělat?", at=WEDNESDAY_NIGHT)
+    assert reply.triage.uroven == 4 and "R-HYPERPYREXIA" in reply.triage.pravidla
+    assert "155" in reply.reply_text and "Paralen" not in reply.reply_text
 
 
 def test_closing_the_app_after_the_card_still_raises_the_task(quiet_store):

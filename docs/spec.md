@@ -309,6 +309,7 @@ Taken from `pravidla_triaze.md` §3. Each rule has an id in `rules.yaml`, the si
 | Id | Rule | Signals |
 | --- | --- | --- |
 | R-FEVER | T ≥ 38.0 °C or chills during chemotherapy or within 6 weeks after it | `teplota_c`; `teplota` answer 1–4; text „zimnice“, „třesavka“, „triaška“ |
+| R-HYPERPYREXIA | T ≥ 40 °C with any treatment, also outside the chemotherapy window (safety addition to §15) | `teplota_c`; `teplota` answer 3–4; a temperature ≥ 40 in the text |
 | R-BREATH | dyspnoea at rest; SpO2 < 90 %; sudden dyspnoea with chest pain or palpitations | `dusnost` = 3; `spo2`; text |
 | R-CHEST | new chest pain | `bol_hrud` = 1; text |
 | R-NEURO | confusion, impaired consciousness or arousal, seizure, new limb weakness, speech disorder | text, caregiver reports |
@@ -447,7 +448,7 @@ The engine reads `odpoved_index`; colours are kept only as evidence.
 | `bol_bricho` | 1–2 → 2; with any diarrhoea on immunotherapy → O-IO-DIARRHEA-PAIN |
 | `bol_klouby` | 2 → 2 (watch adherence on aromatase inhibitors) |
 | `brneni` | 1–2 → Y-NEURO before the next dose |
-| `teplota` | 0 = 37.0–37.9; 1 = 38.0–39.0 → R-FEVER in the chemo window, otherwise 2; 2–4 (≥ 39) → R-FEVER in the window, otherwise 3 |
+| `teplota` | 0 = 37.0–37.9; 1 = 38.0–39.0 → R-FEVER in the chemo window, otherwise 2; 2 (39–40) → R-FEVER in the window, otherwise 3; 3–4 (> 40) → R-FEVER in the window, otherwise R-HYPERPYREXIA (4) |
 | `kuze` | 1 → G2 (2); 2 → G3 (3) |
 | `unava` | 2 → 2 (fatigue alone never above 2) |
 | `krvaceni` | 1 → at least 2; on anticoagulant → O-BLEED-ANTICOAG; the site in `krvaceni_popis` may hit R-BLEED |
@@ -804,7 +805,7 @@ None of these blocks the build: each has a default the engine uses until MEDDI o
 | SpO2 is used by the rules but missing in the data. Field name in MEDDI? | `spo2`, source `oxymetr` |
 | 24 h palliative line or hospice number for palliative patients? | generic text + 155 |
 | Pre-agreed instructions (loperamide scheme, antipyretics): will MEDDI provide them as care-plan items? | quote only the `leky` text, verbatim |
-| Fever ≥ 38 °C outside the chemotherapy window (hormonal, TKI, immunotherapy only): which level? | 2; ≥ 39 °C → 3 |
+| Fever ≥ 38 °C outside the chemotherapy window (hormonal, TKI, immunotherapy only): which level? | 2; ≥ 39 °C → 3; ≥ 40 °C → 4 (R-HYPERPYREXIA) |
 | Which LLM in AWS EU is acceptable to MEDDI (Bedrock model, data processing agreement)? | Amazon Bedrock in an EU region |
 | Voice bonus: input only, or reading answers aloud too? (deck contact: Jiří Pecina) | both, as a COULD |
 

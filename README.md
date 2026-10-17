@@ -50,7 +50,7 @@ Community; React 19, Vite 8, TypeScript 7, pnpm workspaces, `vite-plugin-pwa`, M
  │ context/    build_context: only data known at as_of, baselines, drug classes, nadir    │
  │ nlu/        cs/sk lexicon  ∪  LLM fact extractor (closed fact list, verbatim quotes,   │
  │             disk cache) → facts can only raise the level                               │
- │ triage/     rules.yaml (48 rules) → engine (max level, trends, contradictions,         │
+ │ triage/     rules.yaml (49 rules) → engine (max level, trends, contradictions,         │
  │             missed check-ins) → router (§8.2 strings, SLA) → responder + validator     │
  │ summary/    deterministic 30-second doctor summary (optional LLM draft behind a gate)  │
  │ agent/      navigator: triage first, level card, then LLM answer with tools,           │
@@ -177,7 +177,7 @@ facts raise the level), the validated answer in 2–4 s (first token is not stre
 
 ## Triage rules
 
-`backend/app/triage/rules.yaml` holds 48 rules, each with id, minimum level, area, source in the MEDDI rules, clinician
+`backend/app/triage/rules.yaml` holds 49 rules, each with id, minimum level, area, source in the MEDDI rules, clinician
 label, rationale and cs/sk patient hint; the same rows are in IRIS as `MEDDI.Triage_Rule`.
 
 | Group | Level | Rules |

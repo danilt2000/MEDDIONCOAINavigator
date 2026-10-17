@@ -8,6 +8,10 @@ rules:
      rationale: "Horečka nebo zimnice v době chemoterapie = podezření na febrilní neutropenii; vyšetření a ATB do 1 hodiny, nečekat do rána, nemaskovat antipyretiky.",
      hint_cs: "teplota 38 °C a více nebo zimnice", hint_sk: "teplota 38 °C a viac alebo zimnica",
      safety_cs: "Paralen ani jiné léky na horečku neužívejte, dokud vás nevyšetří lékař.", safety_sk: "Paralen ani iné lieky na horúčku neužívajte, kým vás nevyšetrí lekár."}
+  - {id: R-HYPERPYREXIA, min_level: 4, area: horečka, source: "bezpečnostní doplněk ke spec §15 (mimo chemoterapii)",
+     label: "teplota ≥ 40 °C při jakékoli léčbě, i mimo okno chemoterapie",
+     rationale: "Teplota 40 °C a více může být život ohrožující i bez chemoterapie (sepse, přehřátí); vyšetření ihned, nečekat do rána.",
+     hint_cs: "teplota 40 °C a více", hint_sk: "teplota 40 °C a viac"}
   - {id: R-BREATH, min_level: 4, area: dýchání, source: "pravidla_triaze §3 Dýchání",
      label: "dušnost v klidu, SpO2 < 90 % nebo náhlá dušnost s bolestí na hrudi či bušením srdce",
      rationale: "Klidová dušnost nebo hypoxémie může být bezprostředně život ohrožující (podezření na plicní embolii, pneumonitidu, srdeční selhání).",

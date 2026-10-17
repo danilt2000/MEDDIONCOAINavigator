@@ -90,7 +90,8 @@ def lexicon_level(text: str, ctx: PatientContext, lang: str) -> tuple[int, list[
         temperatures += _numbers(r"\b(3[5-9]|4[0-2])\b", folded)
     chills = re.search(r"zimnic|tresavk|triask|\btres(e|u)\b|\btras(ie|iem|u)\b|klepu se", folded)
     if (temperatures and max(temperatures) >= 38.0) or chills:
-        found.append((4 if chemo else 3, "teplota ≥ 38 °C nebo zimnice" + (" během chemoterapie" if chemo else "")))
+        hot = bool(temperatures) and max(temperatures) >= 40
+        found.append((4 if chemo or hot else 3, "teplota ≥ 38 °C nebo zimnice" + (" během chemoterapie" if chemo else "")))
     elif re.search(NO_FEVER, folded):
         pass
     elif re.search(r"horec|horuc", folded):
@@ -672,7 +673,9 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
     await asyncio.to_thread(_alert, output, "NAV-OPEN-EPISODE" not in output.pravidla, nlu)
 
     folded = fold(" ".join([triage_text, *output.varovne_priznaky]))
-    fever = output.uroven == 4 and bool(re.search(r"teplot|horec|horuc|zimnic|\btres|\btras|3[89][.,]\d", folded))
+    # "no Paralen" belongs to fever during chemotherapy (do not mask neutropenia), not to 40 °C outside it
+    fever = (output.uroven == 4 and output.pravidla != ["R-HYPERPYREXIA"]
+             and bool(re.search(r"teplot|horec|horuc|zimnic|\btres|\btras|3[89][.,]\d", folded)))
     suicide = bool(re.search(SUICIDE + "|" + HOPELESS, folded))
     palliative = tools.palliative_care(ctx)
     meds = mentioned_meds(text, ctx)

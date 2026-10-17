@@ -22,6 +22,8 @@ CASES = [
     ("ONC-001", (2026, 9, 9, 21, 52), "pacient", "mám 39 a je mi zle", 4, "R-FEVER"),
     ("ONC-001", (2026, 9, 9, 21, 52), "pacient", "je mi zima a celá se třesu", 4, "R-FEVER"),
     ("ONC-001", (2026, 9, 9, 21, 52), "pacient", "zimnici nemám, ale třesu se zimou", 4, "R-FEVER"),
+    ("ONC-017", (2026, 9, 9, 21, 52), "pacient", "mám teplotu 41", 4, "R-HYPERPYREXIA"),
+    ("ONC-017", (2026, 9, 9, 21, 52), "pacient", "naměřil jsem 39,5", 3, "Y-FEVER"),
     ("ONC-018", (2026, 9, 12, 9, 0), "pacient", "tazko sa mi dycha aj v pokoji", 4, "R-BREATH"),
     ("ONC-005", (2026, 9, 15, 20, 0), "pacient", "krvácí mi z nosu už hodinu a nejde to zastavit", 4, "R-BLEED"),
     ("ONC-016", (2026, 9, 10, 20, 0), "pacient", "nejradši bych se zabila", 3, "O-PSYCH"),

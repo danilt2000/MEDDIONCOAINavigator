@@ -18,6 +18,9 @@ def ans(**items):
     ({"teplota_c": 36.6}, "Večer mi je zima, třesu se", True, 4),   # chills alone
     ({"teplota_c": 38.4}, None, False, 2),                    # outside the window: §15 default
     ({"teplota_c": 39.2}, None, False, 3),
+    ({"teplota_c": 39.9}, None, False, 3),                    # just below the hyperpyrexia boundary
+    ({"teplota_c": 40.0}, None, False, 4),                    # ≥ 40 °C is red with any treatment
+    (None, "mám teplotu 41 °C", False, 4),
     (None, "mam 38,4 a trese me zima", True, 4),              # text only, no diacritics
     (None, "Teplotu nemám, jen únava.", True, 1),             # negated
 ])
@@ -28,6 +31,13 @@ def test_r_fever(vitals, message, chemo, expected):
 def test_r_fever_from_questionnaire_answer():
     assert level(checkin(ans(ucinky=[5], teplota=1)), context(chemo=True)) == 4
     assert level(checkin(ans(ucinky=[5], teplota=0)), context(chemo=True)) == 1
+
+
+def test_r_hyperpyrexia_outside_the_chemo_window():
+    assert level(checkin(ans(ucinky=[5], teplota=2)), context(chemo=False)) == 3   # 39–40 °C stays orange
+    assert level(checkin(ans(ucinky=[5], teplota=3)), context(chemo=False)) == 4   # more than 40 °C
+    output = run(checkin(vitals={"teplota_c": 40.6}), context(chemo=False))
+    assert output.pravidla[0] == "R-HYPERPYREXIA" and "40.6" in " ".join(output.klicove_nalezy).replace(",", ".")
 
 
 @pytest.mark.parametrize("answers, vitals, message, expected", [

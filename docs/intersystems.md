@@ -67,7 +67,7 @@ Created and loaded by `backend/app/fhir/sql_tables.py` (DDL in `iris/sql/meddi_t
 
 | Table / view | Content | Filled by |
 |---|---|---|
-| `MEDDI.Triage_Rule` | the 48 rules of `app/triage/rules.yaml` | `sql_tables.py` |
+| `MEDDI.Triage_Rule` | the 49 rules of `app/triage/rules.yaml` | `sql_tables.py` |
 | `MEDDI.Drug_Class` | drug → risk class | `sql_tables.py` |
 | `MEDDI.Eval_Expected` | ground-truth levels of all 1 320 check-ins | `sql_tables.py` |
 | `MEDDI.Triage_Result` | every triage the API makes (level, step, contact, rule ids, confidence) | `writers.py::_save_triage_result` |

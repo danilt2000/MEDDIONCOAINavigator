@@ -245,6 +245,9 @@ def evaluate(s: Signals, ctx: PatientContext, previous: list[Checkin]) -> list[H
         text_only = not ((temp and temp >= 38 and "teplota_c" in s.vitals and s.vitals["teplota_c"] >= 38) or (teplota or 0) >= 1)
         if ctx.chemo_window:
             hit("R-FEVER", 4, f"{finding} během chemoterapie" + (" – období nadiru (D7–14)" if ctx.in_nadir else ""), fever_evidence, text_only)
+        elif (temp and temp >= 40) or (teplota or 0) >= 3:
+            hot = f"teplota {_num(temp)} °C" if temp and temp >= 40 else "teplota nad 40 °C (dotazník)"
+            hit("R-HYPERPYREXIA", 4, f"{hot} mimo okno chemoterapie", fever_evidence, text_only)
         elif (temp and temp >= 39) or (teplota or 0) >= 2:
             hit("Y-FEVER", 3, f"{finding} mimo okno chemoterapie", fever_evidence, text_only)
         else:
