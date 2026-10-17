@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
-import { buildFills, buildVitals, optionColor, toggleOption, treatmentReason, UNKNOWN, visibleSteps, type Questionnaire } from '../src/flow.ts';
+import { buildFills, buildVitals, optionColor, phoneFacts, toggleOption, treatmentReason, UNKNOWN, visibleSteps, type Questionnaire } from '../src/flow.ts';
+import { contactText, dictionaries } from '../src/i18n.ts';
 
 const definitions: Questionnaire[] = JSON.parse(
   readFileSync(new URL('../../../data/rakathon_meddi_onco_data/docs/dotazniky_definice.json', import.meta.url), 'utf8'),
@@ -69,4 +70,44 @@ test('treatment reason names the drug from the regimen', () => {
   assert.deepEqual(treatmentReason('brneni', 'mFOLFOX6 à 14 dní'), { drug: 'FOLFOX' });
   assert.deepEqual(treatmentReason('teplota', 'AC (doxorubicin + cyklofosfamid)'), { chemo: true });
   assert.equal(treatmentReason('brneni', 'letrozol'), null);
+});
+
+test('a reopened red result reads the evidence aloud, not the raw vitals line', () => {
+  const vital = { zdroj: 'vitalni_funkce', citace: 'teplota_c 38.4 (domaci_teplomer)' };
+  const question = { zdroj: 'dotaznik', citace: 'Měl/a jste zvýšenou tělesnou teplotu nebo horečky? – 38,0 - 39,0°C méně než 24 hodin' };
+  const dukazy = [
+    vital,
+    question,
+    { zdroj: 'zprava', citace: 'naměřila jsem 38,4' },
+    { zdroj: 'zprava', citace: 'Od odpoledne mi je zima a třese mě, naměřila jsem 38,4' },
+    { zdroj: 'zprava', citace: 'Od odpoledne mi je zima a třese mě' },
+  ];
+  assert.deepEqual(phoneFacts(dukazy), {
+    vitals: { teplota_c: { hodnota: 38.4 } },
+    words: 'Od odpoledne mi je zima a třese mě, naměřila jsem 38,4',
+  });
+  assert.deepEqual(phoneFacts([vital, question]).words, question.citace);
+  const checkin = { patient_id: 'ONC-001', stav: 'vyplneno', vyplnil: 'pacient', dotazniky: [], zprava_pacienta: 'Je mi zima.', vitalni_funkce: { spo2: { hodnota: 91, zdroj: 'oxymetr' } } } as const;
+  assert.deepEqual(phoneFacts(dukazy, checkin), { vitals: checkin.vitalni_funkce, words: 'Je mi zima.' });
+  assert.equal(phoneFacts([vital], { ...checkin, zprava_pacienta: null }).words, '');
+});
+
+test('Slovak cards show every backend contact line in Slovak', () => {
+  const router = readFileSync(new URL('../../../backend/app/triage/router.py', import.meta.url), 'utf8');
+  const contacts = [...router.matchAll(/^CONTACT_\w+ = "(.+)"$/gm)].map((match) => match[1]);
+  assert.equal(contacts.length, 6);
+  for (const contact of contacts) {
+    assert.equal(contactText(contact, 'cs'), contact);
+    assert.notEqual(contactText(contact, 'sk'), contact, contact);
+  }
+  assert.equal(contactText('monitorovací centrum – následující pracovní den', 'sk'), 'monitorovacie centrum – nasledujúci pracovný deň');
+  assert.equal(contactText('sloužící lékař MOÚ 724 590 848 – ihned', 'sk'), 'službukonajúci lekár MOÚ 724 590 848 – ihneď');
+  assert.equal(contactText('neznámý kontakt', 'sk'), 'neznámý kontakt');
+});
+
+test('the breaths-per-minute label is short enough for the two-column vitals grid', () => {
+  assert.equal(dictionaries.cs.vital_dechova_frekvence, 'Počet dechů');
+  assert.equal(dictionaries.sk.vital_dechova_frekvence, 'Počet dychov');
+  const longest = (lang: 'cs' | 'sk') => Math.max(...Object.entries(dictionaries[lang]).filter(([key]) => key.startsWith('vital_')).map(([, label]) => label.length));
+  assert.ok(longest('cs') <= 13 && longest('sk') <= 13);
 });

@@ -1,4 +1,4 @@
-import type { Answer, Measurement, QuestionnaireFill } from '@navigator/api';
+import type { Answer, CheckinInput, Evidence, Measurement, QuestionnaireFill } from '@navigator/api';
 
 export interface Option {
   text: string;
@@ -166,6 +166,22 @@ export function buildVitals(raw: Partial<Record<VitalKey, string>>): Record<stri
     if (typeof value === 'number') vitals[vital.key] = { hodnota: value, zdroj: vital.zdroj };
   }
   return vitals;
+}
+
+const OWN_WORDS = ['zprava', 'priloha', 'chat'];
+
+// A reopened result has no check-in, only its evidence: vitals come back from "teplota_c 38.4 (domaci_teplomer)",
+// the words from the patient's own quotes (else the questionnaire answers), never from the raw vitals line.
+export function phoneFacts(dukazy: Evidence[], checkin?: CheckinInput) {
+  const measured: Record<string, { hodnota: number }> = {};
+  for (const evidence of dukazy) {
+    const [key, value] = evidence.citace.split(' ');
+    if (evidence.zdroj === 'vitalni_funkce' && Number.isFinite(Number(value))) measured[key] = { hodnota: Number(value) };
+  }
+  const own = dukazy.filter((evidence) => OWN_WORDS.includes(evidence.zdroj));
+  const quotes = [...new Set((own.length ? own : dukazy.filter((evidence) => evidence.zdroj === 'dotaznik')).map((evidence) => evidence.citace))];
+  const words = quotes.filter((quote) => !quotes.some((other) => other !== quote && other.includes(quote))).slice(0, 2).join('; ');
+  return { vitals: checkin?.vitalni_funkce ?? measured, words: checkin?.zprava_pacienta || words };
 }
 
 const CYTOTOXIC = ['doxorubicin', 'cyklofosfamid', 'oxaliplatin', 'folfox', 'folfiri', 'irinotekan', 'karboplatin',

@@ -6,8 +6,8 @@ import type { CheckinInput, TriageOutput } from '@navigator/api';
 import { FilledTonalButton, OutlinedButton, SvgIcon, TextButton, TRIAGE_LEVELS } from '@navigator/ui';
 import { Navigate, useLocation, useNavigate } from 'react-router';
 import { callTargets, capitalize, formatDayTime, phoneDigits, shortRegimen, store, useApp } from '../app-state';
-import { VITALS, type VitalKey } from '../flow';
-import { format } from '../i18n';
+import { phoneFacts, VITALS, type VitalKey } from '../flow';
+import { contactText, format } from '../i18n';
 import { CallButton, CallButtons, CallNowCard } from '../ui';
 
 interface ResultState {
@@ -86,7 +86,7 @@ function WarningResult({ output }: { output: TriageOutput }) {
       </section>
       <section className="card">
         <h2 className="card-title">{t.nextStep}</h2>
-        {output.doporuceny_kontakt && <p className="strong">{capitalize(output.doporuceny_kontakt)}</p>}
+        {output.doporuceny_kontakt && <p className="strong">{capitalize(contactText(output.doporuceny_kontakt, lang))}</p>}
         {output.sla_do && <p className="muted">{format(t.deadline, formatDayTime(new Date(output.sla_do), locale).toLowerCase())}</p>}
         {output.upozornit_tym && (
           <p className="ok-line">
@@ -109,7 +109,7 @@ function usePhoneScript(output: TriageOutput, checkin: CheckinInput | undefined)
   const treatment = patient
     ? `: ${shortRegimen(patient.regimen)}${patient.cycle && patient.cycle_day ? `, ${format(t.phoneCycle, patient.cycle, patient.cycle_day)}` : ''}`
     : '';
-  const vitals = checkin?.vitalni_funkce ?? {};
+  const { vitals, words: said } = phoneFacts(output.dukazy, checkin);
   const label = (key: VitalKey) => t[`vital_${key}`].charAt(0).toLowerCase() + t[`vital_${key}`].slice(1);
   const unit = (key: VitalKey) => VITALS.find((vital) => vital.key === key)!.unit;
   const measured = (['teplota_c', 'tk_sys', 'tepova_frekvence', 'spo2', 'dechova_frekvence'] as const)
@@ -120,7 +120,7 @@ function usePhoneScript(output: TriageOutput, checkin: CheckinInput | undefined)
         : `${label(key)} ${vitals[key].hodnota.toLocaleString(locale)} ${unit(key)}`,
     )
     .join(', ');
-  const words = (checkin?.zprava_pacienta || output.dukazy.map((evidence) => evidence.citace).slice(0, 2).join('; ')).replace(/[.!?\s]+$/, '');
+  const words = said.replace(/[.!?\s]+$/, '');
   return [`${intro}${treatment}.`, measured && format(t.phoneMeasured, measured), words && format(t.phoneHas, words)].filter(Boolean).join(' ');
 }
 

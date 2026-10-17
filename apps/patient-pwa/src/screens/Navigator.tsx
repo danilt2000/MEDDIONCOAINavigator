@@ -21,7 +21,7 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
 import { callTargets, capitalize, formatDayTime, store, useApi, useApp, type CallTarget } from '../app-state';
-import { format } from '../i18n';
+import { contactText, format } from '../i18n';
 import { AmbulanceAnd155, CallButtons } from '../ui';
 
 interface UiMessage {
@@ -92,7 +92,7 @@ function NextStepCard({ card }: { card: LevelCard }) {
   return (
     <section className="next-step" data-level={card.uroven}>
       <TriageChip level={card.uroven} lang={lang} withStep />
-      {card.kontakt && <p className="next-step-contact">{capitalize(card.kontakt)}</p>}
+      {card.kontakt && <p className="next-step-contact">{capitalize(contactText(card.kontakt, lang))}</p>}
       {card.sla_do && <p className="small">{format(t.deadline, formatDayTime(new Date(card.sla_do), locale).toLowerCase())}</p>}
       <CallButtons targets={targets} />
     </section>
@@ -321,7 +321,7 @@ export function Navigator() {
               {message.level_card && message.role === 'navigator' && (
                 <span className="bubble-card">
                   <TriageChip level={message.level_card.uroven} lang={lang} withStep />
-                  {message.level_card.kontakt && <span className="small">{message.level_card.kontakt}</span>}
+                  {message.level_card.kontakt && <span className="small">{contactText(message.level_card.kontakt, lang)}</span>}
                 </span>
               )}
               {message.text && <span className="bubble-text">{message.text}</span>}
