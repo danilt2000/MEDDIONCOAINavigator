@@ -155,6 +155,11 @@ The full numbers are in the [technical documentation](docs/README.md#metrics).
 <sub><b>Live from the demo server.</b> The storage overview, a SQL query that reads Hana's weight straight from FHIR,
 a triage task stored as a FHIR resource, and the same alert travelling through the IRIS production toward MEDDI.</sub>
 
+<img src="docs/screenshots/demo-iris-portal.gif" width="100%" alt="The IRIS Management Portal: home with MEDDI.Production running, the production configuration with the alert operation settings, the message trace of an alert and a SQL query over FHIR observations">
+
+<sub><b>The same in the IRIS Management Portal.</b> MEDDI.Production is running; the alert operation posts to the
+MEDDI endpoint; the message trace of one alert; and a SQL query over the FHIR observations.</sub>
+
 Everything the navigator works with is stored in **InterSystems IRIS for Health** in the healthcare standard
 **FHIR**: patients, check-ins, triage results, tasks and alerts. Trends are read with SQL straight over the FHIR data,
 the chat looks up guidance with IRIS Vector Search, and every alert also goes through an IRIS production toward MEDDI.
