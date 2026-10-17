@@ -76,7 +76,7 @@ monitoring centre). A restart of the API resets the clock and the demo state.
 | | [`?patient=ONC-001`](https://pacient.nastasiya.com/?patient=ONC-001) | Jana K., AC cycle 1 day 10 (nadir): the app opens on the check-in; tick *Zvýšená teplota a horečky* and *Únava a slabost*, then *Teplota* 38,4 on the *Naměřené hodnoty* step → red |
 | | [`?patient=ONC-018`](https://pacient.nastasiya.com/?patient=ONC-018) | Štefan Ď., Slovak: tick only *Únava a slabost*, message „od vcera mam hnacku asi 6 krat, slaby som“ → orange with a follow-up |
 | | [`/navigator?patient=ONC-014`](https://pacient.nastasiya.com/navigator?patient=ONC-014) | Ludmila T., palliative care, her daughter writes: the chat opens in caregiver mode (*Píšete za: maminka*, leave it on) → „Můžu mamince dát další Oramorph?“ |
-| **Clinician web** | [lekar.nastasiya.com](https://lekar.nastasiya.com/#/fronta) | Desktop browser |
+| **Clinician web** | [lekar.nastasiya.com](https://lekar.nastasiya.com/#/fronta) | Desktop browser, window at least 1280 px wide |
 | | [`#/fronta`](https://lekar.nastasiya.com/#/fronta) | Queue: level, SLA countdown, task actions, 30-second summary |
 | | [`#/monitoring`](https://lekar.nastasiya.com/#/monitoring) | Alerts and check-ins over time, by treatment and by symptom |
 | | [`#/monitoring/lecba/sunitinib…`](https://lekar.nastasiya.com/#/monitoring/lecba/sunitinib%2050%20mg%201%C3%97%20denn%C4%9B) | Every alert on sunitinib, why it fired and what the team did |
@@ -172,7 +172,7 @@ flowchart TD
 | Path | What | Dev port |
 |---|---|---|
 | `apps/patient-pwa` | PWA for patients: mobile-first, installable, works offline, Czech/Slovak, caregiver mode | 5173 |
-| `apps/doctor-web` | Web app for the monitoring centre and doctors, desktop only (hidden below 1024 px) | 5174 |
+| `apps/doctor-web` | Web app for the monitoring centre and doctors, desktop only (hidden below 1280 px) | 5174 |
 | `packages/ui` | Shared Material 3 library used by both apps | – |
 | `packages/api` | TypeScript types of the HTTP API, fetch and SSE helpers | – |
 | `backend/` | FastAPI: triage engine, navigator chat, eval, FHIR/IRIS integration | 8100 |
@@ -296,7 +296,7 @@ Before: `bash scripts/seed.sh --datasets dev,rozsirena --reset`, start API, MCP 
 
 ## Metrics
 
-Chronological replay, the engine sees only data known at the time of each check-in. Run on 16 Oct 2026.
+Chronological replay, the engine sees only data known at the time of each check-in. Run on 17 Oct 2026.
 
 | Metric (spec §13) | dev, rules only | extended, rules only | dev, LLM | extended, LLM | Target |
 |---|---|---|---|---|---|
@@ -305,17 +305,17 @@ Chronological replay, the engine sees only data known at the time of each check-
 | Orange recall (GT 3 → ≥ 3) | 100 % | 100 % | 100 % | 100 % | ≥ 95 % |
 | Under-triage by ≥ 2 levels | 0 | 0 | 0 | 0 | 0 |
 | Under-triage overall | 0.0 % | 0.0 % | 0.0 % | 0.0 % | ≤ 3 % |
-| False alarms (GT 1 → ≥ 2) | 2.6 % (3/115) | 2.8 % (21/752) | 3.5 % (4/115) | 3.7 % (28/752) | ≤ 15 % |
+| False alarms (GT 1 → ≥ 2) | 2.6 % (3/115) | 2.8 % (21/752) | 3.5 % (4/115) | 3.6 % (27/752) | ≤ 15 % |
 | False alarms ≥ 3 | 0 % | 0 % | 0 % | 0 % | reported |
-| `upozornit_tym` agreement | 98.2 % | 98.2 % | 97.7 % | 97.6 % | ≥ 95 % |
-| Routing (contact category) | 98.2 % | 98.2 % | 97.7 % | 97.6 % | ≥ 95 % |
-| Routing, exact string | 98.2 % | 98.2 % | 97.7 % | 97.6 % | reported |
-| Exact level | 98.2 % | 98.2 % | 97.7 % | 97.6 % | ≥ 85 % |
+| `upozornit_tym` agreement | 98.2 % | 98.2 % | 97.7 % | 97.7 % | ≥ 95 % |
+| Routing (contact category) | 98.2 % | 98.2 % | 97.7 % | 97.7 % | ≥ 95 % |
+| Routing, exact string | 98.2 % | 98.2 % | 97.7 % | 97.7 % | reported |
+| Exact level | 98.2 % | 98.2 % | 97.7 % | 97.7 % | ≥ 85 % |
 | Patient texts passing the validator | 100 % | 100 % | 100 % | 100 % | 100 % |
 
 Confusion matrices (rows ground truth 1–4, columns predicted 1–4): dev rules-only `112 3 0 0 / 0 37 0 0 / 0 0 13 0 /
 0 0 0 6`; extended rules-only `731 21 0 0 / 0 262 0 0 / 0 0 92 0 / 0 0 0 43`; dev LLM `111 4 0 0 / …diagonal`;
-extended LLM `724 28 0 0 / …diagonal`. Every error is a yellow over-triage of a green check-in. Reports:
+extended LLM `725 27 0 0 / …diagonal`. Every error is a yellow over-triage of a green check-in. Reports:
 `backend/reports/eval_{dev,rozsirena}.json` (LLM run) and `eval_*_rules_only.json`.
 
 Latency: triage of a check-in 0.01 s with a warm NLU cache, about 2.5 s with a live LLM call; the chat level card
