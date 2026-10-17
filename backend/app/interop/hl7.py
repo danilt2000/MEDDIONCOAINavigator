@@ -64,7 +64,7 @@ def oru_message(patient: Patient, labs: list[Lab]) -> str:
     given, _, family = patient.demografie.jmeno_fiktivni.partition(" ")
     birth_year = patient.obdobi_sledovani["od"].year - patient.demografie.vek
     segments = [
-        f"MSH|^~\\&|LIS|MOU_LAB|MEDDI_NAV|MOU|{at}||ORU^R01^ORU_R01|{first.odber_id}|P|2.5.1||||||UNICODE UTF-8",
+        f"MSH|^~\\&|LIS|LAB|MEDDI_NAV|MEDDI|{at}||ORU^R01^ORU_R01|{first.odber_id}|P|2.5.1||||||UNICODE UTF-8",
         f"PID|1||{patient.patient_id}^^^MEDDI^MR||{escape(family.rstrip('.'))}^{escape(given)}||{birth_year}0101|{patient.demografie.pohlavi}",
         f"ORC|RE|{first.odber_id}|{first.odber_id}" + "|" * 26 + "LAB",
         f"OBR|1|{first.odber_id}|{first.odber_id}|26436-6^Laboratory studies (set)^LN|||{at}||||||||||||||||||F",

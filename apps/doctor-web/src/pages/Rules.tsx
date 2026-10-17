@@ -37,8 +37,8 @@ const ORANGE: [string, string][] = [
 const ROUTING: [1 | 2 | 3 | 4, string, string, string][] = [
   [1, '— (tým vidí v přehledu)', '—', '—'],
   [2, 'monitorovací centrum – vyřízení do konce následujícího pracovního dne', 'monitorovací centrum – následující pracovní den', 'konec dalšího pracovního dne'],
-  [3, 'telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h', 'sloužící lékař MOÚ 724 590 848 – ihned', '2 h / ihned'],
-  [4, '155 / urgentní příjem', '155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848)', 'tým upozorněn do 15 min'],
+  [3, 'telekonzultace s lékařem přes monitorovací centrum do 2 h', 'sloužící lékař 724 590 848 – ihned', '2 h / ihned'],
+  [4, '155 / urgentní příjem', '155 / urgentní příjem (případně sloužící lékař 724 590 848)', 'tým upozorněn do 15 min'],
 ];
 
 function RuleTable({ rules }: { rules: [string, string][] }) {

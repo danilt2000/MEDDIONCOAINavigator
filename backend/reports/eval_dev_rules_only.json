@@ -542,7 +542,7 @@
     "TK ≥ 160/100 při antiangiogenní léčbě"
    ],
    "zduvodneni": "Hypertenze 3. stupně na antiangiogenní léčbě; posouzení lékařem týž den.",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Za hodinu si tlak změřte znovu v klidu. Volejte ihned 155, pokud: silná bolest hlavy, porucha zraku nebo řeči nebo tlak 180/110.",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Za hodinu si tlak změřte znovu v klidu. Volejte ihned 155, pokud: silná bolest hlavy, porucha zraku nebo řeči nebo tlak 180/110.",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-BP-ANTIANGIO",
@@ -892,7 +892,7 @@
     },
     {
      "zdroj": "dotaznik",
-     "citace": "Mám zájem o podporu psychologa v rámci své léčby na MOU – Ano",
+     "citace": "Mám zájem o podporu psychologa v rámci své léčby – Ano",
      "checkin_id": "ONC-016-C03",
      "datum": "2026-09-03"
     }
@@ -1618,7 +1618,7 @@
     "neudrží tekutiny; jen tekutá strava s nekontrolovanou bolestí; málo močí nebo závratě při sníženém příjmu"
    ],
    "zduvodneni": "Hrozící dehydratace při nedostatečném příjmu – posouzení týž den (hydratace, výživa, analgezie).",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby pijte po malých doušcích. Volejte ihned 155, pokud: nemočíte déle než 10 hodin nebo omdlíte.",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Do té doby pijte po malých doušcích. Volejte ihned 155, pokud: nemočíte déle než 10 hodin nebo omdlíte.",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-INTAKE",
@@ -1802,7 +1802,7 @@
    ],
    "varovne_priznaky": [],
    "zduvodneni": "Bazální analgezie nestačí; lékař má titrovat (dávky systém nemění).",
-   "doporuceni_pro_pacienta": "Záznam vaší maminky jsme předali týmu monitorovacího centra, ozve se vám nejpozději do konce následujícího pracovního dne. Morfin roztok (Oramorph) podávejte podle rozpisu (10 mg, max 6× denně). Volejte ihned 155, pokud: bolest nepovolí ani po záchranné dávce.",
+   "doporuceni_pro_pacienta": "Záznam vaší maminky jsme předali týmu monitorovacího centra, ozve se vám nejpozději do konce následujícího pracovního dne. Morfin roztok (Oramorph) podávejte podle rozpisu (10 mg, max 6× denně). Volejte ihned 155, pokud: nápadná spavost, zpomalené dýchání nebo náhlá silná bolest.",
    "doplnujici_otazka": null,
    "pravidla": [
     "Y-PAIN"
@@ -1959,7 +1959,7 @@
     "teplota ≥ 38 °C nebo zimnice během chemoterapie nebo do 6 týdnů po ní"
    ],
    "zduvodneni": "Horečka nebo zimnice v době chemoterapie = podezření na febrilní neutropenii; vyšetření a ATB do 1 hodiny, nečekat do rána, nemaskovat antipyretiky.",
-   "doporuceni_pro_pacienta": "Volejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848. Nečekejte do rána. Paralen neužívejte, dokud vás nevyšetří lékař. Vezměte si s sebou seznam léků.",
+   "doporuceni_pro_pacienta": "Volejte ihned 155 nebo sloužícího lékaře 724 590 848. Nečekejte do rána. Paralen neužívejte, dokud vás nevyšetří lékař. Vezměte si s sebou seznam léků.",
    "doplnujici_otazka": null,
    "pravidla": [
     "R-FEVER",
@@ -2035,7 +2035,7 @@
     "SpO2 < 92 % nebo pokles o ≥ 3 body, nová ortopnoe"
    ],
    "zduvodneni": "Nová ortopnoe nebo pokles saturace – podezření na srdeční selhání nebo plicní komplikaci; posouzení týž den, nečekat na plánované vyšetření.",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Volejte ihned 155, pokud: dušnost v klidu nebo bolest na hrudi.",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Volejte ihned 155, pokud: dušnost v klidu nebo bolest na hrudi.",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-BREATH",
@@ -2088,7 +2088,7 @@
     "neudrží tekutiny; jen tekutá strava s nekontrolovanou bolestí; málo močí nebo závratě při sníženém příjmu"
    ],
    "zduvodneni": "Zvracení s neschopností přijímat tekutiny – riziko dehydratace a rozvratu iontů; posouzení týž den. Hrozící dehydratace při nedostatečném příjmu – posouzení týž den (hydratace, výživa, analgezie).",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby pijte po malých doušcích. Volejte ihned 155, pokud: zvracení víc než 5× za den nebo když přestanete močit.",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Do té doby pijte po malých doušcích. Volejte ihned 155, pokud: zvracení víc než 5× za den nebo když přestanete močit.",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-VOMIT",
@@ -2147,7 +2147,7 @@
     "průjem s bolestí břicha na imunoterapii"
    ],
    "zduvodneni": "Průjem 2. stupně na rizikové léčbě nebo refrakterní na loperamid – riziko rychlé dehydratace; posouzení lékařem týž den (úprava léčby je rozhodnutím lékaře). Podezření na imunitně podmíněnou kolitidu; posouzení lékařem týž den (kortikoidy indikuje lékař).",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby pijte po malých doušcích. Volejte ihned 155, pokud: horečka, krev ve stolici, závratě nebo průjem 7× za den.",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Do té doby pijte po malých doušcích. Volejte ihned 155, pokud: horečka, krev ve stolici, závratě nebo průjem 7× za den.",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-DIARRHEA-RISK",
@@ -2252,7 +2252,7 @@
     "průjem s bolestí břicha na imunoterapii"
    ],
    "zduvodneni": "Závažné krvácení – riziko hemodynamické nestability, okamžité vyšetření. Průjem 3. stupně – vysoké riziko dehydratace, rozvratu iontů a sepse.",
-   "doporuceni_pro_pacienta": "Volejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848. Nečekejte do rána. Vezměte si s sebou seznam léků.",
+   "doporuceni_pro_pacienta": "Volejte ihned 155 nebo sloužícího lékaře 724 590 848. Nečekejte do rána. Vezměte si s sebou seznam léků.",
    "doplnujici_otazka": null,
    "pravidla": [
     "R-BLEED",
@@ -2437,7 +2437,7 @@
    ],
    "varovne_priznaky": [],
    "zduvodneni": "Bazální analgezie nestačí; lékař má titrovat (dávky systém nemění). Středně závažný příznak (2. stupeň) bez varovných příznaků; tým má vyhodnotit do konce následujícího pracovního dne.",
-   "doporuceni_pro_pacienta": "Váš záznam jsme předali týmu monitorovacího centra, ozve se vám nejpozději do konce následujícího pracovního dne. Morfin sirup užívejte podle rozpisu (10 mg, max 6× denně). Volejte ihned 155, pokud: bolest nepovolí ani po záchranné dávce.",
+   "doporuceni_pro_pacienta": "Váš záznam jsme předali týmu monitorovacího centra, ozve se vám nejpozději do konce následujícího pracovního dne. Morfin sirup užívejte podle rozpisu (10 mg, max 6× denně). Volejte ihned 155, pokud: nápadná spavost, zpomalené dýchání nebo náhlá silná bolest.",
    "doplnujici_otazka": null,
    "pravidla": [
     "Y-PAIN",
@@ -2494,7 +2494,7 @@
     "4–6 stolic nad normál při imunoterapii, fluoropyrimidinech nebo irinotekanu; průjem nereagující na loperamid"
    ],
    "zduvodneni": "Zpráva má přednost před dotazníkem – do odpovědi na doplňující otázku platí horší varianta. Průjem 2. stupně na rizikové léčbě nebo refrakterní na loperamid – riziko rychlé dehydratace; posouzení lékařem týž den (úprava léčby je rozhodnutím lékaře).",
-   "doporuceni_pro_pacienta": "Píšete, že máte hnačku asi 6× za deň – je to tak? Vaše ťažkosti je potrebné ešte dnes prebrať s lekárom MOÚ, ozve sa vám do 2 hodín. Dovtedy loperamid užívajte podľa rozpisu (4 mg pri prvej riedkej stolici, potom 2 mg každé 2 h až 12 h bez hnačky) a pite po malých dúškoch. Volajte ihneď 155, ak: horúčka, krv v stolici, závraty alebo hnačka 7× za deň.",
+   "doporuceni_pro_pacienta": "Píšete, že máte hnačku asi 6× za deň – je to tak? Vaše ťažkosti je potrebné ešte dnes prebrať s lekárom, ozve sa vám do 2 hodín. Dovtedy loperamid užívajte podľa rozpisu (4 mg pri prvej riedkej stolici, potom 2 mg každé 2 h až 12 h bez hnačky) a pite po malých dúškoch. Volajte ihneď 155, ak: horúčka, krv v stolici, závraty alebo hnačka 7× za deň.",
    "doplnujici_otazka": "Píšete, že máte hnačku asi 6× za deň – je to tak?",
    "pravidla": [
     "O-DIARRHEA-RISK",
@@ -2539,7 +2539,7 @@
     "4–6 stolic nad normál při imunoterapii, fluoropyrimidinech nebo irinotekanu; průjem nereagující na loperamid"
    ],
    "zduvodneni": "Průjem 2. stupně na rizikové léčbě nebo refrakterní na loperamid – riziko rychlé dehydratace; posouzení lékařem týž den (úprava léčby je rozhodnutím lékaře).",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby loperamid užívejte podle rozpisu (4 mg po první řídké stolici, pak 2 mg po každé, max 16 mg/den) a pijte po malých doušcích. Volejte ihned 155, pokud: horečka, krev ve stolici, závratě nebo průjem 7× za den.",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Do té doby loperamid užívejte podle rozpisu (4 mg po první řídké stolici, pak 2 mg po každé, max 16 mg/den) a pijte po malých doušcích. Volejte ihned 155, pokud: horečka, krev ve stolici, závratě nebo průjem 7× za den.",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-DIARRHEA-RISK"
@@ -2593,7 +2593,7 @@
     "bolest NRS ≥ 7, která nepovolí po záchranné dávce"
    ],
    "zduvodneni": "Pacient hodnotí celkový stav jako velmi špatný – posouzení lékařem týž den. Nekontrolovaná bolest – posouzení lékařem týž den; systém nemění dávky. Dříve vyslovené přání je informací pro tým, není důvodem nedoporučit pomoc (24h linka paliativního týmu / hospic, při nedostupnosti 155).",
-   "doporuceni_pro_pacienta": "Potíže vaší maminky je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby nepodávejte další dávky nad rámec rozpisu. Volejte ihned 155, pokud: výrazné zhoršení celkového stavu. Můžete volat i 24hodinovou linku paliativního týmu.",
+   "doporuceni_pro_pacienta": "Potíže vaší maminky je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Do té doby nepodávejte další dávky nad rámec rozpisu. Volejte ihned 155, pokud: výrazné zhoršení celkového stavu. Můžete volat i 24hodinovou linku paliativního týmu.",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-GENERAL",
@@ -2687,7 +2687,7 @@
     "myšlenky na smrt („nejraději bych si vzal/a život“) nebo výroky beznaděje"
    ],
    "zduvodneni": "Beznaděj a pasivní suicidální myšlenky jsou rizikový faktor suicidality – posouzení odborníkem týž den, krizové kontakty; při plánu, úmyslu nebo prostředcích jde o červenou úroveň.",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Pokud by se objevily myšlenky ublížit si, volejte ihned 155 nebo Linku první psychické pomoci 116 123 (nonstop).",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Pokud by se objevily myšlenky ublížit si, volejte ihned 155 nebo Linku první psychické pomoci 116 123 (nonstop).",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-PSYCH",
@@ -2720,7 +2720,7 @@
     },
     {
      "zdroj": "dotaznik",
-     "citace": "Mám zájem o podporu psychologa v rámci své léčby na MOU – Ano",
+     "citace": "Mám zájem o podporu psychologa v rámci své léčby – Ano",
      "checkin_id": "ONC-016-C05",
      "datum": "2026-09-11"
     }
@@ -3136,7 +3136,7 @@
    ],
    "varovne_priznaky": [],
    "zduvodneni": "Bazální analgezie nestačí; lékař má titrovat (dávky systém nemění). Středně závažný příznak (2. stupeň) bez varovných příznaků; tým má vyhodnotit do konce následujícího pracovního dne.",
-   "doporuceni_pro_pacienta": "Váš záznam jsme předali týmu monitorovacího centra, ozve se vám následující pracovní den. Morfin sirup užívejte podle rozpisu (10 mg, max 6× denně). Volejte ihned 155, pokud: bolest nepovolí ani po záchranné dávce.",
+   "doporuceni_pro_pacienta": "Váš záznam jsme předali týmu monitorovacího centra, ozve se vám následující pracovní den. Morfin sirup užívejte podle rozpisu (10 mg, max 6× denně). Volejte ihned 155, pokud: nápadná spavost, zpomalené dýchání nebo náhlá silná bolest.",
    "doplnujici_otazka": null,
    "pravidla": [
     "Y-PAIN",
@@ -3234,7 +3234,7 @@
     "myšlenky na smrt („nejraději bych si vzal/a život“) nebo výroky beznaděje"
    ],
    "zduvodneni": "Beznaděj a pasivní suicidální myšlenky jsou rizikový faktor suicidality – posouzení odborníkem týž den, krizové kontakty; při plánu, úmyslu nebo prostředcích jde o červenou úroveň.",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Pokud by se objevily myšlenky ublížit si, volejte ihned 155 nebo Linku první psychické pomoci 116 123 (nonstop).",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Pokud by se objevily myšlenky ublížit si, volejte ihned 155 nebo Linku první psychické pomoci 116 123 (nonstop).",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-PSYCH",
@@ -3273,7 +3273,7 @@
     },
     {
      "zdroj": "dotaznik",
-     "citace": "Mám zájem o podporu psychologa v rámci své léčby na MOU – Ano",
+     "citace": "Mám zájem o podporu psychologa v rámci své léčby – Ano",
      "checkin_id": "ONC-016-C06",
      "datum": "2026-09-15"
     }
@@ -3377,7 +3377,7 @@
     "bolest NRS ≥ 7, která nepovolí po záchranné dávce"
    ],
    "zduvodneni": "Hrozící dehydratace při nedostatečném příjmu – posouzení týž den (hydratace, výživa, analgezie). Nekontrolovaná bolest – posouzení lékařem týž den; systém nemění dávky.",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby pijte po malých doušcích. Volejte ihned 155, pokud: nemočíte déle než 10 hodin nebo omdlíte.",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Do té doby pijte po malých doušcích. Volejte ihned 155, pokud: nemočíte déle než 10 hodin nebo omdlíte.",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-INTAKE",
@@ -3570,7 +3570,7 @@
     "neudrží tekutiny; jen tekutá strava s nekontrolovanou bolestí; málo močí nebo závratě při sníženém příjmu"
    ],
    "zduvodneni": "Známky hypoperfuze / těžké dehydratace – riziko akutního selhání ledvin, nutná okamžitá i.v. hydratace.",
-   "doporuceni_pro_pacienta": "Volejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848. Nečekejte do rána. Vezměte si s sebou seznam léků.",
+   "doporuceni_pro_pacienta": "Volejte ihned 155 nebo sloužícího lékaře 724 590 848. Nečekejte do rána. Vezměte si s sebou seznam léků.",
    "doplnujici_otazka": null,
    "pravidla": [
     "R-DEHYD",
@@ -3898,7 +3898,7 @@
     "teplota ≥ 38 °C nebo zimnice během chemoterapie nebo do 6 týdnů po ní"
    ],
    "zduvodneni": "Horečka nebo zimnice v době chemoterapie = podezření na febrilní neutropenii; vyšetření a ATB do 1 hodiny, nečekat do rána, nemaskovat antipyretiky.",
-   "doporuceni_pro_pacienta": "Volejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848. Nečekejte do rána. Paralen neužívejte, dokud vás nevyšetří lékař. Vezměte si s sebou seznam léků.",
+   "doporuceni_pro_pacienta": "Volejte ihned 155 nebo sloužícího lékaře 724 590 848. Nečekejte do rána. Paralen neužívejte, dokud vás nevyšetří lékař. Vezměte si s sebou seznam léků.",
    "doplnujici_otazka": null,
    "pravidla": [
     "R-FEVER",
@@ -4249,7 +4249,7 @@
     },
     {
      "zdroj": "dotaznik",
-     "citace": "Mám zájem o podporu psychologa v rámci své léčby na MOU – Ano",
+     "citace": "Mám zájem o podporu psychologa v rámci své léčby – Ano",
      "checkin_id": "ONC-004-C08",
      "datum": "2026-09-21"
     },
@@ -4455,7 +4455,7 @@
     "4–6 stolic nad normál při imunoterapii, fluoropyrimidinech nebo irinotekanu; průjem nereagující na loperamid"
    ],
    "zduvodneni": "Průjem 2. stupně na rizikové léčbě nebo refrakterní na loperamid – riziko rychlé dehydratace; posouzení lékařem týž den (úprava léčby je rozhodnutím lékaře).",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Do té doby loperamid užívejte podle rozpisu (2 mg, dle potřeby) a pijte po malých doušcích. Volejte ihned 155, pokud: horečka, krev ve stolici, závratě nebo průjem 7× za den.",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Do té doby loperamid užívejte podle rozpisu (2 mg, dle potřeby) a pijte po malých doušcích. Volejte ihned 155, pokud: horečka, krev ve stolici, závratě nebo průjem 7× za den.",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-DIARRHEA-RISK"
@@ -4552,7 +4552,7 @@
     "jakékoli krvácení nebo nové modřiny na antikoagulaci"
    ],
    "zduvodneni": "Krvácení na antikoagulaci (pozor na lékové interakce zvyšující INR) – stanovit INR, rozhodnutí lékaře týž den.",
-   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem MOÚ, ozve se vám do 2 hodin. Dávkování léků na ředění krve neměňte bez pokynu lékaře. Volejte ihned 155, pokud: černá stolice, krev v moči, krvácení z nosu déle než 20 minut nebo úraz hlavy.",
+   "doporuceni_pro_pacienta": "Vaše potíže je potřeba ještě dnes probrat s lékařem, ozve se vám do 2 hodin. Dávkování léků na ředění krve neměňte bez pokynu lékaře. Volejte ihned 155, pokud: černá stolice, krev v moči, krvácení z nosu déle než 20 minut nebo úraz hlavy.",
    "doplnujici_otazka": null,
    "pravidla": [
     "O-BLEED-ANTICOAG"

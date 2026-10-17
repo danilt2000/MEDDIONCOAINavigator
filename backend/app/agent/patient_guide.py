@@ -1,20 +1,20 @@
 PATIENT_TEXTS: dict[str, dict[str, str]] = {
     "kdy_volat": {
-        "cs": "Volejte ihned 155 (mimo pracovní dobu případně sloužícího lékaře MOÚ 724 590 848), pokud máte: teplotu 38 °C a víc "
+        "cs": "Volejte ihned 155 (mimo pracovní dobu případně sloužícího lékaře 724 590 848), pokud máte: teplotu 38 °C a víc "
         "nebo zimnici během chemoterapie či do 6 týdnů po ní, dušnost v klidu, novou bolest na hrudi, zmatenost, záchvat, "
         "novou slabost rukou nebo nohou, krev ve stolici, zvratcích nebo moči, černou stolici, 7 a více stolic denně navíc, "
         "zvracení víc než 5× za den, neudržíte tekutiny, nemočíte déle než 10 hodin nebo omdlíte. Nečekejte do rána.",
-        "sk": "Volajte ihneď 155 (mimo pracovného času prípadne službukonajúceho lekára MOÚ 724 590 848), ak máte: teplotu 38 °C "
+        "sk": "Volajte ihneď 155 (mimo pracovného času prípadne službukonajúceho lekára 724 590 848), ak máte: teplotu 38 °C "
         "a viac alebo zimnicu počas chemoterapie či do 6 týždňov po nej, dýchavičnosť v pokoji, novú bolesť na hrudi, zmätenosť, "
         "záchvat, novú slabosť rúk alebo nôh, krv v stolici, zvratkoch alebo moči, čiernu stolicu, 7 a viac stolíc denne navyše, "
         "zvracanie viac ako 5× za deň, neudržíte tekutiny, nemočíte dlhšie ako 10 hodín alebo odpadnete. Nečakajte do rána.",
     },
     "kontakty": {
-        "cs": "Monitorovací centrum MOÚ pracuje v pracovní dny od 7:00 do 15:30. Mimo tuto dobu volejte v akutních případech "
-        "sloužícího lékaře MOÚ na čísle 724 590 848. Při ohrožení života volejte kdykoli 155. Chat ani dotazník neslouží "
+        "cs": "Monitorovací centrum pracuje v pracovní dny od 7:00 do 15:30. Mimo tuto dobu volejte v akutních případech "
+        "sloužícího lékaře na čísle 724 590 848. Při ohrožení života volejte kdykoli 155. Chat ani dotazník neslouží "
         "k přivolání pomoci v neodkladných situacích.",
-        "sk": "Monitorovacie centrum MOÚ pracuje v pracovné dni od 7:00 do 15:30. Mimo tohto času volajte v akútnych prípadoch "
-        "službukonajúceho lekára MOÚ na čísle 724 590 848. Pri ohrození života volajte kedykoľvek 155. Chat ani dotazník "
+        "sk": "Monitorovacie centrum pracuje v pracovné dni od 7:00 do 15:30. Mimo tohto času volajte v akútnych prípadoch "
+        "službukonajúceho lekára na čísle 724 590 848. Pri ohrození života volajte kedykoľvek 155. Chat ani dotazník "
         "neslúžia na privolanie pomoci v neodkladných situáciách.",
     },
     "horecka": {

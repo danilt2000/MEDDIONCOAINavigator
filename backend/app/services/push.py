@@ -19,11 +19,11 @@ log = logging.getLogger("api.push")
 TEXTS = {
     "cs": {
         "checkin": ("MEDDI · Dotazník na dnešek", "Vyplňte prosím krátký dotazník, jak se dnes cítíte. Zabere asi 2 minuty."),
-        "team": ("MEDDI · Zpráva od týmu MOÚ", "Máte novou zprávu od týmu MOÚ. Otevřete aplikaci."),
+        "team": ("MEDDI · Zpráva od ošetřujícího týmu", "Máte novou zprávu od ošetřujícího týmu. Otevřete aplikaci."),
     },
     "sk": {
         "checkin": ("MEDDI · Dotazník na dnes", "Vyplňte, prosím, krátky dotazník o tom, ako sa dnes cítite. Zaberie asi 2 minúty."),
-        "team": ("MEDDI · Správa od tímu MOÚ", "Máte novú správu od tímu MOÚ. Otvorte aplikáciu."),
+        "team": ("MEDDI · Správa od ošetrujúceho tímu", "Máte novú správu od ošetrujúceho tímu. Otvorte aplikáciu."),
     },
 }
 PATHS = {"checkin": "/checkin", "team": "/navigator"}

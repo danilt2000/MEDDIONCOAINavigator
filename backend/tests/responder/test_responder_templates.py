@@ -1,10 +1,15 @@
+import json
+import re
 import sys
 import types
 
 import pytest
 
-from app.adapters.meddi_json import load_patient, load_patients
-from app.triage.responder import compose_reply
+from app.adapters.meddi_json import load_patient, load_patients, load_questionnaires
+from app.agent.navigator import SYSTEM_PROMPT
+from app.agent.patient_guide import PATIENT_TEXTS
+from app.services.push import TEXTS
+from app.triage.responder import T, WATCH, compose_reply
 from app.triage.validator import normalize, sentences, validate_patient_text
 
 CONTACTS = {
@@ -59,7 +64,7 @@ def test_level_4_starts_with_call_to_action_and_no_followup():
     assert text.startswith("Volajte ihneď 155")
     assert FOLLOWUP["sk"] not in text
     text, _ = reply("ONC-001", 4, CONTACTS[4][1], hints=["R-FEVER"])
-    assert text.startswith("Volejte ihned 155 nebo sloužícího lékaře MOÚ 724 590 848.")
+    assert text.startswith("Volejte ihned 155 nebo sloužícího lékaře 724 590 848.")
     assert "Paralen neužívejte, dokud vás nevyšetří lékař." in text
 
 
@@ -104,7 +109,7 @@ def test_contact_and_time_named_for_levels_2_to_4():
     text, _ = reply("ONC-005", 2, CONTACTS[2][1])
     assert "monitorovacího centra" in text and "následující pracovní den" in text
     text, _ = reply("ONC-005", 3, CONTACTS[3][0])
-    assert "lékařem MOÚ" in text and "do 2 hodin" in text
+    assert "s lékařem" in text and "do 2 hodin" in text
     text, _ = reply("ONC-005", 3, CONTACTS[3][1])
     assert "724 590 848" in text and "ihned" in text
 
@@ -169,3 +174,8 @@ def test_second_person_hint_not_used_for_caregiver():
     text, problems = reply("ONC-014", 3, CONTACTS[3][0], "pecujici", hints=["R-DEHYD"], warning_signs=[hint])
     assert problems == []
     assert hint not in text and "u ní" in text
+
+
+def test_patient_facing_texts_never_name_the_institution():
+    texts = json.dumps([T, WATCH, TEXTS, PATIENT_TEXTS, SYSTEM_PROMPT, load_questionnaires()], ensure_ascii=False)
+    assert not re.search(r"MOÚ|\bMOU\b|Masaryk", texts)

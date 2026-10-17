@@ -97,12 +97,20 @@ test('Slovak cards show every backend contact line in Slovak', () => {
   const contacts = [...router.matchAll(/^CONTACT_\w+ = "(.+)"$/gm)].map((match) => match[1]);
   assert.equal(contacts.length, 6);
   for (const contact of contacts) {
-    assert.equal(contactText(contact, 'cs'), contact);
-    assert.notEqual(contactText(contact, 'sk'), contact, contact);
+    assert.equal(contactText(contact, 'cs'), contact.replace(' MOÚ', ''));
+    assert.notEqual(contactText(contact, 'sk'), contactText(contact, 'cs'), contact);
   }
   assert.equal(contactText('monitorovací centrum – následující pracovní den', 'sk'), 'monitorovacie centrum – nasledujúci pracovný deň');
-  assert.equal(contactText('sloužící lékař MOÚ 724 590 848 – ihned', 'sk'), 'službukonajúci lekár MOÚ 724 590 848 – ihneď');
+  assert.equal(contactText('sloužící lékař MOÚ 724 590 848 – ihned', 'sk'), 'službukonajúci lekár 724 590 848 – ihneď');
+  assert.equal(contactText('sloužící lékař MOÚ 724 590 848 – ihned', 'cs'), 'sloužící lékař 724 590 848 – ihned');
   assert.equal(contactText('neznámý kontakt', 'sk'), 'neznámý kontakt');
+});
+
+test('no text on a patient screen names the institution', () => {
+  const router = readFileSync(new URL('../../../backend/app/triage/router.py', import.meta.url), 'utf8');
+  const contacts = [...router.matchAll(/^CONTACT_\w+ = "(.+)"$/gm)].map((match) => match[1]);
+  const texts = [...Object.values(dictionaries.cs), ...Object.values(dictionaries.sk), ...contacts.flatMap((contact) => [contactText(contact, 'cs'), contactText(contact, 'sk')])];
+  for (const text of texts) assert.doesNotMatch(text, /MOÚ|\bMOU\b|Masaryk/, text);
 });
 
 test('the breaths-per-minute label is short enough for the two-column vitals grid', () => {

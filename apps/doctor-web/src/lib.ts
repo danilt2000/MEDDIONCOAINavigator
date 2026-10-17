@@ -10,6 +10,9 @@ export interface Loadable<T> {
   reload: () => void;
 }
 
+// The router contract names the institution (the eval compares it verbatim); the screens do not.
+export const contactText = (contact: string) => contact.replace(/ MOÚ/g, '');
+
 export function errorText(error: unknown): string {
   if (error instanceof ApiError) {
     if (error.status === 404) return 'Data zatím nejsou k dispozici (404).';

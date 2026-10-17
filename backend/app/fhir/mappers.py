@@ -500,7 +500,7 @@ def questionnaire_resource(definition: dict) -> dict:
         "title": definition["nazev"],
         "status": "active",
         "subjectType": ["Patient"],
-        "publisher": "MEDDI hub / MOÚ",
+        "publisher": "MEDDI hub",
         "item": items,
     }
     if definition.get("poznamka"):

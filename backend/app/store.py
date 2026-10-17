@@ -20,7 +20,7 @@ DEFAULT_NOW = "2026-09-09T21:50:00+02:00"
 PRIORITY_BY_LEVEL = {2: "routine", 3: "urgent", 4: "stat"}
 PRIORITY_RANK = {"routine": 0, "urgent": 1, "stat": 2}
 OWNER_IN_HOURS = "monitorovací centrum"
-OWNER_OUT_OF_HOURS = "sloužící lékař MOÚ"
+OWNER_OUT_OF_HOURS = "sloužící lékař"
 
 _lock = threading.RLock()
 _ready = threading.Event()
