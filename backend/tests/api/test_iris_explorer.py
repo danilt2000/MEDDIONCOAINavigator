@@ -101,6 +101,15 @@ def test_fhir_browser_validates_and_binds_the_resource_type(iris):
     assert iris.executed[-1][1] == ["Patient", "ONC-001"]
 
 
+def test_busy_explorer_gives_up_instead_of_queueing_forever(iris, monkeypatch):
+    monkeypatch.setattr(iris_explorer, "LOCK_WAIT_SECONDS", 0.05)
+    with iris_explorer._lock:
+        response = iris.client.post("/api/iris/queries/vaha-onc007/run")
+    assert response.status_code == 503
+    assert iris.executed == []
+    assert iris.client.post("/api/iris/queries/vaha-onc007/run").status_code == 200
+
+
 def test_iris_down_is_a_clear_503(monkeypatch):
     monkeypatch.setattr(settings, "iris_port", 1999)
     app = FastAPI()

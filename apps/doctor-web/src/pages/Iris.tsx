@@ -27,7 +27,7 @@ const TABS = [
 const IRIS_DOWN = 'IRIS for Health teď není dostupná. Bez spuštěného kontejneru IRIS (lokální vývoj) je to v pořádku, na serveru to zkuste za chvíli znovu.';
 const UNAVAILABLE = errorText(new ApiError(503, ''));
 const CELL_LIMIT = 120;
-const PORTAL = 'http://localhost:52773';
+const PORTAL = location.hostname === 'localhost' ? 'http://localhost:52773' : '';
 const PORTAL_LINKS: [string, string, string][] = [
   ['Management Portal', '/csp/sys/UtilHome.csp', 'úvodní stránka portálu'],
   ['SQL explorer', '/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=FHIRSERVER', 'libovolné SQL nad namespace FHIRSERVER'],
@@ -333,7 +333,7 @@ function FhirTab() {
                     Novější
                   </OutlinedButton>
                   <span className="muted">
-                    Strana {page + 1} z {pages} · {data.total.toLocaleString('cs-CZ')} zdrojů, nejnovější první
+                    Strana {page + 1} z {pages} · celkem {data.total.toLocaleString('cs-CZ')} · nejnovější první
                   </span>
                   <OutlinedButton disabled={page + 1 >= pages} onClick={() => setParams(search({ type, page: page + 1 }))}>
                     Starší
@@ -436,9 +436,9 @@ function LinksTab() {
   return (
     <OutlinedCard className="card">
       <h2 className="section-title">Management Portal IRIS</h2>
-      <p>Portál není z internetu dostupný. Odkazy níže fungují jen přes SSH tunel na server:</p>
+      <p>Portál je na tomto serveru pod /csp/ a vyžaduje přihlášení do IRIS. Druhá možnost je SSH tunel, portál je pak na http://localhost:52773/csp/sys/UtilHome.csp:</p>
       <pre className="iris-code">{'ssh -L 52773:127.0.0.1:52773 root@<server>'}</pre>
-      <p className="muted">Po otevření tunelu se přihlaste účtem správce IRIS; přihlašovací údaje tu neuvádíme.</p>
+      <p className="muted">Přihlaste se účtem správce IRIS; přihlašovací údaje tu neuvádíme.</p>
       <table className="table compact">
         <tbody>
           {PORTAL_LINKS.map(([label, path, note]) => (

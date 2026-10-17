@@ -20,6 +20,7 @@ ROW_LIMIT = 200
 PAGE_SIZE = 50
 MESSAGE_LIMIT = 100
 TIMEOUT_SECONDS = 10
+LOCK_WAIT_SECONDS = 5
 IRIS_DOWN = "IRIS for Health teď není dostupná."
 RESOURCE_TYPE = r"^[A-Z][A-Za-z]{1,63}$"
 RESOURCE_ID = r"^[A-Za-z0-9.\-]{1,64}$"
@@ -144,7 +145,10 @@ def _open():
 
 @contextmanager
 def _connection():
-    with _lock:
+    # a bounded wait, so a flood of explorer requests cannot park every worker thread of the whole API on this lock
+    if not _lock.acquire(timeout=LOCK_WAIT_SECONDS):
+        raise HTTPException(503, IRIS_DOWN)
+    try:
         try:
             connection = _open()
         except Exception:
@@ -158,6 +162,8 @@ def _connection():
             raise HTTPException(502, f"Dotaz v IRIS selhal: {sql_error}")
         finally:
             connection.close()
+    finally:
+        _lock.release()
 
 
 def _value(value):
