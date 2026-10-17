@@ -7,7 +7,7 @@ from app import store
 from app.adapters.meddi_json import load_patient
 from app.agent import navigator
 from app.config import settings
-from app.models import PRAGUE
+from app.models import PRAGUE, Measurement
 from app.services import engine
 
 
@@ -106,16 +106,20 @@ def test_no_to_the_verify_question_is_not_red_and_yes_still_is():
     assert asyncio.run(navigator.chat_turn("ONC-014", "ano", "pecujici", None, when)).triage.uroven == 4
 
 
-def contradiction_checkin(monkeypatch):
+def record_checkin(checkin_id, when, message, vitals=None):
     patient = load_patient("ONC-018")
     base = next(checkin for checkin in patient.checkiny if checkin.checkin_id == "ONC-018-C03")
-    when = at(2026, 9, 11, 9, 0)
-    checkin = base.model_copy(update={"checkin_id": "ONC-018-T02", "datum": when.date(), "cas": "09:00",
-                                      "zprava_pacienta": "od vcera mam hnacku asi 6 krat"})
+    checkin = base.model_copy(update={"checkin_id": checkin_id, "datum": when.date(), "cas": when.strftime("%H:%M"),
+                                      "zprava_pacienta": message, "vitalni_funkce": vitals or {}})
     _ctx, nlu, output = engine.run_checkin(patient, checkin, [], False)
-    assert output.uroven == 3 and "C-CONTRADICTION" in output.pravidla
     store.record_output(checkin, output, live=True, nlu=nlu)
     store.raise_task(output, side_effects=False)
+    return output
+
+
+def contradiction_checkin(monkeypatch, vitals=None):
+    output = record_checkin("ONC-018-T02", at(2026, 9, 11, 9, 0), "od vcera mam hnacku asi 6 krat", vitals)
+    assert output.uroven == (4 if vitals else 3) and "C-CONTRADICTION" in output.pravidla
     navigator.clear_history("ONC-018")
 
     def say(text, minute):
@@ -140,3 +144,26 @@ def test_answered_contradiction_is_not_floored_back_on_the_next_message(monkeypa
     assert say("mam horucku 38,6", 14).triage.uroven == 4
     reply = say("Mozem normalne jest a pit?", 16)
     assert reply.triage.uroven == 4 and "NAV-OPEN-EPISODE" in reply.triage.pravidla
+
+
+def test_answer_does_not_release_a_fever_from_the_checkin_form(monkeypatch):
+    say = contradiction_checkin(monkeypatch, {"teplota_c": Measurement(hodnota=38.6, zdroj="pacient")})
+    for text, minute in (("nie, dnes len 2 krat", 10), ("Mozem normalne jest a pit?", 12)):
+        reply = say(text, minute)
+        assert reply.triage.uroven == 4 and "NAV-OPEN-EPISODE" in reply.triage.pravidla, text
+
+
+def test_new_checkin_after_a_resolved_contradiction_is_floored_again(monkeypatch):
+    say = contradiction_checkin(monkeypatch)
+    assert say("nie, dnes len 2 krat", 10).triage.uroven == 2
+    assert record_checkin("ONC-018-T03", at(2026, 9, 11, 9, 30), "neudrzim ani vodu, vsetko vyvraciam").uroven == 3
+    reply = say("Mozem normalne jest a pit?", 40)
+    assert reply.triage.uroven == 3 and "NAV-OPEN-EPISODE" in reply.triage.pravidla
+
+
+def test_only_a_temperature_answers_the_temperature_question():
+    pending = ("mám 38,5", "Píšete o teplotě 38,5 °C – je to tak?", 3)
+    text, answered = navigator._followup_text(pending, "měla jsem jen 37,2")
+    assert "38,5" not in text and answered
+    text, answered = navigator._followup_text(pending, "zvracela jsem 2x")
+    assert "38,5" in text and not answered

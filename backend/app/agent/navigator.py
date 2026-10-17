@@ -13,7 +13,7 @@ from app.adapters.meddi_json import load_patient
 from app.agent import tools
 from app.config import settings
 from app.models import Fact, LevelCard, NavigatorReply, NluResult, PatientContext, TriageOutput
-from app.nlu.lexicon_cs_sk import _count, _negated
+from app.nlu.lexicon_cs_sk import _count
 
 log = logging.getLogger("navigator")
 
@@ -23,7 +23,7 @@ ON_DUTY_PHONE = "724 590 848"
 
 _fallback_history: dict[str, list[dict]] = {}
 _pending: dict[str, tuple[str, str, int]] = {}
-_resolved: dict[str, tuple[str, int]] = {}
+_resolved: dict[str, tuple[str, int, datetime]] = {}
 RESOLVABLE_RULES = {"C-CONTRADICTION", "U-VERIFY"}
 _locks: dict[str, asyncio.Lock] = {}
 _turns: set[asyncio.Task] = set()
@@ -72,9 +72,17 @@ RED_FLAGS = {
 }
 NO_FEVER = r"teplot\w* (je |mam |ma )?(normaln|v poradku|v poriadku|ok\b)"
 FEVER_REPORT = (r"\b(mam|ma|mame|mate|mel\w*|mal\w*)\s+((asi|trochu|nejak\w*|zvysen\w*|vysok\w*|lehk\w*|mirn\w*|porad|stale|zase|uz|taky|tez|tiez"
-                r"|jeste|este|jsem|som|vcera|dnes)\s+){0,2}teplot|zvysen\w* teplot|vysok\w* teplot|teplotu mam|\bteplot(im|i)\b")
+                r"|jeste|este|jsem|som|vcera|dnes)\s+){0,2}teplot|zvysen\w* teplot|vysok\w* teplot|teplotu mam|\bteplot(im|i)\b|\basi teplot"
+                r"|teplot\w*\s+((mi|mu|ji|jej|se|sa|uz|zase|porad|stale|furt)\s+){0,2}(stoup|stup|roste|rastie|zvys|zved|nejde dol|neklesa|nepovol|neni normal|nie je normal)"
+                r"|(stoupl|stupl|zvysil|zvedl|vyskocil)\w*\s+((se|sa|mi|mu|ji|jej)\s+){0,2}teplot")
 SYMPTOMS = r"bolest|bolet|boli|nevoln|zvrac|prujem|prujm|hnack|stolic|zacp|unav|slab|kasl|kasel|otok|oteklo|vyrazk|afty|pali|svedi|krvac|modrin|zavrat|tocit|necit|brneni|smut|uzkost|nespim|vycerp|teplot|horec|horuc|zimnic"
 DOSE_QUESTION = r"(muzu|mozem|smim|smiem|mam|dat|podat|vzit|zobrat|uzit|pridat|zvysit|dalsi|jeste|este|vic|viac)\b.*\b(davk|oramorph|morfin|tablet|lek(?!ar)|liek|prasek|kapk|loperamid|paralen|paracetamol|ibalgin|ibuprofen|novalgin)"
+# the engine's denial forms (lexicon_cs_sk._negated) without the ones that also open a report: "ani po Paralenu horečka neklesá",
+# "nikdy jsem neměla takovou bolest", "nemám hlad a bolest na hrudi", "nemám čím změřit horečku", "horečka ne a ne klesnout",
+# "stolice není normální"
+DENIED_BEFORE = (r"\b(bez|nemam|nema|nemame|nemaji|nemal\w*|zadn\w*|ziadn\w*|neni|nebyl\w*|nebol\w*|netrpi\w*|netrapi\w*)\s+"
+                 r"((?!(a|ale|tak\w*|mam|ma|mame|mate|maji|cim|jak|z?mer\w*)\s)\w+(,(?=\s+ani\s))?\s+){0,3}$")
+DENIED_AFTER = r"^\w*\s*(ne|nie|nemam|nema|nemame|neni|nebyl\w*|nebol\w*)\b(?!\s+(a\s+(ne|nie)\b|(je\s+)?(normaln|obvykl|bezn|tak)))"
 CLAUSE_END = r"([!?;\n]|(?<!\d)\.|\.(?!\d)|(?<!\d),|,(?!\d))"
 # ponytail: (clause subject, pronoun that keeps the clause, contrast the writer must state). A symptom clause led by another person
 # (pacient) or by "já mám …" (pecujici) is dropped only when the writer also says the patient is fine, since a caregiver may leave the
@@ -86,7 +94,8 @@ SOMEONE_ELSE = {
                 r"\b(jsem|som) (\w+ )?(v pohode|v poradku|v poriadku|ok\b|zdrav)|\b(mne|me|mna) (se|sa) to (\w+ )?vyhnul|\bja (nic )?nemam\b"),
     "pecujici": (r"\s*(a |ale |i |aj )?ja\s+(taky |tez |tiez |ted |teraz )?(mam|mivam)\s+(\w+\s+)?(horec|horuc|teplot|zimnic|prujem|prujm|hnack|kasel|kasl"
                  r"|ryma|chripk|nachlad|viroz|covid)",
-                 r"\b(ona|on|ji|ju|jej|ho|mu|taky|tez|tiez|oba|obe|obaja)\b",
+                 r"\b(ona|on|ji|ju|jej|ho|mu|taky|tez|tiez|oba|obe|obaja)\b|\b(manzel|partner|dcer|syn|vnuk|vnuc|sestr|bratr|mama|mamk|mamin|tat"
+                 r"|otec|otc|matk)\w*",
                  r"\bje (\w+ )?(v pohode|v poradku|v poriadku|ok\b|zdrav)"),
 }
 
@@ -96,8 +105,9 @@ def _numbers(pattern: str, text: str) -> list[float]:
 
 
 def _said(pattern: str, text: str) -> bool:
-    """A match the writer does not deny ("nemám bolest na hrudi", "horečku nemám")."""
-    return any(not _negated(text, match.start(), match.end()) for match in re.finditer(pattern, text))
+    """A match the writer does not deny ("nemám bolest na hrudi", "horečku nemám"); unsure counts as said."""
+    return any(not (re.search(DENIED_BEFORE, text[:match.start()]) or re.search(DENIED_AFTER, text[match.end():]))
+               for match in re.finditer(pattern, text))
 
 
 def _own_clauses(folded: str, author: str) -> str:
@@ -593,25 +603,30 @@ def _followup_text(pending: tuple[str, str, int], answer: str) -> tuple[str, boo
     count = bare or _count(folded)
     temperature = bare or re.search(r"\b(3[5-9]|4[0-2])([.,]\d)?\b", folded)
     earlier = f"{pending[0]}\n{pending[1]}" if yes or bare else pending[0]
+    superseded = False
     for number, unit in set(re.findall(r"(\d+(?:[.,]\d+)?)\s*(×|°)?", pending[1])):
         if (count and unit != "°") or (temperature and unit == "°"):
             earlier = re.sub(rf"(?<![\d.,]){re.escape(number)}(?![\d]|[.,]\d)\s*(?:×|x\b|-?\s?krat|-?\s?krát)?", "…", earlier)
-    return f"{earlier}\n{answer}", bool(yes or count or re.match(r"\W*(ne|nie)\b", folded))
+            superseded = True
+    return f"{earlier}\n{answer}", bool(yes or superseded or re.match(r"\W*(ne|nie)\b", folded))
 
 
 def _open_episode_floor(patient_id: str, output: TriageOutput, at: datetime, answered_level: int = 0) -> TriageOutput:
     """While an orange/red task is open, a chat message cannot bring the patient's level or instruction below it (spec §9).
     An answer that resolves the task's own contradiction / verify question lifts the floor for that task at that level, until a
-    new orange or red message."""
+    new orange or red message or a new check-in."""
     live = _store()
     task = live.open_task(patient_id) if live is not None and hasattr(live, "open_task") else None
     if task is None or task.uroven < 3:
         return output
-    if output.uroven >= 3:
+    resolved = _resolved.get(patient_id)
+    if output.uroven >= 3 or (resolved and any(item.zdroj != "chat" and resolved[2] < item.as_of <= at
+                                                for item in live.get_patient_outputs(patient_id))):
         _resolved.pop(patient_id, None)
-    elif answered_level >= task.uroven:
-        _resolved[patient_id] = (task.id, task.uroven)
-    if task.uroven <= output.uroven or answered_level >= task.uroven or _resolved.get(patient_id) == (task.id, task.uroven):
+    if output.uroven < 3 and answered_level >= task.uroven:
+        _resolved[patient_id] = (task.id, task.uroven, at)
+    resolved = _resolved.get(patient_id)
+    if task.uroven <= output.uroven or answered_level >= task.uroven or (resolved and resolved[:2] == (task.id, task.uroven)):
         return output
     step, contact, _notify, sla = tools.route(task.uroven, at)
     return output.model_copy(update={
@@ -727,6 +742,11 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
     pending = (_pending.pop(patient_id, None) if previous else None) or _checkin_followup(patient_id, at)
     triage_text, answered = _followup_text(pending, text) if pending else (text, False)
     answered_level = pending[2] if answered else 0
+    if answered_level:
+        # the answer resolves only what the message set: a level from the check-in form (a measured fever) stays until the team acts
+        earlier_nlu = await asyncio.to_thread(_analyze, pending[0], ctx, author, lang, False)
+        if (await asyncio.to_thread(_triage, patient_id, pending[0], author, ctx, earlier_nlu, at, lang)).uroven < answered_level:
+            answered_level = 0
     # ponytail: the rules-only card goes out first (fast); the LLM facts can only add, so a second card only ever raises it
     quick_nlu = await asyncio.to_thread(_analyze, triage_text, ctx, author, lang, False)
     quick_raw = await asyncio.to_thread(_triage, patient_id, triage_text, author, ctx, quick_nlu, at, lang)

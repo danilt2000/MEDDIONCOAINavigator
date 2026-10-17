@@ -370,6 +370,7 @@ def test_safety_net_does_not_raise_denials_and_questions(patient_id, text, autho
     ("ONC-001", "Manžel má horečku 38,5 a já taky.", "pacient"),
     ("ONC-001", "Já mám horečku, můžu ji navštívit?", "pecujici"),
     ("ONC-001", "Já jsem jí naměřila 38,5.", "pecujici"),
+    ("ONC-001", "Já mám chřipku a manželka má teď horečku 38,5, jinak je v pořádku.", "pecujici"),
 ])
 def test_real_red_flags_stay_red_in_the_lexicon_and_the_chat_triage(patient_id, text, author):
     assert lexicon(patient_id, text, author)[0] == 4
@@ -383,10 +384,34 @@ def test_real_red_flags_stay_red_in_the_lexicon_and_the_chat_triage(patient_id, 
     ("ONC-004", "Asi mám zvýšenou teplotu.", "pacient"),
     ("ONC-004", "Teplotu mám, ale neměřil jsem.", "pacient"),
     ("ONC-004", "Mám vysokou teplotu.", "pacient"),
+    ("ONC-004", "Teplota mi stoupá.", "pacient"),
+    ("ONC-004", "Teplota mi nejde dolů.", "pacient"),
+    ("ONC-004", "Je mi horko, asi teplota.", "pacient"),
 ])
 def test_reported_temperature_without_a_value_still_asks_for_degrees(patient_id, text, author):
     level, _findings, question = lexicon(patient_id, text, author)
     assert level == 3 and question == "Kolik stupňů jste naměřil/a?"
+
+
+@pytest.mark.parametrize("patient_id, text, author, lang, level", [
+    ("ONC-001", "Ani po Paralenu horečka neklesá.", "pacient", "cs", 4),
+    ("ONC-018", "Ani po Paralene horúčka neklesá.", "pacient", "sk", 4),
+    ("ONC-001", "Nemám teploměr ale horečku mám.", "pacient", "cs", 4),
+    ("ONC-001", "ne ma porad horecku", "pacient", "cs", 4),
+    ("ONC-001", "Horečka ne a ne klesnout.", "pacient", "cs", 4),
+    ("ONC-001", "Nemám hlad a bolest na hrudi.", "pacient", "cs", 4),
+    ("ONC-001", "Nemám čím změřit horečku.", "pacient", "cs", 4),
+    ("ONC-009", "Bolest na hrudi ne a ne přestat.", "pacient", "cs", 4),
+    ("ONC-009", "Nikdy som nemala takú bolesť na hrudi.", "pacient", "sk", 4),
+    ("ONC-018", "Ani v pokoji nemôžem dýchať.", "pacient", "sk", 4),
+    ("ONC-009", "Ani na oslovení nereaguje.", "pecujici", "cs", 4),
+    ("ONC-009", "Nikdy nebyla takhle zmatená.", "pecujici", "cs", 4),
+    ("ONC-009", "Černá stolice není normální, mám ji od rána.", "pacient", "cs", 4),
+    ("ONC-018", "Teplota mi stúpa.", "pacient", "sk", 3),
+])
+def test_safety_net_raises_reports_that_only_look_like_denials(patient_id, text, author, lang, level):
+    output = chat_triage(patient_id, text, author, lang)
+    assert output.uroven == level and "NAV-SAFETY-NET" in output.pravidla, output.pravidla
 
 
 def test_someone_elses_fever_is_not_the_patients():
