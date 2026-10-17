@@ -8,7 +8,7 @@ The demo runs on an Ubuntu 24.04 server behind Cloudflare, next to other sites:
 | https://lekar.nastasiya.com | clinician web (`apps/doctor-web/dist`) |
 | `/api`, `/mock` on both | FastAPI on 127.0.0.1:8100 (systemd `meddi-api`) |
 | 127.0.0.1:8101 | MCP server (systemd `meddi-mcp`) |
-| 127.0.0.1:52773, :1972 | IRIS for Health (`docker compose`, container `meddi-iris`), reachable over an SSH tunnel only |
+| 127.0.0.1:52773, :1972 | IRIS for Health (`docker compose`, container `meddi-iris`); its portal (`/csp/`) and FHIR endpoint (`/fhir/`) are proxied on lekar.nastasiya.com |
 
 Host nginx terminates TLS with the Cloudflare origin certificate for `*.nastasiya.com` (`deploy/nginx/meddi.conf`).
 Cloudflare DNS: proxied A records `pacient` and `lekar` pointing at the server.
@@ -39,4 +39,4 @@ backend/.venv/bin/pip install -r backend/requirements.txt && systemctl restart m
 
 A restart of `meddi-api` resets the demo state (clock 9. 9. 2026 21:50, replayed history), like a local restart.
 
-IRIS portal from a laptop: `ssh -L 52773:127.0.0.1:52773 root@<server>`, then http://localhost:52773/csp/sys/UtilHome.csp.
+IRIS portal: https://lekar.nastasiya.com/csp/sys/UtilHome.csp (public on purpose for the jury; IRIS login required). Over an SSH tunnel: `ssh -L 52773:127.0.0.1:52773 root@<server>`, then http://localhost:52773/csp/sys/UtilHome.csp.
