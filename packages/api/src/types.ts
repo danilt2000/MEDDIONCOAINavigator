@@ -404,4 +404,56 @@ export interface NotificationLogEntry {
   device: string | null;
   result: NotificationResult;
   detail: string | null;
+export interface IrisOverview {
+  namespace: string;
+  version: string;
+  fhir: { type: string; count: number }[];
+  tables: { name: string; description: string; rows: number | null }[];
+  production: {
+    name: string;
+    running: boolean;
+    items: { name: string; class_name: string; enabled: boolean }[];
+    messages: number;
+    last_message: string | null;
+  } | null;
+}
+
+export interface IrisQuery {
+  id: string;
+  title: string;
+  description: string;
+  sql: string;
+}
+
+export type IrisValue = string | number | boolean | null;
+
+export interface IrisQueryResult {
+  columns: string[];
+  rows: IrisValue[][];
+  truncated: boolean;
+  elapsed_ms: number;
+}
+
+export interface IrisResourcePage {
+  type: string;
+  total: number;
+  page: number;
+  page_size: number;
+  items: { id: string; last_modified: string; version: string }[];
+}
+
+export interface IrisMessage {
+  id: number;
+  time: string | null;
+  session: number;
+  source: string;
+  target: string;
+  body_class: string | null;
+  status: string;
+  type: string;
+  error: boolean;
+}
+
+export interface IrisMessageDetail extends IrisMessage {
+  body: string | null;
 }

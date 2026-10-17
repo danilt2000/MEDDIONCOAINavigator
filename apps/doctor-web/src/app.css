@@ -1054,4 +1054,51 @@ details > summary {
 .risk-badge.muted-badge {
   background: var(--md-sys-color-surface-container-high);
   color: var(--md-sys-color-on-surface-variant);
+.subtabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.subtabs a {
+  padding: 6px 0;
+  border-bottom: 3px solid transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.subtabs a.active {
+  border-bottom-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-surface);
+}
+
+.iris-code {
+  margin: 0;
+  padding: 10px 12px;
+  max-height: 360px;
+  overflow: auto;
+  border-radius: 8px;
+  background: var(--md-sys-color-surface-container);
+  font: 0.85rem/1.45 ui-monospace, Consolas, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.iris-code.tall {
+  max-height: calc(100vh - 260px);
+}
+
+.iris-scroll {
+  max-height: 560px;
+  overflow: auto;
+}
+
+.iris-wide-left {
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+}
+
+.iris-side {
+  position: sticky;
+  top: 12px;
 }

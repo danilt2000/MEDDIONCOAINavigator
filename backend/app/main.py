@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import chat, checkins, meta, mock_meddi, notifications, patients, push, queue, replay, stats
+from app.api import chat, checkins, iris_explorer, meta, mock_meddi, notifications, patients, push, queue, replay, stats
 from app.services.notifications import start_scheduler
 
 
@@ -21,5 +21,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-for module in (meta, patients, checkins, chat, queue, stats, replay, mock_meddi, push, notifications):
+for module in (meta, patients, checkins, chat, queue, stats, replay, mock_meddi, push, notifications, iris_explorer):
     app.include_router(module.router)
