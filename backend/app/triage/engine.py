@@ -10,6 +10,7 @@ from pathlib import Path
 
 import yaml
 
+from app.adapters.meddi_json import without_institution
 from app.context.builder import fold
 from app.models import Answer, Checkin, Evidence, Fact, NluResult, PatientContext, TriageOutput
 from app.nlu.lexicon_cs_sk import MARKED_DROWSINESS
@@ -631,6 +632,7 @@ def fallback_text(level: int, contact: str | None, lang: str, warnings: list[str
     signs = ", ".join(warnings[:3])
     sk = lang == "sk"
     if level >= 4:
+        contact = without_institution(contact or "155")
         text = (f"Volajte ihneď {contact}. Nečakajte do rána." if sk else f"Volejte ihned {contact}. Nečekejte do rána.")
     elif level == 3:
         if contact and contact.startswith("sloužící"):

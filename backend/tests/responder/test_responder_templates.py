@@ -9,6 +9,7 @@ from app.adapters.meddi_json import load_patient, load_patients, load_questionna
 from app.agent.navigator import SYSTEM_PROMPT
 from app.agent.patient_guide import PATIENT_TEXTS
 from app.services.push import TEXTS
+from app.triage.engine import fallback_text
 from app.triage.responder import T, WATCH, compose_reply
 from app.triage.validator import normalize, sentences, validate_patient_text
 
@@ -177,5 +178,7 @@ def test_second_person_hint_not_used_for_caregiver():
 
 
 def test_patient_facing_texts_never_name_the_institution():
-    texts = json.dumps([T, WATCH, TEXTS, PATIENT_TEXTS, SYSTEM_PROMPT, load_questionnaires()], ensure_ascii=False)
+    fallbacks = [fallback_text(level, contact, lang, ["horečka"], None)
+                 for level, contacts in CONTACTS.items() for contact in contacts for lang in ("cs", "sk")]
+    texts = json.dumps([T, WATCH, TEXTS, PATIENT_TEXTS, SYSTEM_PROMPT, load_questionnaires(), fallbacks], ensure_ascii=False)
     assert not re.search(r"MOÚ|\bMOU\b|Masaryk", texts)

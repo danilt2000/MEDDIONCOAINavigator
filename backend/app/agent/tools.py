@@ -236,4 +236,4 @@ def escalate(patient_id: str, level: int, reason: str, evidence: str = "") -> di
     if live is not None:
         live.record_output(None, output)
         live.raise_task(output)
-    return {"raised": True, "level": level, "contact": contact}
+    return {"raised": True, "level": level, "contact": without_institution(contact)}
