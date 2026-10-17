@@ -1007,3 +1007,51 @@ details > summary {
   margin-top: 3px;
   accent-color: var(--md-sys-color-primary);
 }
+
+.tabs.subtabs {
+  padding: 0;
+  background: none;
+}
+
+.native-input {
+  padding: 6px 8px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 8px;
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  font: inherit;
+}
+
+.rule-status {
+  align-self: flex-start;
+  font-weight: 500;
+}
+
+.status-pill[data-due='true'],
+.status-pill[data-result='sent'] {
+  background: var(--triage-1-container);
+  color: var(--triage-1-on-container);
+}
+
+.status-pill[data-result='failed'] {
+  background: var(--triage-3-container);
+  color: var(--triage-3-on-container);
+}
+
+.lock-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--md-sys-color-surface-container);
+}
+
+.candidates li {
+  line-height: 1.6;
+}
+
+.risk-badge.muted-badge {
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface-variant);
+}

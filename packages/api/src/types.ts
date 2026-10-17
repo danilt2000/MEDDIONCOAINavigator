@@ -360,3 +360,48 @@ export interface PushSendResult {
   notification: PushTemplate;
   results: { device_id: string; ok: boolean; status: number | null; error: string | null }[];
 }
+
+export type NotificationRuleId = 'daily_checkin' | 'missed_checkin' | 'team_reply' | 'followup' | 'quiet_hours';
+export type NotificationResult = 'sent' | 'no_device' | 'failed';
+
+export interface NotificationRule {
+  id: NotificationRuleId;
+  name: string;
+  kind: 'time' | 'event' | 'quiet';
+  description: string;
+  enabled: boolean;
+  /** daily_checkin: {time: 'HH:MM'}, missed_checkin: {days}, quiet_hours: {start, end} */
+  params: Record<string, string | number>;
+  /** lock-screen text (Czech); null for quiet hours */
+  title: string | null;
+  body: string | null;
+  opens: string | null;
+}
+
+export interface NotificationCandidate {
+  patient_id: string;
+  patient_name: string;
+  reason: string;
+  has_device: boolean;
+  fired_today: NotificationResult | 'pending' | null;
+}
+
+export interface NotificationPreview {
+  now: string;
+  rules: { rule_id: NotificationRuleId; status: string; due: boolean; candidates: NotificationCandidate[] }[];
+}
+
+export interface NotificationLogEntry {
+  id: string;
+  at: string;
+  patient_id: string;
+  patient_name: string;
+  rule_id: NotificationRuleId;
+  rule_name: string;
+  source: 'scheduler' | 'event' | 'manual';
+  reason: string;
+  channel: string;
+  device: string | null;
+  result: NotificationResult;
+  detail: string | null;
+}

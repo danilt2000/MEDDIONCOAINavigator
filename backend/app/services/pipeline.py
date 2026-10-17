@@ -6,7 +6,7 @@ import threading
 from app import store
 from app.adapters.meddi_json import load_questionnaires
 from app.models import PRAGUE, Checkin, Patient, TriageOutput
-from app.services import engine, side_effects
+from app.services import engine, notifications, side_effects
 
 log = logging.getLogger("api.pipeline")
 
@@ -94,6 +94,8 @@ def process_checkin(patient: Patient, checkin: Checkin) -> TriageOutput:
     store.record_output(checkin, output, live=is_live, nlu=nlu)
     if output.uroven >= 2:
         store.raise_task(output)
+    if is_live and output.doplnujici_otazka:
+        notifications.on_event("followup", patient.patient_id, "doplňující otázka z check-inu")
     threading.Thread(target=_after_checkin, args=(patient, checkin, output), daemon=True, name="after-checkin").start()
     return output
 

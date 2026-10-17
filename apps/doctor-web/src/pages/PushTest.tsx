@@ -8,7 +8,7 @@ import { errorText, fmtDayTime, useApi } from '../lib';
 
 const patientOrigin = location.origin.replace('://lekar.', '://pacient.').replace(':5174', ':5173');
 
-function detailText(error: unknown): string {
+export function detailText(error: unknown): string {
   if (error instanceof ApiError) {
     try {
       const { detail } = JSON.parse(error.message);
@@ -39,14 +39,9 @@ export function PushTestPage() {
 
   return (
     <div className="page">
-      <div className="page-head">
-        <div>
-          <h1>Test notifikací</h1>
-          <p className="muted">
-            Testovací prostředí: odešle skutečnou push notifikaci na telefon pacienta. Po klepnutí se aplikace otevře rovnou na dotazníku.
-          </p>
-        </div>
-      </div>
+      <p className="muted">
+        Ruční odeslání: odešle skutečnou push notifikaci na telefon pacienta. Po klepnutí se aplikace otevře rovnou na dotazníku.
+      </p>
       <Load source={patients} isEmpty={(items) => items.length === 0} emptyText="Žádní pacienti.">
         {() => {
           const patientDevices = devices.data?.filter((device) => device.patient_id === patientId);

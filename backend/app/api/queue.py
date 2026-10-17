@@ -5,7 +5,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 from app import store
-from app.services import views
+from app.services import notifications, views
 
 router = APIRouter(prefix="/api", tags=["queue"])
 
@@ -35,4 +35,6 @@ def task_action(task_id: str, body: TaskAction) -> dict:
     task = store.apply_task_action(task_id, body.action, body.note, body.author)
     if task is None:
         raise HTTPException(404, f"task {task_id} not found")
+    if body.action in notifications.TEAM_REPLY_ACTIONS:
+        notifications.on_event("team_reply", task.patient_id, f"tým: {store.ACTION_TEXT[body.action].lower()}")
     return views.queue_item(task)

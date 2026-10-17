@@ -130,9 +130,9 @@ def templates(patient: Patient) -> list[dict]:
     ]
 
 
-def send(patient: Patient, kind: str, target_device_id: str | None = None) -> dict | None:
+def send(patient: Patient, kind: str, target_device_id: str | None = None, notification: dict | None = None) -> dict | None:
     """None when the patient has no matching device. Network calls run outside the lock."""
-    notification = next(template for template in templates(patient) if template["kind"] == kind)
+    notification = notification or next(template for template in templates(patient) if template["kind"] == kind)
     payload = json.dumps({"title": notification["title"], "body": notification["body"], "url": notification["url"], "tag": f"meddi-{kind}"}, ensure_ascii=False)
     with _lock:
         targets = {
