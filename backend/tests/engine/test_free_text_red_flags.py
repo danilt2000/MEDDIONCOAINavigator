@@ -66,6 +66,18 @@ CASES = [
     ("ONC-010", (2026, 9, 15, 20, 0), "pecujici", "Já mám pocit, že maminka má horečku", 4, "R-FEVER"),
     ("ONC-009", (2026, 9, 15, 20, 0), "pacient", "Nedýchá se mi dobře ani v klidu.", 4, "R-BREATH"),
     ("ONC-014", (2026, 9, 15, 22, 0), "dcera", "Mamka je nápadně spavá", 4, "R-OPIOID"),
+    ("ONC-014", (2026, 9, 15, 22, 0), "dcera", "Mamka je mimořádně spavá", 4, "R-OPIOID"),
+    ("ONC-010", (2026, 9, 15, 20, 0), "pacient", "nejsem doma mam horecku", 4, "R-FEVER"),
+    ("ONC-010", (2026, 9, 15, 20, 0), "pacient", "Nejsem v pohodě točí se mi hlava", 2, "Y-BP"),
+    ("ONC-010", (2026, 9, 15, 20, 0), "pacient", "Je mi, jako kdybych měla horečku", 4, "R-FEVER"),
+    ("ONC-005", (2026, 9, 15, 20, 0), "pacient", "Je mi, jako kdyby mě pálilo na hrudi", 4, "R-CHEST"),
+    ("ONC-005", (2026, 9, 15, 20, 0), "pacient", "je mi ako keby ma pichalo na hrudi", 4, "R-CHEST"),
+    ("ONC-010", (2026, 9, 15, 20, 0), "pacient", "Já jsem v pohodě, jen mi manžel naměřil 38,5", 4, "R-FEVER"),
+    ("ONC-010", (2026, 9, 15, 20, 0), "pacient", "Já jsem zdravotní sestra, mamka má horečku 39", 4, "R-FEVER"),
+    ("ONC-010", (2026, 9, 15, 20, 0), "pacient", "Já jsem v pohodě, jen manžel naměřil 38,5", 4, "R-FEVER"),
+    ("ONC-010", (2026, 9, 15, 20, 0), "pecujici", "Maminka je v pořádku, já jsem naměřil horečku", 4, "R-FEVER"),
+    ("ONC-018", (2026, 9, 15, 20, 0), "pacient", "Bolí ma ľavé lýtko a je opuchnuté", 3, "O-DVT"),
+    ("ONC-018", (2026, 9, 15, 20, 0), "pacient", "Bolí mě hlava a v noci mám křeče v lýtkách", 1, None),
 ]
 
 

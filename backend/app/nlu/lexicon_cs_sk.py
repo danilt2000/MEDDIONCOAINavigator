@@ -13,19 +13,20 @@ NUMBER_WORDS = {
 }
 _NUMBER = r"(\d+|" + "|".join(NUMBER_WORDS) + r")"
 _COUNT = re.compile(rf"\b{_NUMBER}\s*(?:x|×|-?\s?krat|kr\b)|\b(jednou|dvakrat|trikrat|ctyrikrat|stirikrat|petkrat|patkrat|sestkrat|sedmkrat|sedemkrat|osmkrat|osemkrat|devetkrat|desetkrat|desatkrat)\b")
-_NEGATOR = re.compile(r"\b(bez|ani|ne|nie|nemam|nema|nemame|nemaji|nemal\w*|zadn\w*|ziadn\w*|neni|nejsem|nejsi|nejsme|nejste|nebyl\w*|nebol\w*|nikdy|netrpi\w*|netrapi\w*"
-                      r"|kdyby\w*|keby\w*)\s+(?:\w+\s+){0,2}$")
+_NEGATOR = re.compile(r"\b(?:(bez|ani|ne|nie|nemam|nema|nemame|nemaji|nemal\w*|zadn\w*|ziadn\w*|neni|nebyl\w*|nebol\w*|nikdy|netrpi\w*|netrapi\w*"
+                      r"|(?<!jako )(?<!jak )kdyby\w*|(?<!ako )keby\w*)\s+(?:\w+\s+){0,2}|nejs(?:em|i|me|te)\s+(?:(?:vubec|nijak|uz)\s+)?)$")
 _FUSED_NE = re.compile(r"\bne$")
 _THRESHOLD = re.compile(r"\b(pri|pokud|kdyz|ak|jestli|kdyby\w*|keby\w*)\s+((je|bude|budu|mam|mate|ma)\s+)?(teplot|horeck|horuck)\w*\s+(nad|od|vic nez|vice nez|viac ako|viac nez|vyssi nez|vyse)\s+$")
 _FIRST_PERSON = re.compile(r"\b(jsem|sem|som|jsme|sme)\b")
 _RELATIVE = (r"(manzel\w*|partner\w*|dcer\w*|syn\w*|vnuk\w*|vnuc\w*|vnouc\w*|bratr\w*|brat|sestr\w*|mamk\w*|mamin\w*|mama|matk\w*|tatin\w*|tatk\w*|tata"
              r"|otec|dite|deti|kamarad\w*|soused\w*|kolega|kolegyn\w*)")
-_FINE = r"(v pohode|v poradku|v poriadku|zdrav\w*|ok)\b"
+_FINE = r"(v pohode|v poradku|v poriadku|zdrav[aiye]|ok)\b"
 # a symptom belongs to someone else only when the text also says the other party is fine
 _SELF_FINE = re.compile(rf"\bja\s+(jsem|som|sem)\s+{_FINE}")
 _PATIENT_FINE = re.compile(rf"\b({_RELATIVE}|on|ona)\s+(je|se citi|sa citi)\s+{_FINE}")
-_OTHER_SUBJECT = re.compile(rf"\b{_RELATIVE}\s+(?:(?!(?:mi|me|mne|mna|mnou)\b)\w+\s+){{0,2}}$")
-_SELF_SUBJECT = re.compile(r"\bja\s+(?:uz\s+)?(mam|jsem|sem|som)\s+(?:\w+\s+)?$")
+_NOT_PARTICIPLE = r"(?!\w*l[aoiy]?\b)\w+\s+"  # „manžel naměřil 38,5“ is about the writer, „manžel má 38,5“ is not
+_OTHER_SUBJECT = re.compile(rf"^(?!.*\b(?:mi|me|mne|mna|mnou)\b).*\b{_RELATIVE}\s+(?:{_NOT_PARTICIPLE}){{0,2}}$")
+_SELF_SUBJECT = re.compile(rf"\bja\s+(?:uz\s+)?(mam|jsem|sem|som)\s+(?:{_NOT_PARTICIPLE})?$")
 _NEGATOR_AFTER = re.compile(r"^\w*\s*(ne|nie|nemam|nema|nemame|neni|nebyl\w*|nebol\w*)\b")
 _SENTENCE_END = re.compile(r"[;!?\n]|(?<!\d)\.|\.(?!\d)")
 _PART_END = re.compile(r"(?<!\d),|,(?!\d)")
@@ -117,7 +118,7 @@ _CONSTIPATION = (rf"{_NUMBER}\s*(dn\w*|den)\s*(bez stolice|((jsem|som|sem) )?(ne
                  rf"|(bez stolice|(nebyl|nebol)\w* ((jsem|som|sem) )?na stolici)\s*(uz |asi )?{_NUMBER}")
 MARKED_DROWSINESS = (r"nereaguj|nejde (ji |ho )?probudit|neda se probudit|nemuz\w* (ji |ho )?probudit|tezko (se )?probou?z|somnol|nezvykle spi|ned(a|á) sa zobudit"
                      r"|\b(neda|nejde|nelze|nemuz\w*|nemoz\w*|nemohu|nemohl\w*|nevieme|nevim)\s+(\w+\s+){0,3}(pro|vz|z|zo|pre|pri)bud|(pro|vz|z|zo|pre)bud\w*\s+(\w+\s+){0,2}(nejde|neda|nelze)\b"
-                     r"|bezvedom|neprobuditeln|\b(napadn|nezvykl|neobvykl|vyrazn|velmi|velice|hodne|moc|strasn|hrozn|extremn|prilis)\w*\s+spav")
+                     r"|bezvedom|neprobuditeln|\b(napadn|nezvykl|neobvykl|vyrazn|velmi|velice|hodne|moc|strasn|hrozn|extremn|prilis|mimoradn|abnormaln|nadmern)\w*\s+spav")
 
 Rule = tuple[str, str, Callable[[str], object] | None, bool]
 # (fact type, regex on the folded segment, value function, negatable)
@@ -159,7 +160,7 @@ RULES: list[Rule] = [
     ("thirst_polyuria", r"zizen|smad|caste moceni|casto (chodim )?(curat|mocit)|chodim (casto )?curat|porad (piju|pije)|casto mocim|polyur|polydips|stale piju", None, True),
     ("weight_change_kg", r"(pribral|zhubl|ubral|schudol|schudla)\w*\s*(jsem |sem |som |jsme )?(asi |skoro |cca |o |uz )?\d", _weight, True),
     ("edema", r"\botok|otekl|oteka|opuch|natekl|nateka", lambda segment: "i ráno" if re.search(r"rano|ryhy|ryha|stehn|cel(e|y|a) (noh|tel)|nezmiz", segment) else True, True),
-    ("calf_swelling_one_side", r"lytk\w*.*(otok|otek|natek|opuch|\bboli|bolest)|(otok|otek|natek|opuch|\bboli|bolest)\w*.*lytk|jednostrann\w* otok", None, True),
+    ("calf_swelling_one_side", r"lytk\w*.*(otok|otek|natek|opuch|\bboli|bolest)|((otok|otek|natek|opuch|bolest)\w*.*|\bboli\w*\s+(\w+\s+){0,4})lytk|jednostrann\w* otok", None, True),
     ("pain_nrs", r"(nrs|bolest\w*|boli\w*)\D{0,25}?\b\d{1,2}|nrs\s*\d", _nrs, False),
     ("rescue_doses_per_day", rf"{_NUMBER}\s*(davk|davek)\w*", lambda segment: _number(re.search(rf"{_NUMBER}\s*(davk|davek)", segment).group(1)), False),
     ("liquids_only", r"jen tekut|pouze tekut|len tekut|jen kase|jen pyre|nutridrink|jen piti\b|iba tekut", None, True),
