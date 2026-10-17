@@ -1,8 +1,9 @@
-import type { CheckinInput, QuestionnaireDefinition } from '@navigator/api';
-import { FilledButton, LinearProgress, OutlinedTextField, Switch, TextButton } from '@navigator/ui';
+import checkCircleIcon from '@material-symbols/svg-400/outlined/check_circle.svg?raw';
+import type { CheckinInput, QuestionnaireDefinition, TriageOutput } from '@navigator/api';
+import { FilledButton, LinearProgress, OutlinedTextField, SvgIcon, Switch, TextButton, TriageChip } from '@navigator/ui';
 import { useEffect, useState, type ReactNode } from 'react';
 import { useNavigate } from 'react-router';
-import { submitCheckin, useApi, useApp } from '../app-state';
+import { checkinDraft, formatTime, sameDay, store, submitCheckin, useApi, useApp } from '../app-state';
 import {
   answerKey,
   buildFills,
@@ -23,20 +24,25 @@ import {
   type VitalKey,
 } from '../flow';
 import { format } from '../i18n';
-import { AiFab, AmbulanceAnd155, BackButton, ErrorBanner } from '../ui';
+import { AcuteButton, AiFab, AmbulanceAnd155, BackButton, ErrorBanner } from '../ui';
 
 const fieldValue = (event: Event) => (event.target as HTMLInputElement).value;
 
 type Vitals = Partial<Record<VitalKey, string>>;
-
-// Survives a detour to the AI chat; cleared after a successful submit.
-let draft: { patientId: string; answers: Answers; stepIndex: number; vitals: Vitals; message: string; photo: string } | null = null;
 
 function pickQuestionnaires(all: Questionnaire[], badges: string[]) {
   const wanted = ['nezadouci_ucinky'];
   if (badges.includes('paliativní')) wanted.push('esas');
   if (badges.includes('opioid')) wanted.push('bolest_analgeticka_terapie');
   return wanted.map((id) => all.find((questionnaire) => questionnaire.id === id)).filter((found) => !!found);
+}
+
+function useLastCheckin() {
+  const { patientId } = useApp();
+  const triage = useApi<TriageOutput[]>(`/api/patients/${patientId}/triage`);
+  const stored = store.get<TriageOutput | null>(`last:${patientId}`, null);
+  const fromApi = triage.data?.find((output) => output.zdroj !== 'chat') ?? null;
+  return !stored || (fromApi && fromApi.as_of >= stored.as_of) ? fromApi : stored;
 }
 
 function QuestionInput(props: { questionnaireId: string; item: Item; value: Value | undefined; onChange: (value: Value | undefined) => void }) {
@@ -124,10 +130,12 @@ function QuestionInput(props: { questionnaireId: string; item: Item; value: Valu
 }
 
 export function Checkin() {
-  const { t, now, patient, patientId, caregiver, setCaregiver, relation, refreshQueue } = useApp();
+  const { t, lang, locale, now, patient, patientId, patientError, caregiver, setCaregiver, relation, refreshQueue } = useApp();
   const navigate = useNavigate();
   const definitions = useApi<QuestionnaireDefinition[]>('/api/questionnaires');
-  const saved = draft?.patientId === patientId ? draft : null;
+  const last = useLastCheckin();
+  const doneToday = last && sameDay(new Date(last.as_of), now) ? last : null;
+  const saved = checkinDraft.current?.patientId === patientId ? checkinDraft.current : null;
   const [answers, setAnswers] = useState<Answers>(saved?.answers ?? {});
   const [stepIndex, setStepIndex] = useState(saved?.stepIndex ?? 0);
   const [vitals, setVitals] = useState<Vitals>(saved?.vitals ?? {});
@@ -137,7 +145,7 @@ export function Checkin() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    draft = { patientId, answers, stepIndex, vitals, message, photo };
+    checkinDraft.current = { patientId, answers, stepIndex, vitals, message, photo };
   });
 
   const selected = pickQuestionnaires((definitions.data ?? []) as unknown as Questionnaire[], patient?.risk_badges ?? []);
@@ -150,13 +158,14 @@ export function Checkin() {
     setStepIndex(index);
     scrollTo(0, 0);
   };
-  const back = () => (stepIndex > 0 ? go(stepIndex - 1) : navigate('/'));
 
   if (!selected.length) {
     return (
       <main className="content">
         <div className="toolbar">
-          <BackButton onClick={() => navigate('/')} />
+          <span className="toolbar-end">
+            <AcuteButton />
+          </span>
         </div>
         {definitions.loading ? (
           <LinearProgress indeterminate />
@@ -186,7 +195,7 @@ export function Checkin() {
     };
     try {
       const result = await submitCheckin(checkin, now);
-      draft = null;
+      checkinDraft.current = null;
       if (result === 'queued') refreshQueue();
       navigate('/vysledek', { replace: true, state: result === 'queued' ? { queued: true } : { output: result, checkin } });
     } catch (submitError) {
@@ -310,13 +319,22 @@ export function Checkin() {
   return (
     <main className="content checkin">
       <div className="toolbar">
-        <BackButton onClick={back} />
+        {stepIndex > 0 && <BackButton onClick={() => go(stepIndex - 1)} />}
         <span className="muted strong-ish">{format(t.questionOf, Math.min(stepIndex + 1, total), total)}</span>
         <span className="toolbar-end">
+          <AcuteButton />
           <AiFab size="small" intro={aiIntro} />
         </span>
       </div>
       <LinearProgress value={Math.min(stepIndex + 1, total) / total} aria-label={format(t.questionOf, stepIndex + 1, total)} />
+      {patientError && !patient && <ErrorBanner message={t.loadError} onRetry={() => location.reload()} />}
+      {stepIndex === 0 && doneToday && (
+        <button type="button" className="list-button done-today" onClick={() => navigate('/vysledek', { state: { output: doneToday } })}>
+          <SvgIcon svg={checkCircleIcon} />
+          <span>{format(t.todayDone, formatTime(new Date(doneToday.as_of), locale))}</span>
+          <TriageChip level={doneToday.uroven} lang={lang} />
+        </button>
+      )}
       {body}
     </main>
   );

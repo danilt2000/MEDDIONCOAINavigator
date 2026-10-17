@@ -50,6 +50,7 @@ md-navigation-bar {
   bottom: 0;
   z-index: 3;
 }
+body:has(md-dialog[open]) md-navigation-bar { z-index: 0; }
 
 md-outlined-text-field,
 md-filled-button,
@@ -77,7 +78,6 @@ md-filled-tonal-button {
 .title { margin: 0; font-size: 1.5rem; line-height: 1.25; font-weight: 700; }
 .question { margin: 0; font-size: 1.5rem; line-height: 1.3; font-weight: 700; }
 .card-title { margin: 0; font-size: 1.0625rem; font-weight: 700; }
-.card-title-lg { margin: 0; font-size: 1.3125rem; font-weight: 700; }
 .strong { margin: 0; font-size: 1.1875rem; font-weight: 700; }
 .strong-ish { font-weight: 600; }
 .muted { margin: 0; color: var(--md-sys-color-on-surface-variant); }
@@ -154,12 +154,10 @@ a:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset
   gap: 12px;
   min-height: 48px;
 }
-.row { display: flex; gap: 10px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; }
 .row > * { flex: 1; }
 .stack { display: flex; flex-direction: column; gap: 10px; }
 .bullets { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
-.phone-link { min-height: 48px; display: inline-flex; align-items: center; font-weight: 700; color: var(--md-sys-color-primary); white-space: nowrap; }
-.danger-text { color: var(--triage-4-strong); }
 .banner {
   display: flex;
   flex-wrap: wrap;
@@ -172,7 +170,7 @@ a:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset
   color: var(--md-sys-color-on-error-container);
 }
 
-/* danger (red) buttons: tel:155 and the acute bar */
+/* danger (red) buttons: tel:155 and the acute dialog */
 .danger {
   --md-filled-button-container-color: var(--triage-4-strong);
   --md-filled-button-label-text-color: var(--triage-4-on-strong);
@@ -195,25 +193,20 @@ a:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset
   --md-outlined-button-pressed-icon-color: var(--triage-4-on-container);
 }
 
-/* home */
-.brand-row { display: flex; align-items: center; justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: 10px; font-size: 1.125rem; font-weight: 700; color: var(--md-sys-color-primary); --md-icon-size: 26px; }
-.brand-logo { width: 36px; height: 36px; }
+/* ai and acute buttons */
 .toggle-on { background: var(--md-sys-color-secondary-container); border-radius: 999px; }
-.home { padding-bottom: 0; }
-.acute-bar {
-  position: sticky;
-  bottom: var(--nav-height);
-  z-index: 2;
-  margin: 88px -16px 0;
-  padding: 14px 16px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: var(--md-sys-color-surface-container-lowest);
-  border-top: 1px solid var(--md-sys-color-outline-variant);
+.acute-button {
+  --md-outlined-icon-button-container-width: 44px;
+  --md-outlined-icon-button-container-height: 44px;
+  --md-outlined-icon-button-outline-width: 2px;
+  --md-outlined-icon-button-outline-color: var(--triage-4-strong);
+  --md-outlined-icon-button-icon-color: var(--triage-4-strong);
+  --md-outlined-icon-button-hover-icon-color: var(--triage-4-strong);
+  --md-outlined-icon-button-focus-icon-color: var(--triage-4-strong);
+  --md-outlined-icon-button-pressed-icon-color: var(--triage-4-strong);
+  --md-outlined-icon-button-hover-state-layer-color: var(--triage-4-strong);
+  --md-outlined-icon-button-pressed-state-layer-color: var(--triage-4-strong);
 }
-.fab { position: absolute; right: 16px; bottom: calc(100% + 16px); }
 .ai-fab {
   position: relative;
   display: inline-grid;
@@ -270,8 +263,23 @@ a:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset
 }
 
 /* check-in */
-.toolbar { display: flex; align-items: center; gap: 8px; margin-left: -8px; }
-.toolbar-end { margin-left: auto; margin-right: 10px; }
+.checkin { padding-bottom: 0; }
+.toolbar { display: flex; align-items: center; gap: 8px; min-height: 48px; }
+.toolbar > md-icon-button:first-child { margin-left: -8px; }
+.toolbar-end { display: flex; align-items: center; gap: 12px; margin-left: auto; margin-right: 10px; }
+button.done-today {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 6px 10px;
+  border-radius: 14px;
+  background: var(--md-sys-color-surface-container-high);
+  font-size: 0.875rem;
+  --md-icon-size: 22px;
+}
+.done-today > :first-child { color: var(--triage-1-on-container); }
+.done-today .triage-chip { margin-left: auto; padding: 2px 8px 2px 6px; gap: 4px; white-space: nowrap; }
 md-linear-progress { width: 100%; }
 .context-chip {
   align-self: flex-start;
@@ -327,13 +335,16 @@ md-linear-progress { width: 100%; }
 .switch-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 56px; cursor: pointer; }
 .footer {
   position: sticky;
-  bottom: 0;
+  bottom: var(--nav-height);
   margin-top: auto;
   padding: 12px 0 16px;
   display: flex;
   flex-direction: column;
   gap: 4px;
   background: var(--md-sys-color-surface);
+}
+@media (max-height: 720px) {
+  .footer { position: static; }
 }
 
 /* results */
@@ -352,7 +363,6 @@ md-linear-progress { width: 100%; }
 .next-step[data-level='4'] { background: var(--triage-4-container); color: var(--triage-4-on-container); }
 .level-title { display: flex; align-items: center; gap: 10px; font-size: 1.25rem; font-weight: 700; --md-icon-size: 28px; }
 .level-text { font-size: 1.125rem; line-height: 1.45; }
-.ok-text { font-weight: 600; color: var(--triage-1-on-container); }
 .ok-line { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--triage-1-on-container); --md-icon-size: 24px; }
 .red-screen { flex: 1; display: flex; flex-direction: column; }
 .red-header {

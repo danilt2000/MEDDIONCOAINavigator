@@ -80,7 +80,7 @@ export function PushTestPage() {
                   <li>
                     V horní liště aplikace musí být vybraný pacient <strong>{patientId}</strong> (aplikace z plochy na iPhonu začíná u výchozího pacienta).
                   </li>
-                  <li>Na úvodní obrazovce klepněte na „Zapnout upozornění“ a upozornění povolte.</li>
+                  <li>V záložce Nastavení klepněte na „Zapnout upozornění“ a upozornění povolte.</li>
                   <li>Zařízení se objeví níže.</li>
                 </ol>
                 <Load

@@ -1,6 +1,6 @@
 # Notifications plan
 
-Built so far: Web Push end to end for manual test sends. The patient turns notifications on in the PWA home screen
+Built so far: Web Push end to end for manual test sends. The patient turns notifications on in the PWA tab Nastavení
 (card „Upozornění“); the clinician sends a test notification from https://lekar.nastasiya.com/#/test-notifikace;
 a tap opens `/checkin` (or `/navigator`) for that patient. Code: `backend/app/services/push.py`,
 `backend/app/api/push.py`, `apps/patient-pwa/public/push-sw.js`, `apps/patient-pwa/src/push.ts`,

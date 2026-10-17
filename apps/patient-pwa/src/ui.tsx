@@ -2,7 +2,8 @@ import arrowBackIcon from '@material-symbols/svg-400/outlined/arrow_back.svg?raw
 import callIcon from '@material-symbols/svg-400/outlined/call.svg?raw';
 import chatIcon from '@material-symbols/svg-400/rounded/chat-fill.svg?raw';
 import refreshIcon from '@material-symbols/svg-400/outlined/refresh.svg?raw';
-import { FilledButton, IconButton, OutlinedButton, SvgIcon, TextButton } from '@navigator/ui';
+import { Dialog, FilledButton, IconButton, OutlinedButton, OutlinedIconButton, SvgIcon, TextButton } from '@navigator/ui';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { ambulancePhone, phoneDigits, useApp, type CallTarget } from './app-state';
 
@@ -64,19 +65,49 @@ export function AmbulanceAnd155() {
   );
 }
 
+function WarningSigns() {
+  const { t } = useApp();
+  return (
+    <ul className="bullets">
+      <li>{t.warn1}</li>
+      <li>{t.warn2}</li>
+      <li>{t.warn3}</li>
+      <li>{t.warn4}</li>
+    </ul>
+  );
+}
+
 export function CallNowCard() {
   const { t } = useApp();
   return (
     <section className="card card-danger">
       <h2 className="card-title">{t.callNowWhen}</h2>
-      <ul className="bullets">
-        <li>{t.warn1}</li>
-        <li>{t.warn2}</li>
-        <li>{t.warn3}</li>
-        <li>{t.warn4}</li>
-      </ul>
+      <WarningSigns />
       <AmbulanceAnd155 />
     </section>
+  );
+}
+
+export function AcuteButton() {
+  const { t } = useApp();
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <OutlinedIconButton className="acute-button" aria-label={t.acuteTitle} title={t.acuteTitle} onClick={() => setOpen(true)}>
+        <SvgIcon svg={callIcon} />
+      </OutlinedIconButton>
+      <Dialog open={open} onClosed={() => setOpen(false)}>
+        <div slot="headline">{t.acuteTitle}</div>
+        <div slot="content" className="stack">
+          <p className="strong">{t.callNowWhen}</p>
+          <WarningSigns />
+          <AmbulanceAnd155 />
+        </div>
+        <div slot="actions">
+          <TextButton onClick={() => setOpen(false)}>{t.close}</TextButton>
+        </div>
+      </Dialog>
+    </>
   );
 }
 

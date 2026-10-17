@@ -11,6 +11,7 @@ import {
 } from '@navigator/api';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useNavigate } from 'react-router';
+import type { Answers, VitalKey } from './flow';
 import { dictionaries, format, type Dict } from './i18n';
 import { syncPushPatient } from './push';
 
@@ -62,6 +63,23 @@ export function useApi<T>(path: string | null, refreshKey?: unknown) {
   const reload = useCallback(() => setTick((value) => value + 1), []);
   return { ...state, reload };
 }
+
+interface CheckinDraft {
+  patientId: string;
+  answers: Answers;
+  stepIndex: number;
+  vitals: Partial<Record<VitalKey, string>>;
+  message: string;
+  photo: string;
+}
+
+// Survives a detour to another tab; cleared after a successful submit.
+export const checkinDraft: { current: CheckinDraft | null } = { current: null };
+
+const fillingCheckin = () => {
+  const draft = checkinDraft.current;
+  return location.pathname === '/checkin' && !!draft && (draft.stepIndex > 0 || Object.keys(draft.answers).length > 0);
+};
 
 const QUEUE_KEY = 'queue:checkins';
 const PRAGUE = 'Europe/Prague';
@@ -139,13 +157,6 @@ export const phoneDigits = (phone: string) => phone.replace(/[^\d+]/g, '');
 export const formatPhone = (phone: string) => phoneDigits(phone).replace(/(\d{3})(?=\d)/g, '$1 ');
 
 export const shortRegimen = (regimen: string) => regimen.split(/\s\(|\sà|,|;/)[0].trim();
-
-export function nextApplication(now: Date, regimen: string, cycleDay: number | null): Date | null {
-  // ponytail: cycle length parsed from "à 21 dní" in the regimen text; use the CarePlan when the API exposes it
-  const cycleLength = Number(/à\s*(\d+)\s*dn/.exec(regimen)?.[1]);
-  if (!cycleLength || !cycleDay) return null;
-  return new Date(now.getTime() + (cycleLength - cycleDay + 1) * 86_400_000);
-}
 
 export interface CallTarget {
   label: string;
@@ -243,7 +254,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     flushQueue().then(({ remaining, delivered }) => {
       setQueued(remaining);
       const mine = delivered.filter((output) => output.patient_id === currentPatient.current).pop();
-      if (mine && location.pathname !== '/checkin') navigate('/vysledek', { state: { output: mine } });
+      if (mine && !fillingCheckin()) navigate('/vysledek', { state: { output: mine } });
     }, () => undefined);
   }, [navigate]);
 
