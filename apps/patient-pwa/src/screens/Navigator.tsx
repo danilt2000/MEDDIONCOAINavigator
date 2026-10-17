@@ -2,6 +2,8 @@ import deleteIcon from '@material-symbols/svg-400/outlined/delete.svg?raw';
 import micIcon from '@material-symbols/svg-400/outlined/mic.svg?raw';
 import sendIcon from '@material-symbols/svg-400/outlined/send.svg?raw';
 import stopIcon from '@material-symbols/svg-400/outlined/stop.svg?raw';
+import volumeOffIcon from '@material-symbols/svg-400/outlined/volume_off.svg?raw';
+import volumeUpIcon from '@material-symbols/svg-400/outlined/volume_up.svg?raw';
 import { api, postSse, type ChatMessage, type LevelCard, type NavigatorReply } from '@navigator/api';
 import {
   ChipSet,
@@ -48,6 +50,37 @@ interface Recognition {
 const speechWindow = window as unknown as Record<string, (new () => Recognition) | undefined>;
 const Recognizer = speechWindow.SpeechRecognition ?? speechWindow.webkitSpeechRecognition;
 
+const synth = window.speechSynthesis as SpeechSynthesis | undefined;
+
+const voiceFor = (lang: string) => synth?.getVoices().find((voice) => voice.lang.toLowerCase().startsWith(lang));
+
+// a phone number like 724 590 848 is read digit by digit, not as hundreds
+const spokenText = (text: string) =>
+  text.replace(/\b\d{3} \d{3}(?: \d{3})?\b/g, (phone) => phone.split(' ').map((group) => group.split('').join(' ')).join(', '));
+
+function speak(text: string, voice: SpeechSynthesisVoice) {
+  // one utterance per sentence: Chrome silently stops long utterances after about 15 s
+  for (const sentence of spokenText(text).split(/(?<=[.!?])\s+/).filter(Boolean)) {
+    const utterance = new SpeechSynthesisUtterance(sentence);
+    utterance.voice = voice;
+    utterance.lang = voice.lang;
+    synth?.speak(utterance);
+  }
+}
+
+const stopSpeaking = () => synth?.cancel();
+
+function useVoice(lang: string) {
+  const [voice, setVoice] = useState(() => voiceFor(lang));
+  useEffect(() => {
+    const update = () => setVoice(voiceFor(lang));
+    update();
+    synth?.addEventListener('voiceschanged', update);
+    return () => synth?.removeEventListener('voiceschanged', update);
+  }, [lang]);
+  return voice;
+}
+
 function useCardTargets(card: LevelCard): CallTarget[] {
   const { t, now, contacts } = useApp();
   return callTargets(card.uroven, now, contacts, t);
@@ -87,6 +120,11 @@ export function Navigator() {
   const [busy, setBusy] = useState(false);
   const [listening, setListening] = useState(false);
   const recognition = useRef<Recognition | null>(null);
+  const voice = useVoice(lang);
+  const [voiceOn, setVoiceOn] = useState(() => store.get('voice', false));
+  const aloud = Boolean(voice && voiceOn);
+  const aloudRef = useRef(aloud);
+  aloudRef.current = aloud;
 
   const messages: UiMessage[] = [
     { id: 'welcome', role: 'navigator', text: t.chatWelcome },
@@ -97,7 +135,15 @@ export function Navigator() {
   useEffect(() => {
     scrollTo({ top: document.documentElement.scrollHeight });
   }, [messages.length, lastText]);
-  useEffect(() => () => recognition.current?.stop(), []);
+  useEffect(() => {
+    const hide = () => document.hidden && stopSpeaking();
+    document.addEventListener('visibilitychange', hide);
+    return () => {
+      document.removeEventListener('visibilitychange', hide);
+      stopListening();
+      stopSpeaking();
+    };
+  }, []);
 
   const card = [...messages].reverse().find((message) => message.level_card)?.level_card;
   const last = messages[messages.length - 1];
@@ -107,7 +153,10 @@ export function Navigator() {
 
   async function send(display: string, payload = display) {
     if (!display.trim() || busy) return;
-    recognition.current?.stop();
+    stopListening();
+    stopSpeaking();
+    // iOS speaks only after a first utterance started by a tap
+    if (aloudRef.current) synth?.speak(new SpeechSynthesisUtterance(''));
     setText('');
     const userId = crypto.randomUUID();
     const replyId = crypto.randomUUID();
@@ -121,11 +170,20 @@ export function Navigator() {
     setBusy(true);
     let received = '';
     let done = false;
+    let redSpoken = false;
     try {
       const body = { text: payload.trim(), author: caregiver ? 'pecujici' : 'pacient', lang };
       for await (const event of postSse(`/api/chat/${patientId}/stream`, body)) {
-        if (event.event === 'card') update({ level_card: event.data as LevelCard });
-        else if (event.event === 'delta') {
+        if (event.event === 'card') {
+          const levelCard = event.data as LevelCard;
+          update({ level_card: levelCard });
+          // the red instruction is spoken at once, before the answer that may take seconds
+          if (aloudRef.current && voice && levelCard.uroven === 4 && !redSpoken) {
+            redSpoken = true;
+            stopSpeaking();
+            speak(t.voiceRed, voice);
+          }
+        } else if (event.event === 'delta') {
           received += String(event.data);
           update({ text: received });
         } else if (event.event === 'done') {
@@ -136,6 +194,7 @@ export function Navigator() {
             followup_question: reply.followup_question,
             ...(reply.level_card ? { level_card: reply.level_card } : {}),
           });
+          if (aloudRef.current && voice) speak(reply.reply_text || received, voice);
         } else if (event.event === 'error') throw new Error(String(event.data));
       }
       if (!done && !received) throw new Error('empty reply');
@@ -161,36 +220,79 @@ export function Navigator() {
     void send(failed.text, failed.payload);
   };
 
+  function stopListening() {
+    const current = recognition.current;
+    recognition.current = null;
+    current?.stop();
+  }
+
+  // in voice mode the end of speech sends the message; otherwise the text waits in the field
   const toggleMic = () => {
     if (listening) {
       recognition.current?.stop();
       return;
     }
     if (!Recognizer) return;
+    stopSpeaking();
     const recognizer = new Recognizer();
     const prefix = text ? `${text} ` : '';
+    let heard = '';
     recognizer.lang = lang === 'sk' ? 'sk-SK' : 'cs-CZ';
     recognizer.interimResults = true;
-    recognizer.onresult = (event) =>
-      setText(prefix + Array.from(event.results, (result) => result[0].transcript).join(' '));
-    recognizer.onend = () => setListening(false);
+    recognizer.onresult = (event) => {
+      heard = prefix + Array.from(event.results, (result) => result[0].transcript).join(' ');
+      setText(heard);
+    };
+    recognizer.onend = () => {
+      setListening(false);
+      if (recognition.current !== recognizer) return;
+      recognition.current = null;
+      if (aloudRef.current && heard.trim()) void send(heard);
+    };
     recognition.current = recognizer;
     recognizer.start();
     setListening(true);
   };
 
+  const toggleVoice = () => {
+    const on = !voiceOn;
+    setVoiceOn(on);
+    store.set('voice', on);
+    stopSpeaking();
+    if (on && voice) speak(t.voiceStarted, voice);
+  };
+
   return (
-    <main className="content chat">
+    <main
+      className="content chat"
+      onClickCapture={(event) => {
+        // a call button is a Material button whose href is a property, not an attribute
+        if (event.nativeEvent.composedPath().some((node) => String((node as { href?: unknown }).href).startsWith('tel:'))) stopSpeaking();
+      }}
+    >
       <header className="chat-header">
         <div className="chat-title-row">
           <h1 className="title">{t.chatTitle}</h1>
-          {hasUserMessages && (
-            <IconButton aria-label={t.clearChat} title={t.clearChat} disabled={busy} onClick={() => setClearing(true)}>
-              <SvgIcon svg={deleteIcon} />
-            </IconButton>
-          )}
+          <span>
+            {voice && (
+              <IconButton
+                aria-label={aloud ? t.voiceOff : t.voiceOn}
+                title={aloud ? t.voiceOff : t.voiceOn}
+                onClick={toggleVoice}
+                className={aloud ? 'toggle-on' : undefined}
+              >
+                <SvgIcon svg={aloud ? volumeUpIcon : volumeOffIcon} />
+              </IconButton>
+            )}
+            {hasUserMessages && (
+              <IconButton aria-label={t.clearChat} title={t.clearChat} disabled={busy} onClick={() => setClearing(true)}>
+                <SvgIcon svg={deleteIcon} />
+              </IconButton>
+            )}
+          </span>
         </div>
         <p className="muted small">{t.chatSubtitle}</p>
+        {aloud && <p className="muted small">{t.voiceNote}</p>}
         <ChipSet>
           <FilterChip
             label={caregiver ? format(t.writingFor, forWhom) : t.caregiverChip}
