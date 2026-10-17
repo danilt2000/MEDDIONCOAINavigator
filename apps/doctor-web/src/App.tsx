@@ -36,7 +36,7 @@ export function App() {
       <header className="topbar">
         <div className="brand">
           <img className="brand-logo" src="/favicon.svg" alt="MEDDI" />
-          <span>MEDDI navigátor · Monitorovací centrum MOÚ</span>
+          <span>MEDDI navigátor · Monitorovací centrum</span>
         </div>
         <Duty offsetMs={offsetMs} />
       </header>
@@ -61,7 +61,7 @@ function Duty({ offsetMs }: { offsetMs: number }) {
   const working = inWorkingHours(now);
   return (
     <span className="duty">
-      <span>Služba: {working ? 'monitorovací centrum (Po–Pá 7:00–15:30)' : 'sloužící lékař MOÚ 724 590 848'}</span>
+      <span>Služba: {working ? 'monitorovací centrum (Po–Pá 7:00–15:30)' : 'sloužící lékař 724 590 848'}</span>
     </span>
   );
 }

@@ -9,7 +9,7 @@ import unicodedata
 from datetime import datetime
 from typing import AsyncIterator
 
-from app.adapters.meddi_json import load_patient
+from app.adapters.meddi_json import load_patient, without_institution
 from app.agent import tools
 from app.config import settings
 from app.models import Fact, LevelCard, NavigatorReply, NluResult, PatientContext, TriageOutput
@@ -247,6 +247,10 @@ def level_card(output: TriageOutput) -> LevelCard | None:
                      sla_do=output.sla_do)
 
 
+def _llm_card(card: LevelCard | None) -> dict | None:
+    return card and {**card.model_dump(mode="json"), "kontakt": card.kontakt and without_institution(card.kontakt)}
+
+
 # ---------- guardrails ----------
 
 DIAGNOSIS_WORDS = r"neutropen|febriln|seps[ae]|\bsepti|kolitid|srdecni selhani|srdecn\w* zlyhan|zlyhani\w* srdc|tromboz|embol|ketoacidoz|infarkt|metasta|pneumoni|zapal plic|zapal pluc|\bileus|mrtvic|cevni mozkov|toxicit|perforac|zanet\w* stre|zapal\w* crie|zanet\w* plic|zapal\w* pluc|zanet\w* zil|krevni srazenin|krvn\w* zrazenin"
@@ -388,18 +392,18 @@ def _level_template(output: TriageOutput, contact: str, sk: bool, palliative: bo
     if output.uroven == 4:
         parts = ["Volajte ihneď 155 alebo choďte na urgentný príjem." if sk else "Volejte ihned 155 nebo jeďte na urgentní příjem."]
         if ON_DUTY_PHONE in contact:
-            parts.append(f"Môžete volať aj službukonajúceho lekára MOÚ {ON_DUTY_PHONE}." if sk else f"Můžete volat i sloužícího lékaře MOÚ {ON_DUTY_PHONE}.")
+            parts.append(f"Môžete volať aj službukonajúceho lekára {ON_DUTY_PHONE}." if sk else f"Můžete volat i sloužícího lékaře {ON_DUTY_PHONE}.")
         parts.append("Nečakajte do rána." if sk else "Nečekejte do rána.")
         if fever:
             parts.append(fever)
         return " ".join(parts)
     if output.uroven == 3:
         if ON_DUTY_PHONE in contact:
-            who = (f"Zavolajte prosím ihneď službukonajúcemu lekárovi MOÚ na číslo {ON_DUTY_PHONE}." if sk
-                   else f"Zavolejte prosím hned sloužícímu lékaři MOÚ na číslo {ON_DUTY_PHONE}.")
+            who = (f"Zavolajte prosím ihneď službukonajúcemu lekárovi na číslo {ON_DUTY_PHONE}." if sk
+                   else f"Zavolejte prosím hned sloužícímu lékaři na číslo {ON_DUTY_PHONE}.")
         else:
-            who = ("Lekár MOÚ vám zavolá cez monitorovacie centrum do 2 hodín." if sk
-                   else "Lékař MOÚ vám zavolá přes monitorovací centrum do 2 hodin.")
+            who = ("Lekár vám zavolá cez monitorovacie centrum do 2 hodín." if sk
+                   else "Lékař vám zavolá přes monitorovací centrum do 2 hodin.")
         if output.adresat == "pecujici":
             first = "Ťažkosti vášho blízkeho je potrebné ešte dnes prebrať s lekárom." if sk else "Potíže vašeho blízkého je potřeba ještě dnes probrat s lékařem."
         else:
@@ -412,8 +416,8 @@ def _level_template(output: TriageOutput, contact: str, sk: bool, palliative: bo
         first = (f"Vašu správu sme odovzdali tímu monitorovacieho centra, ozve sa vám {when}." if sk
                  else f"Vaši zprávu jsme předali týmu monitorovacího centra, ozve se vám {when}.")
         palliative_line = " " + _palliative_line(sk) if palliative else ""
-        last = (f" Ak sa stav zhorší, objaví sa horúčka, krvácanie alebo dýchavičnosť, volajte ihneď 155 (mimo pracovného času službukonajúceho lekára MOÚ {ON_DUTY_PHONE})." if sk
-                else f" Pokud se stav zhorší, objeví se horečka, krvácení nebo dušnost, volejte ihned 155 (mimo pracovní dobu sloužícího lékaře MOÚ {ON_DUTY_PHONE}).")
+        last = (f" Ak sa stav zhorší, objaví sa horúčka, krvácanie alebo dýchavičnosť, volajte ihneď 155 (mimo pracovného času službukonajúceho lekára {ON_DUTY_PHONE})." if sk
+                else f" Pokud se stav zhorší, objeví se horečka, krvácení nebo dušnost, volejte ihned 155 (mimo pracovní dobu sloužícího lékaře {ON_DUTY_PHONE}).")
         return first + palliative_line + last
     if sk:
         return ("Ďakujeme za správu. Na túto otázku vám najlepšie odpovie váš tím, radi ju odovzdáme. "
@@ -424,7 +428,7 @@ def _level_template(output: TriageOutput, contact: str, sk: bool, palliative: bo
 
 # ---------- LLM ----------
 
-SYSTEM_PROMPT = """Jsi MEDDI navigátor, asistent monitorovacího centra Masarykova onkologického ústavu (MOÚ) v chatu pro onkologické pacienty a jejich blízké.
+SYSTEM_PROMPT = """Jsi MEDDI navigátor, asistent onkologického monitorovacího centra v chatu pro onkologické pacienty a jejich blízké.
 
 Pravidla, která nikdy neporušíš:
 1. Nikdy nestanovuj diagnózu a nepiš názvy diagnóz (např. kolitida, sepse, neutropenie, infekce, dehydratace, trombóza, embolie, infarkt, srdeční selhání, metastázy, toxicita) – ani je neopakuj po pacientovi a neopisuj je laickými slovy (např. „zánět střev“). Na otázku „Mám …?“ odpověz, že to v chatu posoudit nelze a posoudí to lékař, a nabídni předání týmu monitorovacího centra.
@@ -534,11 +538,11 @@ async def _llm_answer(patient_id: str, lang: str, author: str, payload: dict, hi
 
 def _contact_phrase(contact: str) -> str:
     if "155" in contact:
-        return "Volejte ihned 155 nebo jeďte na urgentní příjem" + (f"; můžete volat i sloužícího lékaře MOÚ {ON_DUTY_PHONE}" if ON_DUTY_PHONE in contact else "") + "."
+        return "Volejte ihned 155 nebo jeďte na urgentní příjem" + (f"; můžete volat i sloužícího lékaře {ON_DUTY_PHONE}" if ON_DUTY_PHONE in contact else "") + "."
     if ON_DUTY_PHONE in contact:
-        return f"Zavolejte hned sloužícímu lékaři MOÚ na číslo {ON_DUTY_PHONE}."
+        return f"Zavolejte hned sloužícímu lékaři na číslo {ON_DUTY_PHONE}."
     if "telekonzult" in fold(contact):
-        return "Lékař MOÚ vám zavolá přes monitorovací centrum do 2 hodin."
+        return "Lékař vám zavolá přes monitorovací centrum do 2 hodin."
     if "do konce" in contact:
         return "Tým monitorovacího centra se vám ozve do konce následujícího pracovního dne."
     return "Tým monitorovacího centra se vám ozve následující pracovní den."
@@ -707,8 +711,8 @@ async def stream_chat_turn(patient_id: str, text: str, author: str, lang: str | 
             except Exception:
                 log.exception("chat turn failed")
                 sk = lang == "sk"
-                safe = (f"Prepáčte, odpoveď sa nepodarilo pripraviť. Ak sa necítite dobre, volajte 155 alebo službukonajúceho lekára MOÚ {ON_DUTY_PHONE}."
-                        if sk else f"Omlouváme se, odpověď se nepodařilo připravit. Pokud se necítíte dobře, volejte 155 nebo sloužícího lékaře MOÚ {ON_DUTY_PHONE}.")
+                safe = (f"Prepáčte, odpoveď sa nepodarilo pripraviť. Ak sa necítite dobre, volajte 155 alebo službukonajúceho lekára {ON_DUTY_PHONE}."
+                        if sk else f"Omlouváme se, odpověď se nepodařilo připravit. Pokud se necítíte dobře, volejte 155 nebo sloužícího lékaře {ON_DUTY_PHONE}.")
                 events.put_nowait({"event": "delta", "data": safe})
                 events.put_nowait({"event": "done", "data": NavigatorReply(reply_text=safe, lang="sk" if sk else "cs")})
             finally:
@@ -788,7 +792,7 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
         "now": at.isoformat(timespec="minutes"),
         "triage": {"level": output.uroven, "step": output.doporuceny_krok, "findings": output.klicove_nalezy,
                    "warning_signs": output.varovne_priznaky, "approved_patient_reply": (output.doporuceni_pro_pacienta or None) if output.uroven >= 2 else None},
-        "level_card": card.model_dump(mode="json") if card else None,
+        "level_card": _llm_card(card),
         "followup_question": followup,
         "patient": {"age": ctx.age, "sex": ctx.sex, "diagnosis": ctx.diagnosis, "regimen": ctx.regimen, "intent": ctx.intent,
                     "palliative": palliative, "cycle": ctx.cycle, "cycle_day": ctx.cycle_day, "chemo_window": ctx.chemo_window,
@@ -808,7 +812,7 @@ async def _turn(patient_id: str, text: str, author: str, lang: str | None, at: d
             output, card = raised, level_card(raised)
             yield {"event": "card", "data": card}
             payload["triage"].update(level=output.uroven, step=output.doporuceny_krok)
-            payload["level_card"] = card.model_dump(mode="json")
+            payload["level_card"] = _llm_card(card)
             payload["must"] = _requirements(output, card, palliative, meds, lang, hopeless, fever, bool(followup), self_medication)
         candidate = " ".join(candidate.split())
         if followup:

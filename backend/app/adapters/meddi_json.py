@@ -18,10 +18,15 @@ def dataset_dir(dataset: Dataset) -> Path:
     return settings.data_dir / DATASET_DIRS[dataset]
 
 
+def without_institution(text: str) -> str:
+    """The challenge data and the router contract name the institution; screens and the LLM never do."""
+    return text.replace(" MOÚ", "").replace(" na MOU", "")
+
+
 @cache
 def load_patients(dataset: Dataset) -> tuple[Patient, ...]:
     files = sorted((dataset_dir(dataset) / "pacienti").glob("*.json"))
-    return tuple(Patient.model_validate_json(path.read_text(encoding="utf-8")) for path in files)
+    return tuple(Patient.model_validate_json(without_institution(path.read_text(encoding="utf-8"))) for path in files)
 
 
 def load_patient(patient_id: str) -> Patient:
@@ -44,7 +49,7 @@ def load_ground_truth(dataset: Dataset) -> dict[str, GroundTruth]:
 
 @cache
 def load_questionnaires() -> dict:
-    return json.loads((dataset_dir("dev") / "docs" / "dotazniky_definice.json").read_text(encoding="utf-8"))
+    return json.loads(without_institution((dataset_dir("dev") / "docs" / "dotazniky_definice.json").read_text(encoding="utf-8")))
 
 
 def doc_path(name: str) -> Path:

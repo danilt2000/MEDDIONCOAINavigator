@@ -10,6 +10,7 @@ from pathlib import Path
 
 import yaml
 
+from app.adapters.meddi_json import without_institution
 from app.context.builder import fold
 from app.models import Answer, Checkin, Evidence, Fact, NluResult, PatientContext, TriageOutput
 from app.nlu.lexicon_cs_sk import MARKED_DROWSINESS
@@ -631,14 +632,15 @@ def fallback_text(level: int, contact: str | None, lang: str, warnings: list[str
     signs = ", ".join(warnings[:3])
     sk = lang == "sk"
     if level >= 4:
+        contact = without_institution(contact or "155")
         text = (f"Volajte ihneď {contact}. Nečakajte do rána." if sk else f"Volejte ihned {contact}. Nečekejte do rána.")
     elif level == 3:
         if contact and contact.startswith("sloužící"):
-            text = ("Vaše ťažkosti treba ešte dnes prebrať s lekárom. Volajte ihneď službukonajúceho lekára MOÚ 724 590 848." if sk
-                    else "Vaše potíže je potřeba ještě dnes probrat s lékařem. Volejte ihned sloužícího lékaře MOÚ 724 590 848.")
+            text = ("Vaše ťažkosti treba ešte dnes prebrať s lekárom. Volajte ihneď službukonajúceho lekára 724 590 848." if sk
+                    else "Vaše potíže je potřeba ještě dnes probrat s lékařem. Volejte ihned sloužícího lékaře 724 590 848.")
         else:
-            text = ("Vaše ťažkosti treba ešte dnes prebrať s lekárom. Lekár MOÚ vám zavolá do 2 hodín." if sk
-                    else "Vaše potíže je potřeba ještě dnes probrat s lékařem. Lékař MOÚ vám zavolá do 2 hodin.")
+            text = ("Vaše ťažkosti treba ešte dnes prebrať s lekárom. Lekár vám zavolá do 2 hodín." if sk
+                    else "Vaše potíže je potřeba ještě dnes probrat s lékařem. Lékař vám zavolá do 2 hodin.")
         if signs:
             text += f" Pri {signs} volajte 155." if sk else f" Při těchto potížích: {signs} volejte 155."
     elif level == 2:
@@ -646,8 +648,8 @@ def fallback_text(level: int, contact: str | None, lang: str, warnings: list[str
         text = (f"Váš záznam sme odovzdali tímu monitorovacieho centra, ozve sa vám {when}." if sk
                 else f"Váš záznam jsme předali týmu monitorovacího centra, ozve se vám {when}.")
         if signs:
-            text += (f" Ak sa objaví {signs}, volajte službukonajúceho lekára MOÚ 724 590 848 alebo 155." if sk
-                     else f" Pokud se objeví {signs}, volejte sloužícího lékaře MOÚ 724 590 848 nebo 155.")
+            text += (f" Ak sa objaví {signs}, volajte službukonajúceho lekára 724 590 848 alebo 155." if sk
+                     else f" Pokud se objeví {signs}, volejte sloužícího lékaře 724 590 848 nebo 155.")
     else:
         text = ("Ďakujeme, dnešný záznam je v očakávanom rozmedzí. Pokračujte podľa odporúčaní." if sk
                 else "Děkujeme, dnešní záznam je v očekávaném rozmezí. Pokračujte podle doporučení.")

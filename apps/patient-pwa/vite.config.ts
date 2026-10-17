@@ -14,7 +14,7 @@ export default defineConfig({
       manifest: {
         name: 'MEDDI navigátor',
         short_name: 'MEDDI',
-        description: 'Navigátor pro pacienty MOÚ mezi kontrolami',
+        description: 'Navigátor pro onkologické pacienty mezi kontrolami',
         lang: 'cs',
         theme_color: '#056b5b',
         background_color: '#f5fbf7',

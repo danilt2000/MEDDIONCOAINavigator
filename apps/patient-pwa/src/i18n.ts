@@ -52,7 +52,7 @@ const cs = {
   thanks: 'Děkujeme, odpovědi jsou uložené',
   greenText: 'Nic závažného jsme nenašli. Tým odpovědi uvidí v přehledu.',
   advice: 'Doporučení',
-  adviceSource: 'Zdroj: pravidla monitorovacího centra MOÚ',
+  adviceSource: 'Zdroj: pravidla monitorovacího centra',
   callNowWhen: 'Volejte hned, když:',
   warn1: 'máte teplotu 38 °C a víc nebo zimnici,',
   warn2: 'máte průjem 7× a víckrát za den nebo krev ve stolici,',
@@ -69,12 +69,12 @@ const cs = {
   redTitle: 'Zavolejte prosím hned',
   call155: 'Volat 155',
   call155Sub: 'Záchranná služba / urgentní příjem',
-  callOnDuty: 'Sloužící lékař MOÚ',
+  callOnDuty: 'Sloužící lékař',
   callMc: 'Monitorovací centrum',
-  ifWorse: 'Když se to zhorší: sloužící lékař MOÚ {0}',
+  ifWorse: 'Když se to zhorší: sloužící lékař {0}',
   phoneScriptTitle: 'Co říct do telefonu',
-  phoneSelf: 'Jsem pacient/ka v péči MOÚ (onkologie)',
-  phoneCaregiver: 'Volám za blízkou osobu ({0}), je v péči MOÚ (onkologie)',
+  phoneSelf: 'Jsem pacient/ka v onkologické péči',
+  phoneCaregiver: 'Volám za blízkou osobu ({0}), je v onkologické péči',
   phoneCycle: '{0}. cyklus, den {1}',
   phoneMeasured: 'Naměřeno: {0}.',
   phoneHas: 'Potíže: {0}.',
@@ -83,7 +83,7 @@ const cs = {
   queuedTitle: 'Odpovědi jsou uložené v telefonu',
   queuedText: 'Odešleme je, jakmile budete online. Pokud se cítíte hůř, nečekejte a volejte.',
   chatTitle: 'Navigátor',
-  chatSubtitle: 'Odpovídá podle pravidel MOÚ. Nestanovuje diagnózu ani nemění léčbu.',
+  chatSubtitle: 'Odpovídá podle pravidel monitorovacího centra. Nestanovuje diagnózu ani nemění léčbu.',
   chatWelcome:
     'Dobrý den, jsem navigátor MEDDI. Pomohu s otázkami k léčbě a řeknu vám, komu zavolat. Při ohrožení života volejte hned 155.',
   writingFor: 'Píšete za: {0}',
@@ -191,7 +191,7 @@ const sk: Dict = {
   thanks: 'Ďakujeme, odpovede sú uložené',
   greenText: 'Nič závažné sme nenašli. Tím odpovede uvidí v prehľade.',
   advice: 'Odporúčanie',
-  adviceSource: 'Zdroj: pravidlá monitorovacieho centra MOÚ',
+  adviceSource: 'Zdroj: pravidlá monitorovacieho centra',
   callNowWhen: 'Volajte hneď, keď:',
   warn1: 'máte teplotu 38 °C a viac alebo zimnicu,',
   warn2: 'máte hnačku 7× a viackrát za deň alebo krv v stolici,',
@@ -208,12 +208,12 @@ const sk: Dict = {
   redTitle: 'Zavolajte prosím hneď',
   call155: 'Volať 155',
   call155Sub: 'Záchranná služba / urgentný príjem',
-  callOnDuty: 'Službukonajúci lekár MOÚ',
+  callOnDuty: 'Službukonajúci lekár',
   callMc: 'Monitorovacie centrum',
-  ifWorse: 'Keď sa to zhorší: službukonajúci lekár MOÚ {0}',
+  ifWorse: 'Keď sa to zhorší: službukonajúci lekár {0}',
   phoneScriptTitle: 'Čo povedať do telefónu',
-  phoneSelf: 'Som pacient/ka v starostlivosti MOÚ (onkológia)',
-  phoneCaregiver: 'Volám za blízku osobu ({0}), je v starostlivosti MOÚ (onkológia)',
+  phoneSelf: 'Som pacient/ka v onkologickej starostlivosti',
+  phoneCaregiver: 'Volám za blízku osobu ({0}), je v onkologickej starostlivosti',
   phoneCycle: '{0}. cyklus, deň {1}',
   phoneMeasured: 'Namerané: {0}.',
   phoneHas: 'Ťažkosti: {0}.',
@@ -222,7 +222,7 @@ const sk: Dict = {
   queuedTitle: 'Odpovede sú uložené v telefóne',
   queuedText: 'Odošleme ich, hneď ako budete online. Ak sa cítite horšie, nečakajte a volajte.',
   chatTitle: 'Navigátor',
-  chatSubtitle: 'Odpovedá podľa pravidiel MOÚ. Nestanovuje diagnózu ani nemení liečbu.',
+  chatSubtitle: 'Odpovedá podľa pravidiel monitorovacieho centra. Nestanovuje diagnózu ani nemení liečbu.',
   chatWelcome:
     'Dobrý deň, som navigátor MEDDI. Pomôžem s otázkami k liečbe a poviem vám, komu zavolať. Pri ohrození života volajte hneď 155.',
   writingFor: 'Píšete za: {0}',
@@ -276,17 +276,18 @@ const sk: Dict = {
 
 export const dictionaries = { cs, sk };
 
-// The backend routes in Czech only (the eval scores these strings verbatim), so Slovak cards translate them here.
+// The backend routes in Czech only (the eval scores these strings verbatim, institution name included), so Slovak cards
+// translate them here and every card shows them without the institution name.
 const SK_CONTACTS: Record<string, string> = {
   'monitorovací centrum – vyřízení do konce následujícího pracovního dne': 'monitorovacie centrum – vybavenie do konca nasledujúceho pracovného dňa',
   'monitorovací centrum – následující pracovní den': 'monitorovacie centrum – nasledujúci pracovný deň',
-  'telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h': 'telekonzultácia s lekárom MOÚ cez monitorovacie centrum do 2 h',
-  'sloužící lékař MOÚ 724 590 848 – ihned': 'službukonajúci lekár MOÚ 724 590 848 – ihneď',
+  'telekonzultace s lékařem MOÚ přes monitorovací centrum do 2 h': 'telekonzultácia s lekárom cez monitorovacie centrum do 2 h',
+  'sloužící lékař MOÚ 724 590 848 – ihned': 'službukonajúci lekár 724 590 848 – ihneď',
   '155 / urgentní příjem': '155 / urgentný príjem',
-  '155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848)': '155 / urgentný príjem (prípadne službukonajúci lekár MOÚ 724 590 848)',
+  '155 / urgentní příjem (případně sloužící lékař MOÚ 724 590 848)': '155 / urgentný príjem (prípadne službukonajúci lekár 724 590 848)',
 };
 
-export const contactText = (contact: string, lang: 'cs' | 'sk') => (lang === 'sk' && SK_CONTACTS[contact]) || contact;
+export const contactText = (contact: string, lang: 'cs' | 'sk') => (lang === 'sk' && SK_CONTACTS[contact]) || contact.replace(/ MOÚ/g, '');
 
 export const format = (template: string, ...params: (string | number)[]) =>
   template.replace(/\{(\d+)\}/g, (_, index: string) => String(params[Number(index)] ?? ''));

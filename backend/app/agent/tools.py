@@ -8,12 +8,12 @@ import unicodedata
 import time
 from datetime import datetime, timedelta
 
-from app.adapters.meddi_json import load_patient
+from app.adapters.meddi_json import load_patient, without_institution
 from app.config import settings
 from app.models import PRAGUE, Patient, PatientContext, TriageOutput
 
 LOG_FILE = settings.cache_dir.parent / "logs" / "mcp.log"
-PHONES = {"monitoring_centre": "MOÚ monitorovací centrum (pracovní dny 7:00–15:30)", "on_duty": "724 590 848", "ems": "155"}
+PHONES = {"monitoring_centre": "monitorovací centrum (pracovní dny 7:00–15:30)", "on_duty": "724 590 848", "ems": "155"}
 METRIC_VITALS = {"weight": "vaha_kg", "bp_sys": "tk_sys", "bp_dia": "tk_dia", "pulse": "tepova_frekvence",
                  "temperature": "teplota_c", "glucose": "glykemie_mmol_l", "breathing_rate": "dechova_frekvence"}
 
@@ -177,7 +177,8 @@ def search_guidance(query: str, lang: str = "cs") -> list[dict]:
 
     lang = "sk" if lang == "sk" else "cs"
     try:
-        return [{"cite": hit["source"], "text": hit["text"], "score": hit["score"]} for hit in vector_search(query, lang, "patient", 5)]
+        return [{"cite": hit["source"], "text": without_institution(hit["text"]), "score": hit["score"]}
+                for hit in vector_search(query, lang, "patient", 5)]
     except Exception:
         return []
 
@@ -187,7 +188,7 @@ def get_contact(level: int, at: str | None = None) -> dict:
     """The right contact for a level at a time (router), plus opening hours and phone numbers."""
     when = _parse_at(at)
     step, contact, notify, sla = route(max(1, min(int(level), 4)), when)
-    return {"level": level, "step": step, "contact": contact, "notify_team": notify,
+    return {"level": level, "step": step, "contact": contact and without_institution(contact), "notify_team": notify,
             "sla_do": sla.isoformat(timespec="minutes") if sla else None, "phones": PHONES}
 
 
@@ -235,4 +236,4 @@ def escalate(patient_id: str, level: int, reason: str, evidence: str = "") -> di
     if live is not None:
         live.record_output(None, output)
         live.raise_task(output)
-    return {"raised": True, "level": level, "contact": contact}
+    return {"raised": True, "level": level, "contact": without_institution(contact)}

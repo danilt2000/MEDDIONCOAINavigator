@@ -1,7 +1,7 @@
 from app.llm.client import adds_numbers, cached_json
 from app.models import SummaryFact
 
-SYSTEM_PROMPT = """You write the body of a 30-second summary for an oncologist at Masarykův onkologický ústav, in Czech (or the language given), from a list of facts only.
+SYSTEM_PROMPT = """You write the body of a 30-second summary for an oncologist at the cancer centre, in Czech (or the language given), from a list of facts only.
 
 Format, one line each, skip a line if no fact supports it:
 Proč teď: one sentence, what matters now and what is expected from the doctor.

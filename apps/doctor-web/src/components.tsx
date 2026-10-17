@@ -12,7 +12,7 @@ import {
 import { Fragment, useState, type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router';
 import { callIcon, howToRegIcon, refreshIcon, taskAltIcon, videoCallIcon, warningIcon } from './icons';
-import { errorText, fmtDayTime, type Loadable } from './lib';
+import { contactText, errorText, fmtDayTime, type Loadable } from './lib';
 
 export type Crumb = { label: string; to: string };
 
@@ -132,7 +132,7 @@ export function TriageExplanation({ output }: { output: TriageOutput }) {
       </div>
       {output.doporuceny_kontakt && (
         <p className="explain-line">
-          <span className="label">Kontakt</span> {output.doporuceny_kontakt}
+          <span className="label">Kontakt</span> {contactText(output.doporuceny_kontakt)}
           {output.sla_do && <> · SLA do {fmtDayTime(output.sla_do)}</>}
         </p>
       )}
