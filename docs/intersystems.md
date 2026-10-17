@@ -28,6 +28,8 @@ Portal links (log in as `SuperUser`/`SYS`):
 - FHIR server management and FHIR SQL Builder: http://localhost:52773/csp/fhir-management/index.html
 - FHIR REST base: http://localhost:52773/fhir/r4 (Basic auth)
 
+Without the tunnel, the hidden clinician page https://lekar.nastasiya.com/#/iris (`apps/doctor-web/src/pages/Iris.tsx`) shows the same storage read-only: FHIR counts and MEDDI.* tables, the whitelisted SQL queries, a FHIR resource browser and the production message trace. Backend: `backend/app/api/iris_explorer.py` (`/api/iris/*`, query ids only, bound values, 200 rows, 10 s statement timeout, one connection at a time).
+
 ## 1. FHIR R4 repository
 
 | What | Where |

@@ -5,6 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { createHashRouter, Navigate, RouterProvider } from 'react-router';
 import { App } from './App';
 import { DayPage, RegimenPage } from './pages/Day';
+import { IrisPage } from './pages/Iris';
 import { MonitoringPage } from './pages/Monitoring';
 import { PatientDetailPage } from './pages/PatientDetail';
 import { PatientsPage } from './pages/Patients';
@@ -28,6 +29,8 @@ const router = createHashRouter([
       { path: 'monitoring/lecba/:regimen', element: <RegimenPage /> },
       { path: 'pravidla', element: <RulesPage /> },
       { path: 'test-notifikace', element: <PushTestPage /> },
+      { path: 'iris', element: <Navigate to="/iris/prehled" replace /> },
+      { path: 'iris/:tab', element: <IrisPage /> },
       { path: '*', element: <Navigate to="/fronta" replace /> },
     ],
   },
