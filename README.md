@@ -165,6 +165,55 @@ Everything the navigator works with is stored in **InterSystems IRIS for Health*
 the chat looks up guidance with IRIS Vector Search, and every alert also goes through an IRIS production toward MEDDI.
 That is what lets the navigator connect to existing hospital systems.
 
+**A check-in on its way through IRIS:**
+
+```mermaid
+stateDiagram-v2
+    state "Check-in received" as Received
+    state "Triage done, the patient gets the answer at once" as Triage
+    state "Stored in IRIS (FHIR repository)" as Stored
+    state level <<choice>>
+    state "Alert via the IRIS production (Alert.Service → Operation)" as Alert
+    state "MEDDI got the alert, task in the clinician queue" as Meddi
+    [*] --> Received
+    Received --> Triage
+    Triage --> Stored
+    Stored --> level
+    level --> Alert : level ≥ 2
+    level --> [*] : level 1
+    Alert --> Meddi
+    Meddi --> [*]
+```
+
+**A chat message and the AI agent.** The level is always set by rules. The AI agent only writes the words, and it can
+raise the level but never lower it.
+
+```mermaid
+stateDiagram-v2
+    state "Message received (patient or caregiver)" as Message
+    state "Rules triage, level card at once, no AI" as Rules
+    state "IRIS alert to the MEDDI queue" as Alert
+    state "Guidance search (IRIS Vector Search)" as Search
+    state "AI agent drafts the reply (LLM + read-only tools)" as Agent
+    state "Safety check of level, medicines and contacts" as Check
+    state "Reply sent, saved to IRIS FHIR" as Reply
+    [*] --> Message
+    Message --> Rules
+    Rules --> Alert : level ≥ 2
+    Alert --> [*]
+    Rules --> Search
+    Search --> Agent
+    Agent --> Check
+    Check --> Agent : rejected, retry
+    Check --> Reply : ok
+    Reply --> [*]
+    note right of Agent
+        Tools: patient context, recent check-ins, trends,
+        IRIS Vector Search, contact by hour, follow-up question,
+        escalate (can only raise the level)
+    end note
+```
+
 See it live, no login needed: [overview ↗](https://lekar.nastasiya.com/#/iris) ·
 [SQL ↗](https://lekar.nastasiya.com/#/iris/sql) · [FHIR resources ↗](https://lekar.nastasiya.com/#/iris/fhir) ·
 [production traces ↗](https://lekar.nastasiya.com/#/iris/produkce) · [FHIR API ↗](https://lekar.nastasiya.com/fhir/r4/metadata).
