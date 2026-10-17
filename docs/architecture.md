@@ -126,7 +126,8 @@ Until a module lands, callers import it lazily and fall back (e.g. `try: from ap
 | GET | `/api/patients/{id}/summary?as_of=&reason=` | `DoctorSummary` |
 | POST | `/api/checkins` | body = check-in in the MEDDI JSON shape (`checkin_id`, `datum`, `cas` may be omitted: server fills them from the demo clock) → `TriageOutput` |
 | GET | `/api/checkins/{id}/triage` | `TriageOutput` |
-| GET | `/api/chat/{patient_id}/messages` | `ChatMessage[]` |
+| GET | `/api/chat/{patient_id}/messages` | `ChatMessage[]` of the current conversation (after the last hide) |
+| POST | `/api/chat/{patient_id}/hide` | starts a new conversation → `[]`; nothing is deleted, the timeline keeps every message |
 | POST | `/api/chat/{patient_id}/messages` | `{text, author: "pacient"|"pecujici", lang?}` → `NavigatorReply` |
 | POST | `/api/chat/{patient_id}/stream` | same body, SSE events `card`, `delta`, `done` |
 | GET | `/api/queue?status=open` | `QueueItem[]` (QueueTask + patient name, age, regimen, cycle_day) sorted by level then SLA |

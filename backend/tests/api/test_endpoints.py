@@ -153,10 +153,17 @@ def test_chat_reports_count_in_monitoring(client):
             store._state["nlu"].pop("chat-ONC-005-TEST", None)
 
 
-def test_clear_chat(client):
-    assert client.delete("/api/chat/ONC-005/messages").json() == []
+def test_hide_chat(client):
+    from app import store
+
+    store.add_chat("ONC-005", {"role": "user", "author": "pacient", "text": "skrytá zpráva"})
+    assert client.post("/api/chat/ONC-005/hide").json() == []
     assert client.get("/api/chat/ONC-005/messages").json() == []
-    assert client.delete("/api/chat/NOPE/messages").status_code == 404
+    assert "skrytá zpráva" in [item["detail"] for item in client.get("/api/patients/ONC-005/timeline").json()]
+    added = store.add_chat("ONC-005", {"role": "user", "author": "pacient", "text": "nová zpráva"})
+    assert client.get("/api/chat/ONC-005/messages").json() == [added]
+    assert client.delete("/api/chat/ONC-005/messages").status_code == 405
+    assert client.post("/api/chat/NOPE/hide").status_code == 404
 
 
 def test_replay_and_eval(client):

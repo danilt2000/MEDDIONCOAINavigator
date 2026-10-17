@@ -642,16 +642,16 @@ def _open_episode_floor(patient_id: str, output: TriageOutput, at: datetime, ans
 
 
 def history(patient_id: str) -> list[dict]:
+    """The patient's current conversation; the team's timeline reads every message from the store."""
     live = _store()
-    return live.list_chat(patient_id) if live is not None else list(_fallback_history.get(patient_id, []))
+    return live.visible_chat(patient_id) if live is not None else list(_fallback_history.get(patient_id, []))
 
 
-def clear_history(patient_id: str) -> None:
-    """Clears the patient's chat view only: team tasks, alerts and the FHIR copy of every message stay."""
+def hide_history(patient_id: str) -> None:
+    """Hides the conversation from the patient's chat and starts a new one: nothing is deleted, the team keeps seeing it."""
     live = _store()
     if live is not None:
-        live.clear_chat(patient_id)
-    _fallback_history.pop(patient_id, None)
+        live.hide_chat(patient_id)
     _pending.pop(patient_id, None)
     tools.pop_followup(patient_id)
 
