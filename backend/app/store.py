@@ -297,8 +297,8 @@ def raise_task(output: TriageOutput, side_effects: bool = True) -> QueueTask | N
             _state["tasks"][task.id] = task
         else:
             task.notes.append(TaskNote(at=output.as_of, author="navigátor", text=f"Nová eskalace (úroveň {output.uroven}, {output.zdroj}): {_why(output)}"))
-            task.checkin_id = output.checkin_id
             if output.uroven > task.uroven:
+                task.checkin_id = output.checkin_id
                 task.uroven = output.uroven
                 task.why = _why(output)
                 task.out_of_hours = out_of_hours

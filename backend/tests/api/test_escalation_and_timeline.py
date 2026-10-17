@@ -28,3 +28,46 @@ def test_timeline_shows_only_processed_checkins(client, monkeypatch):
     items = client.get("/api/patients/ONC-001/timeline").json()
     assert all(item["level"] is not None for item in items if item["kind"] == "checkin")
     assert not any(item["ref"] == "ONC-001-C07" for item in items)
+
+
+def _triage(patient_id, checkin_id, level, rules, why, zdroj, as_of):
+    base = store.get_patient_outputs(patient_id)[-1]
+    return base.model_copy(update={"checkin_id": checkin_id, "uroven": level, "pravidla": rules, "varovne_priznaky": why,
+                                   "zdroj": zdroj, "as_of": as_of, "sla_do": None})
+
+
+def test_lower_escalation_keeps_the_evidence_of_the_task_level(client):
+    store.wait_ready()
+    for task in store.list_tasks():
+        if task.patient_id == "ONC-018" and task.status != "completed":
+            store.apply_task_action(task.id, "close", None, "test")
+    now = store.get_now()
+    orange = _triage("ONC-018", "ONC-018-T-ORANGE", 3, ["O-DIARRHEA-RISK"], ["4–6 stolic nad normál nereagující na loperamid"], "checkin", now)
+    yellow = _triage("ONC-018", "chat-ONC-018-20260909215243", 2, ["Y-IRINOTECAN"], [], "chat", now + timedelta(minutes=1))
+    for output in (orange, yellow):
+        store.record_output(None, output)
+        task = store.raise_task(output, side_effects=False)
+    assert task.uroven == 3 and task.checkin_id == "ONC-018-T-ORANGE"
+    assert "úroveň 2, chat" in task.notes[-1].text
+    item = next(item for item in client.get("/api/queue").json() if item["id"] == task.id)
+    evidence = client.get(f"/api/checkins/{item['checkin_id']}/triage").json()
+    assert evidence["uroven"] == item["uroven"] == 3 and evidence["pravidla"] == ["O-DIARRHEA-RISK"]
+
+    red = _triage("ONC-018", "ONC-018-T-RED", 4, ["R-FEVER"], ["teplota 38,5"], "checkin", now + timedelta(minutes=2))
+    store.record_output(None, red)
+    raised = store.raise_task(red, side_effects=False)
+    assert raised.id == task.id and raised.uroven == 4 and raised.checkin_id == "ONC-018-T-RED"
+
+
+def test_chat_escalation_raises_the_patients_last_level(client):
+    before = client.get("/api/patients/ONC-014").json()
+    assert before["last_level"] == 2
+    now = store.get_now()
+    orange = _triage("ONC-014", "chat-ONC-014-T-ORANGE", 3, ["O-PAIN"], ["bolest NRS ≥ 7, která nepovolí po záchranné dávce"], "chat", now)
+    store.record_output(None, orange)
+    store.raise_task(orange, side_effects=False)
+    store.record_output(None, _triage("ONC-014", "chat-ONC-014-T-THANKS", 1, [], [], "chat", now + timedelta(minutes=1)))
+    detail = client.get("/api/patients/ONC-014").json()
+    listed = next(item for item in client.get("/api/patients").json() if item["patient_id"] == "ONC-014")
+    assert detail["last_level"] == listed["last_level"] == detail["open_task"]["uroven"] == 3
+    assert detail["last_checkin_at"] == before["last_checkin_at"]

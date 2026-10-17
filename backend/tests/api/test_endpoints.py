@@ -107,7 +107,7 @@ def test_new_escalation_raises_open_task(client):
     second = store.raise_task(TriageOutput.model_validate({**base, "checkin_id": "X-2", "uroven": 4, "sla_do": None}), side_effects=False)
     lower = store.raise_task(TriageOutput.model_validate({**base, "checkin_id": "X-3", "uroven": 2, "sla_do": None}), side_effects=False)
     assert first.id == second.id == lower.id
-    assert lower.uroven == 4 and lower.priority == "stat" and lower.checkin_id == "X-3" and len(lower.notes) >= 2
+    assert lower.uroven == 4 and lower.priority == "stat" and lower.checkin_id == "X-2" and len(lower.notes) >= 2
     store.apply_task_action(first.id, "close", None, "test")
 
 

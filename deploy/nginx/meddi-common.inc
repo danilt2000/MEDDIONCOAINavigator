@@ -12,7 +12,13 @@ location ~ ^/(api|mock)/ {
 }
 
 # a new deploy must reach the browser at once: the page, the service worker and the manifest are never cached
-location ~ ^/(index\.html|sw\.js|registerSW\.js|manifest\.webmanifest)$ {
+location ~ ^/(index\.html|sw\.js|registerSW\.js)$ {
+    add_header Cache-Control "no-cache";
+}
+
+# nginx's mime.types has no .webmanifest entry
+location = /manifest.webmanifest {
+    default_type application/manifest+json;
     add_header Cache-Control "no-cache";
 }
 

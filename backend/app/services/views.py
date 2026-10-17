@@ -59,9 +59,11 @@ def risk_badges(patient: Patient, ctx: PatientContext) -> list[str]:
 
 def patient_list_item(patient: Patient) -> dict:
     ctx = context_at(patient.patient_id)
-    outputs = [output for output in store.get_patient_outputs(patient.patient_id) if output.zdroj == "checkin"]
-    latest = outputs[-1] if outputs else None
+    outputs = store.get_patient_outputs(patient.patient_id)
+    checkins = [output for output in outputs if output.zdroj == "checkin"]
+    latest = checkins[-1] if checkins else None
     task = store.open_task(patient.patient_id)
+    last_level = max(outputs[-1].uroven if outputs else 0, task.uroven if task else 0) or None
     return {
         "patient_id": patient.patient_id,
         "dataset": patient.sada,
@@ -75,7 +77,7 @@ def patient_list_item(patient: Patient) -> dict:
         "cycle_day": ctx.cycle_day,
         "risk_badges": risk_badges(patient, ctx),
         "filled_by": patient.demografie.vyplnuje,
-        "last_level": latest.uroven if latest else None,
+        "last_level": last_level,
         "last_checkin_at": latest.as_of.isoformat() if latest else None,
         "open_task": task.model_dump(mode="json") if task else None,
     }
