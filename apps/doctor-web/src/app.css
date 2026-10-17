@@ -587,7 +587,7 @@ tr.selected {
 
 .board {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 400px;
+  grid-template-columns: minmax(0, 1fr) 540px;
   gap: 16px;
   align-items: start;
 }
