@@ -36,7 +36,7 @@ RULES: dict[str, dict] = {
     },
     "missed_checkin": {
         "name": "Zmeškaný dotazník", "kind": "time", "enabled": True, "params": {"days": 2}, "opens": "/checkin",
-        "description": "Bez check-inu tolik dní → připomínka. Pacienti s vysokým rizikem (nadir, imunoterapie) o den dřív, stejně jako v triáži.",
+        "description": "Bez check-inu tolik dní → připomínka; dnešek se počítá až po čase denní připomínky. Pacienti s vysokým rizikem (nadir, imunoterapie) o den dřív, stejně jako v triáži.",
     },
     "team_reply": {
         "name": "Odpověď týmu", "kind": "event", "enabled": True, "params": {}, "opens": "/navigator",
@@ -169,7 +169,8 @@ def _daily(patients: list[Patient], now: datetime) -> list[tuple[Patient, str]]:
     return found
 
 
-def _missed(patients: list[Patient], now: datetime, days: int) -> list[tuple[Patient, str]]:
+def _missed(patients: list[Patient], now: datetime, days: int, due: str) -> list[tuple[Patient, str]]:
+    """Today counts as a missed day only once today's check-in is due (the daily reminder time)."""
     from app.services.engine import build_context
     from app.triage.engine import gap_high_risk
 
@@ -179,10 +180,11 @@ def _missed(patients: list[Patient], now: datetime, days: int) -> list[tuple[Pat
     for patient in patients:
         previous = last.get(patient.patient_id)
         since = (today - (previous.datum if previous else patient.obdobi_sledovani["od"])).days
-        if not _active(patient, today) or since < sooner:
+        missed = since if _clock(now) >= due else since - 1
+        if not _active(patient, today) or missed < sooner:
             continue
         high_risk = gap_high_risk(build_context(patient, now))
-        if since < (sooner if high_risk else days):
+        if missed < (sooner if high_risk else days):
             continue
         reason = (f"poslední check-in {'včera' if since == 1 else f'před {since} dny'}" if previous
                   else f"zatím žádný check-in (sledování od {_day(patient.obdobi_sledovani['od'])})")
@@ -213,7 +215,7 @@ def _candidates(rule: dict, now: datetime) -> list[tuple[Patient, str]]:
     if rule["id"] == "daily_checkin":
         return _daily(patients, now)
     if rule["id"] == "missed_checkin":
-        return _missed(patients, now, rule["params"]["days"])
+        return _missed(patients, now, rule["params"]["days"], load_rules()["daily_checkin"]["params"]["time"])
     if rule["id"] == "team_reply":
         return _team_replies(patients, now)
     if rule["id"] == "followup":
@@ -229,7 +231,7 @@ def _notification(rule_id: str, patient: Patient) -> dict:
 
 def _deliver(rule: dict, patient: Patient, reason: str, source: str, now: datetime) -> dict | None:
     """Send one rule to one patient and log it; None when the daily dedupe skips it (a manual run never skips)."""
-    key = (rule["id"], patient.patient_id, _today(now).isoformat())
+    key = (store.generation(), rule["id"], patient.patient_id, _today(now).isoformat())
     devices = push.devices(patient.patient_id)
     with _lock:
         previous = _fired.get(key)
@@ -241,7 +243,9 @@ def _deliver(rule: dict, patient: Patient, reason: str, source: str, now: dateti
         if devices and not push.configured():
             result, detail = "failed", NOT_CONFIGURED
         elif devices:
-            outcome = push.send(patient, rule["id"], notification=_notification(rule["id"], patient))
+            # both check-in reminders share the manual send's tag, so the phone shows one, not two at the same tick
+            kind = "checkin" if rule["opens"] == "/checkin" else rule["id"]
+            outcome = push.send(patient, kind, notification=_notification(rule["id"], patient))
             errors = [item["error"] or f"HTTP {item['status']}" for item in (outcome or {}).get("results", []) if not item["ok"]]
             result = "no_device" if outcome is None else "sent" if outcome["sent"] else "failed"
             detail = "; ".join(errors)[:200] or None
@@ -309,7 +313,7 @@ def preview() -> dict:
     subscribed = {device["patient_id"] for device in push.devices()}
     with _lock:
         fired = dict(_fired)
-    today = _today(now).isoformat()
+    today, generation = _today(now).isoformat(), store.generation()
     items = []
     for rule in rules.values():
         status, due = _status(rule, rules, now)
@@ -318,7 +322,7 @@ def preview() -> dict:
             "rule_id": rule["id"], "status": status, "due": due,
             "candidates": [
                 {"patient_id": patient.patient_id, "patient_name": patient.demografie.jmeno_fiktivni, "reason": reason,
-                 "has_device": patient.patient_id in subscribed, "fired_today": fired.get((rule["id"], patient.patient_id, today))}
+                 "has_device": patient.patient_id in subscribed, "fired_today": fired.get((generation, rule["id"], patient.patient_id, today))}
                 for patient, reason in candidates
             ],
         })

@@ -57,7 +57,7 @@ def test_rules_defaults_and_validation(client, rules, tmp_path):
     assert client.post("/api/notifications/rules/quiet_hours/run").status_code == 404
 
 
-def test_daily_reminder_when_due_once_per_day(client, rules, push_service):
+def test_daily_reminder_when_due_once_per_day(client, rules, push_service, monkeypatch):
     set_clock, put = rules
     put({"id": "missed_checkin", "enabled": False})
     subscribe(client, "ONC-009", GOOGLE)
@@ -75,7 +75,7 @@ def test_daily_reminder_when_due_once_per_day(client, rules, push_service):
         "title": "MEDDI · Dotazník na dnešek",
         "body": "Vyplňte prosím krátký dotazník, jak se dnes cítíte. Zabere asi 2 minuty.",
         "url": "/checkin?patient=ONC-009&from=notification",
-        "tag": "meddi-daily_checkin",
+        "tag": "meddi-checkin",
     }
 
     set_clock(18, 35)
@@ -87,19 +87,31 @@ def test_daily_reminder_when_due_once_per_day(client, rules, push_service):
     subscribe(client, "ONC-016", APPLE)
     assert by_patient(notifications.tick())["ONC-016"]["result"] == "sent"
 
+    generation = store.generation()
+    monkeypatch.setattr(store, "generation", lambda: generation + 1)
+    assert by_patient(notifications.tick())["ONC-009"]["result"] == "sent"
+
 
 def test_missed_checkin_one_day_sooner_for_high_risk(client, rules):
     set_clock, put = rules
-    set_clock(12, 0)
+    set_clock(18, 30)
     missed = candidates(client, "missed_checkin")
     assert missed["ONC-009"]["reason"] == "poslední check-in před 3 dny"
     assert missed["ONC-001"]["reason"] == "poslední check-in včera, vysoké riziko"
     assert "ONC-005" not in missed
 
-    put({"id": "missed_checkin", "enabled": True, "params": {"days": 3}})
+    set_clock(12, 0)
     missed = candidates(client, "missed_checkin")
-    assert {"ONC-009", "ONC-004"} <= set(missed) and "ONC-001" not in missed
     assert missed["ONC-004"]["reason"] == "poslední check-in před 2 dny, vysoké riziko"
+    assert "ONC-001" not in missed and "ONC-002" not in missed
+    set_clock(0, 1, (2026, 9, 10))
+    assert "ONC-010" not in candidates(client, "missed_checkin")
+
+    put({"id": "missed_checkin", "enabled": True, "params": {"days": 3}})
+    set_clock(18, 30, (2026, 9, 10))
+    missed = candidates(client, "missed_checkin")
+    assert {"ONC-009", "ONC-002"} <= set(missed) and "ONC-010" not in missed
+    assert missed["ONC-001"]["reason"] == "poslední check-in před 2 dny, vysoké riziko"
 
 
 def test_quiet_hours_hold_time_rules_but_not_a_manual_run(client, rules, push_service):
@@ -116,6 +128,7 @@ def test_quiet_hours_hold_time_rules_but_not_a_manual_run(client, rules, push_se
 
     put({"id": "quiet_hours", "enabled": True, "params": {"start": "21:00", "end": "21:15"}})
     assert {entry["rule_id"] for entry in notifications.tick()} == {"missed_checkin"}
+    assert {json.loads(call["data"])["tag"] for call in push_service.calls} == {"meddi-checkin"}
 
 
 def test_team_reply_hook(client, rules, push_service):

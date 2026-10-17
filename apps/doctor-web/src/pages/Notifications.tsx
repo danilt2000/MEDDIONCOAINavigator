@@ -132,7 +132,7 @@ function RuleCard({ rule, preview, onSave, onRan }: { rule: NotificationRule; pr
           {Object.entries(rule.params).map(([key, value]) =>
             key === 'days' ? (
               <label key={key} className="row gap-4">
-                Bez check-inu
+                Počet dní bez check-inu
                 <select className="native-input" value={value} onChange={(event) => setParam(key, Number(event.target.value))}>
                   {DAY_OPTIONS.map((days) => (
                     <option key={days} value={days}>
@@ -140,7 +140,7 @@ function RuleCard({ rule, preview, onSave, onRan }: { rule: NotificationRule; pr
                     </option>
                   ))}
                 </select>
-                dní (vysoké riziko o den dřív)
+                (vysoké riziko o den dřív)
               </label>
             ) : (
               <label key={key} className="row gap-4">
